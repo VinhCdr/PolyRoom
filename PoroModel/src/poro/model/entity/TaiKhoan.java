@@ -4,16 +4,20 @@ package poro.model.entity;
  *
  * @author vinh
  */
-public class TaiKhoan extends Dao{
+public class TaiKhoan extends Dao {
+
+    final public static int SELECT_ALL = 0;
+    final public static int SELECT_USER_OR_EMAIL_AND_PASS = 1;
+
     private String idTaiKhoan;
     private String email;
     private String matKhau;
     private boolean phanQuyen;
     private String ten;
     private String sdt;
-    
-    public TaiKhoan(){
-        
+
+    public TaiKhoan() {
+
     }
 
     public TaiKhoan(String idTaiKhoan, String email, String matKhau, boolean phanQuyen, String ten, String sdt) {
@@ -75,7 +79,24 @@ public class TaiKhoan extends Dao{
 
     @Override
     protected String getSqlSelect() {
-        return "SELECT id_tai_khoan, email, mat_khau, is_phan_quyen, ten, sdt FROM tai_khoan";
+        switch (super.typeSelect) {
+            case SELECT_USER_OR_EMAIL_AND_PASS:
+                return "SELECT id_tai_khoan, email, mat_khau, is_phan_quyen, ten, sdt FROM tai_khoan WHERE (id_tai_khoan LIKE ? OR email LIKE ?) AND mat_khau LIKE ?";
+            case SELECT_ALL:
+            default:
+                return "SELECT id_tai_khoan, email, mat_khau, is_phan_quyen, ten, sdt FROM tai_khoan";
+        }
+    }
+
+    @Override
+    protected Object[] getDataSelect() {
+        switch (super.typeSelect) {
+            case SELECT_USER_OR_EMAIL_AND_PASS:
+                return new Object[]{this.idTaiKhoan, this.email, this.matKhau};
+            case SELECT_ALL:
+            default:
+                return new Object[0];
+        }
     }
 
     @Override
@@ -86,12 +107,12 @@ public class TaiKhoan extends Dao{
         this.phanQuyen = (boolean) data[3];
         this.ten = (String) data[4];
         this.sdt = (String) data[5];
-        return this;
+        return new TaiKhoan(idTaiKhoan, email, matKhau, phanQuyen, ten, sdt);
     }
 
     @Override
-    protected int getRowCout() {
-        return 6;
+    protected Object[] getData() {
+        return new Object[]{this.idTaiKhoan, this.email, this.matKhau, this.phanQuyen, this.ten, this.sdt};
     }
-    
+
 }

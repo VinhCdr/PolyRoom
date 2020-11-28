@@ -5,24 +5,20 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import poro.model.entity.Config;
 
 /**
  *
- * @author vinh
+ * @author Dự án mẫu
  */
 public class JDBC {
 
     private static Config config;
-
     static {
         config = new Config();
     }
 
     private static Connection connect = null;
-
 
     /**
      * Xây dựng PreparedStatement
@@ -61,8 +57,8 @@ public class JDBC {
         try {
             PreparedStatement stmt = prepareStatement(sql, args);
             stmt.executeUpdate();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
         }
     }
 
@@ -80,8 +76,9 @@ public class JDBC {
         try {
             PreparedStatement stmt = prepareStatement(sql, args);
             return stmt.executeQuery();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            throw new RuntimeException(ex);
         }
     }
 
@@ -92,7 +89,7 @@ public class JDBC {
                 connect = DriverManager.getConnection(config.getDbURL(), config.getDbUser(), config.getDbPassword());
             }
         } catch (SQLException | ClassNotFoundException ex) {
-            System.out.println(ex);
+            ex.printStackTrace();
         }
         return connect;
     }
