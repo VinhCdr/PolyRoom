@@ -1,9 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package poro.model;
+
+import java.util.ArrayList;
+import poro.model.entity.Dao;
+import poro.model.entity.TaiKhoan;
 
 /**
  *
@@ -15,7 +14,10 @@ public class MainClass {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Dao tk = new TaiKhoan();
+        ArrayList<TaiKhoan> tk2 = tk.<TaiKhoan>select();
+        System.out.println(tk2.get(0).getTen());;
+        
     }
     
 }
