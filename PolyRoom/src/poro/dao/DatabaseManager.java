@@ -14,12 +14,14 @@ public class DatabaseManager {
     /**
      * Select dữ liệu của đối tượng trong database theo điều kiện cụ thể
      *
-     * @param <T> kiểu dữ liệu sẽ trả về
      * @param typeSelect Kiểu select (Quy định riêng theo từng đối tượng)
-     * @param importer Select dự trên đối tượng này, cũng như dữ liệu cần thiết để select
+     * @param importer Select dự trên đối tượng này, cũng như dữ liệu cần thiết
+     * để select
+     * @param <T> kiểu dữ liệu sẽ trả về
      * @return Một danh sách cách đối tượng select được
+     * @see #insert(poro.dao.DatabaseImport)
      */
-    public <T extends DatabaseImport> ArrayList<T> select(int typeSelect, T importer) {
+    public <T extends DatabaseImport> ArrayList<T> select(T importer, int typeSelect) {
         int columnCount = importer.getInfo().length;
         Object[] row = new Object[columnCount];
         ArrayList<T> result = new ArrayList<>();
@@ -42,23 +44,30 @@ public class DatabaseManager {
     /**
      * Select dữ liệu của đối tượng trong database theo mặc định
      *
+     * @param importer Select dự trên đối tượng này, cũng như dữ liệu cần thiết
+     * để select
      * @param <T> kiểu dữ liệu sẽ trả về
-     * @param importer Select dự trên đối tượng này, cũng như dữ liệu cần thiết để select
      * @return Một danh sách cách đối tượng select được
+     * @see #select(poro.dao.DatabaseImport, int)
      */
     public <T extends DatabaseImport> ArrayList<T> select(T importer) {
-        return this.select(0, importer);
+        return this.select(importer, 0);
     }
-    
+
     /**
      * Insert dữ liệu vào database
-     * 
+     *
      * @param importer Dữ liệu sẽ insert vào database
      */
     public void insert(DatabaseImport importer) {
         JDBC.executeUpdate(importer.getSqlInsert(), importer.getInfo());
     }
-    
+
+    /**
+     * Update dữ liệu đã có trong database
+     * 
+     * @param importer dữ liệu sẽ update (dựa vào id của dữ liệu)
+     */
     public void update(DatabaseImport importer) {
         JDBC.executeUpdate(importer.getSqlUpdate(), importer.getInfoUpdate());
     }
