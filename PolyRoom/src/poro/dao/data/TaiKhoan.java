@@ -1,13 +1,12 @@
-package poro.model.database;
+package poro.dao.data;
+
+import poro.dao.ExecuteDatabase;
 
 /**
  *
  * @author vinh
  */
-public class TaiKhoan extends Dao {
-
-    final public static int SELECT_ALL = 0;
-    final public static int SELECT_USER_OR_EMAIL_AND_PASS = 1;
+public class TaiKhoan implements ExecuteDatabase {
 
     private String idTaiKhoan;
     private String email;
@@ -27,6 +26,15 @@ public class TaiKhoan extends Dao {
         this.phanQuyen = phanQuyen;
         this.ten = ten;
         this.sdt = sdt;
+    }
+
+    public TaiKhoan(Object[] data) {
+        this.idTaiKhoan = (String) data[0];
+        this.email = (String) data[1];
+        this.matKhau = (String) data[2];
+        this.phanQuyen = (boolean) data[3];
+        this.ten = (String) data[4];
+        this.sdt = (String) data[5];
     }
 
     public String getIdTaiKhoan() {
@@ -78,8 +86,22 @@ public class TaiKhoan extends Dao {
     }
 
     @Override
-    protected String getSqlSelect() {
-        switch (super.typeSelect) {
+    public TaiKhoan coverData(Object[] data) {
+        return new TaiKhoan(data);
+    }
+
+    @Override
+    public Object[] getData() {
+        return new Object[]{this.idTaiKhoan, this.email, this.matKhau, this.phanQuyen, this.ten, this.sdt};
+    }
+
+    
+    final public static int SELECT_ALL = 0;
+    final public static int SELECT_USER_OR_EMAIL_AND_PASS = 1;
+    
+    @Override
+    public String getSqlSelect(int type) {
+        switch (type) {
             case SELECT_USER_OR_EMAIL_AND_PASS:
                 return "SELECT id_tai_khoan, email, mat_khau, is_phan_quyen, ten, sdt FROM tai_khoan WHERE (id_tai_khoan LIKE ? OR email LIKE ?) AND mat_khau LIKE ?";
             case SELECT_ALL:
@@ -89,8 +111,8 @@ public class TaiKhoan extends Dao {
     }
 
     @Override
-    protected Object[] getDataSelect() {
-        switch (super.typeSelect) {
+    public Object[] getDataSelect(int type) {
+        switch (type) {
             case SELECT_USER_OR_EMAIL_AND_PASS:
                 return new Object[]{this.idTaiKhoan, this.email, this.matKhau};
             case SELECT_ALL:
@@ -100,19 +122,8 @@ public class TaiKhoan extends Dao {
     }
 
     @Override
-    protected TaiKhoan setData(Object[] data) {
-        this.idTaiKhoan = (String) data[0];
-        this.email = (String) data[1];
-        this.matKhau = (String) data[2];
-        this.phanQuyen = (boolean) data[3];
-        this.ten = (String) data[4];
-        this.sdt = (String) data[5];
-        return new TaiKhoan(idTaiKhoan, email, matKhau, phanQuyen, ten, sdt);
-    }
-
-    @Override
-    protected Object[] getData() {
-        return new Object[]{this.idTaiKhoan, this.email, this.matKhau, this.phanQuyen, this.ten, this.sdt};
+    public String getSqlInsert() {
+        return "INSERT INTO id_tai_khoan, email, mat_khau, is_phan_quyen, ten, sdt FROM tai_khoan";
     }
 
 }

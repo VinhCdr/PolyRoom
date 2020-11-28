@@ -3,7 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package poro.client;
+package poro;
+
+import java.util.ArrayList;
+import poro.dao.DatabaseManager;
+import poro.dao.data.TaiKhoan;
 
 /**
  *
@@ -11,11 +15,31 @@ package poro.client;
  */
 public class MainClass {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
+        TaiKhoan taiKhoan = new TaiKhoan();
+        DatabaseManager dm = new DatabaseManager();
+        ArrayList<TaiKhoan> al = dm.select(taiKhoan);
+        al.forEach(d -> {
+            System.out.println(d.getEmail());
+        });
     }
     
+    
+//    public static void main(String args[]) {
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//            DangNhap dialog = new DangNhap(new javax.swing.JFrame(), true);
+//            dialog.setVisible(true);
+//            System.exit(0);
+//        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
+//            ex.printStackTrace();
+//        }
+//
+//    }
+
 }

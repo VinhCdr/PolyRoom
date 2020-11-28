@@ -1,4 +1,4 @@
-package poro.model.database;
+package poro;
 
 /**
  *
