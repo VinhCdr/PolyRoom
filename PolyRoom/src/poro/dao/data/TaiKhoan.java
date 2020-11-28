@@ -135,4 +135,14 @@ public class TaiKhoan implements DatabaseImport {
         return new Object[]{this.idTaiKhoan, this.email, this.matKhau, this.phanQuyen, this.ten, this.sdt, this.idTaiKhoan, this.email, this.matKhau};
     }
 
+    @Override
+    public String getSqlDelete() {
+        return "DELETE FROM tai_khoan WHERE id_tai_khoan LIKE ? OR email LIKE ?";
+    }
+
+    @Override
+    public Object[] getInfoDelete() {
+        return new Object[]{this.idTaiKhoan, this.email};
+    }
+    
 }

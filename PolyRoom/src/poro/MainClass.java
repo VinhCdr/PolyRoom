@@ -16,17 +16,7 @@ import poro.dao.data.TaiKhoan;
 public class MainClass {
 
     public static void main(String[] args) {
-        TaiKhoan taiKhoan;
-        taiKhoan = new TaiKhoan("test3", "email3", "pass", false, "viz", "0123");
-        DatabaseManager dm = new DatabaseManager();
-        taiKhoan.setEmail("new 33333");
-        dm.update(taiKhoan);
-                
-        dm.insert(taiKhoan);
-        ArrayList<TaiKhoan> al = dm.select(taiKhoan);
-        al.forEach(d -> {
-            System.out.println(d.getEmail());
-        });
+        
     }
     
     
