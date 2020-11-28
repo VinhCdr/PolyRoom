@@ -24,12 +24,12 @@ public class DatabaseManager {
      * @return Một danh sách cách đối tượng select được
      * @see #insert(poro.dao.DatabaseImport)
      */
-    public static <T extends DatabaseImport> ArrayList<T> select(T importer, int typeSelect) {
+    public static <T extends DbSelect> ArrayList<T> select(T importer, int type) {
         int columnCount = importer.getInfo().length;
         Object[] row = new Object[columnCount];
         ArrayList<T> result = new ArrayList<>();
         try {
-            ResultSet rs = DatabaseManager.executeQuery(importer.getSqlSelect(typeSelect), importer.getInfoSelect(typeSelect));
+            ResultSet rs = DatabaseManager.executeQuery(importer.getSqlSelect(type), importer.getInfoSelect(type));
 
             while (rs.next()) {
                 for (int i = 0; i < columnCount; i++) {
@@ -53,36 +53,64 @@ public class DatabaseManager {
      * @return Một danh sách cách đối tượng select được
      * @see #select(poro.dao.DatabaseImport, int)
      */
-    public <T extends DatabaseImport> ArrayList<T> select(T importer) {
+    public <T extends DbSelect> ArrayList<T> select(T importer) {
         return DatabaseManager.select(importer, 0);
     }
 
     /**
-     * Insert dữ liệu vào database
+     * Insert dữ liệu vào database theo kiểu cụ thể
      *
      * @param importer Dữ liệu sẽ insert vào database
      */
-    public static void insert(DatabaseImport importer) {
-        DatabaseManager.executeUpdate(importer.getSqlInsert(), importer.getInfo());
+    public static void insert(DbInsert importer, int type) {
+        DatabaseManager.executeUpdate(importer.getSqlInsert(type), importer.getInfoInsert(type));
+    }
+    
+    /**
+     * Insert dữ liệu vào database theo mặc định
+     *
+     * @param importer Dữ liệu sẽ insert vào database
+     */
+    public static void insert(DbInsert importer) {
+        insert(importer, 0);
     }
 
     /**
-     * Update dữ liệu đã có trong database
+     * Update dữ liệu đã có trong database theo kiểu cụ thể
      *
      * @param importer dữ liệu sẽ update (dựa vào id của dữ liệu)
      */
-    public static void update(DatabaseImport importer) {
-        DatabaseManager.executeUpdate(importer.getSqlUpdate(), importer.getInfoUpdate());
+    public static void update(DbUpdate importer, int type) {
+        DatabaseManager.executeUpdate(importer.getSqlUpdate(type), importer.getInfoUpdate(type));
+    }
+    
+    /**
+     * Update dữ liệu đã có trong database theo mặc định
+     *
+     * @param importer dữ liệu sẽ update (dựa vào id của dữ liệu)
+     */
+    public static void update(DbUpdate importer) {
+        update(importer, 0);
     }
 
     /**
-     * Delete dữ liệu đã có trong database
+     * Delete dữ liệu đã có trong database theo kiểu cụ thể
      *
      * @param importer dữ liệu sẽ delete (dựa vào id của dữ liệu)
      */
-    public static void delete(DatabaseImport importer) {
-        DatabaseManager.executeUpdate(importer.getSqlDelete(), importer.getInfoDelete());
+    public static void delete(DbDelete importer, int type) {
+        DatabaseManager.executeUpdate(importer.getSqlDelete(type), importer.getInfoDelete(type));
     }
+    
+    /**
+     * Delete dữ liệu đã có trong database theo mặc định
+     *
+     * @param importer dữ liệu sẽ delete (dựa vào id của dữ liệu)
+     */
+    public static void delete(DbDelete importer) {
+        delete(importer, 0);
+    }
+    
 
     static {
         config = new Config();

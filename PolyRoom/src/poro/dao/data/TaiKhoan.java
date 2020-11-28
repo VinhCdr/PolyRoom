@@ -1,12 +1,15 @@
 package poro.dao.data;
 
-import poro.dao.DatabaseImport;
+import poro.dao.DbDelete;
+import poro.dao.DbUpdate;
+import poro.dao.DbSelect;
+import poro.dao.DbInsert;
 
 /**
  *
  * @author vinh
  */
-public class TaiKhoan implements DatabaseImport {
+public class TaiKhoan implements DbSelect, DbInsert, DbUpdate, DbDelete {
 
     private String idTaiKhoan;
     private String email;
@@ -121,28 +124,33 @@ public class TaiKhoan implements DatabaseImport {
     }
 
     @Override
-    public String getSqlInsert() {
+    public String getSqlInsert(int type) {
         return "INSERT INTO tai_khoan(id_tai_khoan, email, mat_khau, is_phan_quyen, ten, sdt) VALUES (?, ?, ?, ?, ?, ?);";
     }
 
     @Override
-    public String getSqlUpdate() {
+    public Object[] getInfoInsert(int type) {
+        return new Object[]{this.idTaiKhoan, this.email, this.matKhau, this.phanQuyen, this.ten, this.sdt};
+    }
+
+    @Override
+    public String getSqlUpdate(int type) {
         return "UPDATE tai_khoan SET id_tai_khoan = ?, email = ?, mat_khau = ?, is_phan_quyen = ?, ten = ?, sdt = ? WHERE (id_tai_khoan LIKE ? OR email LIKE ?) AND mat_khau LIKE ?;";
     }
 
     @Override
-    public Object[] getInfoUpdate() {
+    public Object[] getInfoUpdate(int type) {
         return new Object[]{this.idTaiKhoan, this.email, this.matKhau, this.phanQuyen, this.ten, this.sdt, this.idTaiKhoan, this.email, this.matKhau};
     }
 
     @Override
-    public String getSqlDelete() {
+    public String getSqlDelete(int type) {
         return "DELETE FROM tai_khoan WHERE id_tai_khoan LIKE ? OR email LIKE ?";
     }
 
     @Override
-    public Object[] getInfoDelete() {
+    public Object[] getInfoDelete(int type) {
         return new Object[]{this.idTaiKhoan, this.email};
     }
-    
+
 }

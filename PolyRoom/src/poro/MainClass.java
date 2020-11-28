@@ -1,13 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package poro;
-
-import java.util.ArrayList;
-import poro.dao.DatabaseManager;
-import poro.dao.data.TaiKhoan;
 
 /**
  *
