@@ -1,4 +1,4 @@
-package poro.model.helper;
+package poro.model;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

@@ -1,12 +1,12 @@
 package poro.dao.data;
 
-import poro.dao.ExecuteDatabase;
+import poro.dao.DatabaseImport;
 
 /**
  *
  * @author vinh
  */
-public class TaiKhoan implements ExecuteDatabase {
+public class TaiKhoan implements DatabaseImport {
 
     private String idTaiKhoan;
     private String email;
@@ -91,14 +91,13 @@ public class TaiKhoan implements ExecuteDatabase {
     }
 
     @Override
-    public Object[] getData() {
+    public Object[] getInfo() {
         return new Object[]{this.idTaiKhoan, this.email, this.matKhau, this.phanQuyen, this.ten, this.sdt};
     }
 
-    
     final public static int SELECT_ALL = 0;
     final public static int SELECT_USER_OR_EMAIL_AND_PASS = 1;
-    
+
     @Override
     public String getSqlSelect(int type) {
         switch (type) {
@@ -111,7 +110,7 @@ public class TaiKhoan implements ExecuteDatabase {
     }
 
     @Override
-    public Object[] getDataSelect(int type) {
+    public Object[] getInfoSelect(int type) {
         switch (type) {
             case SELECT_USER_OR_EMAIL_AND_PASS:
                 return new Object[]{this.idTaiKhoan, this.email, this.matKhau};
@@ -123,7 +122,7 @@ public class TaiKhoan implements ExecuteDatabase {
 
     @Override
     public String getSqlInsert() {
-        return "INSERT INTO id_tai_khoan, email, mat_khau, is_phan_quyen, ten, sdt FROM tai_khoan";
+        return "INSERT INTO tai_khoan(id_tai_khoan, email, mat_khau, is_phan_quyen, ten, sdt) VALUES (?, ?, ?, ?, ?, ?)";
     }
 
 }
