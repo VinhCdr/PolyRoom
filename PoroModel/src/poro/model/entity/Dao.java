@@ -20,7 +20,8 @@ abstract public class Dao {
             for (int i = 1; i <= getRowCout(); i++) {
                 row[i - 1] = rs.getObject(i);
             }
-
+            
+            
             result.add((T) setData(row));
         } catch (SQLException ex) {
 
