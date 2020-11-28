@@ -58,4 +58,8 @@ public class DatabaseManager {
     public void insert(DatabaseImport importer) {
         JDBC.executeUpdate(importer.getSqlInsert(), importer.getInfo());
     }
+    
+    public void update(DatabaseImport importer) {
+        JDBC.executeUpdate(importer.getSqlUpdate(), importer.getInfoUpdate());
+    }
 }

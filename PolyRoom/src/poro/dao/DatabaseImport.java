@@ -21,7 +21,7 @@ public interface DatabaseImport {
     public Object[] getInfo();
 
     /**
-     * Hàm trả về câu lệnh select sql theo mong muốn
+     * Dùng để lấy câu lệnh select sql mong muốn
      *
      * @param type Loại lệnh select sql mong muốn
      * @return Một câu lệnh sql select
@@ -29,7 +29,7 @@ public interface DatabaseImport {
     public String getSqlSelect(int type);
 
     /**
-     * Hàm trả về dữ liệu cần thiết để select theo mong muốn
+     * Dùng để lấy thông tin select mong muốn
      *
      * @param type Loại dữ liệu select mong muốn
      * @return Một mãng các tham số đầu vào
@@ -37,10 +37,24 @@ public interface DatabaseImport {
     public Object[] getInfoSelect(int type);
 
     /**
-     * Hàm trả về câu lệnh insert sql
+     * Dùng để lấy câu lệnh insert sql
      *
      * @param type Loại lệnh select sql mong muốn
      * @return Một câu lệnh sql select
      */
     public String getSqlInsert();
+    
+    /**
+     * Dùng để lấy câu lệnh update sql
+     *
+     * @return Một câu lệnh update sql
+     */
+    public String getSqlUpdate();
+    
+    /**
+     * Dùng để lấy thông tin update
+     *
+     * @return Một mãng các giá trị cần thiết để update
+     */
+    public Object[] getInfoUpdate();
 }

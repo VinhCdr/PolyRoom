@@ -122,7 +122,17 @@ public class TaiKhoan implements DatabaseImport {
 
     @Override
     public String getSqlInsert() {
-        return "INSERT INTO tai_khoan(id_tai_khoan, email, mat_khau, is_phan_quyen, ten, sdt) VALUES (?, ?, ?, ?, ?, ?)";
+        return "INSERT INTO tai_khoan(id_tai_khoan, email, mat_khau, is_phan_quyen, ten, sdt) VALUES (?, ?, ?, ?, ?, ?);";
+    }
+
+    @Override
+    public String getSqlUpdate() {
+        return "UPDATE tai_khoan SET id_tai_khoan = ?, email = ?, mat_khau = ?, is_phan_quyen = ?, ten = ?, sdt = ? WHERE (id_tai_khoan LIKE ? OR email LIKE ?) AND mat_khau LIKE ?;";
+    }
+
+    @Override
+    public Object[] getInfoUpdate() {
+        return new Object[]{this.idTaiKhoan, this.email, this.matKhau, this.phanQuyen, this.ten, this.sdt, this.idTaiKhoan, this.email, this.matKhau};
     }
 
 }
