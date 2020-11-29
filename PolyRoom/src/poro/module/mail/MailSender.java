@@ -65,14 +65,4 @@ public class MailSender {
         }
     }
     
-    public static void main(String[] args) {
-        MailSender ms = new MailSender();
-        MailContent content = new MailContent();
-        content.setSubject("test tést tẽt");
-        content.setText("<html>chat chat <b>chát</b></html>");
-        content.setMailReceiver("vinhlmpc01238@fpt.edu.vn");
-//        content.addFile("build_.xml", "build.xml");
-        
-        ms.send(content);
-    }
 }
