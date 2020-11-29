@@ -19,7 +19,7 @@ public class MainClass {
 //                    break;
 //                }
 //            }
-//            DangNhap dialog = new DangNhap(new javax.swing.JFrame(), true);
+//            DangNhapJDialog dialog = new DangNhapJDialog(new javax.swing.JFrame(), true);
 //            dialog.setVisible(true);
 //            System.exit(0);
 //        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
