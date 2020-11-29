@@ -37,4 +37,5 @@ public class Encrypter {
     public String toMD5(String data) {
         return toMD5(data.getBytes());
     }
+    
 }
