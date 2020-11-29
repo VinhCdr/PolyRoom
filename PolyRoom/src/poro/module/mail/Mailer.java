@@ -23,23 +23,23 @@ import poro.Config;
  *
  * @author vinh
  */
-public class MailSender {
+public class Mailer {
 
     private String mailReceiver;
     private String subject;
     private String text;
     private Multipart multipart;
 
-    private MailSender() {
+    private Mailer() {
         multipart = new MimeMultipart();
     }
 
-    public MailSender(String mailReceiver) {
+    public Mailer(String mailReceiver) {
         this();
         this.mailReceiver = mailReceiver;
     }
 
-    public MailSender(String mailReceiver, String subject, String text) {
+    public Mailer(String mailReceiver, String subject, String text) {
         this();
         this.mailReceiver = mailReceiver;
         this.subject = subject;
@@ -74,7 +74,7 @@ public class MailSender {
     }
 
     /**
-     * Thêm file vào tin nhắn
+     * Thêm file vào mail
      *
      * @param name Tên file hiển thị phía người nhận
      * @param path Đường dẫn đến file
@@ -90,6 +90,32 @@ public class MailSender {
             multipart.addBodyPart(body);
         } catch (MessagingException ex) {
             ex.printStackTrace();
+        }
+    }
+
+    /**
+     * Gửi email từ mail mặc định trong {@link Config}
+     *
+     * @see #setMailReceiver(java.lang.String)
+     * @see #setSubject(java.lang.String)
+     * @see #setText(java.lang.String)
+     * @see #addFile(java.lang.String, java.lang.String)
+     */
+    public void send() throws RuntimeException {
+        try {
+            MimeMessage mimeMessage = new MimeMessage(getSession());
+            mimeMessage.setFrom(new InternetAddress(Config.MAIL_ACCOUNT, Config.MAIL_NAME));
+            mimeMessage.setRecipients(Message.RecipientType.TO, InternetAddress.parse(mailReceiver));
+
+            mimeMessage.setSubject(subject);
+            mimeMessage.setText(text, "UTF-8", "html");
+            if (multipart.getCount() > 0) {
+                mimeMessage.setContent(multipart);
+            }
+
+            Transport.send(mimeMessage);
+        } catch (Exception ex) {
+            throw new RuntimeException("Có lỗi xảy ra trong quá trình gửi email", ex);
         }
     }
 
@@ -112,29 +138,4 @@ public class MailSender {
         });
         return session;
     }
-
-    /**
-     * Gửi email từ mail mặc định trong {@link Config}
-     *
-     * @param content Nội dung của email
-     */
-    public void send() throws RuntimeException {
-        
-        try {
-            MimeMessage mimeMessage = new MimeMessage(getSession());
-            mimeMessage.setFrom(new InternetAddress(Config.MAIL_ACCOUNT, Config.MAIL_NAME));
-            mimeMessage.setRecipients(Message.RecipientType.TO, InternetAddress.parse(mailReceiver));
-
-            mimeMessage.setSubject(subject);
-            mimeMessage.setText(text, "UTF-8", "html");
-            if (multipart.getCount() > 0) {
-                mimeMessage.setContent(multipart);
-            }
-
-            Transport.send(mimeMessage);
-        } catch (Exception ex) {
-            throw new RuntimeException("Có lỗi xảy ra trong quá trình gửi email", ex);
-        }
-    }
-
 }

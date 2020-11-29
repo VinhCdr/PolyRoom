@@ -1,7 +1,7 @@
 package poro;
 
 import poro.gui.DangNhapJDialog;
-import poro.module.mail.MailSender;
+import poro.module.mail.Mailer;
 
 /**
  *
@@ -10,7 +10,7 @@ import poro.module.mail.MailSender;
 public class MainClass {
 
     public static void main(String[] args) {
-        MailSender mail = new MailSender("mvinhle@outlook.com", "Test nè", "ko thì thôi");
+        Mailer mail = new Mailer("mvinhle@outlook.com", "Test nè", "ko thì thôi");
         mail.send();
     }
 

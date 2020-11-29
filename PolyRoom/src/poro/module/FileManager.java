@@ -1,11 +1,9 @@
 package poro.module;
 
-import com.google.gson.Gson;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import poro.Config;
 
 /**
  *
@@ -17,18 +15,29 @@ public class FileManager {
     FileInputStream fis;
     String path;
 
+    /**
+     * Tạo đối tượng quản lý file trực tiếp
+     *
+     * @param path Đường dẫn đến file
+     * @see #setPath(java.lang.String)
+     */
     public FileManager(String path) {
         this.path = path;
     }
-    
+
+    /**
+     * Đặt lại đường dẫn file
+     */
     public void setPath(String path) {
         this.path = path;
     }
 
-    public String getPath() {
-        return path;
-    }
-
+    /**
+     * Ghi dữ liệu vào file
+     *
+     * @param data Dữ liệu sẽ ghi
+     * @see #writeString(java.lang.String) 
+     */
     public void write(byte[] data) {
         try {
             fos = new FileOutputStream(path);
@@ -38,6 +47,12 @@ public class FileManager {
         }
     }
 
+    /**
+     * Đọc dữ liệu từ file
+     *
+     * @return Dữ liệu của file
+     * @see #readString() 
+     */
     public byte[] read() {
         try {
             fis = new FileInputStream(new File(path));
@@ -50,19 +65,24 @@ public class FileManager {
         return new byte[0];
     }
 
-    public <T> T readJson(Class<T> classOfT) {
-        Gson gson = new Gson();
-        String json = new String(read());
-        return gson.fromJson(json, classOfT);
+    /**
+     * Đọc dữ liệu từ file và trả về dạng chuổi (thích hợp khi đọc file văn bản)
+     * 
+     * @return Văn bản trong file
+     * @see #read() 
+     */
+    public String readString() {
+        return new String(read());
     }
 
-    public void writeJson(Object src) {
-        Gson gson = new Gson();
-        String json = gson.toJson(src);
-        write(json.getBytes());
-    }
-
-    public static void main(String[] args) {
+    /**
+     * Ghi dữ liệu vào file với dữ liệu là chuổi văn vản
+     * 
+     * @param src Dữ liệu đầu vào
+     * @see #write(byte[]) 
+     */
+    public void writeString(String src) {
+        write(src.getBytes());
     }
 
 }
