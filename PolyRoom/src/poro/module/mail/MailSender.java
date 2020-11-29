@@ -45,14 +45,13 @@ public class MailSender {
     /**
      * Gửi email từ mail mặc định
      * 
-     * @param mailReceiver Địa chỉ mail người nhận
      * @param content Nội dung của email
      */
-    public void send(String mailReceiver, MailContent content) throws RuntimeException {
+    public void send(MailContent content) throws RuntimeException {
         try {
             MimeMessage mimeMessage = new MimeMessage(getSession());
             mimeMessage.setFrom(new InternetAddress(config.getMailAccount(), config.getMailName()));
-            mimeMessage.setRecipients(Message.RecipientType.TO, InternetAddress.parse(mailReceiver));
+            mimeMessage.setRecipients(Message.RecipientType.TO, InternetAddress.parse(content.getMailReceiver()));
             
             mimeMessage.setSubject(content.getSubject());
             mimeMessage.setText(content.getText(), "UTF-8", "html");
@@ -70,8 +69,10 @@ public class MailSender {
         MailSender ms = new MailSender();
         MailContent content = new MailContent();
         content.setSubject("test tést tẽt");
-        content.setText("");
+        content.setText("<html>chat chat <b>chát</b></html>");
+        content.setMailReceiver("vinhlmpc01238@fpt.edu.vn");
 //        content.addFile("build_.xml", "build.xml");
-        ms.send("vinhlmpc01238@fpt.edu.vn", content);
+        
+        ms.send(content);
     }
 }

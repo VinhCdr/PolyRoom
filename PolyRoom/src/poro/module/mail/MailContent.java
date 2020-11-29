@@ -1,8 +1,6 @@
 package poro.module.mail;
 
 import java.io.File;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.activation.DataHandler;
 import javax.activation.DataSource;
 import javax.activation.FileDataSource;
@@ -22,6 +20,7 @@ public class MailContent {
         multipart = new MimeMultipart();
     }
 
+    private String mailReceiver;
     private String subject;
     private String text;
     private Multipart multipart;
@@ -62,6 +61,19 @@ public class MailContent {
      */
     public void setText(String text) {
         this.text = text;
+    }
+
+    /**
+     * Đặt địa chỉ người nhận
+     *
+     * @param mailReceiver Địa chỉ mail người nhận
+     */
+    public void setMailReceiver(String mailReceiver) {
+        this.mailReceiver = mailReceiver;
+    }
+    
+    public String getMailReceiver() {
+        return mailReceiver;
     }
 
     public String getSubject() {
