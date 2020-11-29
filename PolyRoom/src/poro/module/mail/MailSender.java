@@ -1,13 +1,22 @@
 package poro.module.mail;
 
+import java.io.File;
 import java.util.Properties;
+import javax.activation.DataHandler;
+import javax.activation.DataSource;
+import javax.activation.FileDataSource;
 import javax.mail.Authenticator;
+import javax.mail.BodyPart;
 import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Multipart;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 import poro.Config;
 
 /**
@@ -16,11 +25,73 @@ import poro.Config;
  */
 public class MailSender {
 
-    public MailSender() {
-        config = new Config();
+    private String mailReceiver;
+    private String subject;
+    private String text;
+    private Multipart multipart;
+
+    private MailSender() {
+        multipart = new MimeMultipart();
     }
 
-    private Config config;
+    public MailSender(String mailReceiver) {
+        this();
+        this.mailReceiver = mailReceiver;
+    }
+
+    public MailSender(String mailReceiver, String subject, String text) {
+        this();
+        this.mailReceiver = mailReceiver;
+        this.subject = subject;
+        this.text = text;
+    }
+
+    /**
+     * Đặt địa chỉ người nhận
+     *
+     * @param mailReceiver Địa chỉ mail người nhận
+     */
+    public void setMailReceiver(String mailReceiver) {
+        this.mailReceiver = mailReceiver;
+    }
+
+    /**
+     * Thêm tiêu đề vào tin nhắn
+     *
+     * @param subject tiêu đề của tin nhắn
+     */
+    public void setSubject(String subject) {
+        this.subject = subject;
+    }
+
+    /**
+     * Thêm văn bản vào tin nhắn <b>theo dạng html đầy đủ<b>
+     *
+     * @param subject tiêu đề của tin nhắn
+     */
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    /**
+     * Thêm file vào tin nhắn
+     *
+     * @param name Tên file hiển thị phía người nhận
+     * @param path Đường dẫn đến file
+     */
+    public void addFile(String name, String path) {
+        try {
+            File file = new File(path);
+            DataSource ds = new FileDataSource(file);
+            DataHandler dh = new DataHandler(ds);
+            BodyPart body = new MimeBodyPart();
+            body.setFileName(name);
+            body.setDataHandler(dh);
+            multipart.addBodyPart(body);
+        } catch (MessagingException ex) {
+            ex.printStackTrace();
+        }
+    }
 
     /**
      * Tạo phiên gửi email
@@ -35,7 +106,7 @@ public class MailSender {
         Session session = Session.getInstance(props, new Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(config.getMailAccount(), config.getMailPass());
+                return new PasswordAuthentication(Config.MAIL_ACCOUNT, Config.MAIL_PASSWORD);
             }
 
         });
@@ -43,26 +114,27 @@ public class MailSender {
     }
 
     /**
-     * Gửi email từ mail mặc định
-     * 
+     * Gửi email từ mail mặc định trong {@link Config}
+     *
      * @param content Nội dung của email
      */
-    public void send(MailContent content) throws RuntimeException {
+    public void send() throws RuntimeException {
+        
         try {
             MimeMessage mimeMessage = new MimeMessage(getSession());
-            mimeMessage.setFrom(new InternetAddress(config.getMailAccount(), config.getMailName()));
-            mimeMessage.setRecipients(Message.RecipientType.TO, InternetAddress.parse(content.getMailReceiver()));
-            
-            mimeMessage.setSubject(content.getSubject());
-            mimeMessage.setText(content.getText(), "UTF-8", "html");
-            if (content.getMultipart().getCount() > 0) {
-                mimeMessage.setContent(content.getMultipart());
+            mimeMessage.setFrom(new InternetAddress(Config.MAIL_ACCOUNT, Config.MAIL_NAME));
+            mimeMessage.setRecipients(Message.RecipientType.TO, InternetAddress.parse(mailReceiver));
+
+            mimeMessage.setSubject(subject);
+            mimeMessage.setText(text, "UTF-8", "html");
+            if (multipart.getCount() > 0) {
+                mimeMessage.setContent(multipart);
             }
-            
+
             Transport.send(mimeMessage);
         } catch (Exception ex) {
             throw new RuntimeException("Có lỗi xảy ra trong quá trình gửi email", ex);
         }
     }
-    
+
 }

@@ -1,5 +1,8 @@
 package poro;
 
+import poro.gui.DangNhapJDialog;
+import poro.module.mail.MailSender;
+
 /**
  *
  * @author vinh
@@ -7,11 +10,12 @@ package poro;
 public class MainClass {
 
     public static void main(String[] args) {
-        System.out.println("Test");
+        MailSender mail = new MailSender("mvinhle@outlook.com", "Test nè", "ko thì thôi");
+        mail.send();
     }
-    
-    
+
 //    public static void main(String args[]) {
+//        
 //        try {
 //            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
 //                if ("Nimbus".equals(info.getName())) {
@@ -27,5 +31,4 @@ public class MainClass {
 //        }
 //
 //    }
-
 }

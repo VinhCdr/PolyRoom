@@ -1,0 +1,10 @@
+{
+    "dbDriver": "com.microsoft.sqlserver.jdbc.SQLServerDriver",
+    "dbURL": "jdbc:sqlserver://localhost:1433;databaseName=polyroom;",
+    "dbUser": "sa",
+    "dbPassword": "123",
+    "svWebPort": 8090,
+    "mailAccount": "noreply.vinh.bot@gmail.com",
+    "mailName": "PolyRoom Noreply",
+    "mailPass": "Admin0123/"
+}
