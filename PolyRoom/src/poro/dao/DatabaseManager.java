@@ -65,7 +65,7 @@ public class DatabaseManager {
     public static void insert(DbInsert importer, int type) {
         DatabaseManager.executeUpdate(importer.getSqlInsert(type), importer.getInfoInsert(type));
     }
-    
+
     /**
      * Insert dữ liệu vào database theo mặc định
      *
@@ -83,7 +83,7 @@ public class DatabaseManager {
     public static void update(DbUpdate importer, int type) {
         DatabaseManager.executeUpdate(importer.getSqlUpdate(type), importer.getInfoUpdate(type));
     }
-    
+
     /**
      * Update dữ liệu đã có trong database theo mặc định
      *
@@ -101,7 +101,7 @@ public class DatabaseManager {
     public static void delete(DbDelete importer, int type) {
         DatabaseManager.executeUpdate(importer.getSqlDelete(type), importer.getInfoDelete(type));
     }
-    
+
     /**
      * Delete dữ liệu đã có trong database theo mặc định
      *
@@ -110,14 +110,33 @@ public class DatabaseManager {
     public static void delete(DbDelete importer) {
         delete(importer, 0);
     }
+
     
+    private static Connection connect = null;
 
     static {
-        config = new Config();
+        try {
+            Class.forName(Config.DB_DRIVER);
+        } catch (ClassNotFoundException ex) {
+            ex.printStackTrace();
+        }
     }
 
-    private static Config config;
-    private static Connection connect = null;
+    /**
+     * Mở kết nối đến cơ sỡ dữ liệu
+     * 
+     * @return Đối tượng kết nối đến csdl
+     */
+    private static Connection openConnect() {
+        try {
+            if (connect == null || connect.isClosed()) {
+                connect = DriverManager.getConnection(Config.DB_URL, Config.DB_USER, Config.DB_PASSWORD);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return connect;
+    }
 
     /**
      * Xây dựng PreparedStatement
@@ -179,17 +198,5 @@ public class DatabaseManager {
             ex.printStackTrace();
             throw new RuntimeException(ex);
         }
-    }
-
-    private static Connection openConnect() {
-        try {
-            if (connect == null || connect.isClosed()) {
-                Class.forName(config.getDbDriver());
-                connect = DriverManager.getConnection(config.getDbURL(), config.getDbUser(), config.getDbPassword());
-            }
-        } catch (SQLException | ClassNotFoundException ex) {
-            ex.printStackTrace();
-        }
-        return connect;
     }
 }
