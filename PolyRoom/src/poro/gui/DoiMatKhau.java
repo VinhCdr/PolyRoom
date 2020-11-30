@@ -28,21 +28,61 @@ public class DoiMatKhau extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        jLabel2 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        txtNhapMatKhauCu = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        txtNhapMatKhauMoi = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        txtXacNhanMatKhau = new javax.swing.JTextField();
+        btnMatKhau = new javax.swing.JButton();
+        hinh = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 604, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 322, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Tài khoản");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 280, 30));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Nhập mật khẩu cũ");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 20, -1, -1));
+        getContentPane().add(txtNhapMatKhauCu, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 60, 270, 30));
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Nhập mật khẩu mới");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, -1));
+        getContentPane().add(txtNhapMatKhauMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 280, 30));
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Xác nhận lại mật khẩu");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, -1, -1));
+        getContentPane().add(txtXacNhanMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 162, 270, 30));
+
+        btnMatKhau.setText("Đổi mật khẩu");
+        btnMatKhau.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMatKhauActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 230, 170, 30));
+
+        hinh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/br1.jpg"))); // NOI18N
+        getContentPane().add(hinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 652, 348));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnMatKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMatKhauActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMatKhauActionPerformed
 
     /**
      * @param args the command line arguments
@@ -87,5 +127,15 @@ public class DoiMatKhau extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnMatKhau;
+    private javax.swing.JLabel hinh;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField txtNhapMatKhauCu;
+    private javax.swing.JTextField txtNhapMatKhauMoi;
+    private javax.swing.JTextField txtXacNhanMatKhau;
     // End of variables declaration//GEN-END:variables
 }
