@@ -1,5 +1,8 @@
 package poro;
 
+import java.util.ArrayList;
+import poro.dao.DatabaseManager;
+import poro.dao.data.Phong;
 import poro.module.Mailer;
 
 /**
@@ -9,8 +12,12 @@ import poro.module.Mailer;
 public class MainClass {
 
     public static void main(String[] args) {
-        Mailer mail = new Mailer("ngocntypc01187@fpt.edu.vn", "Test nè", "ko thì thôi");
-        new Thread(mail).start();
+        Phong phong = new Phong();
+        ArrayList<Phong> lis = DatabaseManager.select(phong);
+        lis.forEach((Phong p) -> {
+            System.out.println(p.getTenPhong());
+        });
+        
     }
     
 }

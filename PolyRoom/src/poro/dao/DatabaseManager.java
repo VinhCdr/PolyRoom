@@ -53,7 +53,7 @@ public class DatabaseManager {
      * @return Một danh sách cách đối tượng select được
      * @see #select(poro.dao.DatabaseImport, int)
      */
-    public <T extends DbSelect> ArrayList<T> select(T importer) {
+    public static <T extends DbSelect> ArrayList<T> select(T importer) {
         return DatabaseManager.select(importer, 0);
     }
 
