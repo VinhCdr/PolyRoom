@@ -1,24 +1,27 @@
 package poro.dao;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import poro.Config;
+import poro.module.JavaDatabaseConnectivity;
 
 /**
  *
  * @author vinh
  */
 public class DatabaseManager {
+    
+    private static final JavaDatabaseConnectivity jdbc;
+    
+    static {
+        jdbc = new JavaDatabaseConnectivity();
+    }
 
     /**
      * Select dữ liệu của đối tượng trong database theo điều kiện cụ thể
      *
-     * @param typeSelect Kiểu select (Quy định riêng theo từng đối tượng)
      * @param importer Select dự trên đối tượng này, cũng như dữ liệu cần thiết
+     * @param type Kiểu select (Quy định riêng theo từng đối tượng)
      * để select
      * @param <T> kiểu dữ liệu sẽ trả về
      * @return Một danh sách cách đối tượng select được
@@ -29,7 +32,7 @@ public class DatabaseManager {
         Object[] row = new Object[columnCount];
         ArrayList<T> result = new ArrayList<>();
         try {
-            ResultSet rs = DatabaseManager.executeQuery(importer.getSqlSelect(type), importer.getInfoSelect(type));
+            ResultSet rs = jdbc.executeQuery(importer.getSqlSelect(type), importer.getInfoSelect(type));
 
             while (rs.next()) {
                 for (int i = 0; i < columnCount; i++) {
@@ -54,16 +57,17 @@ public class DatabaseManager {
      * @see #select(poro.dao.DatabaseImport, int)
      */
     public static <T extends DbSelect> ArrayList<T> select(T importer) {
-        return DatabaseManager.select(importer, 0);
+        return select(importer, 0);
     }
 
     /**
      * Insert dữ liệu vào database theo kiểu cụ thể
      *
      * @param importer Dữ liệu sẽ insert vào database
+     * @param type Kiễu insert
      */
     public static void insert(DbInsert importer, int type) {
-        DatabaseManager.executeUpdate(importer.getSqlInsert(type), importer.getInfoInsert(type));
+        jdbc.executeUpdate(importer.getSqlInsert(type), importer.getInfoInsert(type));
     }
 
     /**
@@ -78,10 +82,11 @@ public class DatabaseManager {
     /**
      * Update dữ liệu đã có trong database theo kiểu cụ thể
      *
-     * @param importer dữ liệu sẽ update (dựa vào id của dữ liệu)
+     * @param importer Dữ liệu sẽ update (dựa vào id của dữ liệu)
+     * @param type Kiểu update
      */
     public static void update(DbUpdate importer, int type) {
-        DatabaseManager.executeUpdate(importer.getSqlUpdate(type), importer.getInfoUpdate(type));
+        jdbc.executeUpdate(importer.getSqlUpdate(type), importer.getInfoUpdate(type));
     }
 
     /**
@@ -97,9 +102,10 @@ public class DatabaseManager {
      * Delete dữ liệu đã có trong database theo kiểu cụ thể
      *
      * @param importer dữ liệu sẽ delete (dựa vào id của dữ liệu)
+     * @param type Kiểu delete
      */
     public static void delete(DbDelete importer, int type) {
-        DatabaseManager.executeUpdate(importer.getSqlDelete(type), importer.getInfoDelete(type));
+        jdbc.executeUpdate(importer.getSqlDelete(type), importer.getInfoDelete(type));
     }
 
     /**
@@ -111,92 +117,4 @@ public class DatabaseManager {
         delete(importer, 0);
     }
 
-    
-    private static Connection connect = null;
-
-    static {
-        try {
-            Class.forName(Config.DB_DRIVER);
-        } catch (ClassNotFoundException ex) {
-            ex.printStackTrace();
-        }
-    }
-
-    /**
-     * Mở kết nối đến cơ sỡ dữ liệu
-     * 
-     * @return Đối tượng kết nối đến csdl
-     */
-    private static Connection openConnect() {
-        try {
-            if (connect == null || connect.isClosed()) {
-                connect = DriverManager.getConnection(Config.DB_URL, Config.DB_USER, Config.DB_PASSWORD);
-            }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-        return connect;
-    }
-
-    /**
-     * Xây dựng PreparedStatement
-     *
-     * @param sql là câu lệnh SQL chứa có thể chứa tham số. Nó có thể là một lời
-     * gọi thủ tục lưu
-     * @param args là danh sách các giá trị được cung cấp cho các tham số trong
-     * câu lệnh sql
-     * @return PreparedStatement tạo được
-     * @throws java.sql.SQLException lỗi sai cú pháp
-     */
-    private static PreparedStatement prepareStatement(String sql, Object... args) throws SQLException {
-
-        PreparedStatement pstmt = null;
-        if (sql.trim().startsWith("{")) {
-            pstmt = openConnect().prepareCall(sql);
-        } else {
-            pstmt = openConnect().prepareStatement(sql);
-        }
-        for (int i = 0; i < args.length; i++) {
-            pstmt.setObject(i + 1, args[i]);
-        }
-        return pstmt;
-    }
-
-    /**
-     * Thực hiện câu lệnh SQL thao tác (INSERT, UPDATE, DELETE) hoặc thủ tục lưu
-     * thao tác dữ liệu
-     *
-     * @param sql là câu lệnh SQL chứa có thể chứa tham số. Nó có thể là một lời
-     * gọi thủ tục lưu
-     * @param args là danh sách các giá trị được cung cấp cho các tham số trong
-     * câu lệnh sql *
-     */
-    private static void executeUpdate(String sql, Object... args) {
-        try {
-            PreparedStatement stmt = prepareStatement(sql, args);
-            stmt.executeUpdate();
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-    }
-
-    /**
-     * Thực hiện câu lệnh SQL truy vấn (SELECT) hoặc thủ tục lưu truy vấn dữ
-     * liệu
-     *
-     * @param sql là câu lệnh SQL chứa có thể chứa tham số. Nó có thể là một lời
-     * gọi thủ tục lưu
-     * @param args là danh sách các giá trị được cung cấp cho các tham số trong
-     * câu lệnh sql
-     * @return một đối resultSet chứa giá trị của dữ liệu select được
-     */
-    private static ResultSet executeQuery(String sql, Object... args) {
-        try {
-            PreparedStatement stmt = prepareStatement(sql, args);
-            return stmt.executeQuery();
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-            throw new RuntimeException(ex);
-        }
-    }
 }
