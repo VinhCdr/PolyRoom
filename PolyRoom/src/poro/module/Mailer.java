@@ -23,7 +23,7 @@ import poro.Config;
  *
  * @author vinh
  */
-public class Mailer {
+public class Mailer implements Runnable{
 
     private String mailReceiver;
     private String subject;
@@ -101,7 +101,8 @@ public class Mailer {
      * @see #setText(java.lang.String)
      * @see #addFile(java.lang.String, java.lang.String)
      */
-    public void send() throws RuntimeException {
+    @Override
+    public void run() {
         try {
             MimeMessage mimeMessage = new MimeMessage(getSession());
             mimeMessage.setFrom(new InternetAddress(Config.MAIL_ACCOUNT, Config.MAIL_NAME));
