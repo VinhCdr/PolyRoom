@@ -10,9 +10,9 @@ import poro.module.JavaDatabaseConnectivity;
  * @author vinh
  */
 public class DatabaseManager {
-    
+
     private static final JavaDatabaseConnectivity jdbc;
-    
+
     static {
         jdbc = new JavaDatabaseConnectivity();
     }
@@ -21,8 +21,7 @@ public class DatabaseManager {
      * Select dữ liệu của đối tượng trong database theo điều kiện cụ thể
      *
      * @param importer Select dự trên đối tượng này, cũng như dữ liệu cần thiết
-     * @param type Kiểu select (Quy định riêng theo từng đối tượng)
-     * để select
+     * @param type Kiểu select (Quy định riêng theo từng đối tượng) để select
      * @param <T> kiểu dữ liệu sẽ trả về
      * @return Một danh sách cách đối tượng select được
      * @see #insert(poro.dao.DatabaseImport)
