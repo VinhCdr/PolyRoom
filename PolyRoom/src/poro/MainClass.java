@@ -1,7 +1,7 @@
 package poro;
 
 import poro.gui.DangNhapJDialog;
-import poro.module.mail.Mailer;
+import poro.module.Mailer;
 
 /**
  *
