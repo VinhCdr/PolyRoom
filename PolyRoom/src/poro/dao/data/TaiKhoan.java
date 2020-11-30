@@ -1,5 +1,6 @@
 package poro.dao.data;
 
+import java.io.Serializable;
 import poro.dao.DbDelete;
 import poro.dao.DbUpdate;
 import poro.dao.DbSelect;
@@ -9,7 +10,7 @@ import poro.dao.DbInsert;
  *
  * @author vinh
  */
-public class TaiKhoan implements DbSelect, DbInsert, DbUpdate, DbDelete {
+public class TaiKhoan implements DbSelect, DbInsert, DbUpdate, DbDelete, Serializable {
 
     private String idTaiKhoan;
     private String email;
