@@ -153,5 +153,5 @@ public class TaiKhoan implements DbSelect, DbInsert, DbUpdate, DbDelete, Seriali
     public Object[] getInfoDelete(int type) {
         return new Object[]{this.idTaiKhoan, this.email};
     }
-
+    
 }
