@@ -6,6 +6,12 @@
 package poro.gui;
 
 import java.awt.Color;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import poro.dao.DatabaseManager;
+import poro.dao.data.TaiKhoan;
+import poro.module.Encrypter;
+import poro.module.FileManager;
 
 /**
  *
@@ -19,7 +25,12 @@ public class DangNhapJDialog extends javax.swing.JDialog {
     public DangNhapJDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        FileManager fm = new FileManager("asset/save.dat");
+        tkSave = fm.<TaiKhoan>readObject();
+        txtTaiKhoan.setText(tkSave.getIdTaiKhoan());
+        txtPassword.setText(tkSave.getMatKhau());
     }
+    TaiKhoan tkSave;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -63,6 +74,11 @@ public class DangNhapJDialog extends javax.swing.JDialog {
         btnQuenMatKhau.setText("Quên mật khẩu");
 
         btnDangNhap.setText("Đăng nhập");
+        btnDangNhap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDangNhapActionPerformed(evt);
+            }
+        });
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/lock.jpg"))); // NOI18N
@@ -81,7 +97,7 @@ public class DangNhapJDialog extends javax.swing.JDialog {
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 307, Short.MAX_VALUE)
+                    .addComponent(txtPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 337, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnDangNhap)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -139,8 +155,17 @@ public class DangNhapJDialog extends javax.swing.JDialog {
         chkNhoMatKhau.setForeground(Color.black);
     }//GEN-LAST:event_chkNhoMatKhauMouseExited
 
+    private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
+
+        try {
+            dangNhap();
+        } catch (RuntimeException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
+    }//GEN-LAST:event_btnDangNhapActionPerformed
+
     public static void main(String args[]) {
-        
+
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -156,7 +181,7 @@ public class DangNhapJDialog extends javax.swing.JDialog {
         }
 
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDangNhap;
     private javax.swing.JButton btnQuenMatKhau;
@@ -168,4 +193,52 @@ public class DangNhapJDialog extends javax.swing.JDialog {
     private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtTaiKhoan;
     // End of variables declaration//GEN-END:variables
+
+    private TaiKhoan getTaiKhoan() {
+        Encrypter encrypter = new Encrypter();
+        
+        String user = txtTaiKhoan.getText().trim();
+        String password = String.valueOf(txtPassword.getPassword());
+
+        if (user.isEmpty()) {
+            throw new RuntimeException("User không được để trống");
+        }
+        if (password.isEmpty()) {
+            throw new RuntimeException("Password không được để trống");
+        }
+
+        if(!password.equals(tkSave.getMatKhau())){
+            password = encrypter.toMD5(password);
+        }
+        
+        TaiKhoan tk = new TaiKhoan();
+        tk.setIdTaiKhoan(user);
+        tk.setEmail(user);
+        tk.setMatKhau(password);
+        return tk;
+    }
+
+    public void dangNhap() {
+        nhoMatKhau();
+        TaiKhoan tk = getTaiKhoan();
+        ArrayList<TaiKhoan> tkList = DatabaseManager.select(tk, TaiKhoan.SELECT_USER_OR_EMAIL_AND_PASS);
+        if (tkList.size() > 0) {
+            JOptionPane.showMessageDialog(this, "Đăng nhập thành công!");
+        } else {
+            throw new RuntimeException("Sai tài khoản hoặc mật khẩu!");
+        }
+    }
+
+    private void nhoMatKhau() {
+        boolean isNhoMK = chkNhoMatKhau.isSelected();
+        TaiKhoan tk;
+        if (isNhoMK) {
+            tk = getTaiKhoan();
+        } else {
+            tk = new TaiKhoan();
+        }
+        FileManager fm = new FileManager("asset/save.dat");
+        fm.writeObject(tk);
+    }
+
 }
