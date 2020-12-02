@@ -1,16 +1,15 @@
 package poro.dao.data;
 
 import java.io.Serializable;
-import poro.dao.DbDelete;
-import poro.dao.DbUpdate;
-import poro.dao.DbSelect;
-import poro.dao.DbInsert;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import poro.dao.DbExecuteQuery;
 
 /**
  *
  * @author vinh
  */
-public class TaiKhoan implements DbSelect, DbInsert, DbUpdate, DbDelete, Serializable {
+public class TaiKhoan implements DbExecuteQuery, Serializable {
 
     private String idTaiKhoan;
     private String email;
@@ -30,15 +29,6 @@ public class TaiKhoan implements DbSelect, DbInsert, DbUpdate, DbDelete, Seriali
         this.phanQuyen = phanQuyen;
         this.ten = ten;
         this.sdt = sdt;
-    }
-
-    public TaiKhoan(Object[] data) {
-        this.idTaiKhoan = (String) data[0];
-        this.email = (String) data[1];
-        this.matKhau = (String) data[2];
-        this.phanQuyen = (boolean) data[3];
-        this.ten = (String) data[4];
-        this.sdt = (String) data[5];
     }
 
     public String getIdTaiKhoan() {
@@ -89,69 +79,58 @@ public class TaiKhoan implements DbSelect, DbInsert, DbUpdate, DbDelete, Seriali
         this.sdt = sdt;
     }
 
+    public static final int EXECUTE_SELECT_ALL = 0;
+    public static final int EXECUTE_SELECT_BY_USER_OR_EMAIL_AND_PASS = 1;
+    public static final int EXECUTE_INSERT = 2;
+    public static final int EXECUTE_UPDATE_BY_ID_OR_MAIL = 3;
+    public static final int EXECUTE_DELETE_BY_ID_OR_MAIL = 4;
+
     @Override
-    public TaiKhoan coverData(Object[] data) {
-        return new TaiKhoan(data);
+    public TaiKhoan coverResultSet(ResultSet resultSet, int type) throws SQLException {
+        TaiKhoan tk = new TaiKhoan();
+        tk.setIdTaiKhoan(resultSet.getString("id_tai_khoan"));
+        tk.setEmail(resultSet.getString("email"));
+        tk.setMatKhau(resultSet.getString("mat_khau"));
+        tk.setPhanQuyen(resultSet.getBoolean("is_phan_quyen"));
+        tk.setTen(resultSet.getString("ten"));
+        tk.setSdt(resultSet.getString("sdt"));
+        return tk;
     }
 
     @Override
-    public Object[] getInfo() {
-        return new Object[]{this.idTaiKhoan, this.email, this.matKhau, this.phanQuyen, this.ten, this.sdt};
-    }
-
-    final public static int SELECT_ALL = 0;
-    final public static int SELECT_USER_OR_EMAIL_AND_PASS = 1;
-
-    @Override
-    public String getSqlSelect(int type) {
+    public String getExecuteSQL(int type) {
         switch (type) {
-            case SELECT_USER_OR_EMAIL_AND_PASS:
+            case EXECUTE_SELECT_BY_USER_OR_EMAIL_AND_PASS:
                 return "SELECT id_tai_khoan, email, mat_khau, is_phan_quyen, ten, sdt FROM tai_khoan WHERE (id_tai_khoan LIKE ? OR email LIKE ?) AND mat_khau LIKE ?";
-            case SELECT_ALL:
-            default:
+            case EXECUTE_SELECT_ALL:
                 return "SELECT id_tai_khoan, email, mat_khau, is_phan_quyen, ten, sdt FROM tai_khoan";
-        }
-    }
-
-    @Override
-    public Object[] getInfoSelect(int type) {
-        switch (type) {
-            case SELECT_USER_OR_EMAIL_AND_PASS:
-                return new Object[]{this.idTaiKhoan, this.email, this.matKhau};
-            case SELECT_ALL:
+            case EXECUTE_INSERT:
+                return "INSERT INTO tai_khoan(id_tai_khoan, email, mat_khau, is_phan_quyen, ten, sdt) VALUES (?, ?, ?, ?, ?, ?);";
+            case EXECUTE_UPDATE_BY_ID_OR_MAIL:
+                return "UPDATE tai_khoan SET id_tai_khoan = ?, email = ?, mat_khau = ?, is_phan_quyen = ?, ten = ?, sdt = ? WHERE (id_tai_khoan LIKE ? OR email LIKE ?) AND mat_khau LIKE ?;";
+            case EXECUTE_DELETE_BY_ID_OR_MAIL:
+                return "DELETE FROM tai_khoan WHERE id_tai_khoan LIKE ? OR email LIKE ?";
             default:
-                return new Object[0];
+                throw new RuntimeException("Không thể lấy câu SQL bằng kiểu có mã là: " + type);
         }
     }
 
     @Override
-    public String getSqlInsert(int type) {
-        return "INSERT INTO tai_khoan(id_tai_khoan, email, mat_khau, is_phan_quyen, ten, sdt) VALUES (?, ?, ?, ?, ?, ?);";
+    public Object[] getExecuteData(int type) {
+        switch (type) {
+            case EXECUTE_SELECT_BY_USER_OR_EMAIL_AND_PASS:
+                return new Object[]{this.idTaiKhoan, this.email, this.matKhau};
+            case EXECUTE_SELECT_ALL:
+                return new Object[0];
+            case EXECUTE_INSERT:
+                return new Object[]{this.idTaiKhoan, this.email, this.matKhau, this.phanQuyen, this.ten, this.sdt};
+            case EXECUTE_UPDATE_BY_ID_OR_MAIL:
+                return new Object[]{this.idTaiKhoan, this.email, this.matKhau, this.phanQuyen, this.ten, this.sdt, this.idTaiKhoan, this.email, this.matKhau};
+            case EXECUTE_DELETE_BY_ID_OR_MAIL:
+                return new Object[]{this.idTaiKhoan, this.email};
+            default:
+                throw new RuntimeException("Không thể lấy dữ liệu cho câu SQL bằng kiểu có mã là: " + type);
+        }
     }
 
-    @Override
-    public Object[] getInfoInsert(int type) {
-        return new Object[]{this.idTaiKhoan, this.email, this.matKhau, this.phanQuyen, this.ten, this.sdt};
-    }
-
-    @Override
-    public String getSqlUpdate(int type) {
-        return "UPDATE tai_khoan SET id_tai_khoan = ?, email = ?, mat_khau = ?, is_phan_quyen = ?, ten = ?, sdt = ? WHERE (id_tai_khoan LIKE ? OR email LIKE ?) AND mat_khau LIKE ?;";
-    }
-
-    @Override
-    public Object[] getInfoUpdate(int type) {
-        return new Object[]{this.idTaiKhoan, this.email, this.matKhau, this.phanQuyen, this.ten, this.sdt, this.idTaiKhoan, this.email, this.matKhau};
-    }
-
-    @Override
-    public String getSqlDelete(int type) {
-        return "DELETE FROM tai_khoan WHERE id_tai_khoan LIKE ? OR email LIKE ?";
-    }
-
-    @Override
-    public Object[] getInfoDelete(int type) {
-        return new Object[]{this.idTaiKhoan, this.email};
-    }
-    
 }

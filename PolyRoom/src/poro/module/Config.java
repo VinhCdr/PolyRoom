@@ -4,7 +4,7 @@ package poro.module;
  *
  * @author vinh
  */
-interface Config {
+public interface Config {
 
     String DB_DRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
     String DB_URL = "jdbc:sqlserver://localhost:1433;databaseName=polyroom;";

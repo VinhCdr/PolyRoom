@@ -4,21 +4,22 @@ package poro.dao;
  *
  * @author vinh
  */
-public interface DbInsert {
+public interface DbExecute {
 
     /**
-     * Dùng để lấy câu lệnh insert sql
+     * Dùng để lấy câu lệnh execute
      *
      * @param type Loại lệnh select sql mong muốn
      * @return Một câu lệnh sql select
      */
-    public String getSqlInsert(int type);
+    public String getExecuteSQL(int type);
 
     /**
-     * Dùng để lấy thông tin insert
+     * Dùng để lấy thông tin execute
      *
+     * @param type Loại lệnh select sql mong muốn
      * @return Một mãng các giá trị cần thiết để insert
      */
-    public Object[] getInfoInsert(int type);
+    public Object[] getExecuteData(int type);
 
 }

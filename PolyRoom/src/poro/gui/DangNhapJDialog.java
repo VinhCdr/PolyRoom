@@ -20,11 +20,18 @@ public class DangNhapJDialog extends javax.swing.JDialog {
     public DangNhapJDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+
         FileManager fm = new FileManager("asset/save.dat");
         tkSave = fm.<TaiKhoan>readObject();
-        txtTaiKhoan.setText(tkSave.getIdTaiKhoan());
-        txtPassword.setText(tkSave.getMatKhau());
+        if (tkSave.getIdTaiKhoan() == null) {
+            chkNhoMatKhau.setSelected(false);
+        } else {
+            chkNhoMatKhau.setSelected(true);
+            txtTaiKhoan.setText(tkSave.getIdTaiKhoan());
+            txtPassword.setText(tkSave.getMatKhau());
+        }
     }
+
     TaiKhoan tkSave;
 
     /**
@@ -151,10 +158,11 @@ public class DangNhapJDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_chkNhoMatKhauMouseExited
 
     private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
-
         try {
+            nhoMatKhau();
             dangNhap();
         } catch (RuntimeException ex) {
+            ex.printStackTrace();
             JOptionPane.showMessageDialog(this, ex.getMessage());
         }
     }//GEN-LAST:event_btnDangNhapActionPerformed
@@ -191,7 +199,7 @@ public class DangNhapJDialog extends javax.swing.JDialog {
 
     private TaiKhoan getTaiKhoan() {
         Encrypter encrypter = new Encrypter();
-        
+
         String user = txtTaiKhoan.getText().trim();
         String password = String.valueOf(txtPassword.getPassword());
 
@@ -202,10 +210,10 @@ public class DangNhapJDialog extends javax.swing.JDialog {
             throw new RuntimeException("Password không được để trống");
         }
 
-        if(!password.equals(tkSave.getMatKhau())){
+        if (tkSave.getMatKhau() == null || !tkSave.getMatKhau().equals(password)) {
             password = encrypter.toMD5(password);
         }
-        
+
         TaiKhoan tk = new TaiKhoan();
         tk.setIdTaiKhoan(user);
         tk.setEmail(user);
@@ -214,9 +222,8 @@ public class DangNhapJDialog extends javax.swing.JDialog {
     }
 
     public void dangNhap() {
-        nhoMatKhau();
         TaiKhoan tk = getTaiKhoan();
-        ArrayList<TaiKhoan> tkList = DatabaseManager.select(tk, TaiKhoan.SELECT_USER_OR_EMAIL_AND_PASS);
+        ArrayList<TaiKhoan> tkList = DatabaseManager.executeQuery(tk, TaiKhoan.EXECUTE_SELECT_BY_USER_OR_EMAIL_AND_PASS);
         if (tkList.size() > 0) {
             JOptionPane.showMessageDialog(this, "Đăng nhập thành công!");
         } else {

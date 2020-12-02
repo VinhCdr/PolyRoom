@@ -1,9 +1,12 @@
 package poro.dao;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import poro.module.JavaDatabaseConnectivity;
+import poro.module.Config;
 
 /**
  *
@@ -11,10 +14,53 @@ import poro.module.JavaDatabaseConnectivity;
  */
 public class DatabaseManager {
 
-    private static final JavaDatabaseConnectivity jdbc;
-
     static {
-        jdbc = new JavaDatabaseConnectivity();
+        try {
+            Class.forName(Config.DB_DRIVER);
+        } catch (ClassNotFoundException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    private static Connection connect = null;
+
+    /**
+     * Mở kết nối đến cơ sỡ dữ liệu
+     *
+     * @return Đối tượng kết nối đến csdl
+     */
+    private static Connection openConnect() {
+        try {
+            if (connect == null || connect.isClosed()) {
+                connect = DriverManager.getConnection(Config.DB_URL, Config.DB_USER, Config.DB_PASSWORD);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return connect;
+    }
+
+    /**
+     * Xây dựng PreparedStatement
+     *
+     * @param sql là câu lệnh SQL chứa có thể chứa tham số. Nó có thể là một lời
+     * gọi thủ tục lưu
+     * @param args là danh sách các giá trị được cung cấp cho các tham số trong
+     * câu lệnh sql
+     * @return PreparedStatement tạo được
+     * @throws java.sql.SQLException lỗi sai cú pháp
+     */
+    private static PreparedStatement getPreStm(String sql, Object... args) throws SQLException {
+        PreparedStatement pstmt = null;
+        if (sql.trim().startsWith("{")) {
+            pstmt = openConnect().prepareCall(sql);
+        } else {
+            pstmt = openConnect().prepareStatement(sql);
+        }
+        for (int i = 0; i < args.length; i++) {
+            pstmt.setObject(i + 1, args[i]);
+        }
+        return pstmt;
     }
 
     /**
@@ -24,96 +70,37 @@ public class DatabaseManager {
      * @param type Kiểu select (Quy định riêng theo từng đối tượng) để select
      * @param <T> kiểu dữ liệu sẽ trả về
      * @return Một danh sách cách đối tượng select được
-     * @see #insert(poro.dao.DatabaseImport)
      */
-    public static <T extends DbSelect> ArrayList<T> select(T importer, int type) {
-        int columnCount = importer.getInfo().length;
-        Object[] row = new Object[columnCount];
+    public static <T extends DbExecuteQuery> ArrayList<T> executeQuery(T importer, int type) {
         ArrayList<T> result = new ArrayList<>();
         try {
-            ResultSet rs = jdbc.executeQuery(importer.getSqlSelect(type), importer.getInfoSelect(type));
-
+            PreparedStatement preStm = getPreStm(importer.getExecuteSQL(type), importer.getExecuteData(type));
+            ResultSet rs = preStm.executeQuery();
             while (rs.next()) {
-                for (int i = 0; i < columnCount; i++) {
-                    row[i] = rs.getObject(i + 1);
-                }
-                result.add(importer.<T>coverData(row));
+                T objSelect = importer.<T>coverResultSet(rs, type);
+                result.add(objSelect);
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-
         return result;
     }
 
     /**
-     * Select dữ liệu của đối tượng trong database theo mặc định
+     * Insert, update, delete dữ liệu vào database theo kiểu cụ thể
      *
-     * @param importer Select dự trên đối tượng này, cũng như dữ liệu cần thiết
-     * để select
-     * @param <T> kiểu dữ liệu sẽ trả về
-     * @return Một danh sách cách đối tượng select được
-     * @see #select(poro.dao.DatabaseImport, int)
+     * @param importer Dữ liệu sẽ thực hiện execute
+     * @param type Kiểu câu lệnh execute
      */
-    public static <T extends DbSelect> ArrayList<T> select(T importer) {
-        return select(importer, 0);
-    }
-
-    /**
-     * Insert dữ liệu vào database theo kiểu cụ thể
-     *
-     * @param importer Dữ liệu sẽ insert vào database
-     * @param type Kiễu insert
-     */
-    public static void insert(DbInsert importer, int type) {
-        jdbc.executeUpdate(importer.getSqlInsert(type), importer.getInfoInsert(type));
-    }
-
-    /**
-     * Insert dữ liệu vào database theo mặc định
-     *
-     * @param importer Dữ liệu sẽ insert vào database
-     */
-    public static void insert(DbInsert importer) {
-        insert(importer, 0);
-    }
-
-    /**
-     * Update dữ liệu đã có trong database theo kiểu cụ thể
-     *
-     * @param importer Dữ liệu sẽ update (dựa vào id của dữ liệu)
-     * @param type Kiểu update
-     */
-    public static void update(DbUpdate importer, int type) {
-        jdbc.executeUpdate(importer.getSqlUpdate(type), importer.getInfoUpdate(type));
-    }
-
-    /**
-     * Update dữ liệu đã có trong database theo mặc định
-     *
-     * @param importer dữ liệu sẽ update (dựa vào id của dữ liệu)
-     */
-    public static void update(DbUpdate importer) {
-        update(importer, 0);
-    }
-
-    /**
-     * Delete dữ liệu đã có trong database theo kiểu cụ thể
-     *
-     * @param importer dữ liệu sẽ delete (dựa vào id của dữ liệu)
-     * @param type Kiểu delete
-     */
-    public static void delete(DbDelete importer, int type) {
-        jdbc.executeUpdate(importer.getSqlDelete(type), importer.getInfoDelete(type));
-    }
-
-    /**
-     * Delete dữ liệu đã có trong database theo mặc định
-     *
-     * @param importer dữ liệu sẽ delete (dựa vào id của dữ liệu)
-     */
-    public static void delete(DbDelete importer) {
-        delete(importer, 0);
+    public static int executeUpdate(DbExecute importer, int type) {
+        int result = 0;
+        try {
+            PreparedStatement preStm = getPreStm(importer.getExecuteSQL(type), importer.getExecuteData(type));
+            result = preStm.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return result;
     }
 
 }
