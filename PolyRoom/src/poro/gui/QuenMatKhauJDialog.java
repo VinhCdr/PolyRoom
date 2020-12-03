@@ -1,5 +1,9 @@
 package poro.gui;
 
+import javax.swing.JOptionPane;
+import poro.module.Mailer;
+import poro.module.StringHelper;
+
 /**
  *
  * @author Cô Ngọc
@@ -12,9 +16,11 @@ public class QuenMatKhauJDialog extends javax.swing.JDialog {
     public QuenMatKhauJDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        setLocationRelativeTo(null);
-        setTitle("Quên mật khẩu");
+        doiMatKhauJDialog = new DoiMatKhauJDialog(parent, true);
     }
+    DoiMatKhauJDialog doiMatKhauJDialog;
+
+    private static String otp = "";
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -34,6 +40,8 @@ public class QuenMatKhauJDialog extends javax.swing.JDialog {
         hinh = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Quên mật khẩu");
+        setAlwaysOnTop(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -44,7 +52,12 @@ public class QuenMatKhauJDialog extends javax.swing.JDialog {
         getContentPane().add(txtemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 420, 30));
 
         btnGuiMa.setText("Gửi mã OTP");
-        getContentPane().add(btnGuiMa, new org.netbeans.lib.awtextra.AbsoluteConstraints(491, 80, 110, -1));
+        btnGuiMa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuiMaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnGuiMa, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 80, 110, 30));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -53,13 +66,53 @@ public class QuenMatKhauJDialog extends javax.swing.JDialog {
         getContentPane().add(txtMaOTP, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 420, 30));
 
         btnXacNhan.setText("Xác nhận");
-        getContentPane().add(btnXacNhan, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 180, 110, -1));
+        btnXacNhan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXacNhanActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnXacNhan, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 180, 110, 30));
 
         hinh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/br1.jpg"))); // NOI18N
         getContentPane().add(hinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 270));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnGuiMaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuiMaActionPerformed
+        // TODO add your handling code here:
+        if (!otp.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Đã gửi mã OTP rồi vui lòng kiểm tra lại email!");
+            return;
+        }
+        if (!txtemail.getText().matches("\\w+(\\.\\w+)*@\\w+(\\.\\w+)+")) {
+            JOptionPane.showMessageDialog(this, "Email không đúng định dạng!");
+            return;
+        }
+        StringHelper sh = new StringHelper();
+        otp = sh.random(6);
+        Mailer mailer = new Mailer(txtemail.getText());
+        mailer.setSubject("Quên mật khẩu - PolyRoom");
+        mailer.setText("Mã OTP của bạn là: " + otp);
+        new Thread(mailer).start();
+        JOptionPane.showMessageDialog(this, "Đã gửi mã OTP vui lòng kiểm tra email!");
+    }//GEN-LAST:event_btnGuiMaActionPerformed
+
+    private void btnXacNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXacNhanActionPerformed
+        // TODO add your handling code here:
+        if (otp.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Chưa có mã OTP gửi đến email của bạn!");
+            return;
+        }
+        if (txtMaOTP.getText().equals(otp)) {
+            otp = "";
+            doiMatKhauJDialog.setVisible(true);
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "Mã OTP sai!");
+        }
+    }//GEN-LAST:event_btnXacNhanActionPerformed
 
     /**
      * @param args the command line arguments

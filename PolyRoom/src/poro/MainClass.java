@@ -1,19 +1,20 @@
 package poro;
 
 import poro.gui.DangNhapJDialog;
+import poro.gui.MainJFrame;
+import poro.module.Session;
 
 /**
  *
  * @author vinh
  */
 public class MainClass {
-
+    
+    static DangNhapJDialog dangNhapJDialog;
+    static MainJFrame mainJFrame;
+    
     public static void main(String[] args) {
-        show();
-    }
-    
-    
-    public static void show() {
+        
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -21,12 +22,25 @@ public class MainClass {
                     break;
                 }
             }
-            DangNhapJDialog dialog = new DangNhapJDialog(new javax.swing.JFrame(), true);
-            dialog.setVisible(true);
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        
+        mainJFrame = new MainJFrame();
+        dangNhapJDialog = new DangNhapJDialog(mainJFrame, true);
+        dangNhapJDialog.setVisible(true);
+        if (Session.isLogin()) {
+            mainJFrame.setVisible(true);
+        } else {
             System.exit(0);
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            ex.printStackTrace();
         }
     }
+    
     
 }
