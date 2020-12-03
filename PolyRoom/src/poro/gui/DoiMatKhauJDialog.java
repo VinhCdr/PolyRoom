@@ -1,18 +1,33 @@
 package poro.gui;
 
+import java.util.ArrayList;
+import poro.dao.DatabaseManager;
+import poro.dao.data.TaiKhoan;
+
 /**
  *
- * @author ASUS
+ * @author ASUS, vinh
  */
-public class DoiMatKhau extends javax.swing.JDialog {
+public class DoiMatKhauJDialog extends javax.swing.JDialog {
 
     /**
      * Creates new form DoiMatKhau
      */
-    public DoiMatKhau(java.awt.Frame parent, boolean modal) {
+    public DoiMatKhauJDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
+
+    public DoiMatKhauJDialog(java.awt.Frame parent, boolean modal, TaiKhoan taiKhoan) {
+        this(parent, modal);
+        this.taiKhoan = taiKhoan;
+        txtTaiKhoan.setEnabled(false);
+        txtNhapMatKhauCu.setEnabled(false);
+        txtTaiKhoan.setText(taiKhoan.getIdTaiKhoan());
+        txtNhapMatKhauCu.setText(taiKhoan.getMatKhau());
+    }
+
+    private TaiKhoan taiKhoan;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -24,7 +39,7 @@ public class DoiMatKhau extends javax.swing.JDialog {
     private void initComponents() {
 
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtTaiKhoan = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         txtNhapMatKhauCu = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -35,13 +50,15 @@ public class DoiMatKhau extends javax.swing.JDialog {
         hinh = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Đổi mật khẩu");
+        setAlwaysOnTop(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Tài khoản");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 280, 30));
+        getContentPane().add(txtTaiKhoan, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 280, 30));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -70,13 +87,14 @@ public class DoiMatKhau extends javax.swing.JDialog {
         getContentPane().add(btnMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 230, 170, 30));
 
         hinh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/br1.jpg"))); // NOI18N
-        getContentPane().add(hinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 652, 348));
+        getContentPane().add(hinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 660, 290));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnMatKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMatKhauActionPerformed
-        // TODO add your handling code here:
+        doiMatKhau();
     }//GEN-LAST:event_btnMatKhauActionPerformed
 
     /**
@@ -96,20 +114,21 @@ public class DoiMatKhau extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DoiMatKhau.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DoiMatKhauJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DoiMatKhau.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DoiMatKhauJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DoiMatKhau.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DoiMatKhauJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DoiMatKhau.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DoiMatKhauJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                DoiMatKhau dialog = new DoiMatKhau(new javax.swing.JFrame(), true);
+                DoiMatKhauJDialog dialog = new DoiMatKhauJDialog(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -128,9 +147,27 @@ public class DoiMatKhau extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField txtNhapMatKhauCu;
     private javax.swing.JTextField txtNhapMatKhauMoi;
+    private javax.swing.JTextField txtTaiKhoan;
     private javax.swing.JTextField txtXacNhanMatKhau;
     // End of variables declaration//GEN-END:variables
+
+    private void doiMatKhau() {
+        if (taiKhoan == null) {
+            doiMatKhauBt();
+        } else {
+            doiMatKhauQuen();
+        }
+    }
+    
+    //bình thường
+    private void doiMatKhauBt() {
+        
+    }
+    
+    //quên mật khẩu
+    private void doiMatKhauQuen() {
+        
+    }
 }

@@ -9,6 +9,7 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
 /**
+ * Quản lý viết và đọc file
  *
  * @author vinh
  */
@@ -28,6 +29,7 @@ public class FileManager {
 
     /**
      * Đặt lại đường dẫn file
+     * @param path là đường đẫn của file
      */
     public void setPath(String path) {
         this.file = new File(path);
@@ -43,7 +45,7 @@ public class FileManager {
         try (FileOutputStream fos = new FileOutputStream(file)) {
             fos.write(data);
         } catch (IOException ex) {
-            ex.printStackTrace();
+            System.out.println(ex);
         }
     }
 
@@ -59,7 +61,7 @@ public class FileManager {
             fis.read(data);
             return data;
         } catch (IOException ex) {
-            ex.printStackTrace();
+            System.out.println(ex);
         }
         return new byte[0];
     }
@@ -95,10 +97,10 @@ public class FileManager {
                 ObjectOutputStream oos = new ObjectOutputStream(fos);) {
             oos.writeObject(src);
         } catch (IOException ex) {
-            ex.printStackTrace();
+            System.out.println(ex);
         }
     }
-    
+
     /**
      * Đọc dữ liệu từ file và trả về đối tượng
      *
@@ -107,11 +109,11 @@ public class FileManager {
      * @see #read()
      */
     public <T extends Serializable> T readObject() {
-        try (FileInputStream fis = new FileInputStream(file); 
-                ObjectInputStream ois = new ObjectInputStream(fis)){
+        try (FileInputStream fis = new FileInputStream(file);
+                ObjectInputStream ois = new ObjectInputStream(fis)) {
             return (T) ois.readObject();
         } catch (IOException | ClassNotFoundException ex) {
-            ex.printStackTrace();
+            System.out.println(ex);
         }
         return null;
     }

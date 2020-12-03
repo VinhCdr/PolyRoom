@@ -101,7 +101,7 @@ public class Mailer implements Runnable{
      * @see #addFile(java.lang.String, java.lang.String)
      */
     @Override
-    public void run() {
+    synchronized public void run() {
         try {
             MimeMessage mimeMessage = new MimeMessage(getSession());
             mimeMessage.setFrom(new InternetAddress(Config.MAIL_ACCOUNT, Config.MAIL_NAME));

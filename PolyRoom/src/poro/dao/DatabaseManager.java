@@ -9,7 +9,8 @@ import java.util.ArrayList;
 import poro.module.Config;
 
 /**
- *
+ * Quản lý cơ sỡ dữ liệu
+ * 
  * @author vinh
  */
 public class DatabaseManager {
@@ -18,7 +19,7 @@ public class DatabaseManager {
         try {
             Class.forName(Config.DB_DRIVER);
         } catch (ClassNotFoundException ex) {
-            ex.printStackTrace();
+            System.out.println(ex);
         }
     }
 
@@ -35,7 +36,7 @@ public class DatabaseManager {
                 connect = DriverManager.getConnection(Config.DB_URL, Config.DB_USER, Config.DB_PASSWORD);
             }
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            System.out.println(ex);
         }
         return connect;
     }
@@ -51,7 +52,7 @@ public class DatabaseManager {
      * @throws java.sql.SQLException lỗi sai cú pháp
      */
     private static PreparedStatement getPreStm(String sql, Object... args) throws SQLException {
-        PreparedStatement pstmt = null;
+        PreparedStatement pstmt;
         if (sql.trim().startsWith("{")) {
             pstmt = openConnect().prepareCall(sql);
         } else {
@@ -81,7 +82,7 @@ public class DatabaseManager {
                 result.add(objSelect);
             }
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            System.out.println(ex);
         }
         return result;
     }
@@ -91,6 +92,7 @@ public class DatabaseManager {
      *
      * @param importer Dữ liệu sẽ thực hiện execute
      * @param type Kiểu câu lệnh execute
+     * @return Số dòng đã thay đổi trong cơ sỡ dữ liệu
      */
     public static int executeUpdate(DbExecute importer, int type) {
         int result = 0;
@@ -98,7 +100,7 @@ public class DatabaseManager {
             PreparedStatement preStm = getPreStm(importer.getExecuteSQL(type), importer.getExecuteData(type));
             result = preStm.executeUpdate();
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            System.out.println(ex);
         }
         return result;
     }
