@@ -1,6 +1,11 @@
 package poro.gui;
 
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import poro.dao.DatabaseManager;
+import poro.dao.data.TaiKhoan;
 import poro.module.Mailer;
 import poro.module.StringHelper;
 
@@ -18,9 +23,11 @@ public class QuenMatKhauJDialog extends javax.swing.JDialog {
         initComponents();
         doiMatKhauJDialog = new DoiMatKhauJDialog(parent, true);
     }
-    DoiMatKhauJDialog doiMatKhauJDialog;
+
+    private DoiMatKhauJDialog doiMatKhauJDialog;
 
     private static String otp = "";
+    TaiKhoan tk = new TaiKhoan();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -81,37 +88,18 @@ public class QuenMatKhauJDialog extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuiMaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuiMaActionPerformed
-        // TODO add your handling code here:
-        if (!otp.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Đã gửi mã OTP rồi vui lòng kiểm tra lại email!");
-            return;
+        try {
+            // TODO add your handling code here:
+            guiOTP();
+            JOptionPane.showMessageDialog(this, "Đã gửi mã OTP vui lòng kiểm tra email!");
+        } catch (ToViewException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
         }
-        if (!txtemail.getText().matches("\\w+(\\.\\w+)*@\\w+(\\.\\w+)+")) {
-            JOptionPane.showMessageDialog(this, "Email không đúng định dạng!");
-            return;
-        }
-        StringHelper sh = new StringHelper();
-        otp = sh.random(6);
-        Mailer mailer = new Mailer(txtemail.getText());
-        mailer.setSubject("Quên mật khẩu - PolyRoom");
-        mailer.setText("Mã OTP của bạn là: " + otp);
-        new Thread(mailer).start();
-        JOptionPane.showMessageDialog(this, "Đã gửi mã OTP vui lòng kiểm tra email!");
     }//GEN-LAST:event_btnGuiMaActionPerformed
 
     private void btnXacNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXacNhanActionPerformed
         // TODO add your handling code here:
-        if (otp.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Chưa có mã OTP gửi đến email của bạn!");
-            return;
-        }
-        if (txtMaOTP.getText().equals(otp)) {
-            otp = "";
-            doiMatKhauJDialog.setVisible(true);
-            this.dispose();
-        } else {
-            JOptionPane.showMessageDialog(this, "Mã OTP sai!");
-        }
+        xacNhan();
     }//GEN-LAST:event_btnXacNhanActionPerformed
 
     /**
@@ -166,4 +154,46 @@ public class QuenMatKhauJDialog extends javax.swing.JDialog {
     private javax.swing.JTextField txtMaOTP;
     private javax.swing.JTextField txtemail;
     // End of variables declaration//GEN-END:variables
+
+    private void guiOTP() throws ToViewException {
+        if (!otp.isEmpty()) {
+            throw new ToViewException("Đã gửi mã OTP rồi vui lòng kiểm tra lại email!");
+        }
+        if (!txtemail.getText().matches("\\w+(\\.\\w+)*@\\w+(\\.\\w+)+")) {
+            throw new ToViewException("Email không đúng định dạng!");
+        }
+        
+        tk.setEmail(txtemail.getText().trim());
+        
+        ArrayList<TaiKhoan> tkList = DatabaseManager.executeQuery(tk, TaiKhoan.EXECUTE_SELECT_BY_MAIL);
+
+        if (tkList.size() <= 0) {
+            throw new ToViewException("Không tồn tại tài khoản có email " + tk.getEmail());
+        }
+
+        StringHelper sh = new StringHelper();
+        otp = sh.random(6);
+        tk = tkList.get(0);
+
+        Mailer mailer = new Mailer(tk.getEmail());
+        mailer.setSubject("Quên mật khẩu - PolyRoom");
+        mailer.setText("Mã OTP của bạn là: " + otp);
+        new Thread(mailer).start();
+    }
+
+    private void xacNhan() {
+        if (otp.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Chưa có mã OTP gửi đến email của bạn!");
+            return;
+        }
+        if (txtMaOTP.getText().equals(otp)) {
+            otp = "";
+            doiMatKhauJDialog.setTaiKhoanDMK(tk);
+            doiMatKhauJDialog.setVisible(true);
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "Mã OTP sai!");
+        }
+    }
+
 }

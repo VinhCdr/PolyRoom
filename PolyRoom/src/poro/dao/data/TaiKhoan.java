@@ -84,6 +84,7 @@ public class TaiKhoan implements DbExecuteQuery, Serializable {
     public static final int EXECUTE_INSERT = 2;
     public static final int EXECUTE_UPDATE_BY_ID_OR_MAIL = 3;
     public static final int EXECUTE_DELETE_BY_ID_OR_MAIL = 4;
+    public static final int EXECUTE_SELECT_BY_MAIL = 5;
 
     @Override
     public TaiKhoan coverResultSet(ResultSet resultSet, int type) throws SQLException {
@@ -104,10 +105,12 @@ public class TaiKhoan implements DbExecuteQuery, Serializable {
                 return "SELECT id_tai_khoan, email, mat_khau, is_phan_quyen, ten, sdt FROM tai_khoan WHERE (id_tai_khoan LIKE ? OR email LIKE ?) AND mat_khau LIKE ?";
             case EXECUTE_SELECT_ALL:
                 return "SELECT id_tai_khoan, email, mat_khau, is_phan_quyen, ten, sdt FROM tai_khoan";
+            case EXECUTE_SELECT_BY_MAIL:
+                return "SELECT id_tai_khoan, email, mat_khau, is_phan_quyen, ten, sdt FROM tai_khoan WHERE email LIKE ?";
             case EXECUTE_INSERT:
                 return "INSERT INTO tai_khoan(id_tai_khoan, email, mat_khau, is_phan_quyen, ten, sdt) VALUES (?, ?, ?, ?, ?, ?);";
             case EXECUTE_UPDATE_BY_ID_OR_MAIL:
-                return "UPDATE tai_khoan SET id_tai_khoan = ?, email = ?, mat_khau = ?, is_phan_quyen = ?, ten = ?, sdt = ? WHERE (id_tai_khoan LIKE ? OR email LIKE ?) AND mat_khau LIKE ?;";
+                return "UPDATE tai_khoan SET id_tai_khoan = ?, email = ?, mat_khau = ?, is_phan_quyen = ?, ten = ?, sdt = ? WHERE (id_tai_khoan LIKE ? OR email LIKE ?);";
             case EXECUTE_DELETE_BY_ID_OR_MAIL:
                 return "DELETE FROM tai_khoan WHERE id_tai_khoan LIKE ? OR email LIKE ?";
             default:
@@ -122,10 +125,12 @@ public class TaiKhoan implements DbExecuteQuery, Serializable {
                 return new Object[]{this.idTaiKhoan, this.email, this.matKhau};
             case EXECUTE_SELECT_ALL:
                 return new Object[0];
+            case EXECUTE_SELECT_BY_MAIL:
+                return new Object[]{this.getEmail()};
             case EXECUTE_INSERT:
                 return new Object[]{this.idTaiKhoan, this.email, this.matKhau, this.phanQuyen, this.ten, this.sdt};
             case EXECUTE_UPDATE_BY_ID_OR_MAIL:
-                return new Object[]{this.idTaiKhoan, this.email, this.matKhau, this.phanQuyen, this.ten, this.sdt, this.idTaiKhoan, this.email, this.matKhau};
+                return new Object[]{this.idTaiKhoan, this.email, this.matKhau, this.phanQuyen, this.ten, this.sdt, this.idTaiKhoan, this.email};
             case EXECUTE_DELETE_BY_ID_OR_MAIL:
                 return new Object[]{this.idTaiKhoan, this.email};
             default:

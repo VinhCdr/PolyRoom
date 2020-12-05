@@ -1,8 +1,10 @@
 package poro.gui;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import poro.dao.DatabaseManager;
 import poro.dao.data.TaiKhoan;
+import poro.module.Encrypter;
 
 /**
  *
@@ -18,17 +20,6 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
         initComponents();
     }
 
-    public DoiMatKhauJDialog(java.awt.Frame parent, boolean modal, TaiKhoan taiKhoan) {
-        this(parent, modal);
-        this.taiKhoan = taiKhoan;
-        txtTaiKhoan.setEnabled(false);
-        txtNhapMatKhauCu.setEnabled(false);
-        txtTaiKhoan.setText(taiKhoan.getIdTaiKhoan());
-        txtNhapMatKhauCu.setText(taiKhoan.getMatKhau());
-    }
-
-    private TaiKhoan taiKhoan;
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -40,12 +31,12 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
 
         jLabel2 = new javax.swing.JLabel();
         txtTaiKhoan = new javax.swing.JTextField();
+        txtPassMoi1 = new javax.swing.JPasswordField();
+        txtPassCu = new javax.swing.JPasswordField();
+        txtPassMoi2 = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
-        txtNhapMatKhauCu = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        txtNhapMatKhauMoi = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        txtXacNhanMatKhau = new javax.swing.JTextField();
         btnMatKhau = new javax.swing.JButton();
         hinh = new javax.swing.JLabel();
 
@@ -59,24 +50,24 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
         jLabel2.setText("Tài khoản");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
         getContentPane().add(txtTaiKhoan, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 280, 30));
+        getContentPane().add(txtPassMoi1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 280, 30));
+        getContentPane().add(txtPassCu, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 60, 280, 30));
+        getContentPane().add(txtPassMoi2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 160, 280, 30));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Nhập mật khẩu cũ");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 20, -1, -1));
-        getContentPane().add(txtNhapMatKhauCu, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 60, 270, 30));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Nhập mật khẩu mới");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, -1));
-        getContentPane().add(txtNhapMatKhauMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 280, 30));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Xác nhận lại mật khẩu");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, -1, -1));
-        getContentPane().add(txtXacNhanMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 162, 270, 30));
 
         btnMatKhau.setText("Đổi mật khẩu");
         btnMatKhau.addActionListener(new java.awt.event.ActionListener() {
@@ -87,14 +78,20 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
         getContentPane().add(btnMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 230, 170, 30));
 
         hinh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/br1.jpg"))); // NOI18N
-        getContentPane().add(hinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 660, 290));
+        getContentPane().add(hinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, 290));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnMatKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMatKhauActionPerformed
-        doiMatKhau();
+        try {
+            doiMatKhau();
+            JOptionPane.showConfirmDialog(this, "Đổi mật khẩu thành công !");
+            this.dispose();
+        } catch (ToViewException ex) {
+            JOptionPane.showConfirmDialog(this, ex.getMessage());
+        }
     }//GEN-LAST:event_btnMatKhauActionPerformed
 
     /**
@@ -147,27 +144,68 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField txtNhapMatKhauCu;
-    private javax.swing.JTextField txtNhapMatKhauMoi;
+    private javax.swing.JPasswordField txtPassCu;
+    private javax.swing.JPasswordField txtPassMoi1;
+    private javax.swing.JPasswordField txtPassMoi2;
     private javax.swing.JTextField txtTaiKhoan;
-    private javax.swing.JTextField txtXacNhanMatKhau;
     // End of variables declaration//GEN-END:variables
 
-    private void doiMatKhau() {
-        if (taiKhoan == null) {
+    private TaiKhoan taiKhoanQuen;
+
+    public void setTaiKhoanDMK(TaiKhoan taiKhoan) {
+        this.taiKhoanQuen = taiKhoan;
+        txtTaiKhoan.setEnabled(false);
+        txtPassCu.setEnabled(false);
+        txtTaiKhoan.setText(taiKhoan.getIdTaiKhoan());
+        txtPassCu.setText(taiKhoan.getMatKhau());
+    }
+
+    private void doiMatKhau() throws ToViewException {
+        if (taiKhoanQuen == null) {
             doiMatKhauBt();
         } else {
             doiMatKhauQuen();
         }
     }
-    
+
     //bình thường
-    private void doiMatKhauBt() {
-        
+    private void doiMatKhauBt() throws ToViewException {
+        Encrypter e = new Encrypter();
+        String passNew2 = String.valueOf(txtPassMoi2.getPassword());
+        String passNewMd5 = e.toMD5(passNew2);
+        doiMatKhau(passNewMd5);
     }
-    
+
     //quên mật khẩu
-    private void doiMatKhauQuen() {
-        
+    private void doiMatKhauQuen() throws ToViewException {
+        String passOld = String.valueOf(txtPassCu.getPassword());
+        doiMatKhau(passOld);
+    }
+
+    private void doiMatKhau(String passCuMd5) throws ToViewException {
+        String user = txtTaiKhoan.getText().trim();
+        String passOld = passCuMd5;
+        String passNew1 = String.valueOf(txtPassMoi1.getPassword()).trim();
+        String passNew2 = String.valueOf(txtPassMoi2.getPassword()).trim();
+
+        if (!passNew1.equalsIgnoreCase(passNew2)) {
+            throw new ToViewException("Mật khẩu mới không khớp nhau");
+        }
+
+        Encrypter e = new Encrypter();
+        String passNewMd5 = e.toMD5(passNew2);
+
+        TaiKhoan tk = new TaiKhoan();
+        tk.setIdTaiKhoan(user);
+        tk.setMatKhau(passOld);
+
+        ArrayList<TaiKhoan> tkList = DatabaseManager.executeQuery(tk, TaiKhoan.EXECUTE_SELECT_BY_USER_OR_EMAIL_AND_PASS);
+        if (tkList.size() <= 0) {
+            throw new ToViewException("Tài khoản hoặc mật khẩu củ không đúng");
+        }
+        tk = tkList.get(0);
+        tk.setMatKhau(passNewMd5);
+
+        DatabaseManager.executeUpdate(tk, TaiKhoan.EXECUTE_UPDATE_BY_ID_OR_MAIL);
     }
 }
