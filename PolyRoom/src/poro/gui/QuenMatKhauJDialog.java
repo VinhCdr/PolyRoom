@@ -6,6 +6,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import poro.dao.DatabaseManager;
 import poro.dao.data.TaiKhoan;
+import poro.module.FileManager;
 import poro.module.Mailer;
 import poro.module.StringHelper;
 
@@ -48,7 +49,6 @@ public class QuenMatKhauJDialog extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Quên mật khẩu");
-        setAlwaysOnTop(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -174,10 +174,13 @@ public class QuenMatKhauJDialog extends javax.swing.JDialog {
         StringHelper sh = new StringHelper();
         otp = sh.random(6);
         tk = tkList.get(0);
+        
+        FileManager fm = new FileManager("asset/html/mail_quen_mat_khau.html");
+        String text = String.format(fm.readString(), tk.getTen(), otp);
 
         Mailer mailer = new Mailer(tk.getEmail());
         mailer.setSubject("Quên mật khẩu - PolyRoom");
-        mailer.setText("Mã OTP của bạn là: " + otp);
+        mailer.setText(text);
         new Thread(mailer).start();
     }
 
