@@ -1,7 +1,7 @@
 package poro;
 
 import poro.gui.DangNhapJDialog;
-import poro.gui.MainJFrame;
+import poro.gui.QLMainJFrame;
 import poro.module.Session;
 
 /**
@@ -11,7 +11,7 @@ import poro.module.Session;
 public class MainClass {
 
     static DangNhapJDialog dangNhapJDialog;
-    static MainJFrame mainJFrame;
+    static QLMainJFrame mainJFrame;
 
     public static void main(String[] args) {
         try {
@@ -22,16 +22,16 @@ public class MainClass {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(QLMainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(QLMainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(QLMainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(QLMainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
 
-        mainJFrame = new MainJFrame();
+        mainJFrame = new QLMainJFrame();
         dangNhapJDialog = new DangNhapJDialog(mainJFrame, true);
         dangNhapJDialog.setVisible(true);
         if (Session.isLogin()) {

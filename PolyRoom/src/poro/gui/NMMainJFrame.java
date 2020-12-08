@@ -9,12 +9,12 @@ package poro.gui;
  *
  * @author ASUS
  */
-public class MainJFrame extends javax.swing.JFrame {
+public class NMMainJFrame extends javax.swing.JFrame {
 
     /**
-     * Creates new form MainJFrame
+     * Creates new form NMMainJFrame
      */
-    public MainJFrame() {
+    public NMMainJFrame() {
         initComponents();
     }
 
@@ -32,34 +32,24 @@ public class MainJFrame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JToolBar.Separator();
-        jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JToolBar.Separator();
-        jLabel5 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JToolBar.Separator();
         jLabel6 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jSeparator4 = new javax.swing.JPopupMenu.Separator();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jSeparator5 = new javax.swing.JPopupMenu.Separator();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        jMenuItem8 = new javax.swing.JMenuItem();
-        jMenuItem9 = new javax.swing.JMenuItem();
-        jMenuItem10 = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem11 = new javax.swing.JMenuItem();
         jMenuItem12 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("PolyRoom - Quản Lí Phòng Học");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel1.setLayout(new java.awt.CardLayout());
@@ -75,15 +65,9 @@ public class MainJFrame extends javax.swing.JFrame {
         jToolBar1.add(jLabel2);
         jToolBar1.add(jSeparator1);
 
-        jLabel3.setText("Quản lí TK");
-        jToolBar1.add(jLabel3);
-
         jLabel4.setText("Quản lí phòng");
         jToolBar1.add(jLabel4);
         jToolBar1.add(jSeparator2);
-
-        jLabel5.setText("Thống kê");
-        jToolBar1.add(jLabel5);
         jToolBar1.add(jSeparator3);
 
         jLabel6.setText("Thoát");
@@ -92,13 +76,6 @@ public class MainJFrame extends javax.swing.JFrame {
         getContentPane().add(jToolBar1, java.awt.BorderLayout.PAGE_START);
 
         jMenu1.setText("Tài khoản");
-
-        jMenuItem1.setText("Quản lí tài khoản");
-        jMenu1.add(jMenuItem1);
-
-        jMenuItem5.setText("Xem tài khoản");
-        jMenu1.add(jMenuItem5);
-        jMenu1.add(jSeparator4);
 
         jMenuItem2.setText("Đăng nhập");
         jMenu1.add(jMenuItem2);
@@ -114,10 +91,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jMenu2.setText("Phòng");
 
-        jMenuItem6.setText("Quản lí phòng");
-        jMenu2.add(jMenuItem6);
-
-        jMenuItem7.setText("Xem, mượn phòng");
+        jMenuItem7.setText("Xem phòng");
         jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem7ActionPerformed(evt);
@@ -125,20 +99,10 @@ public class MainJFrame extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItem7);
 
+        jMenuItem1.setText("Mượn phòng");
+        jMenu2.add(jMenuItem1);
+
         jMenuBar1.add(jMenu2);
-
-        jMenu3.setText("Thống kê");
-
-        jMenuItem8.setText("Thống kê phòng");
-        jMenu3.add(jMenuItem8);
-
-        jMenuItem9.setText("Thống kê giảng viên");
-        jMenu3.add(jMenuItem9);
-
-        jMenuItem10.setText("Thống kê tất cả");
-        jMenu3.add(jMenuItem10);
-
-        jMenuBar1.add(jMenu3);
 
         jMenu4.setText("Giới thiệu");
 
@@ -152,8 +116,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
         setJMenuBar(jMenuBar1);
 
-        setSize(new java.awt.Dimension(1061, 579));
-        setLocationRelativeTo(null);
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
@@ -177,20 +140,20 @@ public class MainJFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NMMainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NMMainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NMMainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NMMainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainJFrame().setVisible(true);
+                new NMMainJFrame().setVisible(true);
             }
         });
     }
@@ -198,32 +161,23 @@ public class MainJFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem12;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JToolBar.Separator jSeparator3;
-    private javax.swing.JPopupMenu.Separator jSeparator4;
     private javax.swing.JPopupMenu.Separator jSeparator5;
     private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables

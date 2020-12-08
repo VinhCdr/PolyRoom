@@ -86,10 +86,10 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
     private void btnMatKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMatKhauActionPerformed
         try {
             doiMatKhau();
-            JOptionPane.showConfirmDialog(this, "Đổi mật khẩu thành công !");
+            JOptionPane.showMessageDialog(this, "Đổi mật khẩu thành công !");
             this.dispose();
         } catch (ToViewException ex) {
-            JOptionPane.showConfirmDialog(this, ex.getMessage());
+            JOptionPane.showMessageDialog(this, ex.getMessage());
         }
     }//GEN-LAST:event_btnMatKhauActionPerformed
 
