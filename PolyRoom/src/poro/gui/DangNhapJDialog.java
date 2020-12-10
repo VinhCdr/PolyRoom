@@ -179,6 +179,7 @@ public class DangNhapJDialog extends javax.swing.JDialog {
             }
         } catch (RuntimeException ex) {
             System.out.println(ex);
+            tkSave = new TaiKhoan();
         }
     }
 

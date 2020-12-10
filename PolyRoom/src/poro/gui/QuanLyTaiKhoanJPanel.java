@@ -27,7 +27,7 @@ public class QuanLyTaiKhoanJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        tabs = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txtTenTaiKhoan = new javax.swing.JTextField();
@@ -49,10 +49,6 @@ public class QuanLyTaiKhoanJPanel extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        txtCa = new javax.swing.JTextField();
-        btnTimPhongTrong = new javax.swing.JButton();
-        btnTraPhong = new javax.swing.JButton();
-        btnMuonPhong = new javax.swing.JButton();
 
         jLabel1.setText("Tên tài khoản");
 
@@ -154,7 +150,7 @@ public class QuanLyTaiKhoanJPanel extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Form nhập", jPanel1);
+        tabs.addTab("Form nhập", jPanel1);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -172,52 +168,24 @@ public class QuanLyTaiKhoanJPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        btnTimPhongTrong.setText("Tìm phòng trống");
-
-        btnTraPhong.setText("Trả phòng");
-
-        btnMuonPhong.setText("Mượn phòng");
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(txtCa, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnTimPhongTrong)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnTraPhong)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnMuonPhong)))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 595, Short.MAX_VALUE)
                 .addContainerGap())
         );
-
-        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnMuonPhong, btnTimPhongTrong, btnTraPhong});
-
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnTraPhong)
-                        .addComponent(btnMuonPhong))
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtCa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnTimPhongTrong)))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        jPanel2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnMuonPhong, btnTimPhongTrong, btnTraPhong, txtCa});
-
-        jTabbedPane1.addTab("Danh sách", jPanel2);
+        tabs.addTab("Danh sách", jPanel2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -225,14 +193,14 @@ public class QuanLyTaiKhoanJPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 620, Short.MAX_VALUE)
+                .addComponent(tabs)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1)
+                .addComponent(tabs)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -241,10 +209,7 @@ public class QuanLyTaiKhoanJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCapNhat;
     private javax.swing.JButton btnMoi;
-    private javax.swing.JButton btnMuonPhong;
     private javax.swing.JButton btnThem;
-    private javax.swing.JButton btnTimPhongTrong;
-    private javax.swing.JButton btnTraPhong;
     private javax.swing.JButton btnXoa;
     private javax.swing.JCheckBox chkQuanLy;
     private javax.swing.JLabel jLabel1;
@@ -256,9 +221,8 @@ public class QuanLyTaiKhoanJPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField txtCa;
+    private javax.swing.JTabbedPane tabs;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtHoVaTen;
     private javax.swing.JPasswordField txtMatKhau;
@@ -266,4 +230,9 @@ public class QuanLyTaiKhoanJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtTenTaiKhoan;
     private javax.swing.JTextField txtXacNhanMatKhau;
     // End of variables declaration//GEN-END:variables
+
+    public void setTab(int i) {
+        tabs.setSelectedIndex(i);
+    }
+
 }

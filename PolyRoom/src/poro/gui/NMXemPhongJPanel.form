@@ -69,7 +69,7 @@
                   <Component id="txtLau" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-              <Component id="jScrollPane1" pref="75" max="32767" attributes="0"/>
+              <Component id="jScrollPane1" pref="27" max="32767" attributes="0"/>
               <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnTraPhong" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>

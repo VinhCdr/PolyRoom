@@ -55,6 +55,10 @@ public class TaiKhoan implements DbExecuteQuery, Serializable {
         this.matKhau = matKhau;
     }
 
+    
+    /**
+     * @return true là quản lý, false là người mượn
+     */
     public boolean isPhanQuyen() {
         return phanQuyen;
     }

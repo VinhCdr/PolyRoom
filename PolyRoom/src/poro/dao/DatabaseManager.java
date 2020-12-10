@@ -10,7 +10,7 @@ import poro.module.Config;
 
 /**
  * Quản lý cơ sỡ dữ liệu
- * 
+ *
  * @author vinh
  */
 public class DatabaseManager {
@@ -103,6 +103,14 @@ public class DatabaseManager {
             System.out.println(ex);
         }
         return result;
+    }
+
+    public static void close() {
+        try {
+            connect.close();
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
     }
 
 }
