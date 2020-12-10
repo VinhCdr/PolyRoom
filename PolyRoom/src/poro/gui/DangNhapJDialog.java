@@ -53,9 +53,11 @@ public class DangNhapJDialog extends javax.swing.JDialog {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        chkNhoMatKhau.setBackground(new java.awt.Color(255, 255, 255));
+        chkNhoMatKhau.setBackground(new java.awt.Color(0, 0, 0));
+        chkNhoMatKhau.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         chkNhoMatKhau.setForeground(new java.awt.Color(255, 255, 255));
         chkNhoMatKhau.setText("Nhớ mật khẩu?");
+        chkNhoMatKhau.setOpaque(false);
         chkNhoMatKhau.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 chkNhoMatKhauMouseEntered(evt);
@@ -64,38 +66,44 @@ public class DangNhapJDialog extends javax.swing.JDialog {
                 chkNhoMatKhauMouseExited(evt);
             }
         });
-        getContentPane().add(chkNhoMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 130, 30));
+        getContentPane().add(chkNhoMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 150, 30));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Mật khẩu");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 100, 30));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 100, 30));
 
+        btnQuenMatKhau.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         btnQuenMatKhau.setText("Quên mật khẩu");
         btnQuenMatKhau.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnQuenMatKhauActionPerformed(evt);
             }
         });
-        getContentPane().add(btnQuenMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 290, 150, 40));
+        getContentPane().add(btnQuenMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, 140, 30));
 
+        btnDangNhap.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         btnDangNhap.setText("Đăng nhập");
         btnDangNhap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDangNhapActionPerformed(evt);
             }
         });
-        getContentPane().add(btnDangNhap, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, 150, 40));
+        getContentPane().add(btnDangNhap, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 130, 30));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Tài khoản");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 110, 40));
-        getContentPane().add(txtTaiKhoan, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 540, 40));
-        getContentPane().add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 540, 40));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 100, 30));
+
+        txtTaiKhoan.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        getContentPane().add(txtTaiKhoan, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 390, 30));
+
+        txtPassword.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        getContentPane().add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 390, 30));
 
         hinh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/br1.jpg"))); // NOI18N
-        getContentPane().add(hinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 610, 370));
+        getContentPane().add(hinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 240));
 
         pack();
         setLocationRelativeTo(null);

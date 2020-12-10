@@ -48,10 +48,18 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Tài khoản");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
-        getContentPane().add(txtTaiKhoan, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 280, 30));
-        getContentPane().add(txtPassMoi1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 280, 30));
-        getContentPane().add(txtPassCu, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 60, 280, 30));
-        getContentPane().add(txtPassMoi2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 160, 280, 30));
+
+        txtTaiKhoan.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        getContentPane().add(txtTaiKhoan, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 280, -1));
+
+        txtPassMoi1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        getContentPane().add(txtPassMoi1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 280, -1));
+
+        txtPassCu.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        getContentPane().add(txtPassCu, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 50, 280, -1));
+
+        txtPassMoi2.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        getContentPane().add(txtPassMoi2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 130, 280, -1));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -61,23 +69,24 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Nhập mật khẩu mới");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Xác nhận lại mật khẩu");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 100, -1, -1));
 
+        btnMatKhau.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         btnMatKhau.setText("Đổi mật khẩu");
         btnMatKhau.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMatKhauActionPerformed(evt);
             }
         });
-        getContentPane().add(btnMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 230, 170, 30));
+        getContentPane().add(btnMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 190, 140, -1));
 
         hinh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/br1.jpg"))); // NOI18N
-        getContentPane().add(hinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, 290));
+        getContentPane().add(hinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, 250));
 
         pack();
         setLocationRelativeTo(null);

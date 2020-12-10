@@ -3,6 +3,7 @@ import java.util.*;
 
 /**
  * 
+ * @author vinh
  */
 public class MuonPhong{
 
@@ -13,6 +14,15 @@ public class MuonPhong{
     private Date tgMuon;
     private Date tgTra;
     private Date tgTraThucTe;
+    private String lyDo;
+
+    public String getLyDo() {
+        return lyDo;
+    }
+
+    public void setLyDo(String lyDo) {
+        this.lyDo = lyDo;
+    }
 
     public int getIdMuonPhong() {
         return idMuonPhong;
