@@ -20,10 +20,13 @@ public class QLMainJFrame extends javax.swing.JFrame {
      */
     public QLMainJFrame() {
         initComponents();
-        AddTab(new NMXemPhongJPanel(), "Title");
+        addTab(new NMXemPhongJPanel(), "Title");
+        addTab(new QuanLyTaiKhoanJPanel(), "QLTK");
+        addTab(new ThongKeJPanel(), "Thống kê");
+        addTab(new QuanLyPhongJPanel(), "QLP");
     }
 
-    private void AddTab(JPanel panel, String title) {
+    private void addTab(JPanel panel, String title) {
         JScrollPane jb = new JScrollPane();
         jb.setBorder(null);
         jb.setViewportView(panel);
@@ -113,11 +116,11 @@ public class QLMainJFrame extends javax.swing.JFrame {
         pnlTrangChu.setLayout(pnlTrangChuLayout);
         pnlTrangChuLayout.setHorizontalGroup(
             pnlTrangChuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1070, Short.MAX_VALUE)
+            .addGap(0, 780, Short.MAX_VALUE)
         );
         pnlTrangChuLayout.setVerticalGroup(
             pnlTrangChuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 485, Short.MAX_VALUE)
+            .addGap(0, 294, Short.MAX_VALUE)
         );
 
         scrTrangChu.setViewportView(pnlTrangChu);
@@ -192,7 +195,7 @@ public class QLMainJFrame extends javax.swing.JFrame {
 
         setJMenuBar(jMenuBar1);
 
-        setSize(new java.awt.Dimension(1097, 628));
+        setSize(new java.awt.Dimension(805, 418));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
