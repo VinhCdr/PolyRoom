@@ -93,7 +93,7 @@ public class QuanLyTaiKhoanJPanel extends javax.swing.JPanel {
                             .addComponent(jLabel2)
                             .addComponent(txtHoVaTen)
                             .addComponent(jLabel3)
-                            .addComponent(txtMatKhau, javax.swing.GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE))
+                            .addComponent(txtMatKhau, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
@@ -101,7 +101,7 @@ public class QuanLyTaiKhoanJPanel extends javax.swing.JPanel {
                             .addComponent(jLabel5)
                             .addComponent(txtSoDienThoai)
                             .addComponent(jLabel6)
-                            .addComponent(txtXacNhanMatKhau, javax.swing.GroupLayout.DEFAULT_SIZE, 297, Short.MAX_VALUE)))
+                            .addComponent(txtXacNhanMatKhau, javax.swing.GroupLayout.DEFAULT_SIZE, 307, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnMoi)
@@ -225,7 +225,7 @@ public class QuanLyTaiKhoanJPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 620, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
