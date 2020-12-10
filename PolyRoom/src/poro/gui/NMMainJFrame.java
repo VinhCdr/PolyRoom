@@ -27,7 +27,6 @@ public class NMMainJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
         jToolBar1 = new javax.swing.JToolBar();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -36,6 +35,12 @@ public class NMMainJFrame extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JToolBar.Separator();
         jSeparator3 = new javax.swing.JToolBar.Separator();
         jLabel6 = new javax.swing.JLabel();
+        tblContent = new javax.swing.JTabbedPane();
+        scrTrangChu = new javax.swing.JScrollPane();
+        pnlTrangChu = new javax.swing.JPanel();
+        pnlChanTrang = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -50,10 +55,6 @@ public class NMMainJFrame extends javax.swing.JFrame {
         jMenuItem12 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.setLayout(new java.awt.CardLayout());
-        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         jToolBar1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jToolBar1.setRollover(true);
@@ -74,6 +75,35 @@ public class NMMainJFrame extends javax.swing.JFrame {
         jToolBar1.add(jLabel6);
 
         getContentPane().add(jToolBar1, java.awt.BorderLayout.PAGE_START);
+
+        scrTrangChu.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 0), null));
+
+        javax.swing.GroupLayout pnlTrangChuLayout = new javax.swing.GroupLayout(pnlTrangChu);
+        pnlTrangChu.setLayout(pnlTrangChuLayout);
+        pnlTrangChuLayout.setHorizontalGroup(
+            pnlTrangChuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1015, Short.MAX_VALUE)
+        );
+        pnlTrangChuLayout.setVerticalGroup(
+            pnlTrangChuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 427, Short.MAX_VALUE)
+        );
+
+        scrTrangChu.setViewportView(pnlTrangChu);
+
+        tblContent.addTab("Trang chủ", scrTrangChu);
+
+        getContentPane().add(tblContent, java.awt.BorderLayout.CENTER);
+
+        pnlChanTrang.setLayout(new java.awt.BorderLayout());
+
+        jLabel7.setText("Đây là chân trang");
+        pnlChanTrang.add(jLabel7, java.awt.BorderLayout.LINE_END);
+
+        jLabel8.setText("Đây cũng là chân trang");
+        pnlChanTrang.add(jLabel8, java.awt.BorderLayout.LINE_START);
+
+        getContentPane().add(pnlChanTrang, java.awt.BorderLayout.PAGE_END);
 
         jMenu1.setText("Tài khoản");
 
@@ -163,6 +193,8 @@ public class NMMainJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu4;
@@ -174,11 +206,14 @@ public class NMMainJFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JToolBar.Separator jSeparator3;
     private javax.swing.JPopupMenu.Separator jSeparator5;
     private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JPanel pnlChanTrang;
+    private javax.swing.JPanel pnlTrangChu;
+    private javax.swing.JScrollPane scrTrangChu;
+    private javax.swing.JTabbedPane tblContent;
     // End of variables declaration//GEN-END:variables
 }
