@@ -113,11 +113,11 @@ public class QLMainJFrame extends javax.swing.JFrame {
         pnlTrangChu.setLayout(pnlTrangChuLayout);
         pnlTrangChuLayout.setHorizontalGroup(
             pnlTrangChuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1015, Short.MAX_VALUE)
+            .addGap(0, 1070, Short.MAX_VALUE)
         );
         pnlTrangChuLayout.setVerticalGroup(
             pnlTrangChuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 427, Short.MAX_VALUE)
+            .addGap(0, 485, Short.MAX_VALUE)
         );
 
         scrTrangChu.setViewportView(pnlTrangChu);
@@ -192,7 +192,7 @@ public class QLMainJFrame extends javax.swing.JFrame {
 
         setJMenuBar(jMenuBar1);
 
-        setSize(new java.awt.Dimension(1040, 551));
+        setSize(new java.awt.Dimension(1097, 628));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
