@@ -1,7 +1,7 @@
 package poro.module;
 
-import poro.dao.DatabaseManager;
-import poro.dao.data.TaiKhoan;
+import poro.module.db.DatabaseManager;
+import poro.module.db.data.TaiKhoan;
 
 /**
  *

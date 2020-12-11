@@ -1,9 +1,9 @@
-package poro.dao.data;
+package poro.module.db.data;
 
 import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import poro.dao.DbExecuteQuery;
+import poro.module.db.DbExecuteQuery;
 
 /**
  *

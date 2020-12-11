@@ -2,8 +2,8 @@ package poro.gui;
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import poro.dao.DatabaseManager;
-import poro.dao.data.TaiKhoan;
+import poro.module.db.DatabaseManager;
+import poro.module.db.data.TaiKhoan;
 import poro.module.Encrypter;
 
 /**

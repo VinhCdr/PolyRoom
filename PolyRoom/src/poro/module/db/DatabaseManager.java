@@ -1,4 +1,4 @@
-package poro.dao;
+package poro.module.db;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
