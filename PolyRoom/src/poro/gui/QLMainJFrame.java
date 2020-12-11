@@ -2,6 +2,8 @@ package poro.gui;
 
 import java.awt.Color;
 import java.io.File;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -400,7 +402,6 @@ public class QLMainJFrame extends javax.swing.JFrame {
 
     private void mniQLTaiKhoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniQLTaiKhoanActionPerformed
         try {
-            checkDangNhap();
             showQLTaiKhoan(0);
         } catch (ToViewException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
@@ -409,7 +410,6 @@ public class QLMainJFrame extends javax.swing.JFrame {
 
     private void mniXemTaiKhoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniXemTaiKhoanActionPerformed
         try {
-            checkDangNhap();
             showQLTaiKhoan(1);
         } catch (ToViewException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
@@ -421,7 +421,11 @@ public class QLMainJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_mniDangNhapActionPerformed
 
     private void mniDoiMatKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniDoiMatKhauActionPerformed
-        // TODO add your handling code here:
+        try {
+            showDoiMatKhau();
+        } catch (ToViewException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
     }//GEN-LAST:event_mniDoiMatKhauActionPerformed
 
     private void mniDangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniDangXuatActionPerformed
@@ -433,11 +437,19 @@ public class QLMainJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_mniThoatActionPerformed
 
     private void mniQLPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniQLPhongActionPerformed
-        // TODO add your handling code here:
+        try {
+            showQLPhong(0);
+        } catch (ToViewException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
     }//GEN-LAST:event_mniQLPhongActionPerformed
 
     private void mniXemPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniXemPhongActionPerformed
-        // TODO add your handling code here:
+        try {
+            showQLPhong(1);
+        } catch (ToViewException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
     }//GEN-LAST:event_mniXemPhongActionPerformed
 
     private void mniMuonPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniMuonPhongActionPerformed
@@ -445,15 +457,27 @@ public class QLMainJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_mniMuonPhongActionPerformed
 
     private void mniThongKePhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniThongKePhongActionPerformed
-        // TODO add your handling code here:
+        try {
+            showThongKe(0);
+        } catch (ToViewException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
     }//GEN-LAST:event_mniThongKePhongActionPerformed
 
     private void mniThongKeGvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniThongKeGvActionPerformed
-        // TODO add your handling code here:
+        try {
+            showThongKe(1);
+        } catch (ToViewException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
     }//GEN-LAST:event_mniThongKeGvActionPerformed
 
     private void mniThongKeAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniThongKeAllActionPerformed
-        // TODO add your handling code here:
+        try {
+            showThongKe(2);
+        } catch (ToViewException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
     }//GEN-LAST:event_mniThongKeAllActionPerformed
 
     private void mniChungToiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniChungToiActionPerformed
@@ -469,17 +493,19 @@ public class QLMainJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDangNhapActionPerformed
 
     private void btnDoiMatKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoiMatKhauActionPerformed
-        // TODO add your handling code here:
+        try {
+            showDoiMatKhau();
+        } catch (ToViewException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
     }//GEN-LAST:event_btnDoiMatKhauActionPerformed
 
     private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
-        // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_btnThoatActionPerformed
 
     private void btnQuanLyTaiKhoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuanLyTaiKhoanActionPerformed
         try {
-            checkDangNhap();
             showQLTaiKhoan(0);
         } catch (ToViewException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
@@ -487,27 +513,39 @@ public class QLMainJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnQuanLyTaiKhoanActionPerformed
 
     private void btnQuanLyPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuanLyPhongActionPerformed
-        // TODO add your handling code here:
+        try {
+            showQLPhong(0);
+        } catch (ToViewException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
     }//GEN-LAST:event_btnQuanLyPhongActionPerformed
 
     private void btnMuonPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMuonPhongActionPerformed
-        // TODO add your handling code here:
+        try {
+            showMuonPhong();
+        } catch (ToViewException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
     }//GEN-LAST:event_btnMuonPhongActionPerformed
 
     private void btnThongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongKeActionPerformed
-        // TODO add your handling code here:
+        try {
+            showThongKe(0);
+        } catch (ToViewException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
     }//GEN-LAST:event_btnThongKeActionPerformed
 
     private void btnDongTabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDongTabActionPerformed
-        // TODO add your handling code here:
+        closeTab();
     }//GEN-LAST:event_btnDongTabActionPerformed
 
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
-        // TODO add your handling code here:
+        toHome();
     }//GEN-LAST:event_btnHomeActionPerformed
 
     private void btnResetTabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetTabActionPerformed
-        // TODO add your handling code here:
+        resetTabs();
     }//GEN-LAST:event_btnResetTabActionPerformed
 
     /**
@@ -659,26 +697,52 @@ public class QLMainJFrame extends javax.swing.JFrame {
      *
      * @see QuanLyTaiKhoanJPanel
      */
-    private void showQLTaiKhoan(int i) {
+    private void showQLTaiKhoan(int i) throws ToViewException {
+        checkDangNhap();
         addTab("Tài khoản", tab_QuanLyTaiKhoanJPanel);
         tab_QuanLyTaiKhoanJPanel.setTab(i);
+    }
+
+    private void showQLPhong(int i) throws ToViewException {
+        checkDangNhap();
+        addTab("Phòng", tab_QuanLyPhongJPanel);
+        tab_QuanLyPhongJPanel.setTab(i);
+    }
+
+    private void showThongKe(int i) throws ToViewException {
+        checkDangNhap();
+        addTab("Thống kê", tab_ThongKeJPanel);
+        tab_ThongKeJPanel.setTab(i);
+    }
+
+    private void showMuonPhong() throws ToViewException {
+        checkDangNhap();
+        addTab("Mượn phòng", tab_NMXemPhongJPanel);
     }
 
     private void showDangXuat() {
         Session.logoff();
         File file = new File("asset/save.dat");
         file.delete();
-        resetTabs();
         showDangNhap();
     }
 
     private void showDangNhap() {
+        resetTabs();
         new DangNhapJDialog(this, true).setVisible(true);
         if (Session.isLogin()) {
             setGiaoDien(Session.USER.isPhanQuyen());
         } else {
             this.dispose();
         }
+    }
+
+    private void showDoiMatKhau() throws ToViewException {
+        checkDangNhap();
+        DoiMatKhauJDialog dmk = new DoiMatKhauJDialog(this, true);
+        dmk.setVisible(true);
+        dmk.setTaiKhoan(Session.USER.getIdTaiKhoan());
+
     }
 
     private void checkDangNhap() throws ToViewException {
@@ -688,9 +752,21 @@ public class QLMainJFrame extends javax.swing.JFrame {
         }
         setGiaoDien(Session.USER.isPhanQuyen());
     }
-    
+
     private void resetTabs() {
         tabContent.removeAll();
         addTab("Trang chủ", tab_TrangChuJPanel);
     }
+
+    private void toHome() {
+        addTab("Trang chủ", tab_TrangChuJPanel);
+    }
+
+    private void closeTab() {
+        if (tabContent.getTabCount() == 0) {
+            return;
+        }
+        tabContent.removeTabAt(tabContent.getSelectedIndex());
+    }
+
 }

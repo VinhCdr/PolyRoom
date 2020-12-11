@@ -27,7 +27,7 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        tabs = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jComboBox1 = new javax.swing.JComboBox<>();
@@ -274,7 +274,7 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Form nhập", jPanel1);
+        tabs.addTab("Form nhập", jPanel1);
 
         jLabel1.setText("Tên phòng");
 
@@ -378,7 +378,7 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Danh sách", jPanel2);
+        tabs.addTab("Danh sách", jPanel2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -386,14 +386,14 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1)
+                .addComponent(tabs)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1)
+                .addComponent(tabs)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -435,10 +435,10 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JTabbedPane tabs;
     private javax.swing.JTextField txtBatDau;
     private javax.swing.JTextField txtCa;
     private javax.swing.JTextField txtEmail;
@@ -451,4 +451,9 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtTenPhg;
     private javax.swing.JTextField txtTenPhong;
     // End of variables declaration//GEN-END:variables
+
+    public void setTab(int i) {
+        tabs.setSelectedIndex(i);
+    }
+
 }

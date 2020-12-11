@@ -56,29 +56,35 @@ public class QuenMatKhauJDialog extends javax.swing.JDialog {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Nhập email tài khoản của bạn");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 290, 50));
+
+        txtemail.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         getContentPane().add(txtemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 420, 30));
 
+        btnGuiMa.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnGuiMa.setText("Gửi mã OTP");
         btnGuiMa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGuiMaActionPerformed(evt);
             }
         });
-        getContentPane().add(btnGuiMa, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 80, 110, 30));
+        getContentPane().add(btnGuiMa, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 80, 120, 30));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Nhập mã OTP của bạn");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
+
+        txtMaOTP.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         getContentPane().add(txtMaOTP, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 420, 30));
 
+        btnXacNhan.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnXacNhan.setText("Xác nhận");
         btnXacNhan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnXacNhanActionPerformed(evt);
             }
         });
-        getContentPane().add(btnXacNhan, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 180, 110, 30));
+        getContentPane().add(btnXacNhan, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 180, 120, 30));
 
         hinh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/br1.jpg"))); // NOI18N
         getContentPane().add(hinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 270));

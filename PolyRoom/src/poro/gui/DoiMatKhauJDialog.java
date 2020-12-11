@@ -168,6 +168,11 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
         txtPassCu.setText(taiKhoan.getMatKhau());
     }
 
+    public void setTaiKhoan(String taiKhoan) {
+        txtTaiKhoan.setEnabled(false);
+        txtTaiKhoan.setText(taiKhoan);
+    }
+    
     private void doiMatKhau() throws ToViewException {
         if (taiKhoanQuen == null) {
             doiMatKhauBt();
@@ -179,9 +184,9 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
     //bình thường
     private void doiMatKhauBt() throws ToViewException {
         Encrypter e = new Encrypter();
-        String passNew2 = String.valueOf(txtPassMoi2.getPassword());
-        String passNewMd5 = e.toMD5(passNew2);
-        doiMatKhau(passNewMd5);
+        String passOld = String.valueOf(txtPassCu.getPassword());
+        String passOldMd5 = e.toMD5(passOld);
+        doiMatKhau(passOldMd5);
     }
 
     //quên mật khẩu
