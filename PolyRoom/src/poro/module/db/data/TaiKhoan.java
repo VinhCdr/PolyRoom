@@ -89,6 +89,7 @@ public class TaiKhoan implements DbExecuteQuery, Serializable {
     public static final int EXECUTE_UPDATE_BY_ID_OR_MAIL = 3;
     public static final int EXECUTE_DELETE_BY_ID_OR_MAIL = 4;
     public static final int EXECUTE_SELECT_BY_MAIL = 5;
+    public static final int EXECUTE_SELECT_BY_ID = 6;
 
     @Override
     public TaiKhoan coverResultSet(ResultSet resultSet, int type) throws SQLException {
@@ -117,6 +118,8 @@ public class TaiKhoan implements DbExecuteQuery, Serializable {
                 return "UPDATE tai_khoan SET id_tai_khoan = ?, email = ?, mat_khau = ?, is_phan_quyen = ?, ten = ?, sdt = ? WHERE (id_tai_khoan LIKE ? OR email LIKE ?);";
             case EXECUTE_DELETE_BY_ID_OR_MAIL:
                 return "DELETE FROM tai_khoan WHERE id_tai_khoan LIKE ? OR email LIKE ?";
+            case EXECUTE_SELECT_BY_ID:
+                return "SELECT id_tai_khoan, email, mat_khau, is_phan_quyen, ten, sdt FROM tai_khoan WHERE id_tai_khoan LIKE ?";
             default:
                 throw new RuntimeException("Không thể lấy câu SQL bằng kiểu có mã là: " + type);
         }
@@ -137,6 +140,8 @@ public class TaiKhoan implements DbExecuteQuery, Serializable {
                 return new Object[]{this.idTaiKhoan, this.email, this.matKhau, this.phanQuyen, this.ten, this.sdt, this.idTaiKhoan, this.email};
             case EXECUTE_DELETE_BY_ID_OR_MAIL:
                 return new Object[]{this.idTaiKhoan, this.email};
+            case EXECUTE_SELECT_BY_ID:
+                return new Object[]{this.idTaiKhoan};
             default:
                 throw new RuntimeException("Không thể lấy dữ liệu cho câu SQL bằng kiểu có mã là: " + type);
         }

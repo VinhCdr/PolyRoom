@@ -5,6 +5,13 @@
  */
 package poro.gui;
 
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import poro.module.db.DatabaseManager;
+import poro.module.db.data.TaiKhoan;
+
 /**
  *
  * @author ASUS
@@ -65,12 +72,32 @@ public class QuanLyTaiKhoanJPanel extends javax.swing.JPanel {
         jLabel6.setText("Xác nhận mật khẩu");
 
         btnMoi.setText("Mới");
+        btnMoi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMoiActionPerformed(evt);
+            }
+        });
 
         btnThem.setText("Thêm");
+        btnThem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemActionPerformed(evt);
+            }
+        });
 
         btnCapNhat.setText("Cập nhật");
+        btnCapNhat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCapNhatActionPerformed(evt);
+            }
+        });
 
         btnXoa.setText("Xóa");
+        btnXoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -205,6 +232,41 @@ public class QuanLyTaiKhoanJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoiActionPerformed
+        // TODO add your handling code here:
+        lamMoi();
+    }//GEN-LAST:event_btnMoiActionPerformed
+
+    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+        try {
+            // TODO add your handling code here:
+            them();
+            JOptionPane.showMessageDialog(this, "Thêm thành công");
+        } catch (ToViewException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
+    }//GEN-LAST:event_btnThemActionPerformed
+
+    private void btnCapNhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapNhatActionPerformed
+        try {
+            // TODO add your handling code here:
+            capNhat();
+            JOptionPane.showMessageDialog(this, "Cập nhật thành công");
+        } catch (ToViewException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
+    }//GEN-LAST:event_btnCapNhatActionPerformed
+
+    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
+        // TODO add your handling code here:
+         try {
+            xoa();
+            JOptionPane.showMessageDialog(this, "Xóa thành công");
+        } catch (ToViewException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
+    }//GEN-LAST:event_btnXoaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCapNhat;
@@ -235,4 +297,83 @@ public class QuanLyTaiKhoanJPanel extends javax.swing.JPanel {
         tabs.setSelectedIndex(i);
     }
 
+    private void lamMoi() {
+        txtTenTaiKhoan.setText("");
+        txtHoVaTen.setText("");
+        txtMatKhau.setText("");
+        txtEmail.setText("");
+        txtSoDienThoai.setText("");
+        txtXacNhanMatKhau.setText("");
+        chkQuanLy.setSelected(false);
+        txtTenTaiKhoan.requestFocus();
+
+    }
+
+    private TaiKhoan getModel() {
+        TaiKhoan model = new TaiKhoan();
+        model.setIdTaiKhoan(txtTenTaiKhoan.getText().trim());
+        model.setTen(txtHoVaTen.getText().trim());
+        model.setMatKhau(txtMatKhau.getText().trim());
+        model.setEmail(txtEmail.getText().trim());
+        model.setSdt(txtSoDienThoai.getText().trim());
+        model.setPhanQuyen(chkQuanLy.isSelected());
+        return model;
+    }
+
+    private void checkLoi() throws ToViewException {
+        TaiKhoan tk = getModel();
+        if (tk.getIdTaiKhoan().isEmpty()) {
+            throw new ToViewException("Tài khoản không được để trống!!");
+
+        }
+        if (tk.getEmail().isEmpty()) {
+            throw new ToViewException("Email không được để trống");
+        }
+        if (!tk.getEmail().matches("\\w+(\\.\\w+)*@\\w+(\\.\\w+)+")) {
+            throw new ToViewException("Email không đúng định dạng");
+        }
+        if (tk.getTen().isEmpty()) {
+            throw new ToViewException("Họ tên không được để trống");
+        }
+        if (tk.getSdt().isEmpty()) {
+            throw new ToViewException("Số điện thoại không được để trống");
+        }
+        if (!tk.getSdt().matches("\\d{10}")) {
+            throw new ToViewException("Số điện thoại không đúng");
+        }
+        if (tk.getMatKhau().isEmpty()) {
+            throw new ToViewException("Mật khẩu không được để trống");
+        }
+        if (!tk.getMatKhau().equals(txtXacNhanMatKhau.getText())) {
+            throw new ToViewException("Mật khẩu không khớp");
+        }
+    }
+
+    private void them() throws ToViewException {
+        checkLoi();
+        TaiKhoan taikh = getModel();
+        int i = DatabaseManager.executeUpdate(taikh, TaiKhoan.EXECUTE_INSERT);
+
+        if (i == 0) {
+            ArrayList<TaiKhoan> tkList = DatabaseManager.executeQuery(taikh, TaiKhoan.EXECUTE_SELECT_BY_MAIL);
+            if (tkList.size() > 0) {
+                throw new ToViewException("Email đã tồn tại");
+            }
+            tkList = DatabaseManager.executeQuery(taikh, TaiKhoan.EXECUTE_SELECT_BY_ID);
+            if (tkList.size() > 0) {
+                throw new ToViewException("Tài khoản đã tồn tại");
+            }
+        }
+    }
+
+    private void capNhat() throws ToViewException {
+        checkLoi();
+        TaiKhoan taikh = getModel();
+        DatabaseManager.executeUpdate(taikh, TaiKhoan.EXECUTE_UPDATE_BY_ID_OR_MAIL);
+    }
+    private void xoa() throws ToViewException{
+        checkLoi();
+        TaiKhoan taikh = getModel();
+        DatabaseManager.executeUpdate(taikh, TaiKhoan.EXECUTE_DELETE_BY_ID_OR_MAIL);
+    }
 }
