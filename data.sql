@@ -22,7 +22,7 @@ GO
 CREATE TABLE [tai_khoan]
 (
     [id_tai_khoan] varchar(64) NOT NULL,
-    [email] varchar(128) NOT NULL,
+    [email] varchar(128) NOT NULL UNIQUE,
     [mat_khau] varchar(128) NOT NULL,
     [is_phan_quyen] bit NOT NULL,
     [ten] NVARCHAR(64) NOT NULL,
