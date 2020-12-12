@@ -116,7 +116,6 @@ public class DangNhapJDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_chkNhoMatKhauMouseEntered
 
     private void chkNhoMatKhauMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chkNhoMatKhauMouseExited
-        // TODO add your handling code here:
         chkNhoMatKhau.setText("Nhớ mật khẩu?");
         chkNhoMatKhau.setForeground(Color.white);
     }//GEN-LAST:event_chkNhoMatKhauMouseExited
