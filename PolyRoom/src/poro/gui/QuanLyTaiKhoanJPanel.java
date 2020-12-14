@@ -6,9 +6,8 @@
 package poro.gui;
 
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import poro.module.db.DatabaseManager;
 import poro.module.db.data.TaiKhoan;
 
@@ -23,6 +22,8 @@ public class QuanLyTaiKhoanJPanel extends javax.swing.JPanel {
      */
     public QuanLyTaiKhoanJPanel() {
         initComponents();
+        loadTblTaiKhoan();
+        setEditable(false);
     }
 
     /**
@@ -55,7 +56,7 @@ public class QuanLyTaiKhoanJPanel extends javax.swing.JPanel {
         btnXoa = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblTaiKhoan = new javax.swing.JTable();
 
         jLabel1.setText("Tên tài khoản");
 
@@ -179,7 +180,7 @@ public class QuanLyTaiKhoanJPanel extends javax.swing.JPanel {
 
         tabs.addTab("Form nhập", jPanel1);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblTaiKhoan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -192,8 +193,28 @@ public class QuanLyTaiKhoanJPanel extends javax.swing.JPanel {
             new String [] {
                 "User", "Tên", "Email", "Số ĐT", "Chức vụ"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblTaiKhoan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblTaiKhoanMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tblTaiKhoan);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -235,12 +256,13 @@ public class QuanLyTaiKhoanJPanel extends javax.swing.JPanel {
     private void btnMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoiActionPerformed
         // TODO add your handling code here:
         lamMoi();
+        setEditable(false);
     }//GEN-LAST:event_btnMoiActionPerformed
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         try {
-            // TODO add your handling code here:
             them();
+            loadTblTaiKhoan();
             JOptionPane.showMessageDialog(this, "Thêm thành công");
         } catch (ToViewException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
@@ -249,8 +271,8 @@ public class QuanLyTaiKhoanJPanel extends javax.swing.JPanel {
 
     private void btnCapNhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapNhatActionPerformed
         try {
-            // TODO add your handling code here:
             capNhat();
+            loadTblTaiKhoan();
             JOptionPane.showMessageDialog(this, "Cập nhật thành công");
         } catch (ToViewException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
@@ -259,13 +281,31 @@ public class QuanLyTaiKhoanJPanel extends javax.swing.JPanel {
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
-         try {
+        try {
+            String confirm = JOptionPane.showInputDialog(
+                    this,
+                    "Tất cả dữ liệu liên quan user \'"
+                    + txtTenTaiKhoan.getText().trim()
+                    + "\' sẽ bị xóa\nNhập CONFIRM và ấn xác nhận để tiếp tục xóa!"
+            );
+            if (null == confirm || !confirm.equals("CONFIRM")) {
+                return;
+            }
             xoa();
+            loadTblTaiKhoan();
+            setEditable(false);
             JOptionPane.showMessageDialog(this, "Xóa thành công");
         } catch (ToViewException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
         }
     }//GEN-LAST:event_btnXoaActionPerformed
+
+    private void tblTaiKhoanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblTaiKhoanMouseClicked
+        if (evt.getClickCount() != 2) {
+            return;
+        }
+        selectTable();
+    }//GEN-LAST:event_tblTaiKhoanMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -283,8 +323,8 @@ public class QuanLyTaiKhoanJPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTabbedPane tabs;
+    private javax.swing.JTable tblTaiKhoan;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtHoVaTen;
     private javax.swing.JPasswordField txtMatKhau;
@@ -303,10 +343,10 @@ public class QuanLyTaiKhoanJPanel extends javax.swing.JPanel {
         txtMatKhau.setText("");
         txtEmail.setText("");
         txtSoDienThoai.setText("");
+        txtMatKhau.setText("");
         txtXacNhanMatKhau.setText("");
         chkQuanLy.setSelected(false);
         txtTenTaiKhoan.requestFocus();
-
     }
 
     private TaiKhoan getModel() {
@@ -355,13 +395,14 @@ public class QuanLyTaiKhoanJPanel extends javax.swing.JPanel {
         int i = DatabaseManager.executeUpdate(taikh, TaiKhoan.EXECUTE_INSERT);
 
         if (i == 0) {
-            ArrayList<TaiKhoan> tkList = DatabaseManager.executeQuery(taikh, TaiKhoan.EXECUTE_SELECT_BY_MAIL);
-            if (tkList.size() > 0) {
-                throw new ToViewException("Email đã tồn tại");
-            }
+            ArrayList<TaiKhoan> tkList;
             tkList = DatabaseManager.executeQuery(taikh, TaiKhoan.EXECUTE_SELECT_BY_ID);
             if (tkList.size() > 0) {
                 throw new ToViewException("Tài khoản đã tồn tại");
+            }
+            tkList = DatabaseManager.executeQuery(taikh, TaiKhoan.EXECUTE_SELECT_BY_MAIL);
+            if (tkList.size() > 0) {
+                throw new ToViewException("Email đã tồn tại");
             }
         }
     }
@@ -369,11 +410,67 @@ public class QuanLyTaiKhoanJPanel extends javax.swing.JPanel {
     private void capNhat() throws ToViewException {
         checkLoi();
         TaiKhoan taikh = getModel();
-        DatabaseManager.executeUpdate(taikh, TaiKhoan.EXECUTE_UPDATE_BY_ID_OR_MAIL);
+        int i = DatabaseManager.executeUpdate(taikh, TaiKhoan.EXECUTE_UPDATE_BY_ID);
+        if (i == 0) {
+            ArrayList<TaiKhoan> tkList;
+            tkList = DatabaseManager.executeQuery(taikh, TaiKhoan.EXECUTE_SELECT_BY_MAIL);
+            if (tkList.size() > 0) {
+                throw new ToViewException("Email bị trùng lặp với tài khoản khác");
+            }
+        }
     }
-    private void xoa() throws ToViewException{
+
+    private void xoa() throws ToViewException {
         checkLoi();
         TaiKhoan taikh = getModel();
-        DatabaseManager.executeUpdate(taikh, TaiKhoan.EXECUTE_DELETE_BY_ID_OR_MAIL);
+        DatabaseManager.executeUpdate(taikh, TaiKhoan.EXECUTE_DELETE_BY_ID);
+    }
+
+    private void loadTblTaiKhoan() {
+        DefaultTableModel dtm = (DefaultTableModel) tblTaiKhoan.getModel();
+        dtm.setRowCount(0);
+        ArrayList<TaiKhoan> tkList = DatabaseManager.executeQuery(new TaiKhoan(), TaiKhoan.EXECUTE_SELECT_ALL);
+        tkList.forEach(taiKhoan -> {
+            dtm.addRow(new Object[]{taiKhoan.getIdTaiKhoan(), taiKhoan.getTen(), taiKhoan.getEmail(), taiKhoan.getSdt(), taiKhoan.isPhanQuyen() ? "Quản lý" : "Người mượn"});
+        });
+    }
+
+    private void setEditable(boolean selected) {
+        txtTenTaiKhoan.setEnabled(!selected);
+        btnThem.setEnabled(!selected);
+        txtMatKhau.setEnabled(!selected);
+        txtXacNhanMatKhau.setEnabled(!selected);
+        btnCapNhat.setEnabled(selected);
+        btnXoa.setEnabled(selected);
+    }
+
+    private void setForm(TaiKhoan tk) {
+        txtTenTaiKhoan.setText(tk.getIdTaiKhoan());
+        txtHoVaTen.setText(tk.getTen());
+        txtMatKhau.setText(tk.getMatKhau());
+        txtEmail.setText(tk.getEmail());
+        txtSoDienThoai.setText(tk.getSdt());
+        txtMatKhau.setText(tk.getMatKhau());
+        txtXacNhanMatKhau.setText(tk.getMatKhau());
+        chkQuanLy.setSelected(tk.isPhanQuyen());
+        txtTenTaiKhoan.requestFocus();
+    }
+
+    private void selectTable() {
+        int rowSelected = tblTaiKhoan.getSelectedRow();
+        if (rowSelected < 0) {
+            return;
+        }
+        DefaultTableModel dtm = (DefaultTableModel) tblTaiKhoan.getModel();
+        String id = (String) dtm.getValueAt(rowSelected, 0);
+        TaiKhoan tk = new TaiKhoan();
+        tk.setIdTaiKhoan(id);
+        ArrayList<TaiKhoan> tkList = DatabaseManager.executeQuery(tk, TaiKhoan.EXECUTE_SELECT_BY_ID);
+        if (tkList.isEmpty()) {
+            return;
+        }
+        setForm(tkList.get(0));
+        setEditable(true);
+        tabs.setSelectedIndex(0);
     }
 }

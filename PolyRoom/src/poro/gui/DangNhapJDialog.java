@@ -23,7 +23,6 @@ public class DangNhapJDialog extends javax.swing.JDialog {
         initComponents();
 
         quenMatKhauJDialog = new QuenMatKhauJDialog(parent, true);
-
         loadTaiKhoan();
     }
 
@@ -133,24 +132,6 @@ public class DangNhapJDialog extends javax.swing.JDialog {
         // TODO add your handling code here:
         quenMatKhauJDialog.setVisible(true);
     }//GEN-LAST:event_btnQuenMatKhauActionPerformed
-
-    public static void main(String args[]) {
-
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-            DangNhapJDialog dialog = new DangNhapJDialog(new javax.swing.JFrame(), true);
-            dialog.setVisible(true);
-            System.exit(0);
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            ex.printStackTrace();
-        }
-
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDangNhap;

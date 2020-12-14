@@ -55,7 +55,6 @@ public class TaiKhoan implements DbExecuteQuery, Serializable {
         this.matKhau = matKhau;
     }
 
-    
     /**
      * @return true là quản lý, false là người mượn
      */
@@ -86,8 +85,8 @@ public class TaiKhoan implements DbExecuteQuery, Serializable {
     public static final int EXECUTE_SELECT_ALL = 0;
     public static final int EXECUTE_SELECT_BY_USER_OR_EMAIL_AND_PASS = 1;
     public static final int EXECUTE_INSERT = 2;
-    public static final int EXECUTE_UPDATE_BY_ID_OR_MAIL = 3;
-    public static final int EXECUTE_DELETE_BY_ID_OR_MAIL = 4;
+    public static final int EXECUTE_UPDATE_BY_ID = 3;
+    public static final int EXECUTE_DELETE_BY_ID = 4;
     public static final int EXECUTE_SELECT_BY_MAIL = 5;
     public static final int EXECUTE_SELECT_BY_ID = 6;
 
@@ -114,10 +113,10 @@ public class TaiKhoan implements DbExecuteQuery, Serializable {
                 return "SELECT id_tai_khoan, email, mat_khau, is_phan_quyen, ten, sdt FROM tai_khoan WHERE email LIKE ?";
             case EXECUTE_INSERT:
                 return "INSERT INTO tai_khoan(id_tai_khoan, email, mat_khau, is_phan_quyen, ten, sdt) VALUES (?, ?, ?, ?, ?, ?);";
-            case EXECUTE_UPDATE_BY_ID_OR_MAIL:
-                return "UPDATE tai_khoan SET id_tai_khoan = ?, email = ?, mat_khau = ?, is_phan_quyen = ?, ten = ?, sdt = ? WHERE (id_tai_khoan LIKE ? OR email LIKE ?);";
-            case EXECUTE_DELETE_BY_ID_OR_MAIL:
-                return "DELETE FROM tai_khoan WHERE id_tai_khoan LIKE ? OR email LIKE ?";
+            case EXECUTE_UPDATE_BY_ID:
+                return "UPDATE tai_khoan SET email = ?, mat_khau = ?, is_phan_quyen = ?, ten = ?, sdt = ? WHERE id_tai_khoan LIKE ?;";
+            case EXECUTE_DELETE_BY_ID:
+                return "DELETE FROM tai_khoan WHERE id_tai_khoan LIKE ?";
             case EXECUTE_SELECT_BY_ID:
                 return "SELECT id_tai_khoan, email, mat_khau, is_phan_quyen, ten, sdt FROM tai_khoan WHERE id_tai_khoan LIKE ?";
             default:
@@ -136,10 +135,10 @@ public class TaiKhoan implements DbExecuteQuery, Serializable {
                 return new Object[]{this.getEmail()};
             case EXECUTE_INSERT:
                 return new Object[]{this.idTaiKhoan, this.email, this.matKhau, this.phanQuyen, this.ten, this.sdt};
-            case EXECUTE_UPDATE_BY_ID_OR_MAIL:
-                return new Object[]{this.idTaiKhoan, this.email, this.matKhau, this.phanQuyen, this.ten, this.sdt, this.idTaiKhoan, this.email};
-            case EXECUTE_DELETE_BY_ID_OR_MAIL:
-                return new Object[]{this.idTaiKhoan, this.email};
+            case EXECUTE_UPDATE_BY_ID:
+                return new Object[]{this.email, this.matKhau, this.phanQuyen, this.ten, this.sdt, this.idTaiKhoan};
+            case EXECUTE_DELETE_BY_ID:
+                return new Object[]{this.idTaiKhoan};
             case EXECUTE_SELECT_BY_ID:
                 return new Object[]{this.idTaiKhoan};
             default:

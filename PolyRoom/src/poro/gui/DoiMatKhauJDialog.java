@@ -219,6 +219,6 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
         tk = tkList.get(0);
         tk.setMatKhau(passNewMd5);
 
-        DatabaseManager.executeUpdate(tk, TaiKhoan.EXECUTE_UPDATE_BY_ID_OR_MAIL);
+        DatabaseManager.executeUpdate(tk, TaiKhoan.EXECUTE_UPDATE_BY_ID);
     }
 }

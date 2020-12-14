@@ -79,6 +79,7 @@ public class QLMainJFrame extends javax.swing.JFrame {
 
         toolbar.setBackground(new java.awt.Color(204, 204, 204));
         toolbar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        toolbar.setFloatable(false);
         toolbar.setToolTipText("");
         toolbar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         toolbar.setEnabled(false);
@@ -739,8 +740,8 @@ public class QLMainJFrame extends javax.swing.JFrame {
     private void showDoiMatKhau() throws ToViewException {
         checkDangNhap();
         DoiMatKhauJDialog dmk = new DoiMatKhauJDialog(this, true);
-        dmk.setVisible(true);
         dmk.setTaiKhoan(Session.USER.getIdTaiKhoan());
+        dmk.setVisible(true);
 
     }
 
@@ -767,5 +768,5 @@ public class QLMainJFrame extends javax.swing.JFrame {
         }
         tabContent.removeTabAt(tabContent.getSelectedIndex());
     }
-
+    
 }

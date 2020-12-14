@@ -34,7 +34,7 @@ GO
 CREATE TABLE [muon_phong]
 (
     [id_muon_phong] integer NOT NULL IDENTITY(1,1),
-    [id_tai_khoan] varchar(64) REFERENCES [tai_khoan]([id_tai_khoan]) NOT NULL ,
+    [id_tai_khoan] varchar(64) NOT NULL,
     [id_phong] integer NOT NULL,
     [ly_do] NVARCHAR(1024) NOT NULL,
     [so_tang] integer NOT NULL,
@@ -42,7 +42,8 @@ CREATE TABLE [muon_phong]
     [tg_tra] datetime NOT NULL,
     [tg_tra_thuc_te] datetime NULL,
     PRIMARY KEY ([id_muon_phong]),
-    FOREIGN KEY ([id_phong], [so_tang]) REFERENCES phong([id_phong], [so_tang])
+    FOREIGN KEY ([id_phong], [so_tang]) REFERENCES phong([id_phong], [so_tang]) ON UPDATE NO ACTION ON DELETE CASCADE,
+    FOREIGN KEY ([id_tai_khoan]) REFERENCES [tai_khoan]([id_tai_khoan]) ON UPDATE NO ACTION ON DELETE CASCADE
 );
 GO
 
@@ -51,8 +52,9 @@ CREATE TABLE [thong_tin_sinh_vien]
     [id_sinh_vien] varchar(8) NOT NULL,
     [email] varchar(128) NOT NULL,
     [ten_sinh_vien] NVARCHAR(128) NOT NULL,
-    [id_muon_phong] integer NOT NULL REFERENCES [muon_phong]([id_muon_phong]),
-    PRIMARY KEY ([id_sinh_vien], [id_muon_phong])
+    [id_muon_phong] integer NOT NULL,
+    PRIMARY KEY ([id_sinh_vien], [id_muon_phong]),
+    FOREIGN KEY ([id_muon_phong]) REFERENCES [muon_phong] ([id_muon_phong]) ON UPDATE NO ACTION ON DELETE CASCADE
 );
 GO
 
@@ -70,8 +72,8 @@ CREATE TABLE [temp_muon_phong_sv]
     [id_tai_khoan] VARCHAR(64),
     [otp] char(8) NOT NULL,
     [tg_dang_ky] DATETIME NOT NULL,
-    FOREIGN KEY ([id_phong], [so_tang]) REFERENCES phong([id_phong], [so_tang]),
-    FOREIGN KEY ([id_tai_khoan]) REFERENCES tai_khoan([id_tai_khoan])
+    FOREIGN KEY ([id_phong], [so_tang]) REFERENCES phong([id_phong], [so_tang]) ON UPDATE NO ACTION  ON DELETE CASCADE,
+    FOREIGN KEY ([id_tai_khoan]) REFERENCES tai_khoan([id_tai_khoan]) ON UPDATE NO ACTION  ON DELETE CASCADE
 );
 GO
 
