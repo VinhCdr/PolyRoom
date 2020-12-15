@@ -5,6 +5,13 @@
  */
 package poro.gui;
 
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import poro.module.db.DatabaseManager;
+import poro.module.db.data.Phong;
+import poro.module.db.data.TaiKhoan;
+
 /**
  *
  * @author ASUS
@@ -16,6 +23,7 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
      */
     public QuanLyPhongJPanel() {
         initComponents();
+        loadTblPhong();
     }
 
     /**
@@ -30,13 +38,13 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
         tabs = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jcbLau = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtTenPhong = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         txtMaPhong = new javax.swing.JTextField();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        chkChoPhep = new javax.swing.JCheckBox();
         btnMoi = new javax.swing.JButton();
         btnSuaPhong = new javax.swing.JButton();
         btnXoaPhong = new javax.swing.JButton();
@@ -68,7 +76,7 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
         jLabel14 = new javax.swing.JLabel();
         txtKetThuc = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblPhong = new javax.swing.JTable();
         txtCa = new javax.swing.JTextField();
         btnTimPhong = new javax.swing.JButton();
         btnTraPhong = new javax.swing.JButton();
@@ -76,7 +84,8 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Quản lý phòng", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.ABOVE_TOP));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tầng trệt" }));
+        jcbLau.setEditable(true);
+        jcbLau.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4" }));
 
         jLabel4.setText("Tầng lầu");
 
@@ -84,20 +93,40 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
 
         jLabel2.setText("Mã phòng");
 
-        jCheckBox1.setText("Cho phép mượn");
-        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+        chkChoPhep.setText("Cho phép mượn");
+        chkChoPhep.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox1ActionPerformed(evt);
+                chkChoPhepActionPerformed(evt);
             }
         });
 
         btnMoi.setText("Mới");
+        btnMoi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMoiActionPerformed(evt);
+            }
+        });
 
         btnSuaPhong.setText("Sửa phòng");
+        btnSuaPhong.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuaPhongActionPerformed(evt);
+            }
+        });
 
         btnXoaPhong.setText("Xóa phòng");
+        btnXoaPhong.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaPhongActionPerformed(evt);
+            }
+        });
 
         btnThemPhong.setText("Thêm phòng");
+        btnThemPhong.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemPhongActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -111,13 +140,13 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
                             .addComponent(jLabel4)
                             .addComponent(jLabel3)
                             .addComponent(txtTenPhong)
-                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jcbLau, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2)
-                                    .addComponent(jCheckBox1))
+                                    .addComponent(chkChoPhep))
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(txtMaPhong)
@@ -146,14 +175,14 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
                             .addComponent(jLabel4)
                             .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jcbLau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(txtMaPhong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTenPhong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCheckBox1))
+                    .addComponent(chkChoPhep))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnMoi)
@@ -165,7 +194,7 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
 
         jPanel3Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnMoi, btnSuaPhong, btnThemPhong, btnXoaPhong});
 
-        jPanel3Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jCheckBox1, jComboBox1, txtMaPhong, txtTenPhong});
+        jPanel3Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {chkChoPhep, jcbLau, txtMaPhong, txtTenPhong});
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Quản lý mượn", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.ABOVE_TOP));
 
@@ -286,7 +315,7 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
 
         jLabel14.setText("TG kết thúc");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblPhong.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -296,10 +325,23 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "Tên phòng", "Mã phòng", "Mã lầu", "Cho mượn", "Đang trống", "Lượt đặt"
+                "Mã lầu", "Mã phòng", "Tên phòng", "Cho mượn", "Đang trống", "Lượt đặt"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblPhong.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblPhongMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tblPhong);
 
         txtCa.setText("Ca 2");
 
@@ -398,9 +440,42 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+    private void chkChoPhepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkChoPhepActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
+    }//GEN-LAST:event_chkChoPhepActionPerformed
+
+    private void btnMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoiActionPerformed
+        // TODO add your handling code here:
+        lamMoi();
+        setEnabled(false);
+    }//GEN-LAST:event_btnMoiActionPerformed
+
+    private void btnThemPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemPhongActionPerformed
+        // TODO add your handling code here:
+        try {
+            them();
+            loadTblPhong();
+            JOptionPane.showMessageDialog(this, "Thêm thành công");
+        } catch (ToViewException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
+    }//GEN-LAST:event_btnThemPhongActionPerformed
+
+    private void btnSuaPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaPhongActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSuaPhongActionPerformed
+
+    private void btnXoaPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaPhongActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnXoaPhongActionPerformed
+
+    private void tblPhongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPhongMouseClicked
+        // TODO add your handling code here:
+        if (evt.getClickCount() != 2) {
+            return;
+        }
+        selectTable();
+    }//GEN-LAST:event_tblPhongMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -413,8 +488,7 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnTraPhong;
     private javax.swing.JButton btnXemChiTiet;
     private javax.swing.JButton btnXoaPhong;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JCheckBox chkChoPhep;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -435,10 +509,11 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JComboBox<String> jcbLau;
     private javax.swing.JTabbedPane tabs;
+    private javax.swing.JTable tblPhong;
     private javax.swing.JTextField txtBatDau;
     private javax.swing.JTextField txtCa;
     private javax.swing.JTextField txtEmail;
@@ -456,4 +531,74 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
         tabs.setSelectedIndex(i);
     }
 
+    private void lamMoi() {
+        txtTenPhong.setText("");
+        txtMaPhong.setText("");
+        txtEmail.setText("");
+        jcbLau.setSelectedIndex(0);
+        chkChoPhep.setSelected(false);
+    }
+
+    private void loadTblPhong() {
+        DefaultTableModel dtm = (DefaultTableModel) tblPhong.getModel();
+        dtm.setRowCount(0);
+        ArrayList<Phong> dsPhong = DatabaseManager.executeQuery(new Phong(), Phong.EXECUTE_SELECT_ALL);
+        dsPhong.forEach(phong -> {
+            dtm.addRow(new Object[]{phong.getIdSoTang(), phong.getIdPhong(), phong.getTenPhong(), phong.isChoMuon() ? "Có" : "-"});
+        });
+    }
+
+    private void them() throws ToViewException {
+        Phong phg = getModel();
+        int i = DatabaseManager.executeUpdate(phg, Phong.EXECUTE_INSERT);
+
+        if (i == 0) {
+            ArrayList<Phong> dsPhong;
+            dsPhong = DatabaseManager.executeQuery(phg, Phong.EXECUTE_SELECT_BY_ID);
+            if (dsPhong.size() > 0) {
+                throw new ToViewException("Phòng đã tồn tại");
+            }
+        }
+    }
+
+    private Phong getModel() {
+        Phong model = new Phong();
+        String smaphg = txtMaPhong.getText().trim();
+        int maphg = Integer.parseInt(smaphg);
+        String ssotang = txtLau.getText().trim();
+        int sotang = Integer.parseInt(ssotang);
+        model.setIdSoTang(sotang);
+        model.setIdPhong(maphg);
+        model.setTenPhong(txtTenPhong.getText().trim());
+        model.setChoMuon(chkChoPhep.isSelected());
+        return model;
+    }
+
+    private void selectTable() {
+        int rowSelected = tblPhong.getSelectedRow();
+        if (rowSelected < 0) {
+            return;
+        }
+        DefaultTableModel dtm = (DefaultTableModel) tblPhong.getModel();
+        Integer idTang = (Integer) dtm.getValueAt(rowSelected, 0);
+        Integer idPhong = (Integer) dtm.getValueAt(rowSelected, 1);
+        Phong ph = new Phong();
+        ph.setIdPhong(idTang);
+        ph.setIdPhong(idPhong);
+        ArrayList<Phong> dsPhong = DatabaseManager.executeQuery(ph, Phong.EXECUTE_SELECT_BY_ID);
+        if (dsPhong.isEmpty()) {
+            return;
+        }
+        setForm(dsPhong.get(0));
+//        setEditable(true);
+        tabs.setSelectedIndex(0);
+    }
+    
+    private void setForm(Phong phong){
+        jcbLau.getModel().setSelectedItem(phong.getIdSoTang());
+        txtMaPhong.setText(phong.getIdPhong()+"");
+        txtTenPhong.setText(phong.getTenPhong());
+        chkChoPhep.setSelected(phong.isChoMuon());
+    }
+    
 }

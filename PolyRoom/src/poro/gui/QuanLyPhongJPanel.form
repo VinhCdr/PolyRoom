@@ -96,14 +96,14 @@
                                       <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="txtTenPhong" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jComboBox1" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jcbLau" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jCheckBox1" min="-2" max="-2" attributes="0"/>
+                                              <Component id="chkChoPhep" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace min="237" max="32767" attributes="0"/>
                                       </Group>
@@ -139,7 +139,7 @@
                                       <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jComboBox1" linkSize="5" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jcbLau" linkSize="5" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Component id="txtMaPhong" linkSize="5" min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -148,7 +148,7 @@
                           <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="txtTenPhong" linkSize="5" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jCheckBox1" linkSize="5" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="chkChoPhep" linkSize="5" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -163,11 +163,16 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JComboBox" name="jComboBox1">
+                <Component class="javax.swing.JComboBox" name="jcbLau">
                   <Properties>
+                    <Property name="editable" type="boolean" value="true"/>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="1">
-                        <StringItem index="0" value="T&#x1ea7;ng tr&#x1ec7;t"/>
+                      <StringArray count="5">
+                        <StringItem index="0" value="0"/>
+                        <StringItem index="1" value="1"/>
+                        <StringItem index="2" value="2"/>
+                        <StringItem index="3" value="3"/>
+                        <StringItem index="4" value="4"/>
                       </StringArray>
                     </Property>
                   </Properties>
@@ -194,33 +199,45 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtMaPhong">
                 </Component>
-                <Component class="javax.swing.JCheckBox" name="jCheckBox1">
+                <Component class="javax.swing.JCheckBox" name="chkChoPhep">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Cho ph&#xe9;p m&#x1b0;&#x1ee3;n"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox1ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chkChoPhepActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnMoi">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="M&#x1edb;i"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMoiActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnSuaPhong">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="S&#x1eed;a ph&#xf2;ng"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSuaPhongActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnXoaPhong">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="X&#xf3;a ph&#xf2;ng"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnXoaPhongActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnThemPhong">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Th&#xea;m ph&#xf2;ng"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThemPhongActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -505,19 +522,59 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTable" name="jTable1">
+                <Component class="javax.swing.JTable" name="tblPhong">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                       <Table columnCount="6" rowCount="6">
-                        <Column editable="true" title="T&#xea;n ph&#xf2;ng" type="java.lang.Object"/>
-                        <Column editable="true" title="M&#xe3; ph&#xf2;ng" type="java.lang.Object"/>
-                        <Column editable="true" title="M&#xe3; l&#x1ea7;u" type="java.lang.Object"/>
-                        <Column editable="true" title="Cho m&#x1b0;&#x1ee3;n" type="java.lang.Object"/>
-                        <Column editable="true" title="&#x110;ang tr&#x1ed1;ng" type="java.lang.Object"/>
-                        <Column editable="true" title="L&#x1b0;&#x1ee3;t &#x111;&#x1eb7;t" type="java.lang.Object"/>
+                        <Column editable="false" title="M&#xe3; l&#x1ea7;u" type="java.lang.Object"/>
+                        <Column editable="false" title="M&#xe3; ph&#xf2;ng" type="java.lang.Object"/>
+                        <Column editable="false" title="T&#xea;n ph&#xf2;ng" type="java.lang.Object"/>
+                        <Column editable="false" title="Cho m&#x1b0;&#x1ee3;n" type="java.lang.Object"/>
+                        <Column editable="false" title="&#x110;ang tr&#x1ed1;ng" type="java.lang.Object"/>
+                        <Column editable="false" title="L&#x1b0;&#x1ee3;t &#x111;&#x1eb7;t" type="java.lang.Object"/>
                       </Table>
                     </Property>
+                    <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                      <TableColumnModel selectionModel="0">
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                      </TableColumnModel>
+                    </Property>
+                    <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                      <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                    </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblPhongMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
