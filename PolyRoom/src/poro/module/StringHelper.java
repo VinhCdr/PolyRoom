@@ -14,7 +14,7 @@ public class StringHelper {
      * @param range Số kí tự
      * @return một chuỗi gồm các số ngẫu nhiên
      */
-    public String random(int range) {
+    public static String random(int range) {
         Random ran = new Random();
         String result = "";
         for(int i =0; i<range; i++){

@@ -16,7 +16,7 @@ public class Encrypter {
      * @param data là dữ liệu sẽ mã hóa
      * @return Một chuổi đã mã MD5
      */
-    public String toMD5(byte[] data) {
+    public static String toMD5(byte[] data) {
         try {
             MessageDigest mesageDiagest = MessageDigest.getInstance("MD5");
             mesageDiagest.update(data);
@@ -34,7 +34,7 @@ public class Encrypter {
      * @return Một chuổi đã mã MD5
      * @see #toMD5(byte[])
      */
-    public String toMD5(String data) {
+    public static String toMD5(String data) {
         return toMD5(data.getBytes());
     }
     

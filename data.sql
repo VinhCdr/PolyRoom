@@ -150,3 +150,107 @@ VALUES
 GO
 SELECT *
 FROM [temp_muon_phong_sv];
+
+
+GO
+CREATE PROC get_phong_mp
+    (@tg_hien_tai DATETIME)
+AS
+BEGIN
+    SELECT phong.so_tang, phong.id_phong, ten_phong, is_cho_muon,
+        (
+        SELECT COUNT(*)
+        FROM muon_phong AS mp
+        WHERE tg_tra_thuc_te IS NULL AND mp.so_tang = phong.so_tang AND mp.id_phong = phong.id_phong
+        ) AS luot_dat,
+        (
+        SELECT IIF(COUNT(*) = 0, 1, 0)
+        FROM muon_phong AS mp2
+        WHERE tg_muon <= @tg_hien_tai AND tg_tra_thuc_te IS NULL AND mp2.so_tang = phong.so_tang AND mp2.id_phong = phong.id_phong
+        ) AS is_trong
+    FROM muon_phong RIGHT JOIN phong ON phong.so_tang = muon_phong.so_tang AND phong.id_phong = muon_phong.id_phong
+    GROUP BY phong.so_tang, phong.id_phong, ten_phong, is_cho_muon;
+END;
+
+GO
+DECLARE @now DATETIME;
+SET @now = GETDATE();
+EXEC get_phong_mp @now;
+
+GO
+CREATE PROC get_phong_mp_id
+    (@tg_hien_tai DATETIME,
+    @so_tang INTEGER,
+    @id_phong INTEGER)
+AS
+BEGIN
+    SELECT phong.so_tang, phong.id_phong, ten_phong, is_cho_muon,
+        (
+        SELECT COUNT(*)
+        FROM muon_phong AS mp
+        WHERE tg_tra_thuc_te IS NULL AND mp.so_tang = phong.so_tang AND mp.id_phong = phong.id_phong
+        ) AS luot_dat,
+        (
+        SELECT IIF(COUNT(*) = 0, 1, 0)
+        FROM muon_phong AS mp2
+        WHERE tg_muon <= @tg_hien_tai AND tg_tra_thuc_te IS NULL AND mp2.so_tang = phong.so_tang AND mp2.id_phong = phong.id_phong
+        ) AS is_trong
+    FROM muon_phong RIGHT JOIN phong ON phong.so_tang = muon_phong.so_tang AND phong.id_phong = muon_phong.id_phong
+    WHERE phong.so_tang = @so_tang AND phong.id_phong = @id_phong
+    GROUP BY phong.so_tang, phong.id_phong, ten_phong, is_cho_muon;
+END;
+
+GO
+DECLARE @now DATETIME;
+SET @now = GETDATE();
+EXEC get_phong_mp_id @now, 1, 2;
+
+
+--------------------------------
+/*
+INSERT INTO [muon_phong]
+    ([id_tai_khoan], [so_tang], [id_phong], [tg_muon], [tg_tra], [tg_tra_thuc_te], [ly_do])
+VALUES
+    (?, ?, ?, ?, ?, ?, ?);
+*/
+  
+SELECT 
+    [id_muon_phong], 
+    [id_tai_khoan],
+    [so_tang], 
+    [id_phong], 
+    [tg_muon], 
+    [tg_tra], 
+    [tg_tra_thuc_te], 
+    [ly_do]
+FROM [muon_phong]
+WHERE [tg_tra_thuc_te] IS NULL;
+
+SELECT 
+    [id_muon_phong], 
+    [id_tai_khoan],
+    [so_tang], 
+    [id_phong], 
+    [tg_muon], 
+    [tg_tra], 
+    [tg_tra_thuc_te], 
+    [ly_do]
+FROM [muon_phong]
+WHERE [so_tang] = 1 AND [id_phong] = 2 AND  [tg_tra_thuc_te] IS NULL;
+/*
+UPDATE [muon_phong]
+SET
+    [id_tai_khoan] = ?,
+    [so_tang] = ?, 
+    [id_phong] = ?, 
+    [tg_muon] = ?, 
+    [tg_tra] = ?, 
+    [tg_tra_thuc_te] = ?, 
+    [ly_do] = ?
+WHERE [id_muon_phong] = ?;
+
+-- DELETE FROM [muon_phong] WHERE id_muon_phong = ?;
+*/
+GO
+
+SELECT * FROM [thong_tin_sinh_vien];

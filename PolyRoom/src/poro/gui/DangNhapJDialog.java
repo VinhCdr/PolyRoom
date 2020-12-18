@@ -1,6 +1,9 @@
 package poro.gui;
 
 import java.awt.Color;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import poro.module.db.DatabaseManager;
@@ -57,6 +60,11 @@ public class DangNhapJDialog extends javax.swing.JDialog {
         chkNhoMatKhau.setForeground(new java.awt.Color(255, 255, 255));
         chkNhoMatKhau.setText("Nhớ mật khẩu?");
         chkNhoMatKhau.setOpaque(false);
+        chkNhoMatKhau.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                chkNhoMatKhauItemStateChanged(evt);
+            }
+        });
         chkNhoMatKhau.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 chkNhoMatKhauMouseEntered(evt);
@@ -133,6 +141,17 @@ public class DangNhapJDialog extends javax.swing.JDialog {
         quenMatKhauJDialog.setVisible(true);
     }//GEN-LAST:event_btnQuenMatKhauActionPerformed
 
+    private void chkNhoMatKhauItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chkNhoMatKhauItemStateChanged
+        if (chkNhoMatKhau.isSelected()) {
+            return;
+        }
+        try {
+            Files.delete(new File("asset/save.dat").toPath());
+        } catch (IOException ex) {
+            System.out.println(ex);
+        }
+    }//GEN-LAST:event_chkNhoMatKhauItemStateChanged
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDangNhap;
     private javax.swing.JButton btnQuenMatKhau;
@@ -200,12 +219,10 @@ public class DangNhapJDialog extends javax.swing.JDialog {
 
     private void nhoMatKhau() throws ToViewException {
         boolean isNhoMK = chkNhoMatKhau.isSelected();
-        TaiKhoan tk;
-        if (isNhoMK) {
-            tk = getTaiKhoan();
-        } else {
-            tk = new TaiKhoan();
+        if (!isNhoMK) {
+            return;
         }
+        TaiKhoan tk = getTaiKhoan();
         FileManager fm = new FileManager("asset/save.dat");
         fm.writeObject(tk);
     }

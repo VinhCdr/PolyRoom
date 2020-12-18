@@ -8,6 +8,7 @@ package poro.gui;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import poro.module.Encrypter;
 import poro.module.db.DatabaseManager;
 import poro.module.db.data.TaiKhoan;
 
@@ -49,11 +50,11 @@ public class QuanLyTaiKhoanJPanel extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         txtSoDienThoai = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        txtXacNhanMatKhau = new javax.swing.JTextField();
         btnMoi = new javax.swing.JButton();
         btnThem = new javax.swing.JButton();
         btnCapNhat = new javax.swing.JButton();
         btnXoa = new javax.swing.JButton();
+        txtXacNhanMatKhau = new javax.swing.JPasswordField();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblTaiKhoan = new javax.swing.JTable();
@@ -108,25 +109,6 @@ public class QuanLyTaiKhoanJPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(chkQuanLy)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(txtTenTaiKhoan)
-                            .addComponent(jLabel2)
-                            .addComponent(txtHoVaTen)
-                            .addComponent(jLabel3)
-                            .addComponent(txtMatKhau, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(txtEmail)
-                            .addComponent(jLabel5)
-                            .addComponent(txtSoDienThoai)
-                            .addComponent(jLabel6)
-                            .addComponent(txtXacNhanMatKhau, javax.swing.GroupLayout.DEFAULT_SIZE, 307, Short.MAX_VALUE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnMoi)
                         .addGap(18, 18, 18)
@@ -134,7 +116,24 @@ public class QuanLyTaiKhoanJPanel extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(btnCapNhat)
                         .addGap(18, 18, 18)
-                        .addComponent(btnXoa)))
+                        .addComponent(btnXoa))
+                    .addComponent(chkQuanLy)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(txtTenTaiKhoan, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
+                            .addComponent(jLabel2)
+                            .addComponent(txtHoVaTen, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
+                            .addComponent(jLabel3)
+                            .addComponent(txtMatKhau, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 297, Short.MAX_VALUE)
+                            .addComponent(txtSoDienThoai, javax.swing.GroupLayout.DEFAULT_SIZE, 297, Short.MAX_VALUE)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6)
+                            .addComponent(txtXacNhanMatKhau))))
                 .addContainerGap())
         );
 
@@ -222,7 +221,7 @@ public class QuanLyTaiKhoanJPanel extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 595, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 610, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -241,7 +240,7 @@ public class QuanLyTaiKhoanJPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(tabs)
+                .addComponent(tabs, javax.swing.GroupLayout.DEFAULT_SIZE, 635, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -330,7 +329,7 @@ public class QuanLyTaiKhoanJPanel extends javax.swing.JPanel {
     private javax.swing.JPasswordField txtMatKhau;
     private javax.swing.JTextField txtSoDienThoai;
     private javax.swing.JTextField txtTenTaiKhoan;
-    private javax.swing.JTextField txtXacNhanMatKhau;
+    private javax.swing.JPasswordField txtXacNhanMatKhau;
     // End of variables declaration//GEN-END:variables
 
     public void setTab(int i) {
@@ -392,6 +391,8 @@ public class QuanLyTaiKhoanJPanel extends javax.swing.JPanel {
     private void them() throws ToViewException {
         checkLoi();
         TaiKhoan taikh = getModel();
+        taikh.setMatKhau(Encrypter.toMD5(taikh.getMatKhau()));
+        
         int i = DatabaseManager.executeUpdate(taikh, TaiKhoan.EXECUTE_INSERT);
 
         if (i == 0) {

@@ -5,6 +5,10 @@
  */
 package poro.gui;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import poro.module.db.DbExecuteQuery;
+
 /**
  *
  * @author ASUS
@@ -200,4 +204,25 @@ public class ThongKeJPanel extends javax.swing.JPanel {
     void setTab(int i) {
         tabs.setSelectedIndex(i);
     }
+    
+    
+    private class ThongKe implements DbExecuteQuery {
+
+        @Override
+        public ThongKe coverResultSet(ResultSet resultSet, int type) throws SQLException {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
+
+        @Override
+        public String getExecuteSQL(int type) {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
+
+        @Override
+        public Object[] getExecuteData(int type) {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
+        
+    }
+    
 }

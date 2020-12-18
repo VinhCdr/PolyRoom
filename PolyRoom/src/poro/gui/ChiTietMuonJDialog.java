@@ -1,13 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package poro.gui;
 
 /**
  *
- * @author Cô Ngọc
+ * @author Cô Ngọc, vinh
  */
 public class ChiTietMuonJDialog extends javax.swing.JDialog {
 
@@ -43,7 +38,7 @@ public class ChiTietMuonJDialog extends javax.swing.JDialog {
 
         jLabel1.setText("Tầng lầu");
 
-        jcbTang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tầng trệt" }));
+        jcbTang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4" }));
 
         jLabel2.setText("Mã phòng");
 
@@ -58,9 +53,17 @@ public class ChiTietMuonJDialog extends javax.swing.JDialog {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "Số thứ tự", "Người mượn", "Chức vụ", "Lý do", "TG bắt đầu", "TG trả dự kiến"
+                "Mã mượn", "Người mượn", "Chức vụ", "Lý do", "TG bắt đầu", "TG trả dự kiến"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tblList);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -165,4 +168,9 @@ public class ChiTietMuonJDialog extends javax.swing.JDialog {
     private javax.swing.JTextField txtMaPhong;
     private javax.swing.JTextField txtTenPhong;
     // End of variables declaration//GEN-END:variables
+
+    public void setPhong(int lau, int maPhong) {
+        
+    }
+    
 }

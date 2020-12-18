@@ -1,13 +1,17 @@
 package poro.module.db.data;
 
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.*;
+import poro.module.CalendarManager;
+import poro.module.db.DbExecuteQuery;
 
 /**
  * 
  * @author vinh
  */
-public class MuonPhong{
+public class MuonPhong implements DbExecuteQuery{
 
     private int idMuonPhong;
     private String idTaiKhoan;
@@ -80,6 +84,39 @@ public class MuonPhong{
 
     public void setTgTraThucTe(Date tgTraThucTe) {
         this.tgTraThucTe = tgTraThucTe;
+    }
+
+    public static final int EXECUTE_SELECT_ALL = 0;
+    public static final int EXECUTE_SELECT_BY_ID = 1;
+    public static final int EXECUTE_INSERT = 2;
+    public static final int EXECUTE_UPDATE_BY_ID = 3;
+    public static final int EXECUTE_DELETE_BY_ID = 4;
+    
+    @Override
+    public MuonPhong coverResultSet(ResultSet rs, int type) throws SQLException {
+        MuonPhong mp = new MuonPhong();
+        mp.setIdMuonPhong(rs.getInt(""));
+        return mp;
+    }
+
+    @Override
+    public String getExecuteSQL(int type) {
+        switch (type) {
+            case EXECUTE_SELECT_ALL:
+                
+            default:
+                throw new RuntimeException("Không thể lấy câu SQL bằng kiểu có mã là: " + type);
+        }
+    }
+
+    @Override
+    public Object[] getExecuteData(int type) {
+        switch (type) {
+            case EXECUTE_SELECT_ALL:
+                
+            default:
+                throw new RuntimeException("Không thể lấy dữ liệu cho câu SQL bằng kiểu có mã là: " + type);
+        }
     }
 
 }

@@ -64,6 +64,8 @@ public class MuonPhongJDialog extends javax.swing.JDialog {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Thông tin phòng"));
 
+        txtTenPhong.setEditable(false);
+
         jLabel3.setText("Tên phòng");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -83,11 +85,21 @@ public class MuonPhongJDialog extends javax.swing.JDialog {
 
         jLabel9.setText("Lầu");
 
+        txtTenPhong1.setEditable(false);
+
+        txtTenPhong2.setEditable(false);
+
         jLabel10.setText("Mã phòng");
 
         jLabel11.setText("Thời gian bắt đầu");
 
+        txtThoiGian1.setEditable(false);
+        txtThoiGian1.setBackground(new java.awt.Color(255, 255, 255));
+
         jLabel12.setText("Thời gian kết thúc");
+
+        txtThoiGian2.setEditable(false);
+        txtThoiGian2.setBackground(new java.awt.Color(255, 255, 255));
 
         btnDangKy2.setText("Kiểm tra");
 
@@ -119,9 +131,7 @@ public class MuonPhongJDialog extends javax.swing.JDialog {
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel10)
                                             .addComponent(txtTenPhong2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addComponent(btnDangKy2)
-                                                .addGap(14, 14, 14))))
+                                            .addComponent(btnDangKy2)))
                                     .addComponent(jLabel12))))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jScrollPane1))
@@ -173,9 +183,15 @@ public class MuonPhongJDialog extends javax.swing.JDialog {
 
         jLabel5.setText("Mã SV");
 
+        txtThoiGian.setEditable(false);
+        txtThoiGian.setBackground(new java.awt.Color(255, 255, 255));
+
         jLabel2.setText("Thời gian trả dự kiến");
 
         jLabel6.setText("Tên SV");
+
+        txtTraDuKien.setEditable(false);
+        txtTraDuKien.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel7.setText("Email SV");
 

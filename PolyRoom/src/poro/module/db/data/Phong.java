@@ -2,6 +2,9 @@ package poro.module.db.data;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
+import poro.module.CalendarManager;
+import poro.module.db.DatabaseManager;
 import poro.module.db.DbExecuteQuery;
 
 /**
@@ -14,6 +17,9 @@ public class Phong implements DbExecuteQuery {
     private int idPhong;
     private String tenPhong;
     private boolean choMuon;
+    //-------------
+    private boolean dangTrong;
+    private int luotDat;
 
     public int getIdSoTang() {
         return idSoTang;
@@ -47,15 +53,37 @@ public class Phong implements DbExecuteQuery {
         this.choMuon = choMuon;
     }
 
+    public boolean isDangTrong() {
+        return dangTrong;
+    }
+
+    public int getLuotDat() {
+        return luotDat;
+    }
+
+    private void setDangTrong(boolean dangTrong) {
+        this.dangTrong = dangTrong;
+    }
+
+    private void setLuotDat(int luotDat) {
+        this.luotDat = luotDat;
+    }
+
     public static final int EXECUTE_SELECT_ALL = 0;
     public static final int EXECUTE_SELECT_BY_ID = 1;
     public static final int EXECUTE_INSERT = 2;
     public static final int EXECUTE_UPDATE_BY_ID = 3;
     public static final int EXECUTE_DELETE_BY_ID = 4;
-
+    
     @Override
     public Phong coverResultSet(ResultSet resultSet, int type) throws SQLException {
         Phong p = new Phong();
+        switch (type) {
+            case EXECUTE_SELECT_ALL:
+                p.setDangTrong(resultSet.getBoolean("is_trong"));
+                p.setLuotDat(resultSet.getInt("luot_dat"));
+                break;
+        }
         p.setIdSoTang(resultSet.getInt("so_tang"));
         p.setIdPhong(resultSet.getInt("id_phong"));
         p.setTenPhong(resultSet.getString("ten_phong"));
@@ -67,15 +95,15 @@ public class Phong implements DbExecuteQuery {
     public String getExecuteSQL(int type) {
         switch (type) {
             case EXECUTE_SELECT_ALL:
-                return "SELECT so_tang, id_phong, ten_phong, is_cho_muon FROM phong;";
+                return "{call get_phong_mp(?)}";
             case EXECUTE_SELECT_BY_ID:
-                return "SELECT so_tang, id_phong, ten_phong, is_cho_muon FROM phong WHERE so_tang = ? AND id_phong = ?;";
+                return "{call get_phong_mp_id (?, ?, ?)}";
             case EXECUTE_INSERT:
                 return "INSERT INTO phong(so_tang, id_phong, ten_phong, is_cho_muon) VALUES (?, ?, ?, ?);";
             case EXECUTE_UPDATE_BY_ID:
                 return "UPDATE phong SET ten_phong = ?, is_cho_muon = ? WHERE so_tang = ? AND id_phong = ?;";
             case EXECUTE_DELETE_BY_ID:
-                return "DELETE FROM phong WHERE  so_tang = ? AND id_phong = ?;";
+                return "DELETE FROM phong WHERE so_tang = ? AND id_phong = ?;";
             default:
                 throw new RuntimeException("Không thể lấy câu SQL bằng kiểu có mã là: " + type);
         }
@@ -85,17 +113,19 @@ public class Phong implements DbExecuteQuery {
     public Object[] getExecuteData(int type) {
         switch (type) {
             case EXECUTE_SELECT_ALL:
-                return new Object[0];
+                return new Object[]{CalendarManager.getNow()};
             case EXECUTE_SELECT_BY_ID:
-                return new Object[]{this.idSoTang, this.idPhong};
+                return new Object[]{CalendarManager.getNow(), this.idSoTang, this.idPhong};
             case EXECUTE_INSERT:
                 return new Object[]{this.idSoTang, this.idPhong, this.tenPhong, this.choMuon};
             case EXECUTE_UPDATE_BY_ID:
                 return new Object[]{this.tenPhong, this.choMuon, this.idSoTang, this.idPhong};
             case EXECUTE_DELETE_BY_ID:
                 return new Object[]{this.idSoTang, this.idPhong};
+                
             default:
                 throw new RuntimeException("Không thể lấy dữ liệu cho câu SQL bằng kiểu có mã là: " + type);
         }
     }
+    
 }

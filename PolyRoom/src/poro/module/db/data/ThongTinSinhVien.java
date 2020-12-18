@@ -1,8 +1,5 @@
 package poro.module.db.data;
 
-
-import java.util.*;
-
 /**
  * 
  */
@@ -54,6 +51,6 @@ public class ThongTinSinhVien {
         this.idMuonPhong = idMuonPhong;
     }
 
-    
+    private void 
     
 }

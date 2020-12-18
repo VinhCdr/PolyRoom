@@ -8,6 +8,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import poro.module.CalendarManager;
 import poro.module.Session;
 
 /**
@@ -647,6 +648,7 @@ public class QLMainJFrame extends javax.swing.JFrame {
         tab_TrangChuJPanel = new TrangChuJPanel();
 
         resetTabs();
+        loadingDongHo();
     }
 
     /**
@@ -768,5 +770,22 @@ public class QLMainJFrame extends javax.swing.JFrame {
         }
         tabContent.removeTabAt(tabContent.getSelectedIndex());
     }
-    
+
+    private void loadingDongHo() {
+        Thread t = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    while (true) {
+                        lblNow.setText(CalendarManager.getString(CalendarManager.getNow(), CalendarManager.DATE_HOUR_FULL_FORMAT));
+                        Thread.sleep(1000);
+                    }
+                } catch (InterruptedException ex) {
+                    System.out.println(ex);
+                }
+            }
+        });
+        t.start();
+    }
+
 }
