@@ -51,6 +51,5 @@ public class ThongTinSinhVien {
         this.idMuonPhong = idMuonPhong;
     }
 
-    private void 
     
 }

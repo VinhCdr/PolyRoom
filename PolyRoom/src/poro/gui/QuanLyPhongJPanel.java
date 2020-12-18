@@ -443,7 +443,7 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
         try {
             sua();
             loadTblPhong();
-            JOptionPane.showMessageDialog(this, "Thêm thành công");
+            JOptionPane.showMessageDialog(this, "Sửa thành công");
         } catch (ToViewException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
         }
@@ -452,12 +452,22 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
     private void btnXoaPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaPhongActionPerformed
         // TODO add your handling code here:
         try {
+            String confirm = JOptionPane.showInputDialog(
+                    this,
+                    "Tất cả dữ liệu liên quan phòng \'"
+                    + txtTenPhong.getText().trim()
+                    + "\' sẽ bị xóa\nNhập CONFIRM và ấn xác nhận để tiếp tục xóa!"
+            );
+            if (null == confirm || !confirm.equals("CONFIRM")) {
+                return;
+            }
             xoa();
             loadTblPhong();
-            JOptionPane.showMessageDialog(this, "Thêm thành công");
+            JOptionPane.showMessageDialog(this, "Xóa thành công");
         } catch (ToViewException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
         }
+        
     }//GEN-LAST:event_btnXoaPhongActionPerformed
 
     private void tblPhongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPhongMouseClicked
@@ -572,15 +582,29 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
         }
     }
 
-    private Phong getModel() {
+    private Phong getModel() throws ToViewException {
         Phong model = new Phong();
         String smaphg = txtMaPhong.getText().trim();
-        int maphg = Integer.parseInt(smaphg);
         String ssotang = String.valueOf(cboLau.getSelectedItem());
+        String tenPh = txtTenPhong.getText().trim();
+
+        if (smaphg.isEmpty()) {
+            throw new ToViewException("Phòng không được để trống");
+        }
+        if (ssotang.isEmpty()) {
+            throw new ToViewException("Số tầng không được để trống");
+        }
+        if (tenPh.isEmpty()) {
+            throw new ToViewException("Tên phòng không được để trống");
+        }
+
+        model.setTenPhong(tenPh);
         int sotang = Integer.parseInt(ssotang);
+        int maphg = Integer.parseInt(smaphg);
+
         model.setIdSoTang(sotang);
         model.setIdPhong(maphg);
-        model.setTenPhong(txtTenPhong.getText().trim());
+
         model.setChoMuon(chkChoPhep.isSelected());
         return model;
     }
@@ -617,14 +641,16 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
         //code by Ngọc
     }
 
-    public void sua() throws ToViewException{
-        //code by Ngọc
+    public void sua() throws ToViewException {
+        Phong phog = getModel();
+        int i = DatabaseManager.executeUpdate(phog, Phong.EXECUTE_UPDATE_BY_ID);
+        if (i == 0) {
+            throw new ToViewException("Sửa phòng thất bại");
+        }
     }
 
     public void xoa() throws ToViewException {
-        //code by Ngọc
+        Phong phog = getModel();
+        DatabaseManager.executeUpdate(phog, Phong.EXECUTE_DELETE_BY_ID);
     }
-
-    
-    
 }
