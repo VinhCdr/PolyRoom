@@ -253,4 +253,4 @@ WHERE [id_muon_phong] = ?;
 */
 GO
 
-SELECT * FROM [thong_tin_sinh_vien];
+SELECT id_sinh_vien, email, ten_sinh_vien, id_muon_phong FROM [thong_tin_sinh_vien];

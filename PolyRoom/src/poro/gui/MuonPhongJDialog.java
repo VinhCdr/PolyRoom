@@ -78,7 +78,15 @@ public class MuonPhongJDialog extends javax.swing.JDialog {
             new String [] {
                 "Tên NM", "Bắt đầu", "Kết thúc"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, true, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jLabel4.setText("Danh sách mượn:");

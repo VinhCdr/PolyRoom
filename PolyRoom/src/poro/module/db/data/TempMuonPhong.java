@@ -1,14 +1,12 @@
 package poro.module.db.data;
 
-import com.sun.org.apache.bcel.internal.generic.RET;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.*;
-import poro.module.CalendarManager;
+import java.util.Date;
 import poro.module.db.DbExecuteQuery;
 
 /**
- *
+ * @author Ngọc, vinh
  */
 public class TempMuonPhong implements DbExecuteQuery {
 
@@ -135,17 +133,16 @@ public class TempMuonPhong implements DbExecuteQuery {
         tmp.setIdTaiKhoan(resultSet.getString("so_tang"));
         tmp.setTgMuon(resultSet.getDate("tg_muon"));
         tmp.setTgTra(resultSet.getDate("tg_tra"));
-        tmp.setIdSinhVien(resultSet.getString(idSinhVien));
+        tmp.setIdSinhVien(resultSet.getString("id_sinh_vien"));
         tmp.setEmailSinhVien(resultSet.getString("email_sinh_vien"));
         tmp.setTenSinhVien(resultSet.getString("ten_sinh_vien"));
         tmp.setLyDo(resultSet.getString("ly_do"));
         tmp.setIdTaiKhoan(resultSet.getString("id_tai_khoan"));
         tmp.setOtp(resultSet.getString("otp"));
         tmp.setThoiGianDangKy(resultSet.getDate("tg_dang_ky"));
-        
+
         return tmp;
     }
-    
 
     @Override
     public String getExecuteSQL(int type) {
@@ -157,14 +154,13 @@ public class TempMuonPhong implements DbExecuteQuery {
             case EXECUTE_INSERT:
                 return "INSERT INTO [temp_muon_phong_sv] "
                         + "[so_tang], [id_phong], [tg_muon], [tg_tra], [id_sinh_vien], [email_sinh_vien], [ten_sinh_vien], [ly_do], [id_tai_khoan], [otp], [tg_dang_ky]) "
-                        + "VALUES "
-                        + "(?, ?, ?, ?, ?, ?, ?, ? , ?, ?, ?);";
+                        + "VALUES (?, ?, ?, ?, ?, ?, ?, ? , ?, ?, ?);";
             case EXECUTE_UPDATE_BY_ID:
                 return "UPDATE FROM [temp_muon_phong_sv] SET "
                         + "[so_tang] = ?, [id_phong]=?, [tg_muon]=?, [tg_tra]=?, [id_sinh_vien]=?, [email_sinh_vien]=?, [ten_sinh_vien]=?, [ly_do]=?, [id_tai_khoan]=?, [otp]=?, [tg_dang_ky]=? "
                         + "WHERE id_temp =?";
             case EXECUTE_DELETE_BY_ID:
-                 return " DELETE FROM [temp_muon_phong_sv] "
+                return " DELETE FROM [temp_muon_phong_sv] "
                         + "WHERE id_temp =?";
             default:
                 throw new RuntimeException("Không thể lấy câu SQL bằng kiểu có mã là: " + type);
@@ -184,7 +180,6 @@ public class TempMuonPhong implements DbExecuteQuery {
                 return new Object[]{this.soTang, this.idPhong, this.tgMuon, this.tgTra, this.idSinhVien, this.emailSinhVien, this.tenSinhVien, this.lyDo, this.idTaiKhoan, this.otp, this.thoiGianDangKy, this.idTemp};
             case EXECUTE_DELETE_BY_ID:
                 return new Object[]{idTemp};
-
             default:
                 throw new RuntimeException("Không thể lấy dữ liệu cho câu SQL bằng kiểu có mã là: " + type);
         }

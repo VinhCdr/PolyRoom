@@ -1,17 +1,15 @@
 package poro.module.db.data;
 
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.*;
-import poro.module.CalendarManager;
+import java.util.Date;
 import poro.module.db.DbExecuteQuery;
 
 /**
- * 
+ *
  * @author vinh
  */
-public class MuonPhong implements DbExecuteQuery{
+public class MuonPhong implements DbExecuteQuery {
 
     private int idMuonPhong;
     private String idTaiKhoan;
@@ -87,15 +85,21 @@ public class MuonPhong implements DbExecuteQuery{
     }
 
     public static final int EXECUTE_SELECT_ALL = 0;
-    public static final int EXECUTE_SELECT_BY_ID = 1;
+    public static final int EXECUTE_SELECT_BY_ID_PHONG = 1;
     public static final int EXECUTE_INSERT = 2;
     public static final int EXECUTE_UPDATE_BY_ID = 3;
-    public static final int EXECUTE_DELETE_BY_ID = 4;
-    
+
     @Override
     public MuonPhong coverResultSet(ResultSet rs, int type) throws SQLException {
         MuonPhong mp = new MuonPhong();
-        mp.setIdMuonPhong(rs.getInt(""));
+        mp.setIdMuonPhong(rs.getInt("id_muon_phong"));
+        mp.setIdTaiKhoan(rs.getString("id_tai_khoan"));
+        mp.setSoTang(rs.getInt("so_tang"));
+        mp.setIdPhong(rs.getInt("id_phong"));
+        mp.setTgMuon(rs.getDate("tg_muon"));
+        mp.setTgTra(rs.getDate("tg_tra"));
+        mp.setTgTraThucTe(rs.getDate("tg_tra_thuc_te"));
+        mp.setLyDo(rs.getString("ly_do"));
         return mp;
     }
 
@@ -103,7 +107,29 @@ public class MuonPhong implements DbExecuteQuery{
     public String getExecuteSQL(int type) {
         switch (type) {
             case EXECUTE_SELECT_ALL:
-                
+                return "SELECT "
+                        + "[id_muon_phong], [id_tai_khoan], [so_tang], [id_phong], [tg_muon], [tg_tra], [tg_tra_thuc_te], [ly_do] "
+                        + "FROM [muon_phong] "
+                        + "WHERE [tg_tra_thuc_te] IS NULL;";
+            case EXECUTE_SELECT_BY_ID_PHONG:
+                return "SELECT "
+                        + "[id_muon_phong], [id_tai_khoan], [so_tang], [id_phong], [tg_muon], [tg_tra], [tg_tra_thuc_te], [ly_do]"
+                        + "FROM [muon_phong] "
+                        + "WHERE [so_tang] = ? AND [id_phong] = ? AND  [tg_tra_thuc_te] IS NULL;";
+            case EXECUTE_INSERT:
+                return "INSERT INTO [muon_phong]([id_tai_khoan], [so_tang], [id_phong], [tg_muon], [tg_tra], [tg_tra_thuc_te], [ly_do]) "
+                        + "VALUES (?, ?, ?, ?, ?, ?, ?);";
+            case EXECUTE_UPDATE_BY_ID:
+                return "UPDATE [muon_phong] SET "
+                        + "[id_muon_phong] = ?, "
+                        + "[id_tai_khoan] = ?, "
+                        + "[so_tang] = ?, "
+                        + "[id_phong] = ?, "
+                        + "[tg_muon] = ?, "
+                        + "[tg_tra] = ?, "
+                        + "[tg_tra_thuc_te] = ?, "
+                        + "[ly_do] = ? "
+                        + "WHERE [id_muon_phong] = ?;";
             default:
                 throw new RuntimeException("Không thể lấy câu SQL bằng kiểu có mã là: " + type);
         }
@@ -113,7 +139,13 @@ public class MuonPhong implements DbExecuteQuery{
     public Object[] getExecuteData(int type) {
         switch (type) {
             case EXECUTE_SELECT_ALL:
-                
+                return new Object[0];
+            case EXECUTE_SELECT_BY_ID_PHONG:
+                return new Object[]{this.getSoTang(), this.getIdMuonPhong()};
+            case EXECUTE_INSERT:
+                return new Object[]{this.getIdTaiKhoan(), this.getSoTang(), this.getIdPhong(), this.getTgMuon(), this.getTgTra(), this.getTgTraThucTe(), this.getLyDo()};
+            case EXECUTE_UPDATE_BY_ID:
+                return new Object[]{this.getIdMuonPhong(), this.getIdTaiKhoan(), this.getTgMuon(), this.getTgTra(), this.getTgTraThucTe(), this.getLyDo(), this.getSoTang(), this.getIdPhong(),};
             default:
                 throw new RuntimeException("Không thể lấy dữ liệu cho câu SQL bằng kiểu có mã là: " + type);
         }
