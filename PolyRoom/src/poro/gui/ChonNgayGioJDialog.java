@@ -365,6 +365,7 @@ public class ChonNgayGioJDialog extends javax.swing.JDialog {
 
     public void setDateOrigin(Date date) {
         this.dateOrigin = date;
+        resetForm();
     }
 
     private void loadCbo() throws ToViewException {
@@ -378,12 +379,12 @@ public class ChonNgayGioJDialog extends javax.swing.JDialog {
         setCbo(cboPhut, 0, 59);
         setCbo(cboGiay, 0, 59);
     }
-    
+
     public void resetForm() {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(dateOrigin);
         cboNam.setSelectedItem(calendar.get(Calendar.YEAR));
-        cboThang.setSelectedItem(calendar.get(Calendar.MONTH));
+        cboThang.setSelectedItem(calendar.get(Calendar.MONTH) + 1);
         cboNgay.setSelectedItem(calendar.get(Calendar.DAY_OF_MONTH));
         cboGio.setSelectedItem(calendar.get(Calendar.HOUR_OF_DAY));
         cboPhut.setSelectedItem(calendar.get(Calendar.MINUTE));

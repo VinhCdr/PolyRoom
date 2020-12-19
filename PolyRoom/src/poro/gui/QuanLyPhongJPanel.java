@@ -6,12 +6,15 @@
 package poro.gui;
 
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import poro.module.CalendarManager;
 import poro.module.db.DatabaseManager;
+import poro.module.db.data.MuonPhong;
 import poro.module.db.data.Phong;
 import poro.module.db.data.ThongTinMuonPhong;
 
@@ -77,7 +80,7 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
         btnMuonPhong = new javax.swing.JButton();
         txtCa1 = new javax.swing.JTextField();
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Quản lý phòng", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.ABOVE_TOP));
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Quản lý mượn", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
 
         cboLau.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4" }));
 
@@ -190,7 +193,7 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
 
         jPanel3Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {cboLau, chkChoPhep, txtMaPhong, txtTenPhong});
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Quản lý mượn", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.ABOVE_TOP));
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Quản lý mượn", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
 
         rtxtSinhVien.setEditable(false);
         rtxtSinhVien.setBackground(new java.awt.Color(255, 255, 255));
@@ -352,9 +355,17 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblPhong);
 
+        txtCa.setEditable(false);
+        txtCa.setBackground(new java.awt.Color(255, 255, 255));
+
         btnTimPhong.setText("Tìm phòng trống");
 
         btnTraPhong.setText("Trả phòng");
+        btnTraPhong.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTraPhongActionPerformed(evt);
+            }
+        });
 
         btnMuonPhong.setText("Mượn phòng");
         btnMuonPhong.addActionListener(new java.awt.event.ActionListener() {
@@ -362,6 +373,9 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
                 btnMuonPhongActionPerformed(evt);
             }
         });
+
+        txtCa1.setEditable(false);
+        txtCa1.setBackground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -392,7 +406,7 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 335, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 333, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtCa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -418,7 +432,7 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(tabs)
+                .addComponent(tabs, javax.swing.GroupLayout.DEFAULT_SIZE, 424, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -493,7 +507,14 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnXemChiTietActionPerformed
 
     private void btnHuyMuonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyMuonActionPerformed
-        // TODO add your handling code here:
+        try {
+            huyMuon();
+            JOptionPane.showMessageDialog(this, "Hủy mượn thành công");
+            selectTable();
+            loadTblPhong();
+        } catch (ToViewException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
     }//GEN-LAST:event_btnHuyMuonActionPerformed
 
     private void btnMuonPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMuonPhongActionPerformed
@@ -506,6 +527,9 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
         m.setVisible(true);
     }//GEN-LAST:event_btnMuonPhongActionPerformed
 
+    private void btnTraPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTraPhongActionPerformed
+        
+    }//GEN-LAST:event_btnTraPhongActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnHuyMuon;
@@ -725,6 +749,28 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
         dialog.loading(ttmps);
         dialog.setVisible(true);
     }
+    
+    private void huyMuon() throws ToViewException {
+        QLMuon muon = (QLMuon) rcboNguoiMuon.getSelectedItem();
+        MuonPhong mp = new MuonPhong();
+        mp.setIdMuonPhong(muon.idMuon);
+        
+        ArrayList<MuonPhong> mps = DatabaseManager.executeQuery(mp, MuonPhong.EXECUTE_SELECT_BY_ID);
+        if (mps == null && mps.isEmpty()){
+            throw new ToViewException("Không có phiếu mượn định hủy");
+        }
+        
+        mp = mps.get(0);
+        if (CalendarManager.getNow().before(mp.getTgMuon())) {
+            mp.setTgTraThucTe(mp.getTgMuon());
+        } else {
+            mp.setTgTraThucTe(CalendarManager.getNow());
+        }
+        int ok = DatabaseManager.executeUpdate(mp, MuonPhong.EXECUTE_UPDATE_BY_ID);
+        if (ok == 0) {
+            throw new ToViewException("Hủy mượn phòng thất bại");
+        }
+    }
 
     private class QLMuon {
         int idMuon;
@@ -740,5 +786,5 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
             return tenNguoiMuon;
         }
     }
-
+    
 }

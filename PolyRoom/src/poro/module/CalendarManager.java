@@ -21,8 +21,7 @@ public class CalendarManager {
     }
 
     public static Date addTimes(Date date, Long time) {
-        date.setTime(date.getTime() + time);
-        return date;
+        return new Date(date.getTime() + time);
     }
 
     public static String getString(Date date, String format) {

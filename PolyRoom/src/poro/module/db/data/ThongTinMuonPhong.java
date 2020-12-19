@@ -2,6 +2,7 @@ package poro.module.db.data;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.List;
 import poro.module.db.DatabaseManager;
 import poro.module.db.DbExecuteQuery;
@@ -25,6 +26,15 @@ public class ThongTinMuonPhong implements DbExecuteQuery {
     }
 
     private int soTang, idPhong;
+    private Date tgBatDauF, tgKetThucF;
+
+    public void setTgBatDauF(Date tgBatDauF) {
+        this.tgBatDauF = tgBatDauF;
+    }
+
+    public void setTgKetThucF(Date tgKetThucF) {
+        this.tgKetThucF = tgKetThucF;
+    }
 
     public void setSoTang(int soTang) {
         this.soTang = soTang;
@@ -51,6 +61,8 @@ public class ThongTinMuonPhong implements DbExecuteQuery {
     }
 
     public static final int EXECUTE_SELECT_BY_ID_PHONG = 1;
+    public static final int EXECUTE_SELECT_TIM_PHONG = 2;
+    public static final int EXECUTE_SELECT_KIEM_TRA_PHONG = 3;
 
     @Override
     public ThongTinMuonPhong coverResultSet(ResultSet resultSet, int type) throws SQLException {
@@ -82,7 +94,14 @@ public class ThongTinMuonPhong implements DbExecuteQuery {
                 return "SELECT [id_phong], [so_tang], [ten_phong], [is_cho_muon], [luot_dat], [is_trong], [id_muon_phong], [id_tai_khoan], [ly_do], [tg_muon], [tg_tra], [tg_tra_thuc_te], [email], [mat_khau], [is_phan_quyen], [ten], [sdt], [id_sinh_vien], [ten_sinh_vien], [email_sv] "
                         + "FROM view_thong_tin_muon_phong "
                         + "WHERE so_tang = ? AND id_phong = ?";
-            // AND [tg_tra_thuc_te] IS NULL;
+            case EXECUTE_SELECT_TIM_PHONG:
+                return "SELECT [id_phong], [so_tang], [ten_phong], [is_cho_muon], [luot_dat], [is_trong], [id_muon_phong], [id_tai_khoan], [ly_do], [tg_muon], [tg_tra], [tg_tra_thuc_te], [email], [mat_khau], [is_phan_quyen], [ten], [sdt], [id_sinh_vien], [ten_sinh_vien], [email_sv] "
+                        + "FROM view_thong_tin_muon_phong "
+                        + "WHERE ([tg_tra] < ? AND [tg_muon] > ?) OR [tg_tra_thuc_te] IS NOT NULL";
+            case EXECUTE_SELECT_KIEM_TRA_PHONG:
+                return "SELECT [id_phong], [so_tang], [ten_phong], [is_cho_muon], [luot_dat], [is_trong], [id_muon_phong], [id_tai_khoan], [ly_do], [tg_muon], [tg_tra], [tg_tra_thuc_te], [email], [mat_khau], [is_phan_quyen], [ten], [sdt], [id_sinh_vien], [ten_sinh_vien], [email_sv] "
+                        + "FROM view_thong_tin_muon_phong "
+                        + "WHERE ([tg_tra] < ? OR [tg_muon] > ? OR [tg_tra_thuc_te] IS NOT NULL) AND so_tang = ? AND id_phong = ?";
             default:
                 throw new RuntimeException("Không thể lấy câu SQL bằng kiểu có mã là: " + type);
         }
@@ -93,10 +112,14 @@ public class ThongTinMuonPhong implements DbExecuteQuery {
         switch (type) {
             case EXECUTE_SELECT_BY_ID_PHONG:
                 return new Object[]{this.soTang, this.idPhong};
+            case EXECUTE_SELECT_TIM_PHONG:
+                return new Object[]{this.tgBatDauF, this.tgKetThucF};
+            case EXECUTE_SELECT_KIEM_TRA_PHONG:
+                return new Object[]{this.tgBatDauF, this.tgKetThucF, this.soTang, this.idPhong};
             default:
                 throw new RuntimeException("Không thể lấy dữ liệu cho câu SQL bằng kiểu có mã là: " + type);
         }
-    }    
+    }
 
     public static void main(String[] args) {
         ThongTinMuonPhong ttmp = new ThongTinMuonPhong();

@@ -11,6 +11,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import poro.module.CalendarManager;
 import poro.module.Session;
@@ -60,7 +61,7 @@ public class MuonPhongJDialog extends javax.swing.JDialog {
         txtTestTGBatDau = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         txtTestTGKetThuc = new javax.swing.JTextField();
-        btnDangKy2 = new javax.swing.JButton();
+        btnTest = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         txtLyDo = new javax.swing.JTextField();
@@ -139,7 +140,12 @@ public class MuonPhongJDialog extends javax.swing.JDialog {
             }
         });
 
-        btnDangKy2.setText("Kiểm tra");
+        btnTest.setText("Kiểm tra");
+        btnTest.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTestActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -169,7 +175,7 @@ public class MuonPhongJDialog extends javax.swing.JDialog {
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel10)
                                             .addComponent(txtMaPhong, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(btnDangKy2)))
+                                            .addComponent(btnTest)))
                                     .addComponent(jLabel12))))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jScrollPane1))
@@ -203,7 +209,7 @@ public class MuonPhongJDialog extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTestTGBatDau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtTestTGKetThuc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnDangKy2))
+                    .addComponent(btnTest))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -348,7 +354,7 @@ public class MuonPhongJDialog extends javax.swing.JDialog {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -358,17 +364,11 @@ public class MuonPhongJDialog extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtTGBatDauMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTGBatDauMouseClicked
-        ChonNgayGioJDialog cngjd = new ChonNgayGioJDialog((JFrame) this.getParent(), true);
-        cngjd.setDateOrigin(CalendarManager.getNow());
-        cngjd.setVisible(true);
-        txtTGBatDau.setText(cngjd.getResult());
+        setGioBatDau(txtTGBatDau);
     }//GEN-LAST:event_txtTGBatDauMouseClicked
 
     private void txtTraDuKienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTraDuKienMouseClicked
-        ChonNgayGioJDialog cngjd = new ChonNgayGioJDialog((JFrame) this.getParent(), true);
-        cngjd.setDateOrigin(CalendarManager.getNow());
-        cngjd.setVisible(true);
-        txtTraDuKien.setText(cngjd.getResult());
+        setGioKetThuc(txtTGBatDau, txtTraDuKien);
     }//GEN-LAST:event_txtTraDuKienMouseClicked
 
     private void chkMuonHoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chkMuonHoItemStateChanged
@@ -379,15 +379,18 @@ public class MuonPhongJDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_chkMuonHoItemStateChanged
 
     private void txtTestTGBatDauMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTestTGBatDauMouseClicked
-        // TODO add your handling code here:
+        setGioBatDau(txtTestTGBatDau);
     }//GEN-LAST:event_txtTestTGBatDauMouseClicked
 
     private void txtTestTGKetThucMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTestTGKetThucMouseClicked
-        // TODO add your handling code here:
+        setGioKetThuc(txtTestTGBatDau, txtTestTGKetThuc);
     }//GEN-LAST:event_txtTestTGKetThucMouseClicked
 
     private void btnDangKyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangKyActionPerformed
         try {
+            txtTestTGBatDau.setText(txtTGBatDau.getText());
+            txtTestTGKetThuc.setText(txtTraDuKien.getText());
+            test();
             insert();
             JOptionPane.showMessageDialog(this, "Mượn phòng thành công");
             this.dispose();
@@ -395,6 +398,19 @@ public class MuonPhongJDialog extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, ex.getMessage());
         }
     }//GEN-LAST:event_btnDangKyActionPerformed
+
+    private void btnTestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTestActionPerformed
+        try {
+            test();
+            txtTGBatDau.setText(txtTestTGBatDau.getText());
+            txtTraDuKien.setText(txtTestTGKetThuc.getText());
+            JOptionPane.showMessageDialog(this, "Có thể mượn");
+        } catch (ToViewException ex) {
+            txtTGBatDau.setText("");
+            txtTraDuKien.setText("");
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
+    }//GEN-LAST:event_btnTestActionPerformed
 
     /**
      * @param args the command line arguments
@@ -439,7 +455,7 @@ public class MuonPhongJDialog extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDangKy;
-    private javax.swing.JButton btnDangKy2;
+    private javax.swing.JButton btnTest;
     private javax.swing.JCheckBox chkMuonHo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -531,15 +547,70 @@ public class MuonPhongJDialog extends javax.swing.JDialog {
         if (ok <= 0) {
             throw new ToViewException("Mượn phòng thất bại");
         }
-        
-        if (!chkMuonHo.isSelected()){
+
+        if (!chkMuonHo.isSelected()) {
             return;
         }
-        
+
         int idMuon = DatabaseManager.executeQuery(form.muonPhong, MuonPhong.EXECUTE_SELECT_LAST_INSERT).get(0).getIdMuonPhong();
-        
+
         form.sinhVien.setIdMuonPhong(idMuon);
         DatabaseManager.executeUpdate(form.sinhVien, SinhVien.EXECUTE_INSERT);
+    }
+
+    private void setGioBatDau(JTextField txtBatDau) {
+        ChonNgayGioJDialog cngjd = new ChonNgayGioJDialog((JFrame) this.getParent(), true);
+
+        Date dateOrigin = CalendarManager.getNow();
+        if (!txtBatDau.getText().isEmpty()) {
+            dateOrigin = CalendarManager.getDateByString(txtBatDau.getText(), CalendarManager.DATE_HOUR_FULL_FORMAT);
+        }
+
+        cngjd.setDateOrigin(dateOrigin);
+        cngjd.setVisible(true);
+        txtBatDau.setText(cngjd.getResult());
+    }
+
+    private void setGioKetThuc(JTextField txtBatDau, JTextField txtKetThuc) {
+        ChonNgayGioJDialog cngjd = new ChonNgayGioJDialog((JFrame) this.getParent(), true);
+
+        Date dateOrigin = CalendarManager.getNow();
+
+        if (!txtKetThuc.getText().isEmpty()) {
+            dateOrigin = CalendarManager.getDateByString(txtKetThuc.getText(), CalendarManager.DATE_HOUR_FULL_FORMAT);
+        } else {
+            if (!txtBatDau.getText().isEmpty()) {
+                Date first = CalendarManager.getDateByString(txtBatDau.getText(), CalendarManager.DATE_HOUR_FULL_FORMAT);
+                dateOrigin = CalendarManager.addTimes(first, 1000L * 60 * 60 * 2);
+            }
+        }
+
+        cngjd.setDateOrigin(dateOrigin);
+        cngjd.setVisible(true);
+        txtKetThuc.setText(cngjd.getResult());
+    }
+
+    private void test() throws ToViewException {
+        ThongTinMuonPhong ttmp = new ThongTinMuonPhong();
+
+        String sbatDau = txtTestTGBatDau.getText();
+        String sketThuc = txtTestTGKetThuc.getText();
+
+        Date batDau = CalendarManager.getDateByString(sbatDau, CalendarManager.DATE_HOUR_FULL_FORMAT);
+        Date ketThuc = CalendarManager.getDateByString(sketThuc, CalendarManager.DATE_HOUR_FULL_FORMAT);
+
+        int soTang = Integer.parseInt(txtLau.getText());
+        int idPhong = Integer.parseInt(txtMaPhong.getText());
+
+        ttmp.setTgBatDauF(batDau);
+        ttmp.setTgKetThucF(ketThuc);
+        ttmp.setSoTang(soTang);
+        ttmp.setIdPhong(idPhong);
+
+        ArrayList<ThongTinMuonPhong> ttmps = DatabaseManager.executeQuery(ttmp, ThongTinMuonPhong.EXECUTE_SELECT_KIEM_TRA_PHONG);
+        if (ttmps == null || ttmps.isEmpty()) {
+            throw new ToViewException("Thời gian này đã được đặt trước");
+        }
     }
 
     private class Form {

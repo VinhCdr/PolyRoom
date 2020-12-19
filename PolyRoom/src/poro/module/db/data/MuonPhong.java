@@ -103,6 +103,7 @@ public class MuonPhong implements DbExecuteQuery {
     public static final int EXECUTE_INSERT = 2;
     public static final int EXECUTE_UPDATE_BY_ID = 3;
     public static final int EXECUTE_SELECT_LAST_INSERT = 4;
+    public static final int EXECUTE_SELECT_BY_ID = 5;
 
     @Override
     public MuonPhong coverResultSet(ResultSet rs, int type) throws SQLException {
@@ -136,7 +137,6 @@ public class MuonPhong implements DbExecuteQuery {
                         + "VALUES (?, ?, ?, ?, ?, ?, ?);";
             case EXECUTE_UPDATE_BY_ID:
                 return "UPDATE [muon_phong] SET "
-                        + "[id_muon_phong] = ?, "
                         + "[id_tai_khoan] = ?, "
                         + "[so_tang] = ?, "
                         + "[id_phong] = ?, "
@@ -151,6 +151,11 @@ public class MuonPhong implements DbExecuteQuery {
                         + "FROM [muon_phong] "
                         + "WHERE [tg_tra_thuc_te] IS NULL "
                         + "ORDER BY [id_muon_phong] DESC;";
+            case EXECUTE_SELECT_BY_ID:
+                return "SELECT "
+                        + "[id_muon_phong], [id_tai_khoan], [so_tang], [id_phong], [tg_muon], [tg_tra], [tg_tra_thuc_te], [ly_do] "
+                        + "FROM [muon_phong] "
+                        + "WHERE [tg_tra_thuc_te] IS NULL AND [id_muon_phong] = ?;";
             default:
                 throw new RuntimeException("Không thể lấy câu SQL bằng kiểu có mã là: " + type);
         }
@@ -166,9 +171,11 @@ public class MuonPhong implements DbExecuteQuery {
             case EXECUTE_INSERT:
                 return new Object[]{this.getIdTaiKhoan(), this.getSoTang(), this.getIdPhong(), this.getTgMuon(), this.getTgTra(), this.getTgTraThucTe(), this.getLyDo()};
             case EXECUTE_UPDATE_BY_ID:
-                return new Object[]{this.getIdMuonPhong(), this.getIdTaiKhoan(), this.getTgMuon(), this.getTgTra(), this.getTgTraThucTe(), this.getLyDo(), this.getSoTang(), this.getIdPhong(),};
+                return new Object[]{this.getIdTaiKhoan(), this.getSoTang(), this.getIdPhong(), this.getTgMuon(), this.getTgTra(), this.getTgTraThucTe(), this.getLyDo(), this.getIdMuonPhong()};
             case EXECUTE_SELECT_LAST_INSERT:
                 return new Object[0];
+            case EXECUTE_SELECT_BY_ID:
+                return new Object[]{this.getIdMuonPhong()};
             default:
                 throw new RuntimeException("Không thể lấy dữ liệu cho câu SQL bằng kiểu có mã là: " + type);
         }
