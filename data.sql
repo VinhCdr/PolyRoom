@@ -50,7 +50,7 @@ GO
 CREATE TABLE [thong_tin_sinh_vien]
 (
     [id_sinh_vien] varchar(8) NOT NULL,
-    [email] varchar(128) NOT NULL,
+    [email_sv] varchar(128) NOT NULL,
     [ten_sinh_vien] NVARCHAR(128) NOT NULL,
     [id_muon_phong] integer NOT NULL,
     PRIMARY KEY ([id_sinh_vien], [id_muon_phong]),
@@ -124,13 +124,13 @@ VALUES
     ('tk3', 2, 3, '2020-12-22 09:30:00', '2020-12-22 11:30:00', null, N'Dạy học'),
     ('tk4', 3, 1, '2020-12-22 09:30:00', '2020-12-22 11:30:00', null, N'Dạy học'),
     ('tk5', 3, 2, '2020-12-22 09:30:00', '2020-12-22 11:30:00', null, N'Dạy học'),
-    ('tk6', 3, 1, '2020-12-22 09:30:00', '2020-12-22 11:30:00', null, N'Dạy học');
+    ('tk6', 3, 1, '2020-12-23 09:30:00', '2020-12-23 11:30:00', null, N'Dạy học');
 GO
 SELECT *
 FROM [muon_phong];
 
 INSERT INTO [thong_tin_sinh_vien]
-    ([id_sinh_vien],[email], [ten_sinh_vien], [id_muon_phong])
+    ([id_sinh_vien],[email_sv], [ten_sinh_vien], [id_muon_phong])
 VALUES
     ('pc01238', 'vinhlmpc01238@fpt.edu.vn', N'Vinh', 1),
     ('pc01187', 'ngocntypc01187@fpt.edu.vn', N'Ngọc', 2),
@@ -213,30 +213,30 @@ INSERT INTO [muon_phong]
 VALUES
     (?, ?, ?, ?, ?, ?, ?);
 */
-  
-SELECT 
-    [id_muon_phong], 
+
+SELECT
+    [id_muon_phong],
     [id_tai_khoan],
-    [so_tang], 
-    [id_phong], 
-    [tg_muon], 
-    [tg_tra], 
-    [tg_tra_thuc_te], 
+    [so_tang],
+    [id_phong],
+    [tg_muon],
+    [tg_tra],
+    [tg_tra_thuc_te],
     [ly_do]
 FROM [muon_phong]
 WHERE [tg_tra_thuc_te] IS NULL;
 
-SELECT 
-    [id_muon_phong], 
+SELECT
+    [id_muon_phong],
     [id_tai_khoan],
-    [so_tang], 
-    [id_phong], 
-    [tg_muon], 
-    [tg_tra], 
-    [tg_tra_thuc_te], 
+    [so_tang],
+    [id_phong],
+    [tg_muon],
+    [tg_tra],
+    [tg_tra_thuc_te],
     [ly_do]
 FROM [muon_phong]
-WHERE [so_tang] = 1 AND [id_phong] = 2 AND  [tg_tra_thuc_te] IS NULL;
+WHERE [so_tang] = 1 AND [id_phong] = 2 AND [tg_tra_thuc_te] IS NULL;
 /*
 UPDATE [muon_phong]
 SET
@@ -253,4 +253,48 @@ WHERE [id_muon_phong] = ?;
 */
 GO
 
-SELECT id_sinh_vien, email, ten_sinh_vien, id_muon_phong FROM [thong_tin_sinh_vien];
+SELECT id_sinh_vien, email_sv, ten_sinh_vien, id_muon_phong
+FROM [thong_tin_sinh_vien];
+
+GO
+SELECT [phong].[id_phong], [phong].[so_tang], [ten_phong], [is_cho_muon], [tai_khoan].[id_tai_khoan], [ly_do], [tg_muon], [tg_tra], [tg_tra_thuc_te], [email], [mat_khau], [is_phan_quyen], [ten], [sdt], [id_sinh_vien], [email_sv],
+    (
+    SELECT COUNT(*)
+    FROM muon_phong AS mp
+    WHERE tg_tra_thuc_te IS NULL AND mp.so_tang = phong.so_tang AND mp.id_phong = phong.id_phong
+    ) AS luot_dat,
+    (
+    SELECT IIF(COUNT(*) = 0, 1, 0)
+    FROM muon_phong AS mp2
+    WHERE tg_muon <= GETDATE() AND tg_tra_thuc_te IS NULL AND mp2.so_tang = phong.so_tang AND mp2.id_phong = phong.id_phong
+    ) AS is_trong
+FROM [phong]
+    LEFT JOIN [muon_phong] ON [phong].[so_tang] = [muon_phong].[so_tang] AND [phong].[id_phong] = [muon_phong].[id_phong]
+    LEFT JOIN [tai_khoan] ON [muon_phong].[id_tai_khoan] LIKE [tai_khoan].[id_tai_khoan]
+    LEFT JOIN [thong_tin_sinh_vien] ON [muon_phong].[id_muon_phong] LIKE [thong_tin_sinh_vien].[id_muon_phong]
+WHERE phong.so_tang = 1 AND phong.id_phong = 2
+GROUP BY [phong].[id_phong], [phong].[so_tang], [ten_phong], [is_cho_muon], [tai_khoan].[id_tai_khoan], [ly_do], [tg_muon], [tg_tra], [tg_tra_thuc_te], [email], [mat_khau], [is_phan_quyen], [ten], [sdt], [id_sinh_vien], [email_sv];
+
+GO
+CREATE VIEW view_thong_tin_muon_phong AS SELECT [phong].[id_phong], [phong].[so_tang], [ten_phong], [is_cho_muon], [muon_phong].[id_muon_phong], [tai_khoan].[id_tai_khoan], [ly_do], [tg_muon], [tg_tra], [tg_tra_thuc_te], [email], [mat_khau], [is_phan_quyen], [ten], [sdt], [id_sinh_vien], [ten_sinh_vien], [email_sv],
+    (
+    SELECT COUNT(*)
+    FROM muon_phong AS mp
+    WHERE tg_tra_thuc_te IS NULL AND mp.so_tang = phong.so_tang AND mp.id_phong = phong.id_phong
+    ) AS luot_dat,
+    (
+    SELECT IIF(COUNT(*) = 0, 1, 0)
+    FROM muon_phong AS mp2
+    WHERE tg_muon <= GETDATE() AND tg_tra_thuc_te IS NULL AND mp2.so_tang = phong.so_tang AND mp2.id_phong = phong.id_phong
+    ) AS is_trong
+FROM [phong]
+    LEFT JOIN [muon_phong] ON [phong].[so_tang] = [muon_phong].[so_tang] AND [phong].[id_phong] = [muon_phong].[id_phong]
+    LEFT JOIN [tai_khoan] ON [muon_phong].[id_tai_khoan] LIKE [tai_khoan].[id_tai_khoan]
+    LEFT JOIN [thong_tin_sinh_vien] ON [muon_phong].[id_muon_phong] LIKE [thong_tin_sinh_vien].[id_muon_phong]
+GROUP BY [phong].[id_phong], [phong].[so_tang], [ten_phong], [is_cho_muon], [muon_phong].[id_muon_phong], [tai_khoan].[id_tai_khoan], [ly_do], [tg_muon], [tg_tra], [tg_tra_thuc_te], [email], [mat_khau], [is_phan_quyen], [ten], [sdt], [id_sinh_vien], [ten_sinh_vien], [email_sv];
+
+GO
+SELECT [id_phong], [so_tang], [ten_phong], [is_cho_muon], [luot_dat], [is_trong], [id_muon_phong], [id_tai_khoan], [ly_do], [tg_muon], [tg_tra], [tg_tra_thuc_te], [email], [mat_khau], [is_phan_quyen], [ten], [sdt], [id_sinh_vien], [ten_sinh_vien], [email_sv] 
+FROM view_thong_tin_muon_phong;
+
+GO
