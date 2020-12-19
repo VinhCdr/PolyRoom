@@ -454,7 +454,11 @@ public class QLMainJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_mniXemPhongActionPerformed
 
     private void mniMuonPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniMuonPhongActionPerformed
-        // TODO add your handling code here:
+        try {
+            showMuonPhong();
+        } catch (ToViewException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
     }//GEN-LAST:event_mniMuonPhongActionPerformed
 
     private void mniThongKePhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniThongKePhongActionPerformed
@@ -668,8 +672,8 @@ public class QLMainJFrame extends javax.swing.JFrame {
         btnThongKe.setVisible(chucVu);
         sptMnuSauQLTaiKhoan.setVisible(chucVu);
         sptSauPhong.setVisible(chucVu);
-        btnMuonPhong.setVisible(!chucVu);
-        mniMuonPhong.setVisible(!chucVu);
+//        btnMuonPhong.setVisible(!chucVu);
+//        mniMuonPhong.setVisible(!chucVu);
     }
 
     /**

@@ -5,6 +5,12 @@
  */
 package poro.gui;
 
+import java.util.ArrayList;
+import javax.swing.JFrame;
+import javax.swing.table.DefaultTableModel;
+import poro.module.db.DatabaseManager;
+import poro.module.db.data.Phong;
+
 /**
  *
  * @author ASUS
@@ -16,6 +22,8 @@ public class NMXemPhongJPanel extends javax.swing.JPanel {
      */
     public NMXemPhongJPanel() {
         initComponents();
+        
+        loadTblPhong();
     }
 
     /**
@@ -27,27 +35,15 @@ public class NMXemPhongJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        txtTenPhong = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        txtMaPhong = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        txtLau = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblPhong = new javax.swing.JTable();
         txtCa = new javax.swing.JTextField();
         btnTimPhong = new javax.swing.JButton();
         btnTraPhong = new javax.swing.JButton();
         btnMuonPhong = new javax.swing.JButton();
         txtCa1 = new javax.swing.JTextField();
 
-        jLabel1.setText("Tên phòng");
-
-        jLabel2.setText("Mã phòng");
-
-        jLabel3.setText("Lầu");
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblPhong.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -58,16 +54,29 @@ public class NMXemPhongJPanel extends javax.swing.JPanel {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "Tên phòng", "Mã phòng", "Mã lầu", "Cho mượn", "Đang trống", "Lượt đặt"
+                "Mã lầu", "Mã phòng", "Tên phòng", "Cho mượn", "Đang trống", "Lượt đặt"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tblPhong);
 
         btnTimPhong.setText("Tìm phòng trống");
 
         btnTraPhong.setText("Trả phòng");
 
         btnMuonPhong.setText("Mượn phòng");
+        btnMuonPhong.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMuonPhongActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -76,19 +85,6 @@ public class NMXemPhongJPanel extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(txtTenPhong, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(txtMaPhong, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(txtLau, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(txtCa, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -103,25 +99,13 @@ public class NMXemPhongJPanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtLau, txtMaPhong, txtTenPhong});
-
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnMuonPhong, btnTraPhong});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtTenPhong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtMaPhong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtLau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnTraPhong, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -133,20 +117,36 @@ public class NMXemPhongJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnMuonPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMuonPhongActionPerformed
+        MuonPhongJDialog m = new MuonPhongJDialog((JFrame) this.getRootPane().getParent(), true);
+        int selected = tblPhong.getSelectedRow();
+        DefaultTableModel dtm = (DefaultTableModel) tblPhong.getModel();
+        int soTang = (Integer) dtm.getValueAt(selected, 0);
+        int idPhong = (Integer) dtm.getValueAt(selected, 1);
+        m.loading(soTang, idPhong);
+        m.setVisible(true);
+    }//GEN-LAST:event_btnMuonPhongActionPerformed
+
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnMuonPhong;
     private javax.swing.JButton btnTimPhong;
     private javax.swing.JButton btnTraPhong;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tblPhong;
     private javax.swing.JTextField txtCa;
     private javax.swing.JTextField txtCa1;
-    private javax.swing.JTextField txtLau;
-    private javax.swing.JTextField txtMaPhong;
-    private javax.swing.JTextField txtTenPhong;
     // End of variables declaration//GEN-END:variables
+
+    private void loadTblPhong() {
+        DefaultTableModel dtm = (DefaultTableModel) tblPhong.getModel();
+        dtm.setRowCount(0);
+        ArrayList<Phong> dsPhong = DatabaseManager.executeQuery(new Phong(), Phong.EXECUTE_SELECT_ALL);
+        dsPhong.forEach(phong -> {
+            dtm.addRow(new Object[]{phong.getIdSoTang(), phong.getIdPhong(), phong.getTenPhong(), phong.isChoMuon() ? "Có" : "-", phong.isDangTrong() ? "Có" : "-", phong.getLuotDat()});
+        });
+    }
+    
+    
+    
 }

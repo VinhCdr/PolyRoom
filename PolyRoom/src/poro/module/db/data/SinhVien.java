@@ -7,8 +7,18 @@ import poro.module.db.DbExecuteQuery;
 /**
  * @author vinh
  */
-public class ThongTinSinhVien implements DbExecuteQuery {
+public class SinhVien implements DbExecuteQuery {
 
+    public SinhVien() {
+    }
+
+    public SinhVien(String idSV, String email, String tenSV, int idMuonPhong) {
+        this.idSV = idSV;
+        this.email = email;
+        this.tenSV = tenSV;
+        this.idMuonPhong = idMuonPhong;
+    }
+    
     private String idSV;
     private String email;
     private String tenSV;
@@ -53,10 +63,10 @@ public class ThongTinSinhVien implements DbExecuteQuery {
     public static final int EXECUTE_DELETE_BY_ID = 4;
 
     @Override
-    public ThongTinSinhVien coverResultSet(ResultSet rs, int type) throws SQLException {
-        ThongTinSinhVien model = new ThongTinSinhVien();
+    public SinhVien coverResultSet(ResultSet rs, int type) throws SQLException {
+        SinhVien model = new SinhVien();
         model.setIdSV(rs.getString("id_sinh_vien"));
-        model.setEmail(rs.getString("email"));
+        model.setEmail(rs.getString("email_sv"));
         model.setTenSV(rs.getString("ten_sinh_vien"));
         model.setIdMuonPhong(rs.getInt("id_muon_phong"));
         return model;
@@ -66,11 +76,11 @@ public class ThongTinSinhVien implements DbExecuteQuery {
     public String getExecuteSQL(int type) {
         switch (type) {
             case EXECUTE_SELECT_ALL:
-                return "SELECT id_sinh_vien, email, ten_sinh_vien, id_muon_phong FROM [thong_tin_sinh_vien];";
+                return "SELECT id_sinh_vien, email_sv, ten_sinh_vien, id_muon_phong FROM [thong_tin_sinh_vien];";
             case EXECUTE_SELECT_BY_ID:
-                return "SELECT id_sinh_vien, email, ten_sinh_vien, id_muon_phong FROM [thong_tin_sinh_vien] WHERE id_sinh_vien LIKE ?";
+                return "SELECT id_sinh_vien, email_sv, ten_sinh_vien, id_muon_phong FROM [thong_tin_sinh_vien] WHERE id_sinh_vien LIKE ?";
             case EXECUTE_INSERT:
-                return "INSERT INTO [thong_tin_sinh_vien] ([id_sinh_vien],[email], [ten_sinh_vien], [id_muon_phong]) "
+                return "INSERT INTO [thong_tin_sinh_vien] ([id_sinh_vien],[email_sv], [ten_sinh_vien], [id_muon_phong]) "
                         + "VALUES "
                         + "(?, ?, ?, ?)";
             case EXECUTE_UPDATE_BY_ID:

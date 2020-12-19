@@ -11,6 +11,20 @@ import poro.module.db.DbExecuteQuery;
  */
 public class MuonPhong implements DbExecuteQuery {
 
+    public MuonPhong() {
+    }
+
+    public MuonPhong(int idMuonPhong, String idTaiKhoan, int soTang, int idPhong, Date tgMuon, Date tgTra, Date tgTraThucTe, String lyDo) {
+        this.idMuonPhong = idMuonPhong;
+        this.idTaiKhoan = idTaiKhoan;
+        this.soTang = soTang;
+        this.idPhong = idPhong;
+        this.tgMuon = tgMuon;
+        this.tgTra = tgTra;
+        this.tgTraThucTe = tgTraThucTe;
+        this.lyDo = lyDo;
+    }
+
     private int idMuonPhong;
     private String idTaiKhoan;
     private int soTang;
@@ -88,6 +102,7 @@ public class MuonPhong implements DbExecuteQuery {
     public static final int EXECUTE_SELECT_BY_ID_PHONG = 1;
     public static final int EXECUTE_INSERT = 2;
     public static final int EXECUTE_UPDATE_BY_ID = 3;
+    public static final int EXECUTE_SELECT_LAST_INSERT = 4;
 
     @Override
     public MuonPhong coverResultSet(ResultSet rs, int type) throws SQLException {
@@ -96,9 +111,9 @@ public class MuonPhong implements DbExecuteQuery {
         mp.setIdTaiKhoan(rs.getString("id_tai_khoan"));
         mp.setSoTang(rs.getInt("so_tang"));
         mp.setIdPhong(rs.getInt("id_phong"));
-        mp.setTgMuon(rs.getDate("tg_muon"));
-        mp.setTgTra(rs.getDate("tg_tra"));
-        mp.setTgTraThucTe(rs.getDate("tg_tra_thuc_te"));
+        mp.setTgMuon(rs.getTimestamp("tg_muon"));
+        mp.setTgTra(rs.getTimestamp("tg_tra"));
+        mp.setTgTraThucTe(rs.getTimestamp("tg_tra_thuc_te"));
         mp.setLyDo(rs.getString("ly_do"));
         return mp;
     }
@@ -130,6 +145,12 @@ public class MuonPhong implements DbExecuteQuery {
                         + "[tg_tra_thuc_te] = ?, "
                         + "[ly_do] = ? "
                         + "WHERE [id_muon_phong] = ?;";
+            case EXECUTE_SELECT_LAST_INSERT:
+                return "SELECT "
+                        + "[id_muon_phong], [id_tai_khoan], [so_tang], [id_phong], [tg_muon], [tg_tra], [tg_tra_thuc_te], [ly_do] "
+                        + "FROM [muon_phong] "
+                        + "WHERE [tg_tra_thuc_te] IS NULL "
+                        + "ORDER BY [id_muon_phong] DESC;";
             default:
                 throw new RuntimeException("Không thể lấy câu SQL bằng kiểu có mã là: " + type);
         }
@@ -146,6 +167,8 @@ public class MuonPhong implements DbExecuteQuery {
                 return new Object[]{this.getIdTaiKhoan(), this.getSoTang(), this.getIdPhong(), this.getTgMuon(), this.getTgTra(), this.getTgTraThucTe(), this.getLyDo()};
             case EXECUTE_UPDATE_BY_ID:
                 return new Object[]{this.getIdMuonPhong(), this.getIdTaiKhoan(), this.getTgMuon(), this.getTgTra(), this.getTgTraThucTe(), this.getLyDo(), this.getSoTang(), this.getIdPhong(),};
+            case EXECUTE_SELECT_LAST_INSERT:
+                return new Object[0];
             default:
                 throw new RuntimeException("Không thể lấy dữ liệu cho câu SQL bằng kiểu có mã là: " + type);
         }

@@ -131,15 +131,15 @@ public class TempMuonPhong implements DbExecuteQuery {
         tmp.setIdTemp(resultSet.getInt("id_temp"));
         tmp.setIdPhong(resultSet.getInt("id_phong"));
         tmp.setIdTaiKhoan(resultSet.getString("so_tang"));
-        tmp.setTgMuon(resultSet.getDate("tg_muon"));
-        tmp.setTgTra(resultSet.getDate("tg_tra"));
+        tmp.setTgMuon(resultSet.getTimestamp("tg_muon"));
+        tmp.setTgTra(resultSet.getTimestamp("tg_tra"));
         tmp.setIdSinhVien(resultSet.getString("id_sinh_vien"));
         tmp.setEmailSinhVien(resultSet.getString("email_sinh_vien"));
         tmp.setTenSinhVien(resultSet.getString("ten_sinh_vien"));
         tmp.setLyDo(resultSet.getString("ly_do"));
         tmp.setIdTaiKhoan(resultSet.getString("id_tai_khoan"));
         tmp.setOtp(resultSet.getString("otp"));
-        tmp.setThoiGianDangKy(resultSet.getDate("tg_dang_ky"));
+        tmp.setThoiGianDangKy(resultSet.getTimestamp("tg_dang_ky"));
 
         return tmp;
     }

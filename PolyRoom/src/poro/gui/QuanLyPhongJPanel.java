@@ -6,13 +6,14 @@
 package poro.gui;
 
 import java.util.ArrayList;
-import java.util.Date;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import poro.module.CalendarManager;
 import poro.module.db.DatabaseManager;
 import poro.module.db.data.Phong;
+import poro.module.db.data.ThongTinMuonPhong;
 
 /**
  *
@@ -26,6 +27,7 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
     public QuanLyPhongJPanel() {
         initComponents();
         loadTblPhong();
+        setEditable(false);
     }
 
     /**
@@ -190,11 +192,20 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Quản lý mượn", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.ABOVE_TOP));
 
+        rtxtSinhVien.setEditable(false);
+        rtxtSinhVien.setBackground(new java.awt.Color(255, 255, 255));
+
         jLabel13.setText("Lý do");
+
+        rtxtEmailSinhVien.setEditable(false);
+        rtxtEmailSinhVien.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel11.setText("Email Sinh viên");
 
         jLabel12.setText("Sinh viên");
+
+        rtxtLyDo.setEditable(false);
+        rtxtLyDo.setBackground(new java.awt.Color(255, 255, 255));
 
         rtxtKetThuc.setEditable(false);
         rtxtKetThuc.setBackground(new java.awt.Color(255, 255, 255));
@@ -203,16 +214,6 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
 
         rtxtBatDau.setEditable(false);
         rtxtBatDau.setBackground(new java.awt.Color(255, 255, 255));
-        rtxtBatDau.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                rtxtBatDauFocusGained(evt);
-            }
-        });
-        rtxtBatDau.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                rtxtBatDauMouseClicked(evt);
-            }
-        });
 
         jLabel7.setText("Thời gian bắt đầu");
 
@@ -305,7 +306,7 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -356,6 +357,11 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
         btnTraPhong.setText("Trả phòng");
 
         btnMuonPhong.setText("Mượn phòng");
+        btnMuonPhong.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMuonPhongActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -467,7 +473,7 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
         } catch (ToViewException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
         }
-        
+
     }//GEN-LAST:event_btnXoaPhongActionPerformed
 
     private void tblPhongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPhongMouseClicked
@@ -478,32 +484,27 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
         selectTable();
     }//GEN-LAST:event_tblPhongMouseClicked
 
-    private void rtxtBatDauMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rtxtBatDauMouseClicked
-        chonTG.setDateOrigin(CalendarManager.getNow());
-        chonTG.setVisible(true);
-        chonTG.resetForm();
-        rtxtBatDau.setText(chonTG.getResult());
-    }//GEN-LAST:event_rtxtBatDauMouseClicked
-
-    private void rtxtBatDauFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_rtxtBatDauFocusGained
-        rtxtBatDau.setSelectionStart(0);
-        rtxtBatDau.setSelectionEnd(rtxtBatDau.getText().length());
-        if (rtxtBatDau.getText() == null || rtxtBatDau.getText().trim().isEmpty()) {
-            return;
-        }
-    }//GEN-LAST:event_rtxtBatDauFocusGained
-
     private void rcboNguoiMuonItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_rcboNguoiMuonItemStateChanged
-        // TODO add your handling code here:
+        setQLM(rcboNguoiMuon.getSelectedIndex());
     }//GEN-LAST:event_rcboNguoiMuonItemStateChanged
 
     private void btnXemChiTietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXemChiTietActionPerformed
-        // TODO add your handling code here:
+        showChiTietMuon();
     }//GEN-LAST:event_btnXemChiTietActionPerformed
 
     private void btnHuyMuonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyMuonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnHuyMuonActionPerformed
+
+    private void btnMuonPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMuonPhongActionPerformed
+        MuonPhongJDialog m = new MuonPhongJDialog((JFrame) this.getRootPane().getParent(), true);
+        int selected = tblPhong.getSelectedRow();
+        DefaultTableModel dtm = (DefaultTableModel) tblPhong.getModel();
+        int soTang = (Integer) dtm.getValueAt(selected, 0);
+        int idPhong = (Integer) dtm.getValueAt(selected, 1);
+        m.loading(soTang, idPhong);
+        m.setVisible(true);
+    }//GEN-LAST:event_btnMuonPhongActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -558,6 +559,19 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
         rtxtLyDo.setText("");
         cboLau.setSelectedIndex(0);
         chkChoPhep.setSelected(false);
+        setEditable(false);
+
+        lamMoiR();
+    }
+
+    private void lamMoiR() {
+        DefaultComboBoxModel dcm = (DefaultComboBoxModel) rcboNguoiMuon.getModel();
+        dcm.removeAllElements();
+        rtxtBatDau.setText("");
+        rtxtKetThuc.setText("");
+        rtxtLyDo.setText("");
+        rtxtSinhVien.setText("");
+        rtxtEmailSinhVien.setText("");
     }
 
     private void loadTblPhong() {
@@ -617,15 +631,14 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
         DefaultTableModel dtm = (DefaultTableModel) tblPhong.getModel();
         Integer idTang = (Integer) dtm.getValueAt(rowSelected, 0);
         Integer idPhong = (Integer) dtm.getValueAt(rowSelected, 1);
-        Phong ph = new Phong();
-        ph.setIdPhong(idPhong);
-        ph.setIdSoTang(idTang);
-        ArrayList<Phong> dsPhong = DatabaseManager.executeQuery(ph, Phong.EXECUTE_SELECT_BY_ID);
-        if (dsPhong.isEmpty()) {
+
+        setQLMuon(idTang, idPhong);
+
+        if (ttmps.isEmpty()) {
             return;
         }
 
-        setForm(dsPhong.get(0));
+        setForm(ttmps.get(0).getPhong());
         setEditable(true);
         tabs.setSelectedIndex(0);
     }
@@ -638,7 +651,13 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
     }
 
     public void setEditable(boolean selected) {
-        //code by Ngọc
+        cboLau.setEnabled(!selected);
+        txtMaPhong.setEditable(!selected);
+        btnThemPhong.setEnabled(!selected);
+        btnSuaPhong.setEnabled(selected);
+        btnXoaPhong.setEnabled(selected);
+        btnXemChiTiet.setEnabled(selected);
+        btnHuyMuon.setEnabled(selected);
     }
 
     public void sua() throws ToViewException {
@@ -653,4 +672,73 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
         Phong phog = getModel();
         DatabaseManager.executeUpdate(phog, Phong.EXECUTE_DELETE_BY_ID);
     }
+
+    private ArrayList<ThongTinMuonPhong> ttmps = new ArrayList<>();
+    private ArrayList<QLMuon> qlms = new ArrayList<>();
+
+    private void setQLMuon(int soTang, int idPhong) {
+        ThongTinMuonPhong ttmp = new ThongTinMuonPhong();
+        ttmp.setSoTang(soTang);
+        ttmp.setIdPhong(idPhong);
+        ttmps = DatabaseManager.executeQuery(ttmp, ThongTinMuonPhong.EXECUTE_SELECT_BY_ID_PHONG);
+        qlms.clear();
+        if (ttmps == null || ttmps.isEmpty()) {
+            return;
+        }
+        ttmps.forEach(tt -> {
+            if (tt.getPhong().getLuotDat() >= 0 && tt.getMuonPhong() != null && tt.getMuonPhong().getTgTraThucTe() == null) {
+                QLMuon qlm = new QLMuon();
+                qlm.idMuon = tt.getMuonPhong().getIdMuonPhong();
+                qlm.emailSinhVien = tt.getSinhVien() != null ? tt.getSinhVien().getEmail() : "";
+                qlm.lyDo = tt.getMuonPhong().getLyDo();
+                qlm.sinhVien = tt.getSinhVien() != null ? tt.getSinhVien().getTenSV() + " (" + tt.getSinhVien().getIdSV() + ")" : "";
+                qlm.tenNguoiMuon = tt.getTaiKhoan().getTen() + " (" + tt.getTaiKhoan().getIdTaiKhoan() + ")";
+                qlm.tgBatDau = CalendarManager.getString(tt.getMuonPhong().getTgMuon(), CalendarManager.DATE_HOUR_FULL_FORMAT);
+                qlm.tgKetThuc = CalendarManager.getString(tt.getMuonPhong().getTgTra(), CalendarManager.DATE_HOUR_FULL_FORMAT);
+                qlms.add(qlm);
+            }
+        });
+        DefaultComboBoxModel dcm = (DefaultComboBoxModel) rcboNguoiMuon.getModel();
+        dcm.removeAllElements();
+        for (QLMuon qlm : qlms) {
+            dcm.addElement(qlm);
+        }
+        setQLM(0);
+    }
+
+    private void setQLM(int index) {
+        if (index < 0 || index >= qlms.size()) {
+            lamMoiR();
+            return;
+        }
+        QLMuon qlm = qlms.get(index);
+        rcboNguoiMuon.getModel().setSelectedItem(qlm);
+        rtxtBatDau.setText(qlm.tgBatDau);
+        rtxtKetThuc.setText(qlm.tgKetThuc);
+        rtxtLyDo.setText(qlm.lyDo);
+        rtxtSinhVien.setText(qlm.sinhVien);
+        rtxtEmailSinhVien.setText(qlm.emailSinhVien);
+    }
+
+    private void showChiTietMuon() {
+        ChiTietMuonJDialog dialog = new ChiTietMuonJDialog((JFrame) this.getRootPane().getParent(), true);
+        dialog.loading(ttmps);
+        dialog.setVisible(true);
+    }
+
+    private class QLMuon {
+        int idMuon;
+        String tenNguoiMuon;
+        String tgBatDau;
+        String tgKetThuc;
+        String lyDo;
+        String sinhVien = "";
+        String emailSinhVien = "";
+
+        @Override
+        public String toString() {
+            return tenNguoiMuon;
+        }
+    }
+
 }

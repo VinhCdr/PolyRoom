@@ -1,5 +1,10 @@
 package poro.gui;
 
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+import poro.module.CalendarManager;
+import poro.module.db.data.ThongTinMuonPhong;
+
 /**
  *
  * @author Cô Ngọc, vinh
@@ -24,12 +29,11 @@ public class ChiTietMuonJDialog extends javax.swing.JDialog {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jcbTang = new javax.swing.JComboBox<>();
+        cboLau = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         txtMaPhong = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         txtTenPhong = new javax.swing.JTextField();
-        btnMuonPhong = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblList = new javax.swing.JTable();
 
@@ -38,13 +42,11 @@ public class ChiTietMuonJDialog extends javax.swing.JDialog {
 
         jLabel1.setText("Tầng lầu");
 
-        jcbTang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4" }));
+        cboLau.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4" }));
 
         jLabel2.setText("Mã phòng");
 
         jLabel3.setText("Tên phòng");
-
-        btnMuonPhong.setText("Mượn phòng");
 
         tblList.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -73,10 +75,10 @@ public class ChiTietMuonJDialog extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 830, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 821, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jcbTang, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cboLau, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -85,11 +87,8 @@ public class ChiTietMuonJDialog extends javax.swing.JDialog {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtTenPhong, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnMuonPhong)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                            .addComponent(txtTenPhong, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 383, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -100,14 +99,13 @@ public class ChiTietMuonJDialog extends javax.swing.JDialog {
                     .addComponent(jLabel1)
                     .addComponent(jLabel2)
                     .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jcbTang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cboLau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtMaPhong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtTenPhong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnMuonPhong))
+                    .addComponent(txtTenPhong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -158,19 +156,47 @@ public class ChiTietMuonJDialog extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnMuonPhong;
+    private javax.swing.JComboBox<String> cboLau;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JComboBox<String> jcbTang;
     private javax.swing.JTable tblList;
     private javax.swing.JTextField txtMaPhong;
     private javax.swing.JTextField txtTenPhong;
     // End of variables declaration//GEN-END:variables
 
-    public void setPhong(int lau, int maPhong) {
-        
+    public void loading(ArrayList<ThongTinMuonPhong> ttmps) {
+        if (ttmps == null || ttmps.isEmpty()) {
+            resetForm();
+            return;
+        }
+        cboLau.getModel().setSelectedItem(ttmps.get(0).getPhong().getIdSoTang());
+        txtMaPhong.setText(ttmps.get(0).getPhong().getIdPhong() + "");
+        txtTenPhong.setText(ttmps.get(0).getPhong().getTenPhong());
+        DefaultTableModel dtm = (DefaultTableModel) tblList.getModel();
+        dtm.setRowCount(0);
+        ttmps.forEach(tt -> {
+            if (tt.getPhong().getLuotDat() >= 0 && tt.getMuonPhong() != null && tt.getMuonPhong().getTgTraThucTe() == null) {
+                dtm.addRow(new Object[]{
+                    tt.getMuonPhong().getIdMuonPhong(),
+                    tt.getSinhVien() == null
+                    ? tt.getTaiKhoan().getTen() + " (" + tt.getTaiKhoan().getIdTaiKhoan() + ")"
+                    : tt.getSinhVien().getTenSV() + " (" + tt.getSinhVien().getIdSV() + ")",
+                    tt.getSinhVien() == null ? tt.getTaiKhoan().isPhanQuyen() ? "Quản lý" : "Giảng viên"
+                    : "Sinh viên",
+                    tt.getMuonPhong().getLyDo(),
+                    CalendarManager.getString(tt.getMuonPhong().getTgMuon(), CalendarManager.DATE_HOUR_FULL_FORMAT),
+                    CalendarManager.getString(tt.getMuonPhong().getTgTra(), CalendarManager.DATE_HOUR_FULL_FORMAT)});
+            }
+        });
     }
-    
+
+    public void resetForm() {
+        DefaultTableModel dtm = (DefaultTableModel) tblList.getModel();
+        dtm.setRowCount(0);
+        cboLau.getModel().setSelectedItem(0);
+        txtMaPhong.setText("");
+        txtTenPhong.setText("");
+    }
 }

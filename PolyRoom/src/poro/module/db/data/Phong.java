@@ -74,16 +74,12 @@ public class Phong implements DbExecuteQuery {
     public static final int EXECUTE_INSERT = 2;
     public static final int EXECUTE_UPDATE_BY_ID = 3;
     public static final int EXECUTE_DELETE_BY_ID = 4;
-    
+
     @Override
     public Phong coverResultSet(ResultSet resultSet, int type) throws SQLException {
         Phong p = new Phong();
-        switch (type) {
-            case EXECUTE_SELECT_ALL:
-                p.setDangTrong(resultSet.getBoolean("is_trong"));
-                p.setLuotDat(resultSet.getInt("luot_dat"));
-                break;
-        }
+        p.setDangTrong(resultSet.getBoolean("is_trong"));
+        p.setLuotDat(resultSet.getInt("luot_dat"));
         p.setIdSoTang(resultSet.getInt("so_tang"));
         p.setIdPhong(resultSet.getInt("id_phong"));
         p.setTenPhong(resultSet.getString("ten_phong"));
@@ -122,10 +118,10 @@ public class Phong implements DbExecuteQuery {
                 return new Object[]{this.tenPhong, this.choMuon, this.idSoTang, this.idPhong};
             case EXECUTE_DELETE_BY_ID:
                 return new Object[]{this.idSoTang, this.idPhong};
-                
+
             default:
                 throw new RuntimeException("Không thể lấy dữ liệu cho câu SQL bằng kiểu có mã là: " + type);
         }
     }
-    
+
 }
