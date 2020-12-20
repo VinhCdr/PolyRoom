@@ -257,44 +257,52 @@ SELECT id_sinh_vien, email_sv, ten_sinh_vien, id_muon_phong
 FROM [thong_tin_sinh_vien];
 
 GO
-SELECT [phong].[id_phong], [phong].[so_tang], [ten_phong], [is_cho_muon], [tai_khoan].[id_tai_khoan], [ly_do], [tg_muon], [tg_tra], [tg_tra_thuc_te], [email], [mat_khau], [is_phan_quyen], [ten], [sdt], [id_sinh_vien], [email_sv],
-    (
+CREATE VIEW view_thong_tin_muon_phong
+AS
+    SELECT [phong].[id_phong], [phong].[so_tang], [ten_phong], [is_cho_muon], [muon_phong].[id_muon_phong], [tai_khoan].[id_tai_khoan], [ly_do], [tg_muon], [tg_tra], [tg_tra_thuc_te], [email], [mat_khau], [is_phan_quyen], [ten], [sdt], [id_sinh_vien], [ten_sinh_vien], [email_sv],
+        (
     SELECT COUNT(*)
-    FROM muon_phong AS mp
-    WHERE tg_tra_thuc_te IS NULL AND mp.so_tang = phong.so_tang AND mp.id_phong = phong.id_phong
+        FROM muon_phong AS mp
+        WHERE tg_tra_thuc_te IS NULL AND mp.so_tang = phong.so_tang AND mp.id_phong = phong.id_phong
     ) AS luot_dat,
-    (
+        (
     SELECT IIF(COUNT(*) = 0, 1, 0)
-    FROM muon_phong AS mp2
-    WHERE tg_muon <= GETDATE() AND tg_tra_thuc_te IS NULL AND mp2.so_tang = phong.so_tang AND mp2.id_phong = phong.id_phong
+        FROM muon_phong AS mp2
+        WHERE tg_muon <= GETDATE() AND tg_tra_thuc_te IS NULL AND mp2.so_tang = phong.so_tang AND mp2.id_phong = phong.id_phong
     ) AS is_trong
-FROM [phong]
-    LEFT JOIN [muon_phong] ON [phong].[so_tang] = [muon_phong].[so_tang] AND [phong].[id_phong] = [muon_phong].[id_phong]
-    LEFT JOIN [tai_khoan] ON [muon_phong].[id_tai_khoan] LIKE [tai_khoan].[id_tai_khoan]
-    LEFT JOIN [thong_tin_sinh_vien] ON [muon_phong].[id_muon_phong] LIKE [thong_tin_sinh_vien].[id_muon_phong]
-WHERE phong.so_tang = 1 AND phong.id_phong = 2
-GROUP BY [phong].[id_phong], [phong].[so_tang], [ten_phong], [is_cho_muon], [tai_khoan].[id_tai_khoan], [ly_do], [tg_muon], [tg_tra], [tg_tra_thuc_te], [email], [mat_khau], [is_phan_quyen], [ten], [sdt], [id_sinh_vien], [email_sv];
+    FROM [phong]
+        LEFT JOIN [muon_phong] ON [phong].[so_tang] = [muon_phong].[so_tang] AND [phong].[id_phong] = [muon_phong].[id_phong]
+        LEFT JOIN [tai_khoan] ON [muon_phong].[id_tai_khoan] LIKE [tai_khoan].[id_tai_khoan]
+        LEFT JOIN [thong_tin_sinh_vien] ON [muon_phong].[id_muon_phong] LIKE [thong_tin_sinh_vien].[id_muon_phong]
+    GROUP BY [phong].[id_phong], [phong].[so_tang], [ten_phong], [is_cho_muon], [muon_phong].[id_muon_phong], [tai_khoan].[id_tai_khoan], [ly_do], [tg_muon], [tg_tra], [tg_tra_thuc_te], [email], [mat_khau], [is_phan_quyen], [ten], [sdt], [id_sinh_vien], [ten_sinh_vien], [email_sv];
 
 GO
-CREATE VIEW view_thong_tin_muon_phong AS SELECT [phong].[id_phong], [phong].[so_tang], [ten_phong], [is_cho_muon], [muon_phong].[id_muon_phong], [tai_khoan].[id_tai_khoan], [ly_do], [tg_muon], [tg_tra], [tg_tra_thuc_te], [email], [mat_khau], [is_phan_quyen], [ten], [sdt], [id_sinh_vien], [ten_sinh_vien], [email_sv],
-    (
-    SELECT COUNT(*)
-    FROM muon_phong AS mp
-    WHERE tg_tra_thuc_te IS NULL AND mp.so_tang = phong.so_tang AND mp.id_phong = phong.id_phong
-    ) AS luot_dat,
-    (
-    SELECT IIF(COUNT(*) = 0, 1, 0)
-    FROM muon_phong AS mp2
-    WHERE tg_muon <= GETDATE() AND tg_tra_thuc_te IS NULL AND mp2.so_tang = phong.so_tang AND mp2.id_phong = phong.id_phong
-    ) AS is_trong
-FROM [phong]
-    LEFT JOIN [muon_phong] ON [phong].[so_tang] = [muon_phong].[so_tang] AND [phong].[id_phong] = [muon_phong].[id_phong]
-    LEFT JOIN [tai_khoan] ON [muon_phong].[id_tai_khoan] LIKE [tai_khoan].[id_tai_khoan]
-    LEFT JOIN [thong_tin_sinh_vien] ON [muon_phong].[id_muon_phong] LIKE [thong_tin_sinh_vien].[id_muon_phong]
-GROUP BY [phong].[id_phong], [phong].[so_tang], [ten_phong], [is_cho_muon], [muon_phong].[id_muon_phong], [tai_khoan].[id_tai_khoan], [ly_do], [tg_muon], [tg_tra], [tg_tra_thuc_te], [email], [mat_khau], [is_phan_quyen], [ten], [sdt], [id_sinh_vien], [ten_sinh_vien], [email_sv];
-
-GO
-SELECT [id_phong], [so_tang], [ten_phong], [is_cho_muon], [luot_dat], [is_trong], [id_muon_phong], [id_tai_khoan], [ly_do], [tg_muon], [tg_tra], [tg_tra_thuc_te], [email], [mat_khau], [is_phan_quyen], [ten], [sdt], [id_sinh_vien], [ten_sinh_vien], [email_sv] 
+SELECT [id_phong], [so_tang], [ten_phong], [is_cho_muon], [luot_dat], [is_trong], [id_muon_phong], [id_tai_khoan], [ly_do], [tg_muon], [tg_tra], [tg_tra_thuc_te], [email], [mat_khau], [is_phan_quyen], [ten], [sdt], [id_sinh_vien], [ten_sinh_vien], [email_sv]
 FROM view_thong_tin_muon_phong;
 
+SELECT [id_phong], [so_tang], [ten_phong], [is_cho_muon], [luot_dat], [is_trong], [id_muon_phong], [id_tai_khoan], [ly_do], [tg_muon], [tg_tra], [tg_tra_thuc_te], [email], [mat_khau], [is_phan_quyen], [ten], [sdt], [id_sinh_vien], [ten_sinh_vien], [email_sv]
+FROM view_thong_tin_muon_phong
+WHERE ([tg_tra] < 'min' AND [tg_muon] > 'max') OR [tg_tra_thuc_te] IS NOT NULL;
+
 GO
+
+
+SELECT [id_phong], [so_tang], [ten_phong], [is_cho_muon], [luot_dat], [is_trong], [id_muon_phong], [id_tai_khoan], [ly_do], [tg_muon], [tg_tra], [tg_tra_thuc_te], [email], [mat_khau], [is_phan_quyen], [ten], [sdt], [id_sinh_vien], [ten_sinh_vien], [email_sv]
+FROM view_thong_tin_muon_phong
+WHERE ([tg_tra] > CAST('2020/22/12 06:04:00' as datetime) OR [tg_muon] < CAST('2020/22/12 07:04:00' as datetime) OR ([tg_tra_thuc_te] IS NULL AND [id_muon_phong] IS NOT NULL)) AND (so_tang = 2 AND id_phong = 3)
+
+SELECT *
+FROM view_thong_tin_muon_phong
+WHERE NOT [ten_phong] = ANY (
+    SELECT ten_phong--, [tg_muon], [tg_tra], [tg_tra_thuc_te], [id_muon_phong]
+FROM phong INNER JOIN muon_phong ON phong.so_tang = muon_phong.so_tang AND phong.id_phong = muon_phong.id_phong
+WHERE (CAST('2020/12/20 13:17:00' as datetime) BETWEEN [tg_muon] AND [tg_tra] OR CAST('2020/12/20 14:00:00' as datetime) BETWEEN [tg_muon] AND [tg_tra]) AND ([tg_tra_thuc_te] IS NULL AND [id_muon_phong] IS NOT NULL)
+);
+
+SELECT *
+FROM view_thong_tin_muon_phong
+WHERE NOT [ten_phong] = ANY (
+    SELECT ten_phong--, [tg_muon], [tg_tra], [tg_tra_thuc_te], [id_muon_phong]
+FROM phong INNER JOIN muon_phong ON phong.so_tang = muon_phong.so_tang AND phong.id_phong = muon_phong.id_phong
+WHERE (CAST('2020/12/20 13:17:00' as datetime) BETWEEN [tg_muon] AND [tg_tra] OR CAST('2020/12/20 14:00:00' as datetime) BETWEEN [tg_muon] AND [tg_tra]) AND ([tg_tra_thuc_te] IS NULL AND [id_muon_phong] IS NOT NULL)
+);

@@ -55,7 +55,7 @@ public class MuonPhongJDialog extends javax.swing.JDialog {
         jLabel4 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         txtLau = new javax.swing.JTextField();
-        txtMaPhong = new javax.swing.JTextField();
+        txtIdPhong = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         txtTestTGBatDau = new javax.swing.JTextField();
@@ -116,7 +116,7 @@ public class MuonPhongJDialog extends javax.swing.JDialog {
 
         txtLau.setEditable(false);
 
-        txtMaPhong.setEditable(false);
+        txtIdPhong.setEditable(false);
 
         jLabel10.setText("Mã phòng");
 
@@ -174,7 +174,7 @@ public class MuonPhongJDialog extends javax.swing.JDialog {
                                         .addGap(18, 18, 18)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel10)
-                                            .addComponent(txtMaPhong, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtIdPhong, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(btnTest)))
                                     .addComponent(jLabel12))))
                         .addGap(0, 0, Short.MAX_VALUE))
@@ -182,7 +182,7 @@ public class MuonPhongJDialog extends javax.swing.JDialog {
                 .addContainerGap())
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtLau, txtMaPhong, txtTenPhong});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtIdPhong, txtLau, txtTenPhong});
 
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -196,7 +196,7 @@ public class MuonPhongJDialog extends javax.swing.JDialog {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel10)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtMaPhong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtIdPhong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -475,9 +475,9 @@ public class MuonPhongJDialog extends javax.swing.JDialog {
     private javax.swing.JPanel pnlSinhVien;
     private javax.swing.JTable tblContent;
     private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtIdPhong;
     private javax.swing.JTextField txtLau;
     private javax.swing.JTextField txtLyDo;
-    private javax.swing.JTextField txtMaPhong;
     private javax.swing.JTextField txtMaSV;
     private javax.swing.JTextField txtTGBatDau;
     private javax.swing.JTextField txtTenPhong;
@@ -499,7 +499,7 @@ public class MuonPhongJDialog extends javax.swing.JDialog {
         }
         Phong p = ttmps.get(0).getPhong();
         txtLau.setText(p.getIdSoTang() + "");
-        txtMaPhong.setText(p.getIdPhong() + "");
+        txtIdPhong.setText(p.getIdPhong() + "");
         txtTenPhong.setText(p.getTenPhong());
         DefaultTableModel dtm = (DefaultTableModel) tblContent.getModel();
         dtm.setRowCount(0);
@@ -508,7 +508,7 @@ public class MuonPhongJDialog extends javax.swing.JDialog {
                 dtm.addRow(new Object[]{
                     tt.getTaiKhoan().getTen() + " (" + tt.getTaiKhoan().getIdTaiKhoan() + ")",
                     CalendarManager.getString(tt.getMuonPhong().getTgMuon(), CalendarManager.DATE_HOUR_FULL_FORMAT),
-                    CalendarManager.getString(tt.getMuonPhong().getTgMuon(), CalendarManager.DATE_HOUR_FULL_FORMAT)
+                    CalendarManager.getString(tt.getMuonPhong().getTgTra(), CalendarManager.DATE_HOUR_FULL_FORMAT)
                 });
             }
         });
@@ -528,7 +528,7 @@ public class MuonPhongJDialog extends javax.swing.JDialog {
 
         TaiKhoan tk = Session.USER;
         int soTang = Integer.parseInt(txtLau.getText());
-        int idPhong = Integer.parseInt(txtMaPhong.getText());
+        int idPhong = Integer.parseInt(txtIdPhong.getText());
         Date tgMuon = CalendarManager.getDateByString(txtTGBatDau.getText(), CalendarManager.DATE_HOUR_FULL_FORMAT);
         Date tgTra = CalendarManager.getDateByString(txtTraDuKien.getText(), CalendarManager.DATE_HOUR_FULL_FORMAT);
         String lyDo = txtLyDo.getText();
@@ -600,7 +600,7 @@ public class MuonPhongJDialog extends javax.swing.JDialog {
         Date ketThuc = CalendarManager.getDateByString(sketThuc, CalendarManager.DATE_HOUR_FULL_FORMAT);
 
         int soTang = Integer.parseInt(txtLau.getText());
-        int idPhong = Integer.parseInt(txtMaPhong.getText());
+        int idPhong = Integer.parseInt(txtIdPhong.getText());
 
         ttmp.setTgBatDauF(batDau);
         ttmp.setTgKetThucF(ketThuc);

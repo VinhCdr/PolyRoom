@@ -8,8 +8,10 @@ package poro.gui;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
+import poro.module.Session;
 import poro.module.db.DatabaseManager;
 import poro.module.db.data.Phong;
+import poro.module.db.data.ThongTinMuonPhong;
 
 /**
  *
@@ -68,8 +70,18 @@ public class NMXemPhongJPanel extends javax.swing.JPanel {
         jScrollPane1.setViewportView(tblPhong);
 
         btnTimPhong.setText("Tìm phòng trống");
+        btnTimPhong.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTimPhongActionPerformed(evt);
+            }
+        });
 
         btnTraPhong.setText("Trả phòng");
+        btnTraPhong.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTraPhongActionPerformed(evt);
+            }
+        });
 
         btnMuonPhong.setText("Mượn phòng");
         btnMuonPhong.addActionListener(new java.awt.event.ActionListener() {
@@ -127,7 +139,14 @@ public class NMXemPhongJPanel extends javax.swing.JPanel {
         m.setVisible(true);
     }//GEN-LAST:event_btnMuonPhongActionPerformed
 
-    
+    private void btnTraPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTraPhongActionPerformed
+        
+    }//GEN-LAST:event_btnTraPhongActionPerformed
+
+    private void btnTimPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimPhongActionPerformed
+        
+    }//GEN-LAST:event_btnTimPhongActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnMuonPhong;
     private javax.swing.JButton btnTimPhong;
@@ -145,8 +164,25 @@ public class NMXemPhongJPanel extends javax.swing.JPanel {
         dsPhong.forEach(phong -> {
             dtm.addRow(new Object[]{phong.getIdSoTang(), phong.getIdPhong(), phong.getTenPhong(), phong.isChoMuon() ? "Có" : "-", phong.isDangTrong() ? "Có" : "-", phong.getLuotDat()});
         });
+        loadPhongDangMuon();
     }
     
+    private ArrayList<ThongTinMuonPhong> ttPhongDangMuons = new ArrayList<>();
     
+    private void loadPhongDangMuon() {
+        if (!Session.isLogin()){
+            btnTraPhong.setEnabled(false);
+            return;
+        }
+        ThongTinMuonPhong ttmp = new ThongTinMuonPhong();
+        ttmp.setIdTaiKhoanMuon(Session.USER.getIdTaiKhoan());
+        ttPhongDangMuons = DatabaseManager.executeQuery(ttmp, ThongTinMuonPhong.EXECUTE_SELECT_BY_ID_TAI_KHOAN);
+        
+        if (ttPhongDangMuons == null || ttPhongDangMuons.isEmpty()) {
+            btnTraPhong.setEnabled(false);
+        } else {
+            btnTraPhong.setEnabled(true);
+        }
+    }
     
 }

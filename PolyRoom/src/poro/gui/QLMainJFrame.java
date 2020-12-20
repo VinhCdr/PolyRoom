@@ -2,8 +2,6 @@ package poro.gui;
 
 import java.awt.Color;
 import java.io.File;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;

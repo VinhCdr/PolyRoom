@@ -86,7 +86,7 @@
                                           <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="txtMaPhong" linkSize="4" alignment="0" min="-2" pref="180" max="-2" attributes="0"/>
+                                              <Component id="txtIdPhong" linkSize="4" alignment="0" min="-2" pref="180" max="-2" attributes="0"/>
                                               <Component id="btnTest" alignment="0" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
@@ -115,7 +115,7 @@
                       <Group type="102" attributes="0">
                           <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="txtMaPhong" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtIdPhong" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
@@ -211,7 +211,7 @@
             <Property name="editable" type="boolean" value="false"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtMaPhong">
+        <Component class="javax.swing.JTextField" name="txtIdPhong">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
           </Properties>

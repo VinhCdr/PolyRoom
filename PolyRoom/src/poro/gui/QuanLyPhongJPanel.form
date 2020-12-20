@@ -436,9 +436,9 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jScrollPane1" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
-                              <Component id="txtCa" linkSize="15" min="-2" pref="97" max="-2" attributes="0"/>
+                              <Component id="txtTimStart" linkSize="15" min="-2" pref="97" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="txtCa1" linkSize="15" min="-2" pref="131" max="-2" attributes="0"/>
+                              <Component id="txtTimEnd" linkSize="15" min="-2" pref="131" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="btnTimPhong" min="-2" max="-2" attributes="0"/>
                               <EmptySpace pref="199" max="32767" attributes="0"/>
@@ -458,11 +458,11 @@
                       <Component id="jScrollPane1" pref="333" max="32767" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtCa" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtTimStart" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnTimPhong" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnTraPhong" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnMuonPhong" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtCa1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtTimEnd" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -533,18 +533,24 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JTextField" name="txtCa">
+            <Component class="javax.swing.JTextField" name="txtTimStart">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtTimStartMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnTimPhong">
               <Properties>
                 <Property name="text" type="java.lang.String" value="T&#xec;m ph&#xf2;ng tr&#x1ed1;ng"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTimPhongActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnTraPhong">
               <Properties>
@@ -562,13 +568,16 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMuonPhongActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtCa1">
+            <Component class="javax.swing.JTextField" name="txtTimEnd">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtTimEndMouseClicked"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
