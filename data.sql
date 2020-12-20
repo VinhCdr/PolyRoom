@@ -3,7 +3,7 @@ BEGIN
     USE master;
     DROP DATABASE polyroom;
 END;
-
+GO
 CREATE DATABASE polyroom;
 GO
 USE polyroom;
@@ -113,8 +113,8 @@ INSERT INTO [muon_phong]
 VALUES
     ('vinhlm', 1, 1, '2020-12-22 09:30:00', '2020-12-22 11:30:00', '2020-12-22 11:45:00', N'Dạy học'),
     ('ngocnty', 1, 2, '2020-12-22 09:30:00', '2020-12-22 11:30:00', '2020-12-22 11:45:00', N'Dạy học'),
-    ('vinhlmz', 1, 2, '2020-12-22 15:00:00', '2020-12-22 15:00:00', '2020-12-22 11:30:00', N'Dạy học'),
-    ('ngocntyz', 1, 2, '2020-12-22 15:15:00', '2020-12-22 17:15:00', '2020-12-22 17:30:00', N'Dạy học'),
+    ('vinhlmz', 1, 2, '2020-12-22 15:00:00', '2020-12-22 17:00:00', '2020-12-22 16:30:00', N'Dạy học'),
+    ('ngocntyz', 1, 2, '2020-12-22 15:15:00', '2020-12-22 17:15:00', '2020-12-22 16:30:00', N'Dạy học'),
     ('tk1', 2, 1, '2020-12-22 09:30:00', '2020-12-22 11:30:00', null, N'Dạy học'),
     ('tk2', 2, 2, '2020-12-22 09:30:00', '2020-12-22 11:30:00', null, N'Dạy học'),
     ('tk3', 2, 3, '2020-12-22 09:30:00', '2020-12-22 11:30:00', null, N'Dạy học'),
@@ -189,15 +189,15 @@ CREATE VIEW view_thong_tin_muon_phong
 AS
     SELECT [phong].[id_phong], [phong].[so_tang], [ten_phong], [is_cho_muon], [muon_phong].[id_muon_phong], [tai_khoan].[id_tai_khoan], [ly_do], [tg_muon], [tg_tra], [tg_tra_thuc_te], [email], [mat_khau], [is_phan_quyen], [ten], [sdt], [id_sinh_vien], [ten_sinh_vien], [email_sv],
         (
-    SELECT COUNT(*)
+        SELECT COUNT(*)
         FROM muon_phong AS mp
         WHERE tg_tra_thuc_te IS NULL AND mp.so_tang = phong.so_tang AND mp.id_phong = phong.id_phong
-    ) AS luot_dat,
+        ) AS luot_dat,
         (
-    SELECT IIF(COUNT(*) = 0, 1, 0)
+        SELECT IIF(COUNT(*) = 0, 1, 0)
         FROM muon_phong AS mp2
         WHERE tg_muon <= GETDATE() AND tg_tra_thuc_te IS NULL AND mp2.so_tang = phong.so_tang AND mp2.id_phong = phong.id_phong
-    ) AS is_trong
+        ) AS is_trong
     FROM [phong]
         LEFT JOIN [muon_phong] ON [phong].[so_tang] = [muon_phong].[so_tang] AND [phong].[id_phong] = [muon_phong].[id_phong]
         LEFT JOIN [tai_khoan] ON [muon_phong].[id_tai_khoan] LIKE [tai_khoan].[id_tai_khoan]
