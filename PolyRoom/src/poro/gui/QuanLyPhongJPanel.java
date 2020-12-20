@@ -11,7 +11,6 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import poro.module.CalendarManager;
 import poro.module.Session;
@@ -542,10 +541,12 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
         int idPhong = (Integer) dtm.getValueAt(selected, 1);
         m.loading(soTang, idPhong);
         m.setVisible(true);
+        loadTblPhong();
     }//GEN-LAST:event_btnMuonPhongActionPerformed
 
     private void btnTraPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTraPhongActionPerformed
-        
+        showDangMuon();
+        loadTblPhong();
     }//GEN-LAST:event_btnTraPhongActionPerformed
 
     private void btnTimPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimPhongActionPerformed
@@ -554,7 +555,7 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
         ThongTinMuonPhong ttmp = new ThongTinMuonPhong();
         ttmp.setTgBatDauF(CalendarManager.getDateByString(txtTimStart.getText(), CalendarManager.DATE_HOUR_FULL_FORMAT));
         ttmp.setTgKetThucF(CalendarManager.getDateByString(txtTimEnd.getText(), CalendarManager.DATE_HOUR_FULL_FORMAT));
-        
+
         ttmpss = DatabaseManager.executeQuery(ttmp, ThongTinMuonPhong.EXECUTE_SELECT_TIM_PHONG);
         if (ttmpss == null || ttmpss.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Không có phòng trống trong thời gian này!");
@@ -826,10 +827,11 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
     private ArrayList<ThongTinMuonPhong> ttPhongDangMuons = new ArrayList<>();
 
     private void loadPhongDangMuon() {
-        if (!Session.isLogin()){
+        if (!Session.isLogin()) {
             btnTraPhong.setEnabled(false);
             return;
         }
+        
         ThongTinMuonPhong ttmp = new ThongTinMuonPhong();
         ttmp.setIdTaiKhoanMuon(Session.USER.getIdTaiKhoan());
         ttPhongDangMuons = DatabaseManager.executeQuery(ttmp, ThongTinMuonPhong.EXECUTE_SELECT_BY_ID_TAI_KHOAN);
@@ -838,7 +840,19 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
             btnTraPhong.setEnabled(false);
         } else {
             btnTraPhong.setEnabled(true);
+            System.out.println(ttPhongDangMuons.size());
         }
+    }
+
+    private void showDangMuon() {
+        if (ttPhongDangMuons == null || ttPhongDangMuons.isEmpty()) {
+            btnTraPhong.setEnabled(false);
+            return;
+        } else {
+            btnTraPhong.setEnabled(true);
+        }
+        TraPhongJDialog traPhongJDialog = new TraPhongJDialog((JFrame)this.getRootPane().getParent(), true, ttPhongDangMuons);
+        traPhongJDialog.setVisible(true);
     }
 
     private void setGioBatDau(JTextField txtBatDau) {

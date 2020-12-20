@@ -20,10 +20,16 @@ public class QLMainJFrame extends javax.swing.JFrame {
      */
     public QLMainJFrame() {
         initComponents();
-
-        init();
     }
 
+    @Override
+    public void setVisible(boolean b) {
+        if (b) {
+            init();
+        }
+        super.setVisible(b);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -659,6 +665,7 @@ public class QLMainJFrame extends javax.swing.JFrame {
      * @param chucVu Chức vụ sẽ hiện (true là quản lý)
      */
     public void setGiaoDien(boolean chucVu) {
+        init();
         mniQLTaiKhoan.setVisible(chucVu);
         mniXemTaiKhoan.setVisible(chucVu);
         mniXemPhong.setVisible(chucVu);
@@ -746,7 +753,6 @@ public class QLMainJFrame extends javax.swing.JFrame {
         DoiMatKhauJDialog dmk = new DoiMatKhauJDialog(this, true);
         dmk.setTaiKhoan(Session.USER.getIdTaiKhoan());
         dmk.setVisible(true);
-
     }
 
     private void checkDangNhap() throws ToViewException {
