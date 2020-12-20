@@ -73,6 +73,8 @@ public class NMXemPhongJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblPhong);
 
+        txtTimStart.setEditable(false);
+        txtTimStart.setBackground(new java.awt.Color(255, 255, 255));
         txtTimStart.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtTimStartMouseClicked(evt);
@@ -100,6 +102,8 @@ public class NMXemPhongJPanel extends javax.swing.JPanel {
             }
         });
 
+        txtTimEnd.setEditable(false);
+        txtTimEnd.setBackground(new java.awt.Color(255, 255, 255));
         txtTimEnd.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtTimEndMouseClicked(evt);
@@ -148,7 +152,19 @@ public class NMXemPhongJPanel extends javax.swing.JPanel {
     private void btnMuonPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMuonPhongActionPerformed
         MuonPhongJDialog m = new MuonPhongJDialog((JFrame) this.getRootPane().getParent(), true);
         int selected = tblPhong.getSelectedRow();
+        
+        if (selected == -1 || selected >= tblPhong.getRowCount()) {
+            JOptionPane.showMessageDialog(this, "Chưa chọn phòng muốn mượn");
+            return;
+        }
+        
         DefaultTableModel dtm = (DefaultTableModel) tblPhong.getModel();
+        
+        if (dtm.getValueAt(selected, 3).equals("-")) {
+            JOptionPane.showMessageDialog(this, "Phòng không được phép mượn");
+            return;
+        }
+        
         int soTang = (Integer) dtm.getValueAt(selected, 0);
         int idPhong = (Integer) dtm.getValueAt(selected, 1);
         m.loading(soTang, idPhong);
@@ -162,6 +178,35 @@ public class NMXemPhongJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnTraPhongActionPerformed
 
     private void btnTimPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimPhongActionPerformed
+        String sbatDau = txtTimStart.getText();
+        String sketThuc = txtTimEnd.getText();
+        Date batDau, ketThuc;
+
+        try {
+            if (sbatDau.isEmpty()) {
+                throw new ToViewException("Chưa chọn thời gian mượn");
+            }
+
+            batDau = CalendarManager.getDateByString(sbatDau, CalendarManager.DATE_HOUR_FULL_FORMAT);
+
+            if (batDau.before(CalendarManager.addTimes(CalendarManager.getNow(), -15L * 60 * 1000))) {
+                throw new ToViewException("Lỗi thời gian bắt đầu trễ hơn 15 phút so với hiện tại");
+            }
+
+            if (sketThuc.isEmpty()) {
+                throw new ToViewException("Chưa chọn thời gian trả phòng");
+            }
+
+            ketThuc = CalendarManager.getDateByString(sketThuc, CalendarManager.DATE_HOUR_FULL_FORMAT);
+
+            if (batDau.after(ketThuc)) {
+                throw new ToViewException("Lỗi thời gian kết thúc trước thời gian mượn");
+            }
+        } catch (ToViewException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+            return;
+        }
+
         loadTblPhong();
         ArrayList<ThongTinMuonPhong> ttmpss;
         ThongTinMuonPhong ttmp = new ThongTinMuonPhong();

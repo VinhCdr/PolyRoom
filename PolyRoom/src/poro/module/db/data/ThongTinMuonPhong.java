@@ -4,7 +4,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
-import poro.module.CalendarManager;
 import poro.module.db.DatabaseManager;
 import poro.module.db.DbExecuteQuery;
 
@@ -108,9 +107,9 @@ public class ThongTinMuonPhong implements DbExecuteQuery {
                         + "WHERE NOT [ten_phong] = ANY ( "
                         + "    SELECT ten_phong "
                         + "    FROM phong INNER JOIN muon_phong ON phong.so_tang = muon_phong.so_tang AND phong.id_phong = muon_phong.id_phong "
-                        + "    WHERE (? BETWEEN [tg_muon] AND [tg_tra] OR ? BETWEEN [tg_muon] AND [tg_tra] OR tg_muon BETWEEN ? AND ?) AND ([tg_tra_thuc_te] IS NULL AND [id_muon_phong] IS NOT NULL) "
+                        + "    WHERE (? BETWEEN [tg_muon] AND [tg_tra] OR ? BETWEEN [tg_muon] AND [tg_tra] OR tg_muon BETWEEN ? AND ?) AND ([tg_tra_thuc_te] IS NULL AND [id_muon_phong] IS NOT NULL)"
                         + "    GROUP BY ten_phong"
-                        + ");";
+                        + ") AND [is_cho_muon] = 1;";
 
             case EXECUTE_SELECT_KIEM_TRA_PHONG:
                 return "SELECT [id_phong], [so_tang], [ten_phong], [is_cho_muon], [luot_dat], [is_trong], [id_muon_phong], [id_tai_khoan], [ly_do], [tg_muon], [tg_tra], [tg_tra_thuc_te], [email], [mat_khau], [is_phan_quyen], [ten], [sdt], [id_sinh_vien], [ten_sinh_vien], [email_sv] "

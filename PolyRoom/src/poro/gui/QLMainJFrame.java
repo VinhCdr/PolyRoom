@@ -20,13 +20,11 @@ public class QLMainJFrame extends javax.swing.JFrame {
      */
     public QLMainJFrame() {
         initComponents();
+        init();
     }
 
     @Override
     public void setVisible(boolean b) {
-        if (b) {
-            init();
-        }
         super.setVisible(b);
     }
     
@@ -666,6 +664,7 @@ public class QLMainJFrame extends javax.swing.JFrame {
      */
     public void setGiaoDien(boolean chucVu) {
         init();
+        
         mniQLTaiKhoan.setVisible(chucVu);
         mniXemTaiKhoan.setVisible(chucVu);
         mniXemPhong.setVisible(chucVu);
@@ -760,7 +759,7 @@ public class QLMainJFrame extends javax.swing.JFrame {
             resetTabs();
             throw new ToViewException("Vui lòng đăng nhập để sử dụng phần mềm!");
         }
-        setGiaoDien(Session.USER.isPhanQuyen());
+//        setGiaoDien(Session.USER.isPhanQuyen());
     }
 
     private void resetTabs() {

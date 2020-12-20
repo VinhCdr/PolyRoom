@@ -77,6 +77,11 @@ public class TraPhongJDialog extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
+        tblList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblListMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblList);
 
         btnTraPhong.setText("Trả phòng");
@@ -114,30 +119,15 @@ public class TraPhongJDialog extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnTraPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTraPhongActionPerformed
-        DefaultTableModel dtm = (DefaultTableModel) tblList.getModel();
-        int rowSeleted = tblList.getSelectedRow();
-        if (rowSeleted == -1 || rowSeleted >= dtm.getRowCount()) {
-            JOptionPane.showMessageDialog(this, "Vui lòng chọn phòng muốn trả");
-            return;
-        }
-        int idMuon = (Integer) dtm.getValueAt(rowSeleted, 0);
-        MuonPhong mp = new MuonPhong();
-        mp.setIdMuonPhong(idMuon);
-        ArrayList<MuonPhong> mps = DatabaseManager.executeQuery(mp, MuonPhong.EXECUTE_SELECT_BY_ID);
-        if (mps == null || mps.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Phiếu mượn không tồn tại, vui lòng kiểm tra lại");
-            return;
-        }
-        mp = mps.get(0);
-        mp.setTgTraThucTe(CalendarManager.getNow());
-        int ok = DatabaseManager.executeUpdate(mp, MuonPhong.EXECUTE_UPDATE_BY_ID);
-        if (ok >= 0) {
-            JOptionPane.showMessageDialog(this, "Trả phòng thành công");
-            this.dispose();
-        } else {
-            JOptionPane.showMessageDialog(this, "Trả phòng thất bại");
-        }
+        traPhong();
     }//GEN-LAST:event_btnTraPhongActionPerformed
+
+    private void tblListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblListMouseClicked
+        if (evt.getClickCount() != 2) {
+            return;
+        }
+        traPhong();
+    }//GEN-LAST:event_tblListMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnTraPhong;
@@ -167,6 +157,44 @@ public class TraPhongJDialog extends javax.swing.JDialog {
                 mp.getTgTra()
             });
         });
+    }
+
+    private void traPhong() {
+        DefaultTableModel dtm = (DefaultTableModel) tblList.getModel();
+        int rowSeleted = tblList.getSelectedRow();
+        if (rowSeleted == -1 || rowSeleted >= dtm.getRowCount()) {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn phòng muốn trả");
+            return;
+        }
+        
+        int confirm = JOptionPane.showConfirmDialog(this, "Bạn muốn trả phòng sớm ?", "Xác nhận trả phòng", JOptionPane.YES_NO_OPTION);
+        if (JOptionPane.YES_OPTION != confirm){
+            return;
+        }
+        
+        int idMuon = (Integer) dtm.getValueAt(rowSeleted, 0);
+        MuonPhong mp = new MuonPhong();
+        mp.setIdMuonPhong(idMuon);
+        ArrayList<MuonPhong> mps = DatabaseManager.executeQuery(mp, MuonPhong.EXECUTE_SELECT_BY_ID);
+        if (mps == null || mps.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Phiếu mượn không tồn tại, vui lòng kiểm tra lại");
+            return;
+        }
+        mp = mps.get(0);
+        
+        if (CalendarManager.getNow().before(mp.getTgMuon())) {
+            mp.setTgTraThucTe(mp.getTgMuon());
+        } else {
+            mp.setTgTraThucTe(CalendarManager.getNow());
+        }
+        
+        int ok = DatabaseManager.executeUpdate(mp, MuonPhong.EXECUTE_UPDATE_BY_ID);
+        if (ok >= 0) {
+            JOptionPane.showMessageDialog(this, "Trả phòng thành công");
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "Trả phòng thất bại");
+        }
     }
 
 }
