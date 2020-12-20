@@ -91,8 +91,6 @@ VALUES
     (3, 1, N'301', 1),
     (3, 2, N'302', 1);
 GO
-SELECT *
-FROM [phong];
 
 -- mat_khau equals id_tai_khoan
 INSERT INTO [tai_khoan]
@@ -109,8 +107,6 @@ VALUES
     ('tk5', 'tk5@fpt.edu.vn', '32bvfp285amcrn821s0j3e6hnd', 0, N'Tài khoản 5', '0123456795'),
     ('tk6', 'tk6@fpt.edu.vn', 'ks29dn6lhdemnurnf3odrhbko', 0, N'Tài khoản 6', '0123456796');
 GO
-SELECT *
-FROM [tai_khoan];
 
 INSERT INTO [muon_phong]
     (/*id_muon_phong,*/[id_tai_khoan], [so_tang], [id_phong], [tg_muon], [tg_tra], [tg_tra_thuc_te], [ly_do])
@@ -126,8 +122,6 @@ VALUES
     ('tk5', 3, 2, '2020-12-22 09:30:00', '2020-12-22 11:30:00', null, N'Dạy học'),
     ('tk6', 3, 1, '2020-12-23 09:30:00', '2020-12-23 11:30:00', null, N'Dạy học');
 GO
-SELECT *
-FROM [muon_phong];
 
 INSERT INTO [thong_tin_sinh_vien]
     ([id_sinh_vien],[email_sv], [ten_sinh_vien], [id_muon_phong])
@@ -138,8 +132,6 @@ VALUES
     ('pc01187', 'ngocntypc01187@fpt.edu.vn', N'Ngọc', 3),
     ('pc01187', 'ngocntypc01187@fpt.edu.vn', N'Ngọc', 4);
 GO
-SELECT *
-FROM [thong_tin_sinh_vien];
 
 INSERT INTO [temp_muon_phong_sv]
     (/*id_temp,*/[so_tang], [id_phong], [tg_muon], [tg_tra], [id_sinh_vien], [email_sinh_vien], [ten_sinh_vien], [ly_do], [id_tai_khoan], [otp], [tg_dang_ky])
@@ -148,9 +140,6 @@ VALUES
     (1, 2, '2020-12-23 13:00:00', '2020-12-23 15:00:00', 'pc01275', 'vinhlmpc01238@fpt.edu.vn', N'Phong Trần', N'Sinh hoạt câu lạc bộ', 'vinhlm', '12345678', '2020-12-23 09:30:00'),
     (1, 3, '2020-12-23 09:30:00', '2020-12-23 11:30:00', 'pc01275', 'vinhlmpc01238@fpt.edu.vn', N'Phong Trần', N'Học thanh nhạc', 'tk6', '11223344', '2020-12-22 11:30:00');
 GO
-SELECT *
-FROM [temp_muon_phong_sv];
-
 
 GO
 CREATE PROC get_phong_mp
@@ -171,11 +160,6 @@ BEGIN
     FROM muon_phong RIGHT JOIN phong ON phong.so_tang = muon_phong.so_tang AND phong.id_phong = muon_phong.id_phong
     GROUP BY phong.so_tang, phong.id_phong, ten_phong, is_cho_muon;
 END;
-
-GO
-DECLARE @now DATETIME;
-SET @now = GETDATE();
-EXEC get_phong_mp @now;
 
 GO
 CREATE PROC get_phong_mp_id
@@ -201,62 +185,6 @@ BEGIN
 END;
 
 GO
-DECLARE @now DATETIME;
-SET @now = GETDATE();
-EXEC get_phong_mp_id @now, 1, 2;
-
-
---------------------------------
-/*
-INSERT INTO [muon_phong]
-    ([id_tai_khoan], [so_tang], [id_phong], [tg_muon], [tg_tra], [tg_tra_thuc_te], [ly_do])
-VALUES
-    (?, ?, ?, ?, ?, ?, ?);
-*/
-
-SELECT
-    [id_muon_phong],
-    [id_tai_khoan],
-    [so_tang],
-    [id_phong],
-    [tg_muon],
-    [tg_tra],
-    [tg_tra_thuc_te],
-    [ly_do]
-FROM [muon_phong]
-WHERE [tg_tra_thuc_te] IS NULL;
-
-SELECT
-    [id_muon_phong],
-    [id_tai_khoan],
-    [so_tang],
-    [id_phong],
-    [tg_muon],
-    [tg_tra],
-    [tg_tra_thuc_te],
-    [ly_do]
-FROM [muon_phong]
-WHERE [so_tang] = 1 AND [id_phong] = 2 AND [tg_tra_thuc_te] IS NULL;
-/*
-UPDATE [muon_phong]
-SET
-    [id_tai_khoan] = ?,
-    [so_tang] = ?, 
-    [id_phong] = ?, 
-    [tg_muon] = ?, 
-    [tg_tra] = ?, 
-    [tg_tra_thuc_te] = ?, 
-    [ly_do] = ?
-WHERE [id_muon_phong] = ?;
-
--- DELETE FROM [muon_phong] WHERE id_muon_phong = ?;
-*/
-GO
-
-SELECT id_sinh_vien, email_sv, ten_sinh_vien, id_muon_phong
-FROM [thong_tin_sinh_vien];
-
-GO
 CREATE VIEW view_thong_tin_muon_phong
 AS
     SELECT [phong].[id_phong], [phong].[so_tang], [ten_phong], [is_cho_muon], [muon_phong].[id_muon_phong], [tai_khoan].[id_tai_khoan], [ly_do], [tg_muon], [tg_tra], [tg_tra_thuc_te], [email], [mat_khau], [is_phan_quyen], [ten], [sdt], [id_sinh_vien], [ten_sinh_vien], [email_sv],
@@ -275,34 +203,4 @@ AS
         LEFT JOIN [tai_khoan] ON [muon_phong].[id_tai_khoan] LIKE [tai_khoan].[id_tai_khoan]
         LEFT JOIN [thong_tin_sinh_vien] ON [muon_phong].[id_muon_phong] LIKE [thong_tin_sinh_vien].[id_muon_phong]
     GROUP BY [phong].[id_phong], [phong].[so_tang], [ten_phong], [is_cho_muon], [muon_phong].[id_muon_phong], [tai_khoan].[id_tai_khoan], [ly_do], [tg_muon], [tg_tra], [tg_tra_thuc_te], [email], [mat_khau], [is_phan_quyen], [ten], [sdt], [id_sinh_vien], [ten_sinh_vien], [email_sv];
-
 GO
-SELECT [id_phong], [so_tang], [ten_phong], [is_cho_muon], [luot_dat], [is_trong], [id_muon_phong], [id_tai_khoan], [ly_do], [tg_muon], [tg_tra], [tg_tra_thuc_te], [email], [mat_khau], [is_phan_quyen], [ten], [sdt], [id_sinh_vien], [ten_sinh_vien], [email_sv]
-FROM view_thong_tin_muon_phong;
-
-SELECT [id_phong], [so_tang], [ten_phong], [is_cho_muon], [luot_dat], [is_trong], [id_muon_phong], [id_tai_khoan], [ly_do], [tg_muon], [tg_tra], [tg_tra_thuc_te], [email], [mat_khau], [is_phan_quyen], [ten], [sdt], [id_sinh_vien], [ten_sinh_vien], [email_sv]
-FROM view_thong_tin_muon_phong
-WHERE ([tg_tra] < 'min' AND [tg_muon] > 'max') OR [tg_tra_thuc_te] IS NOT NULL;
-
-GO
-
-
-SELECT [id_phong], [so_tang], [ten_phong], [is_cho_muon], [luot_dat], [is_trong], [id_muon_phong], [id_tai_khoan], [ly_do], [tg_muon], [tg_tra], [tg_tra_thuc_te], [email], [mat_khau], [is_phan_quyen], [ten], [sdt], [id_sinh_vien], [ten_sinh_vien], [email_sv]
-FROM view_thong_tin_muon_phong
-WHERE ([tg_tra] > CAST('2020/22/12 06:04:00' as datetime) OR [tg_muon] < CAST('2020/22/12 07:04:00' as datetime) OR ([tg_tra_thuc_te] IS NULL AND [id_muon_phong] IS NOT NULL)) AND (so_tang = 2 AND id_phong = 3)
-
-SELECT *
-FROM view_thong_tin_muon_phong
-WHERE NOT [ten_phong] = ANY (
-    SELECT ten_phong--, [tg_muon], [tg_tra], [tg_tra_thuc_te], [id_muon_phong]
-FROM phong INNER JOIN muon_phong ON phong.so_tang = muon_phong.so_tang AND phong.id_phong = muon_phong.id_phong
-WHERE (CAST('2020/12/20 13:17:00' as datetime) BETWEEN [tg_muon] AND [tg_tra] OR CAST('2020/12/20 14:00:00' as datetime) BETWEEN [tg_muon] AND [tg_tra]) AND ([tg_tra_thuc_te] IS NULL AND [id_muon_phong] IS NOT NULL)
-);
-
-SELECT *
-FROM view_thong_tin_muon_phong
-WHERE NOT [ten_phong] = ANY (
-    SELECT ten_phong--, [tg_muon], [tg_tra], [tg_tra_thuc_te], [id_muon_phong]
-FROM phong INNER JOIN muon_phong ON phong.so_tang = muon_phong.so_tang AND phong.id_phong = muon_phong.id_phong
-WHERE (CAST('2020/12/20 13:17:00' as datetime) BETWEEN [tg_muon] AND [tg_tra] OR CAST('2020/12/20 14:00:00' as datetime) BETWEEN [tg_muon] AND [tg_tra]) AND ([tg_tra_thuc_te] IS NULL AND [id_muon_phong] IS NOT NULL)
-);
