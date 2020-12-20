@@ -71,7 +71,6 @@ public class QLMainJFrame extends javax.swing.JFrame {
         mnuThongKe = new javax.swing.JMenu();
         mniThongKePhong = new javax.swing.JMenuItem();
         mniThongKeGv = new javax.swing.JMenuItem();
-        mniThongKeAll = new javax.swing.JMenuItem();
         mnuGioiThieu = new javax.swing.JMenu();
         mniChungToi = new javax.swing.JMenuItem();
         mniHuongDan = new javax.swing.JMenuItem();
@@ -364,15 +363,6 @@ public class QLMainJFrame extends javax.swing.JFrame {
         });
         mnuThongKe.add(mniThongKeGv);
 
-        mniThongKeAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Statistics.png"))); // NOI18N
-        mniThongKeAll.setText("Thống kê tất cả");
-        mniThongKeAll.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mniThongKeAllActionPerformed(evt);
-            }
-        });
-        mnuThongKe.add(mniThongKeAll);
-
         mnubar.add(mnuThongKe);
 
         mnuGioiThieu.setText("Giới thiệu");
@@ -478,14 +468,6 @@ public class QLMainJFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, ex.getMessage());
         }
     }//GEN-LAST:event_mniThongKeGvActionPerformed
-
-    private void mniThongKeAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniThongKeAllActionPerformed
-        try {
-            showThongKe(2);
-        } catch (ToViewException ex) {
-            JOptionPane.showMessageDialog(this, ex.getMessage());
-        }
-    }//GEN-LAST:event_mniThongKeAllActionPerformed
 
     private void mniChungToiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniChungToiActionPerformed
         // TODO add your handling code here:
@@ -621,7 +603,6 @@ public class QLMainJFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem mniQLPhong;
     private javax.swing.JMenuItem mniQLTaiKhoan;
     private javax.swing.JMenuItem mniThoat;
-    private javax.swing.JMenuItem mniThongKeAll;
     private javax.swing.JMenuItem mniThongKeGv;
     private javax.swing.JMenuItem mniThongKePhong;
     private javax.swing.JMenuItem mniXemPhong;
