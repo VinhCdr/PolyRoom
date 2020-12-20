@@ -19,16 +19,16 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="txtCa" min="-2" pref="177" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="txtTimStart" min="-2" pref="177" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="txtCa1" min="-2" pref="177" max="-2" attributes="0"/>
+                      <Component id="txtTimEnd" min="-2" pref="177" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btnTimPhong" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="35" max="32767" attributes="0"/>
-                      <Component id="btnTraPhong" linkSize="2" min="-2" pref="120" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnMuonPhong" linkSize="2" min="-2" pref="138" max="-2" attributes="0"/>
+                      <EmptySpace pref="125" max="32767" attributes="0"/>
+                      <Component id="btnTraPhong" linkSize="3" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="btnMuonPhong" linkSize="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Component id="jScrollPane1" max="32767" attributes="0"/>
               </Group>
@@ -40,14 +40,14 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jScrollPane1" pref="229" max="32767" attributes="0"/>
+              <Component id="jScrollPane1" pref="239" max="32767" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnTraPhong" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
-                  <Component id="btnMuonPhong" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
-                  <Component id="txtCa" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
-                  <Component id="btnTimPhong" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
-                  <Component id="txtCa1" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                  <Component id="btnTraPhong" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnMuonPhong" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtTimStart" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnTimPhong" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtTimEnd" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
@@ -115,7 +115,10 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JTextField" name="txtCa">
+    <Component class="javax.swing.JTextField" name="txtTimStart">
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtTimStartMouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnTimPhong">
       <Properties>
@@ -141,7 +144,10 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMuonPhongActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtCa1">
+    <Component class="javax.swing.JTextField" name="txtTimEnd">
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtTimEndMouseClicked"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

@@ -6,8 +6,12 @@
 package poro.gui;
 
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import poro.module.CalendarManager;
 import poro.module.Session;
 import poro.module.db.DatabaseManager;
 import poro.module.db.data.Phong;
@@ -24,7 +28,7 @@ public class NMXemPhongJPanel extends javax.swing.JPanel {
      */
     public NMXemPhongJPanel() {
         initComponents();
-        
+
         loadTblPhong();
     }
 
@@ -39,11 +43,11 @@ public class NMXemPhongJPanel extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tblPhong = new javax.swing.JTable();
-        txtCa = new javax.swing.JTextField();
+        txtTimStart = new javax.swing.JTextField();
         btnTimPhong = new javax.swing.JButton();
         btnTraPhong = new javax.swing.JButton();
         btnMuonPhong = new javax.swing.JButton();
-        txtCa1 = new javax.swing.JTextField();
+        txtTimEnd = new javax.swing.JTextField();
 
         tblPhong.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -69,6 +73,12 @@ public class NMXemPhongJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblPhong);
 
+        txtTimStart.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtTimStartMouseClicked(evt);
+            }
+        });
+
         btnTimPhong.setText("Tìm phòng trống");
         btnTimPhong.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -90,6 +100,12 @@ public class NMXemPhongJPanel extends javax.swing.JPanel {
             }
         });
 
+        txtTimEnd.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtTimEndMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -97,16 +113,16 @@ public class NMXemPhongJPanel extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(txtCa, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtTimStart, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(txtCa1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtTimEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnTimPhong)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                        .addComponent(btnTraPhong, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
+                        .addComponent(btnTraPhong)
                         .addGap(18, 18, 18)
-                        .addComponent(btnMuonPhong, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnMuonPhong))
                     .addComponent(jScrollPane1))
                 .addContainerGap())
         );
@@ -117,14 +133,14 @@ public class NMXemPhongJPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnTraPhong, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnMuonPhong, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCa, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnTimPhong, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCa1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnTraPhong)
+                    .addComponent(btnMuonPhong)
+                    .addComponent(txtTimStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnTimPhong)
+                    .addComponent(txtTimEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -137,15 +153,45 @@ public class NMXemPhongJPanel extends javax.swing.JPanel {
         int idPhong = (Integer) dtm.getValueAt(selected, 1);
         m.loading(soTang, idPhong);
         m.setVisible(true);
+        loadTblPhong();
     }//GEN-LAST:event_btnMuonPhongActionPerformed
 
     private void btnTraPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTraPhongActionPerformed
-        
+        showDangMuon();
+        loadTblPhong();
     }//GEN-LAST:event_btnTraPhongActionPerformed
 
     private void btnTimPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimPhongActionPerformed
-        
+        loadTblPhong();
+        ArrayList<ThongTinMuonPhong> ttmpss;
+        ThongTinMuonPhong ttmp = new ThongTinMuonPhong();
+        ttmp.setTgBatDauF(CalendarManager.getDateByString(txtTimStart.getText(), CalendarManager.DATE_HOUR_FULL_FORMAT));
+        ttmp.setTgKetThucF(CalendarManager.getDateByString(txtTimEnd.getText(), CalendarManager.DATE_HOUR_FULL_FORMAT));
+
+        ttmpss = DatabaseManager.executeQuery(ttmp, ThongTinMuonPhong.EXECUTE_SELECT_TIM_PHONG);
+        if (ttmpss == null || ttmpss.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Không có phòng trống trong thời gian này!");
+            return;
+        }
+        DefaultTableModel dtm = (DefaultTableModel) tblPhong.getModel();
+        ttmpss.forEach(tt -> {
+            for (int i = 0; i < dtm.getRowCount(); i++) {
+                boolean isLau = tt.getPhong().getIdSoTang() == (Integer) dtm.getValueAt(i, 0);
+                boolean isPhong = tt.getPhong().getIdPhong() == (Integer) dtm.getValueAt(i, 1);
+                if (isLau && isPhong) {
+                    tblPhong.addRowSelectionInterval(i, i);
+                }
+            }
+        });
     }//GEN-LAST:event_btnTimPhongActionPerformed
+
+    private void txtTimStartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTimStartMouseClicked
+        setGioBatDau(txtTimStart);
+    }//GEN-LAST:event_txtTimStartMouseClicked
+
+    private void txtTimEndMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTimEndMouseClicked
+        setGioKetThuc(txtTimStart, txtTimEnd);
+    }//GEN-LAST:event_txtTimEndMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnMuonPhong;
@@ -153,8 +199,8 @@ public class NMXemPhongJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnTraPhong;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblPhong;
-    private javax.swing.JTextField txtCa;
-    private javax.swing.JTextField txtCa1;
+    private javax.swing.JTextField txtTimEnd;
+    private javax.swing.JTextField txtTimStart;
     // End of variables declaration//GEN-END:variables
 
     private void loadTblPhong() {
@@ -166,23 +212,66 @@ public class NMXemPhongJPanel extends javax.swing.JPanel {
         });
         loadPhongDangMuon();
     }
-    
+
     private ArrayList<ThongTinMuonPhong> ttPhongDangMuons = new ArrayList<>();
-    
+
     private void loadPhongDangMuon() {
-        if (!Session.isLogin()){
+        if (!Session.isLogin()) {
             btnTraPhong.setEnabled(false);
             return;
         }
         ThongTinMuonPhong ttmp = new ThongTinMuonPhong();
         ttmp.setIdTaiKhoanMuon(Session.USER.getIdTaiKhoan());
         ttPhongDangMuons = DatabaseManager.executeQuery(ttmp, ThongTinMuonPhong.EXECUTE_SELECT_BY_ID_TAI_KHOAN);
-        
+
         if (ttPhongDangMuons == null || ttPhongDangMuons.isEmpty()) {
             btnTraPhong.setEnabled(false);
         } else {
             btnTraPhong.setEnabled(true);
         }
     }
-    
+
+    private void showDangMuon() {
+        if (ttPhongDangMuons == null || ttPhongDangMuons.isEmpty()) {
+            btnTraPhong.setEnabled(false);
+            return;
+        } else {
+            btnTraPhong.setEnabled(true);
+        }
+        TraPhongJDialog traPhongJDialog = new TraPhongJDialog((JFrame) this.getRootPane().getParent(), true, ttPhongDangMuons);
+        traPhongJDialog.setVisible(true);
+    }
+
+    private void setGioBatDau(JTextField txtBatDau) {
+        ChonNgayGioJDialog cngjd = new ChonNgayGioJDialog((JFrame) this.getRootPane().getParent(), true);
+
+        Date dateOrigin = CalendarManager.getNow();
+        if (!txtBatDau.getText().isEmpty()) {
+            dateOrigin = CalendarManager.getDateByString(txtBatDau.getText(), CalendarManager.DATE_HOUR_FULL_FORMAT);
+        }
+
+        cngjd.setDateOrigin(dateOrigin);
+        cngjd.setVisible(true);
+        txtBatDau.setText(cngjd.getResult());
+    }
+
+    private void setGioKetThuc(JTextField txtBatDau, JTextField txtKetThuc) {
+        ChonNgayGioJDialog cngjd = new ChonNgayGioJDialog((JFrame) this.getRootPane().getParent(), true);
+
+        Date dateOrigin = CalendarManager.getNow();
+
+        if (!txtKetThuc.getText().isEmpty()) {
+            dateOrigin = CalendarManager.getDateByString(txtKetThuc.getText(), CalendarManager.DATE_HOUR_FULL_FORMAT);
+        } else {
+            if (!txtBatDau.getText().isEmpty()) {
+                Date first = CalendarManager.getDateByString(txtBatDau.getText(), CalendarManager.DATE_HOUR_FULL_FORMAT);
+                dateOrigin = CalendarManager.addTimes(first, 1000L * 60 * 60 * 2);
+            }
+        }
+
+        cngjd.setDateOrigin(dateOrigin);
+        cngjd.setVisible(true);
+        txtKetThuc.setText(cngjd.getResult());
+    }
+
 }
