@@ -203,4 +203,17 @@ AS
         LEFT JOIN [tai_khoan] ON [muon_phong].[id_tai_khoan] LIKE [tai_khoan].[id_tai_khoan]
         LEFT JOIN [thong_tin_sinh_vien] ON [muon_phong].[id_muon_phong] LIKE [thong_tin_sinh_vien].[id_muon_phong]
     GROUP BY [phong].[id_phong], [phong].[so_tang], [ten_phong], [is_cho_muon], [muon_phong].[id_muon_phong], [tai_khoan].[id_tai_khoan], [ly_do], [tg_muon], [tg_tra], [tg_tra_thuc_te], [email], [mat_khau], [is_phan_quyen], [ten], [sdt], [id_sinh_vien], [ten_sinh_vien], [email_sv];
+
 GO
+CREATE PROC sp_refresh_poro
+AS
+BEGIN
+    UPDATE [muon_phong] 
+    SET [tg_tra_thuc_te] = GETDATE() 
+    WHERE [tg_tra] <= GETDATE() AND tg_tra_thuc_te IS NULL;
+    DELETE [temp_muon_phong_sv] 
+    WHERE [tg_dang_ky] < GETDATE() AND DATEDIFF(MINUTE, [tg_dang_ky], GETDATE()) < 10;
+END;
+
+GO
+exec sp_reFresh_poro;
