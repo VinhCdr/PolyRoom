@@ -28,8 +28,6 @@ public class NMXemPhongJPanel extends javax.swing.JPanel {
      */
     public NMXemPhongJPanel() {
         initComponents();
-
-        loadTblPhong();
     }
 
     /**
@@ -149,6 +147,11 @@ public class NMXemPhongJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    public void loading() {
+        loadTblPhong();
+        loadPhongDangMuon();
+    }
+    
     private void btnMuonPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMuonPhongActionPerformed
         MuonPhongJDialog m = new MuonPhongJDialog((JFrame) this.getRootPane().getParent(), true);
         int selected = tblPhong.getSelectedRow();
@@ -169,12 +172,12 @@ public class NMXemPhongJPanel extends javax.swing.JPanel {
         int idPhong = (Integer) dtm.getValueAt(selected, 1);
         m.loading(soTang, idPhong);
         m.setVisible(true);
-        loadTblPhong();
+        loading();
     }//GEN-LAST:event_btnMuonPhongActionPerformed
 
     private void btnTraPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTraPhongActionPerformed
         showDangMuon();
-        loadTblPhong();
+        loading();
     }//GEN-LAST:event_btnTraPhongActionPerformed
 
     private void btnTimPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimPhongActionPerformed
@@ -207,7 +210,7 @@ public class NMXemPhongJPanel extends javax.swing.JPanel {
             return;
         }
 
-        loadTblPhong();
+        loading();
         ArrayList<ThongTinMuonPhong> ttmpss;
         ThongTinMuonPhong ttmp = new ThongTinMuonPhong();
         ttmp.setTgBatDauF(CalendarManager.getDateByString(txtTimStart.getText(), CalendarManager.DATE_HOUR_FULL_FORMAT));
@@ -255,7 +258,6 @@ public class NMXemPhongJPanel extends javax.swing.JPanel {
         dsPhong.forEach(phong -> {
             dtm.addRow(new Object[]{phong.getIdSoTang(), phong.getIdPhong(), phong.getTenPhong(), phong.isChoMuon() ? "Có" : "-", phong.isDangTrong() ? "Có" : "-", phong.getLuotDat()});
         });
-        loadPhongDangMuon();
     }
 
     private ArrayList<ThongTinMuonPhong> ttPhongDangMuons = new ArrayList<>();

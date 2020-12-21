@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import poro.module.CalendarManager;
 import poro.module.Session;
+import poro.module.db.DatabaseRefresh;
 
 /**
  *
@@ -183,6 +184,11 @@ public class QLMainJFrame extends javax.swing.JFrame {
         getContentPane().add(toolbar, java.awt.BorderLayout.PAGE_START);
 
         tabContent.setBackground(new java.awt.Color(204, 204, 204));
+        tabContent.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                tabContentStateChanged(evt);
+            }
+        });
         getContentPane().add(tabContent, java.awt.BorderLayout.CENTER);
 
         pnlChanTrang.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.darkShadow"));
@@ -537,6 +543,13 @@ public class QLMainJFrame extends javax.swing.JFrame {
         resetTabs();
     }//GEN-LAST:event_btnResetTabActionPerformed
 
+    private void tabContentStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_tabContentStateChanged
+        if (!this.isVisible()){
+            return;
+        }
+        loading();
+    }//GEN-LAST:event_tabContentStateChanged
+
     /**
      * @param args the command line arguments
      */
@@ -633,11 +646,18 @@ public class QLMainJFrame extends javax.swing.JFrame {
         tab_QuanLyTaiKhoanJPanel = new QuanLyTaiKhoanJPanel();
         tab_ThongKeJPanel = new ThongKeJPanel();
         tab_TrangChuJPanel = new TrangChuJPanel();
-
+        
         resetTabs();
         loadingDongHo();
     }
 
+    public void loading() {
+        tab_NMXemPhongJPanel.loading();
+        tab_QuanLyPhongJPanel.loading();
+        tab_QuanLyTaiKhoanJPanel.loading();
+        tab_ThongKeJPanel.loading();
+    }
+    
     /**
      * Chuyển đổi giao diện cho người mượn hoặc quản lý
      *
@@ -765,7 +785,11 @@ public class QLMainJFrame extends javax.swing.JFrame {
             public void run() {
                 try {
                     while (true) {
-                        lblNow.setText(CalendarManager.getString(CalendarManager.getNow(), CalendarManager.DATE_HOUR_FULL_FORMAT));
+                        String times = CalendarManager.getString(CalendarManager.getNow(), CalendarManager.DATE_HOUR_FULL_FORMAT);
+                        lblNow.setText(times);
+                        if (times.endsWith("0")) {
+                            DatabaseRefresh.refresh();
+                        }
                         Thread.sleep(1000);
                     }
                 } catch (InterruptedException ex) {

@@ -22,7 +22,6 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
 
     public QuanLyPhongJPanel() {
         initComponents();
-        loadTblPhong();
         setEditable(false);
     }
 
@@ -463,6 +462,11 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    public void loading() {
+        loadTblPhong();
+        loadPhongDangMuon();
+    }
+    
     private void btnMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoiActionPerformed
         lamMoi();
         setEnabled(false);
@@ -471,7 +475,7 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
     private void btnThemPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemPhongActionPerformed
         try {
             them();
-            loadTblPhong();
+            setEditable(false);
             JOptionPane.showMessageDialog(this, "Thêm thành công");
             lamMoi();
             setEnabled(false);
@@ -483,7 +487,7 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
     private void btnSuaPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaPhongActionPerformed
         try {
             sua();
-            loadTblPhong();
+            loading();
             JOptionPane.showMessageDialog(this, "Sửa thành công");
             lamMoi();
             setEnabled(false);
@@ -504,7 +508,7 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
                 return;
             }
             xoa();
-            loadTblPhong();
+            loading();
             JOptionPane.showMessageDialog(this, "Xóa thành công");
             lamMoi();
             setEnabled(false);
@@ -540,7 +544,7 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
             }
             huyMuon();
             selectTable();
-            loadTblPhong();
+            loading();
             JOptionPane.showMessageDialog(this, "Hủy mượn thành công");
         } catch (ToViewException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
@@ -568,12 +572,12 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
         m.loading(soTang, idPhong);
         m.setVisible(true);
         lamMoi();
-        loadTblPhong();
+        loading();
     }//GEN-LAST:event_btnMuonPhongActionPerformed
 
     private void btnTraPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTraPhongActionPerformed
         showDangMuon();
-        loadTblPhong();
+        loading();
     }//GEN-LAST:event_btnTraPhongActionPerformed
 
     private void btnTimPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimPhongActionPerformed
@@ -608,7 +612,7 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
         }
 
         //xử lý
-        loadTblPhong();
+        loading();
         ArrayList<ThongTinMuonPhong> ttmpss;
         ThongTinMuonPhong ttmp = new ThongTinMuonPhong();
         ttmp.setTgBatDauF(batDau);
@@ -715,7 +719,6 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
         dsPhong.forEach(phong -> {
             dtm.addRow(new Object[]{phong.getIdSoTang(), phong.getIdPhong(), phong.getTenPhong(), phong.isChoMuon() ? "Có" : "-", phong.isDangTrong() ? "Có" : "-", phong.getLuotDat()});
         });
-        loadPhongDangMuon();
     }
 
     private void them() throws ToViewException {

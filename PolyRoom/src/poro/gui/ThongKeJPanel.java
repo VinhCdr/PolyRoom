@@ -28,7 +28,6 @@ public class ThongKeJPanel extends javax.swing.JPanel {
 
         loadingCbo(cboNguoiMuon);
         loadingCbo(cboPhong);
-        loading();
         ok = true;
     }
 

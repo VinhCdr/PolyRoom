@@ -23,7 +23,6 @@ public class QuanLyTaiKhoanJPanel extends javax.swing.JPanel {
      */
     public QuanLyTaiKhoanJPanel() {
         initComponents();
-        loadTblTaiKhoan();
         setEditable(false);
     }
 
@@ -252,6 +251,10 @@ public class QuanLyTaiKhoanJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    public void loading() {
+        loadTblTaiKhoan();
+    }
+    
     private void btnMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoiActionPerformed
         // TODO add your handling code here:
         lamMoi();
@@ -261,7 +264,7 @@ public class QuanLyTaiKhoanJPanel extends javax.swing.JPanel {
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         try {
             them();
-            loadTblTaiKhoan();
+            loading();
             JOptionPane.showMessageDialog(this, "Thêm thành công");
         } catch (ToViewException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
@@ -271,7 +274,7 @@ public class QuanLyTaiKhoanJPanel extends javax.swing.JPanel {
     private void btnCapNhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapNhatActionPerformed
         try {
             capNhat();
-            loadTblTaiKhoan();
+            loading();
             JOptionPane.showMessageDialog(this, "Cập nhật thành công");
         } catch (ToViewException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
@@ -291,7 +294,7 @@ public class QuanLyTaiKhoanJPanel extends javax.swing.JPanel {
                 return;
             }
             xoa();
-            loadTblTaiKhoan();
+            loading();
             setEditable(false);
             JOptionPane.showMessageDialog(this, "Xóa thành công");
         } catch (ToViewException ex) {
