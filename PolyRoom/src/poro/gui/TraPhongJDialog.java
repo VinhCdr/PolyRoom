@@ -153,8 +153,8 @@ public class TraPhongJDialog extends javax.swing.JDialog {
                 sv == null ? tk.getEmail() : sv.getEmail(),
                 sv == null ? tk.isPhanQuyen() ? "Quản lý" : "Giảng viên" : "Sinh viên",
                 mp.getLyDo(),
-                mp.getTgMuon(),
-                mp.getTgTra()
+                CalendarManager.getString(mp.getTgMuon(), CalendarManager.DATE_HOUR_FULL_FORMAT),
+                CalendarManager.getString(mp.getTgTra(), CalendarManager.DATE_HOUR_FULL_FORMAT)
             });
         });
     }
@@ -166,12 +166,12 @@ public class TraPhongJDialog extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, "Vui lòng chọn phòng muốn trả");
             return;
         }
-        
+
         int confirm = JOptionPane.showConfirmDialog(this, "Bạn muốn trả phòng sớm ?", "Xác nhận trả phòng", JOptionPane.YES_NO_OPTION);
-        if (JOptionPane.YES_OPTION != confirm){
+        if (JOptionPane.YES_OPTION != confirm) {
             return;
         }
-        
+
         int idMuon = (Integer) dtm.getValueAt(rowSeleted, 0);
         MuonPhong mp = new MuonPhong();
         mp.setIdMuonPhong(idMuon);
@@ -181,13 +181,13 @@ public class TraPhongJDialog extends javax.swing.JDialog {
             return;
         }
         mp = mps.get(0);
-        
+
         if (CalendarManager.getNow().before(mp.getTgMuon())) {
             mp.setTgTraThucTe(mp.getTgMuon());
         } else {
             mp.setTgTraThucTe(CalendarManager.getNow());
         }
-        
+
         int ok = DatabaseManager.executeUpdate(mp, MuonPhong.EXECUTE_UPDATE_BY_ID);
         if (ok >= 0) {
             JOptionPane.showMessageDialog(this, "Trả phòng thành công");

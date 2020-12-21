@@ -499,7 +499,7 @@ public class MuonPhongJDialog extends javax.swing.JDialog {
 
     private Form getForm() {
         Form form = new Form();
-
+        
         TaiKhoan tk = Session.USER;
         int soTang = Integer.parseInt(txtLau.getText());
         int idPhong = Integer.parseInt(txtIdPhong.getText());

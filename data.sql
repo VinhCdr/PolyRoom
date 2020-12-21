@@ -214,6 +214,15 @@ BEGIN
 
     DELETE [temp_muon_phong_sv] 
     WHERE [tg_dang_ky] < GETDATE() AND DATEDIFF(MINUTE, [tg_dang_ky], GETDATE()) > 10;
+
+    DELETE [temp_muon_phong_sv]
+    WHERE [id_temp] = ANY (
+        SELECT id_temp
+    FROM temp_muon_phong_sv AS t
+        INNER JOIN muon_phong as m ON t.so_tang = m.so_tang AND t.id_phong = m.id_phong
+    WHERE t.tg_muon BETWEEN m.tg_muon AND m.tg_tra OR t.tg_tra BETWEEN m.tg_muon AND m.tg_tra OR m.tg_muon BETWEEN t.tg_muon AND t.tg_tra
+    );
+
 END;
 
 GO
@@ -222,9 +231,12 @@ CREATE PROC sp_confirm_temp_sv
     @otp CHAR(8))
 AS
 BEGIN
-    IF ((SELECT [id_temp] FROM temp_muon_phong_sv WHERE [id_temp] = @id_temp AND [otp] LIKE @otp) IS NOT NULL) 
+    IF ((SELECT [id_temp]
+    FROM temp_muon_phong_sv
+    WHERE [id_temp] = @id_temp AND [otp] LIKE @otp) IS NOT NULL) 
     BEGIN
-        INSERT INTO [muon_phong] ([id_tai_khoan], [so_tang], [id_phong], [tg_muon], [tg_tra], [tg_tra_thuc_te], [ly_do])
+        INSERT INTO [muon_phong]
+            ([id_tai_khoan], [so_tang], [id_phong], [tg_muon], [tg_tra], [tg_tra_thuc_te], [ly_do])
         SELECT [id_tai_khoan], [so_tang], [id_phong], [tg_muon], [tg_tra], null, [ly_do]
         FROM [temp_muon_phong_sv]
         WHERE [id_temp] = @id_temp AND [otp] LIKE @otp;
@@ -232,10 +244,11 @@ BEGIN
         DECLARE @id_muon INTEGER;
         SET @id_muon = (SELECT TOP(1)
             id_muon_phong
-            FROM muon_phong
-            ORDER BY id_muon_phong DESC);
+        FROM muon_phong
+        ORDER BY id_muon_phong DESC);
 
-        INSERT INTO [thong_tin_sinh_vien] ([id_sinh_vien],[email_sv], [ten_sinh_vien], [id_muon_phong])
+        INSERT INTO [thong_tin_sinh_vien]
+            ([id_sinh_vien],[email_sv], [ten_sinh_vien], [id_muon_phong])
         SELECT [id_sinh_vien], [email_sinh_vien], [ten_sinh_vien], @id_muon
         FROM [temp_muon_phong_sv]
         WHERE [id_temp] = @id_temp AND [otp] LIKE @otp;
