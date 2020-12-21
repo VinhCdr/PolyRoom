@@ -1,5 +1,6 @@
 package poro.gui;
 
+import com.sun.xml.internal.ws.message.StringHeader;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JFrame;
@@ -7,13 +8,22 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import poro.module.CalendarManager;
+import poro.module.FileManager;
+import poro.module.Mailer;
 import poro.module.Session;
+import poro.module.StringHelper;
 import poro.module.db.DatabaseManager;
+import poro.module.db.DatabaseRefresh;
 import poro.module.db.data.MuonPhong;
 import poro.module.db.data.Phong;
 import poro.module.db.data.SinhVien;
 import poro.module.db.data.TaiKhoan;
+import poro.module.db.data.TempMuonPhong;
 import poro.module.db.data.ThongTinMuonPhong;
+import poro.module.web.WebConfirmStd;
+import poro.module.web.WebHandler;
+import poro.module.web.WebServer;
+import poro.module.web.WebServerManager;
 
 /**
  *
@@ -397,7 +407,11 @@ public class MuonPhongJDialog extends javax.swing.JDialog {
             }
 
             insert();
-            JOptionPane.showMessageDialog(this, "Mượn phòng thành công");
+            if (chkMuonHo.isSelected()) {
+                JOptionPane.showMessageDialog(this, "Đăng ký thành công, chờ xác nhận của sinh viên");
+            } else {
+                JOptionPane.showMessageDialog(this, "Mượn phòng thành công");
+            }
             this.dispose();
         } catch (ToViewException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
@@ -507,19 +521,62 @@ public class MuonPhongJDialog extends javax.swing.JDialog {
 
     private void insert() throws ToViewException {
         Form form = getForm();
-        int ok = DatabaseManager.executeUpdate(form.muonPhong, MuonPhong.EXECUTE_INSERT);
-        if (ok <= 0) {
-            throw new ToViewException("Mượn phòng thất bại");
-        }
-
-        if (!chkMuonHo.isSelected()) {
+        if (!chkMuonHo.isSelected()) { // mượn bình thường
+            int ok = DatabaseManager.executeUpdate(form.muonPhong, MuonPhong.EXECUTE_INSERT);
+            if (ok <= 0) {
+                throw new ToViewException("Mượn phòng thất bại");
+            }
             return;
         }
 
-        int idMuon = DatabaseManager.executeQuery(form.muonPhong, MuonPhong.EXECUTE_SELECT_LAST_INSERT).get(0).getIdMuonPhong();
+        // sinh viên mượn
+        MuonPhong mp = form.muonPhong;
+        SinhVien sv = form.sinhVien;
+        TempMuonPhong temp = new TempMuonPhong();
+        temp.setSoTang(mp.getSoTang());
+        temp.setIdPhong(mp.getIdPhong());
+        temp.setTgMuon(mp.getTgMuon());
+        temp.setTgTra(mp.getTgTra());
+        temp.setIdSinhVien(sv.getIdSV());
+        temp.setEmailSinhVien(sv.getEmail());
+        temp.setTenSinhVien(sv.getTenSV());
+        temp.setLyDo(mp.getLyDo());
+        temp.setIdTaiKhoan(Session.USER.getIdTaiKhoan());
+        temp.setOtp(StringHelper.random(8));
+        temp.setThoiGianDangKy(CalendarManager.getNow());
 
-        form.sinhVien.setIdMuonPhong(idMuon);
-        DatabaseManager.executeUpdate(form.sinhVien, SinhVien.EXECUTE_INSERT);
+        DatabaseManager.executeUpdate(temp, TempMuonPhong.EXECUTE_INSERT);
+        ArrayList<TempMuonPhong> tmps = DatabaseManager.executeQuery(temp, TempMuonPhong.EXECUTE_SELECT_LAST_INSERT);
+        if (tmps == null || tmps.isEmpty()){
+            throw new ToViewException("Không thể lưu lại dữ liệu");
+        }
+        temp = tmps.get(0);
+        
+        FileManager fm = new FileManager("asset/html/mail_muon_phong_ho.html");
+        String email = String.format(fm.readString(),
+                temp.getTenSinhVien(),
+                txtTenPhong.getText(),
+                CalendarManager.getString(temp.getThoiGianDangKy(), CalendarManager.DATE_HOUR_FULL_FORMAT),
+                txtTenPhong.getText(),
+                temp.getSoTang(),
+                temp.getIdPhong(),
+                String.format("%s (%s)", Session.USER.getTen(), temp.getIdTaiKhoan()),
+                CalendarManager.getString(temp.getThoiGianDangKy(), CalendarManager.DATE_HOUR_FULL_FORMAT),
+                CalendarManager.getString(temp.getTgMuon(), CalendarManager.DATE_HOUR_FULL_FORMAT),
+                CalendarManager.getString(temp.getTgTra(), CalendarManager.DATE_HOUR_FULL_FORMAT),
+                temp.getIdSinhVien(),
+                temp.getTenSinhVien(),
+                temp.getLyDo(),
+                String.format("http://%s?id=%d&otp=%s", WebServerManager.getAddress(), temp.getIdTemp(), temp.getOtp()),
+                String.format("http://%s?id=%d&otp=%s", WebServerManager.getAddress(), temp.getIdTemp(), temp.getOtp())
+        );
+
+        Mailer mailer = new Mailer(temp.getEmailSinhVien());
+        mailer.setSubject("Xác nhận mượn phòng - PolyRoom");
+        mailer.setText(email);
+        Thread tMail = new Thread(mailer);
+        tMail.start();
+        WebServerManager.start();
     }
 
     private void setGioBatDau(JTextField txtBatDau) {
@@ -555,6 +612,7 @@ public class MuonPhongJDialog extends javax.swing.JDialog {
     }
 
     private void test() throws ToViewException {
+        DatabaseRefresh.refresh();
         ThongTinMuonPhong ttmp = new ThongTinMuonPhong();
 
         String sbatDau = txtTestTGBatDau.getText();
@@ -591,6 +649,7 @@ public class MuonPhongJDialog extends javax.swing.JDialog {
         ArrayList<ThongTinMuonPhong> ttmps = DatabaseManager.executeQuery(ttmp, ThongTinMuonPhong.EXECUTE_SELECT_KIEM_TRA_PHONG);
         if (ttmps == null || ttmps.isEmpty()) {
             throw new ToViewException("Thời gian này đã được đặt trước");
+
         }
     }
 

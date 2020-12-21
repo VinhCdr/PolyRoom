@@ -139,22 +139,12 @@ public class ThongTinMuonPhong implements DbExecuteQuery {
             case EXECUTE_SELECT_TIM_PHONG:
                 return new Object[]{this.tgBatDauF, this.tgKetThucF, this.tgBatDauF, this.tgKetThucF};
             case EXECUTE_SELECT_KIEM_TRA_PHONG:
-                return new Object[]{this.tgBatDauF, this.tgKetThucF, this.tgBatDauF, this.tgKetThucF, this.soTang, this.idPhong,};
+                return new Object[]{this.tgBatDauF, this.tgKetThucF, this.tgBatDauF, this.tgKetThucF, this.soTang, this.idPhong};
             case EXECUTE_SELECT_BY_ID_TAI_KHOAN:
                 return new Object[]{this.idTaiKhoanMuon};
             default:
                 throw new RuntimeException("Không thể lấy dữ liệu cho câu SQL bằng kiểu có mã là: " + type);
         }
-    }
-
-    public static void main(String[] args) {
-        ThongTinMuonPhong ttmp = new ThongTinMuonPhong();
-        ttmp.setSoTang(0);
-        ttmp.setIdPhong(2);
-        List<ThongTinMuonPhong> ttmpList = DatabaseManager.executeQuery(ttmp, EXECUTE_SELECT_BY_ID_PHONG);
-        ttmpList.forEach(tt -> {
-            System.out.println(tt.getSinhVien());
-        });
     }
 
 }

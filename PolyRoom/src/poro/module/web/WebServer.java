@@ -15,33 +15,35 @@ public class WebServer implements Runnable {
 
     HttpServer httpServer;
     WebHandler webHandler;
-    InetSocketAddress isa;
+    InetSocketAddress isa = new InetSocketAddress(Config.WEB_SERVER_PORT);
+    String site = "poro";
 
+    public WebHandler getWebHandler() {
+        return webHandler;
+    }
+
+    public void setWebHandler(WebHandler webHandler) {
+        this.webHandler = webHandler;
+    }
+    
     @Override
     public void run() {
         try {
-            webHandler = new WebHandler();
-
-            isa = new InetSocketAddress(Config.WEB_SERVER_PORT);
-            httpServer = HttpServer.create(isa, 5);
-            httpServer.createContext("/poro", webHandler);
-            
+            httpServer = HttpServer.create(isa, 10);
+            httpServer.createContext(webHandler.getSite(), webHandler);
             httpServer.start();
-            
-            System.out.println(getAddress());
-            
         } catch (IOException ex) {
             System.out.println(ex);
         }
     }
     
-    public String getAddress() throws UnknownHostException {
-        return InetAddress.getLocalHost().getHostAddress() + ":" + isa.getPort() + "/poro";
+    public String getAddress() {
+        try {
+            return InetAddress.getLocalHost().getHostAddress() + ":" + isa.getPort() + webHandler.getSite();
+        } catch (UnknownHostException ex) {
+            System.out.println(ex);
+            return "";
+        }
     }
 
-    public static void main(String[] args) {
-        WebServer ws = new WebServer();
-        ws.run();
-    }
-    
 }

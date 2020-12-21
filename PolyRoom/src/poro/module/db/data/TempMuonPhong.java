@@ -122,8 +122,9 @@ public class TempMuonPhong implements DbExecuteQuery {
     public static final int EXECUTE_SELECT_ALL = 0;
     public static final int EXECUTE_SELECT_BY_ID = 1;
     public static final int EXECUTE_INSERT = 2;
-    public static final int EXECUTE_UPDATE_BY_ID = 3;
+    public static final int EXECUTE_CONFIRM_BY_ID_OTP = 3;
     public static final int EXECUTE_DELETE_BY_ID = 4;
+    public static final int EXECUTE_SELECT_LAST_INSERT = 5;
 
     @Override
     public TempMuonPhong coverResultSet(ResultSet resultSet, int type) throws SQLException {
@@ -140,7 +141,6 @@ public class TempMuonPhong implements DbExecuteQuery {
         tmp.setIdTaiKhoan(resultSet.getString("id_tai_khoan"));
         tmp.setOtp(resultSet.getString("otp"));
         tmp.setThoiGianDangKy(resultSet.getTimestamp("tg_dang_ky"));
-
         return tmp;
     }
 
@@ -148,20 +148,25 @@ public class TempMuonPhong implements DbExecuteQuery {
     public String getExecuteSQL(int type) {
         switch (type) {
             case EXECUTE_SELECT_ALL:
-                return "SELECT id_temp, id_phong, so_tang, tg_muon, tg_tra, id_sinh_vien, email_sinh_vien, ten_sinh_vien, ly_do, id_tai_khoan, otp, tg_dang_ky  FROM temp_muon_phong_sv;";
+                return "SELECT id_temp, id_phong, so_tang, tg_muon, tg_tra, id_sinh_vien, email_sinh_vien, ten_sinh_vien, ly_do, id_tai_khoan, otp, tg_dang_ky "
+                        + "FROM temp_muon_phong_sv;";
             case EXECUTE_SELECT_BY_ID:
-                return "SELECT id_temp, id_phong, so_tang, tg_muon, tg_tra, id_sinh_vien, email_sinh_vien, ten_sinh_vien, ly_do, id_tai_khoan, otp, tg_dang_ky  FROM temp_muon_phong_sv WHERE id_temp =?;";
+                return "SELECT id_temp, id_phong, so_tang, tg_muon, tg_tra, id_sinh_vien, email_sinh_vien, ten_sinh_vien, ly_do, id_tai_khoan, otp, tg_dang_ky "
+                        + "FROM temp_muon_phong_sv "
+                        + "WHERE id_temp =?;";
             case EXECUTE_INSERT:
                 return "INSERT INTO [temp_muon_phong_sv] "
-                        + "[so_tang], [id_phong], [tg_muon], [tg_tra], [id_sinh_vien], [email_sinh_vien], [ten_sinh_vien], [ly_do], [id_tai_khoan], [otp], [tg_dang_ky]) "
+                        + "([so_tang], [id_phong], [tg_muon], [tg_tra], [id_sinh_vien], [email_sinh_vien], [ten_sinh_vien], [ly_do], [id_tai_khoan], [otp], [tg_dang_ky]) "
                         + "VALUES (?, ?, ?, ?, ?, ?, ?, ? , ?, ?, ?);";
-            case EXECUTE_UPDATE_BY_ID:
-                return "UPDATE FROM [temp_muon_phong_sv] SET "
-                        + "[so_tang] = ?, [id_phong]=?, [tg_muon]=?, [tg_tra]=?, [id_sinh_vien]=?, [email_sinh_vien]=?, [ten_sinh_vien]=?, [ly_do]=?, [id_tai_khoan]=?, [otp]=?, [tg_dang_ky]=? "
-                        + "WHERE id_temp =?";
+            case EXECUTE_CONFIRM_BY_ID_OTP:
+                return "{call sp_confirm_temp_sv(?, ?)}";
             case EXECUTE_DELETE_BY_ID:
                 return " DELETE FROM [temp_muon_phong_sv] "
                         + "WHERE id_temp =?";
+            case EXECUTE_SELECT_LAST_INSERT:
+                return "SELECT id_temp, id_phong, so_tang, tg_muon, tg_tra, id_sinh_vien, email_sinh_vien, ten_sinh_vien, ly_do, id_tai_khoan, otp, tg_dang_ky "
+                        + "FROM temp_muon_phong_sv "
+                        + "ORDER BY id_temp DESC;";
             default:
                 throw new RuntimeException("Không thể lấy câu SQL bằng kiểu có mã là: " + type);
         }
@@ -176,10 +181,12 @@ public class TempMuonPhong implements DbExecuteQuery {
                 return new Object[]{this.idTemp};
             case EXECUTE_INSERT:
                 return new Object[]{this.soTang, this.idPhong, this.tgMuon, this.tgTra, this.idSinhVien, this.emailSinhVien, this.tenSinhVien, this.lyDo, this.idTaiKhoan, this.otp, this.thoiGianDangKy};
-            case EXECUTE_UPDATE_BY_ID:
-                return new Object[]{this.soTang, this.idPhong, this.tgMuon, this.tgTra, this.idSinhVien, this.emailSinhVien, this.tenSinhVien, this.lyDo, this.idTaiKhoan, this.otp, this.thoiGianDangKy, this.idTemp};
+            case EXECUTE_CONFIRM_BY_ID_OTP:
+                return new Object[]{this.idTemp, this.otp};
             case EXECUTE_DELETE_BY_ID:
                 return new Object[]{idTemp};
+            case EXECUTE_SELECT_LAST_INSERT:
+                return new Object[0];
             default:
                 throw new RuntimeException("Không thể lấy dữ liệu cho câu SQL bằng kiểu có mã là: " + type);
         }

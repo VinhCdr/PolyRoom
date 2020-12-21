@@ -211,9 +211,41 @@ BEGIN
     UPDATE [muon_phong] 
     SET [tg_tra_thuc_te] = GETDATE() 
     WHERE [tg_tra] <= GETDATE() AND tg_tra_thuc_te IS NULL;
+
     DELETE [temp_muon_phong_sv] 
-    WHERE [tg_dang_ky] < GETDATE() AND DATEDIFF(MINUTE, [tg_dang_ky], GETDATE()) < 10;
+    WHERE [tg_dang_ky] < GETDATE() AND DATEDIFF(MINUTE, [tg_dang_ky], GETDATE()) > 10;
 END;
 
 GO
-exec sp_reFresh_poro;
+CREATE PROC sp_confirm_temp_sv
+    (@id_temp INTEGER,
+    @otp CHAR(8))
+AS
+BEGIN
+    IF ((SELECT [id_temp] FROM temp_muon_phong_sv WHERE [id_temp] = @id_temp AND [otp] LIKE @otp) IS NOT NULL) 
+    BEGIN
+        INSERT INTO [muon_phong] ([id_tai_khoan], [so_tang], [id_phong], [tg_muon], [tg_tra], [tg_tra_thuc_te], [ly_do])
+        SELECT [id_tai_khoan], [so_tang], [id_phong], [tg_muon], [tg_tra], null, [ly_do]
+        FROM [temp_muon_phong_sv]
+        WHERE [id_temp] = @id_temp AND [otp] LIKE @otp;
+
+        DECLARE @id_muon INTEGER;
+        SET @id_muon = (SELECT TOP(1)
+            id_muon_phong
+            FROM muon_phong
+            ORDER BY id_muon_phong DESC);
+
+        INSERT INTO [thong_tin_sinh_vien] ([id_sinh_vien],[email_sv], [ten_sinh_vien], [id_muon_phong])
+        SELECT [id_sinh_vien], [email_sinh_vien], [ten_sinh_vien], @id_muon
+        FROM [temp_muon_phong_sv]
+        WHERE [id_temp] = @id_temp AND [otp] LIKE @otp;
+
+        DELETE temp_muon_phong_sv 
+        WHERE [id_temp] = @id_temp AND [otp] LIKE @otp;
+    END 
+    ELSE
+    BEGIN
+        DELETE temp_muon_phong_sv 
+        WHERE [id_temp] = -1 AND [otp] LIKE '';
+    END
+END;

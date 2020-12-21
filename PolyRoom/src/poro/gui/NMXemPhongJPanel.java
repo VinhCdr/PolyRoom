@@ -14,6 +14,7 @@ import javax.swing.table.DefaultTableModel;
 import poro.module.CalendarManager;
 import poro.module.Session;
 import poro.module.db.DatabaseManager;
+import poro.module.db.DatabaseRefresh;
 import poro.module.db.data.Phong;
 import poro.module.db.data.ThongTinMuonPhong;
 
@@ -181,6 +182,7 @@ public class NMXemPhongJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnTraPhongActionPerformed
 
     private void btnTimPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimPhongActionPerformed
+        DatabaseRefresh.refresh();
         String sbatDau = txtTimStart.getText();
         String sketThuc = txtTimEnd.getText();
         Date batDau, ketThuc;
@@ -263,6 +265,7 @@ public class NMXemPhongJPanel extends javax.swing.JPanel {
     private ArrayList<ThongTinMuonPhong> ttPhongDangMuons = new ArrayList<>();
 
     private void loadPhongDangMuon() {
+        DatabaseRefresh.refresh();
         if (!Session.isLogin()) {
             btnTraPhong.setEnabled(false);
             return;
