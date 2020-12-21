@@ -131,7 +131,7 @@ public class TempMuonPhong implements DbExecuteQuery {
         TempMuonPhong tmp = new TempMuonPhong();
         tmp.setIdTemp(resultSet.getInt("id_temp"));
         tmp.setIdPhong(resultSet.getInt("id_phong"));
-        tmp.setIdTaiKhoan(resultSet.getString("so_tang"));
+        tmp.setSoTang(resultSet.getInt("so_tang"));
         tmp.setTgMuon(resultSet.getTimestamp("tg_muon"));
         tmp.setTgTra(resultSet.getTimestamp("tg_tra"));
         tmp.setIdSinhVien(resultSet.getString("id_sinh_vien"));
