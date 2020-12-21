@@ -1,6 +1,5 @@
 package poro.gui;
 
-import com.sun.xml.internal.ws.message.StringHeader;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JFrame;
@@ -20,10 +19,7 @@ import poro.module.db.data.SinhVien;
 import poro.module.db.data.TaiKhoan;
 import poro.module.db.data.TempMuonPhong;
 import poro.module.db.data.ThongTinMuonPhong;
-import poro.module.web.WebConfirmStd;
-import poro.module.web.WebHandler;
-import poro.module.web.WebServer;
-import poro.module.web.WebServerManager;
+import poro.module.web.WebStdManager;
 
 /**
  *
@@ -567,8 +563,8 @@ public class MuonPhongJDialog extends javax.swing.JDialog {
                 temp.getIdSinhVien(),
                 temp.getTenSinhVien(),
                 temp.getLyDo(),
-                String.format("http://%s?id=%d&otp=%s", WebServerManager.getAddress(), temp.getIdTemp(), temp.getOtp()),
-                String.format("http://%s?id=%d&otp=%s", WebServerManager.getAddress(), temp.getIdTemp(), temp.getOtp())
+                String.format("http://%s?id=%d&otp=%s", WebStdManager.getAddress(), temp.getIdTemp(), temp.getOtp()),
+                String.format("http://%s?id=%d&otp=%s", WebStdManager.getAddress(), temp.getIdTemp(), temp.getOtp())
         );
 
         Mailer mailer = new Mailer(temp.getEmailSinhVien());
@@ -576,7 +572,6 @@ public class MuonPhongJDialog extends javax.swing.JDialog {
         mailer.setText(email);
         Thread tMail = new Thread(mailer);
         tMail.start();
-        WebServerManager.start();
     }
 
     private void setGioBatDau(JTextField txtBatDau) {

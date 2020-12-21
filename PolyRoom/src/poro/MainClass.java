@@ -4,6 +4,8 @@ import javax.swing.UnsupportedLookAndFeelException;
 import poro.gui.DangNhapJDialog;
 import poro.gui.QLMainJFrame;
 import poro.module.Session;
+import poro.module.db.DatabaseRefresh;
+import poro.module.web.WebStdManager;
 
 /**
  *
@@ -28,7 +30,8 @@ public class MainClass {
         // Tạo 2 màn hình
         QLMainJFrame mainJFrame = new QLMainJFrame();
         DangNhapJDialog dangNhapJDialog = new DangNhapJDialog(mainJFrame, true);
-        
+        DatabaseRefresh.refresh();
+        WebStdManager.start();
         dangNhapJDialog.setVisible(true);
         
         // Chưa đăng nhập thì ko hiện login

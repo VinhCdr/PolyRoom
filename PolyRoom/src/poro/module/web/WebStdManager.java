@@ -4,7 +4,7 @@ package poro.module.web;
  *
  * @author vinh
  */
-public class WebServerManager {
+public class WebStdManager {
 
     private static WebServer ws;
     private static WebHandler wh;

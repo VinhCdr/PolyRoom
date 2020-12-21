@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import poro.module.FileManager;
 import poro.module.db.DatabaseManager;
+import poro.module.db.DatabaseRefresh;
 import poro.module.db.data.TempMuonPhong;
 
 /**
@@ -17,6 +18,7 @@ public class WebConfirmStd extends WebHandler{
     public void handle(HttpExchange he) throws IOException {
         String send = "";
         try {
+            DatabaseRefresh.refresh();
             String sid = super.getRequestUrl(he, "id");
             if (!sid.matches("\\d")) {
                 throw new RuntimeException("id không phải số");
