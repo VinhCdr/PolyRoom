@@ -2,8 +2,10 @@ package poro.module.web;
 
 import com.sun.net.httpserver.HttpServer;
 import java.io.IOException;
+import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
+import java.net.SocketException;
 import java.net.UnknownHostException;
 import poro.module.Config;
 
@@ -25,7 +27,7 @@ public class WebServer implements Runnable {
     public void setWebHandler(WebHandler webHandler) {
         this.webHandler = webHandler;
     }
-    
+
     @Override
     public void run() {
         try {
@@ -36,14 +38,22 @@ public class WebServer implements Runnable {
             System.out.println(ex);
         }
     }
-    
+
     public String getAddress() {
-        try {
-            return InetAddress.getLocalHost().getHostAddress() + ":" + isa.getPort() + webHandler.getSite();
-        } catch (UnknownHostException ex) {
+        String link = ":" + isa.getPort() + webHandler.getSite();
+        try (final DatagramSocket socket = new DatagramSocket()) {
+            socket.connect(InetAddress.getByName("google.com"), 80);
+            String ip = socket.getLocalAddress().getHostAddress();
+            return ip + link;
+        } catch (UnknownHostException | SocketException ex) {
             System.out.println(ex);
-            return "";
         }
+        try {
+            return InetAddress.getLocalHost().getHostName() + link;
+        } catch (UnknownHostException ex1) {
+            System.out.println(ex1);
+        }
+        return "localhost" + link;
     }
 
 }
