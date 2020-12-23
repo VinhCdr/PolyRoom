@@ -540,7 +540,7 @@ public class MuonPhongJDialog extends javax.swing.JDialog {
         temp.setIdTaiKhoan(Session.USER.getIdTaiKhoan());
         temp.setOtp(StringHelper.random(8));
         temp.setThoiGianDangKy(CalendarManager.getNow());
-
+        
         DatabaseManager.executeUpdate(temp, TempMuonPhong.EXECUTE_INSERT);
         ArrayList<TempMuonPhong> tmps = DatabaseManager.executeQuery(temp, TempMuonPhong.EXECUTE_SELECT_LAST_INSERT);
         if (tmps == null || tmps.isEmpty()){

@@ -220,7 +220,7 @@ BEGIN
         SELECT id_temp
     FROM temp_muon_phong_sv AS t
         INNER JOIN muon_phong as m ON t.so_tang = m.so_tang AND t.id_phong = m.id_phong
-    WHERE t.tg_muon BETWEEN m.tg_muon AND m.tg_tra OR t.tg_tra BETWEEN m.tg_muon AND m.tg_tra OR m.tg_muon BETWEEN t.tg_muon AND t.tg_tra
+    WHERE (t.tg_muon BETWEEN m.tg_muon AND m.tg_tra OR t.tg_tra BETWEEN m.tg_muon AND m.tg_tra OR m.tg_muon BETWEEN t.tg_muon AND t.tg_tra) AND m.tg_tra_thuc_te IS NULL
     );
 
 END;
@@ -259,6 +259,6 @@ BEGIN
     ELSE
     BEGIN
         DELETE temp_muon_phong_sv 
-        WHERE [id_temp] = -1 AND [otp] LIKE '';
+        WHERE [id_temp] = -1;
     END
 END;
