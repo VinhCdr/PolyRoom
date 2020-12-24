@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import poro.module.Encrypter;
+import poro.module.Session;
 import poro.module.db.DatabaseManager;
 import poro.module.db.data.TaiKhoan;
 
@@ -254,7 +255,7 @@ public class QuanLyTaiKhoanJPanel extends javax.swing.JPanel {
     public void loading() {
         loadTblTaiKhoan();
     }
-    
+
     private void btnMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoiActionPerformed
         // TODO add your handling code here:
         lamMoi();
@@ -395,7 +396,7 @@ public class QuanLyTaiKhoanJPanel extends javax.swing.JPanel {
         checkLoi();
         TaiKhoan taikh = getModel();
         taikh.setMatKhau(Encrypter.toMD5(taikh.getMatKhau()));
-        
+
         int i = DatabaseManager.executeUpdate(taikh, TaiKhoan.EXECUTE_INSERT);
 
         if (i == 0) {
@@ -427,6 +428,9 @@ public class QuanLyTaiKhoanJPanel extends javax.swing.JPanel {
     private void xoa() throws ToViewException {
         checkLoi();
         TaiKhoan taikh = getModel();
+        if (taikh.getIdTaiKhoan().equals(Session.USER.getIdTaiKhoan())) {
+            throw new ToViewException("Không được xóa tài khoản của bản thân");
+        }
         DatabaseManager.executeUpdate(taikh, TaiKhoan.EXECUTE_DELETE_BY_ID);
     }
 

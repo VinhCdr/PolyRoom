@@ -34,7 +34,7 @@ public class MainClass {
         WebStdManager.start();
         dangNhapJDialog.setVisible(true);
         
-        // Chưa đăng nhập thì ko hiện login
+        // Chưa đăng nhập thì ko hiện main
         if (Session.isLogin()) {
             mainJFrame.setGiaoDien(Session.USER.isPhanQuyen());
             mainJFrame.setVisible(true);
