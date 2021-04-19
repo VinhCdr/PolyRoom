@@ -1,0 +1,72 @@
+<html>
+
+<head>
+    <style>
+        html {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 16px;
+        }
+
+        p {
+            padding: 0;
+            margin: .75em 0;
+        }
+
+        .otp {
+            border: solid 1px #d22;
+            padding: 0.2em;
+            background-color: #ffdc;
+            color: #22d;
+        }
+
+        #otp {
+            font-size: 1.5em;
+            font-family: consolas, 'Courier New', Courier, monospace;
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <p>Xin chào %s,</p>
+    <p>Hệ thống đã nhận được yêu cầu mượn phòng %s của bạn vào lúc %s.</p>
+    <p>Ấn vào liên kết phía dưới để xác nhận mượn phòng</p>
+
+    <u>Cụ thể:</u>
+    <ul style="margin: 0; padding-top: 0;padding-bottom: 0;">
+        <li>Tên phòng: %s</li>
+        <li>Lầu: %d</li>
+        <li>Mã phòng: %d</li>
+        <li>Người đăng ký: %s</li>
+        <li>Đăng ký lúc: %s</li>
+        <li>Thời gian mượn: %s</li>
+        <li>Thời gian trả dự kiến: %s</li>
+        <li>Mã sinh viên mượn: %s</li>
+        <li>Tên sinh viên mượn: %s</li>
+        <li>Lý do: %s</li>
+    </ul>
+    <p>
+        <center class="otp">
+            Liên kết xác nhận:
+            <hr style="padding: 0; margin: 0.1em 0;" />
+            <div id="otp"><a href="%s">%s</a></div>
+        </center>
+    </p>
+    <u>Lưu ý:</u>
+    <ul style="margin: 0; padding-top: 0;padding-bottom: 0;">
+        <li>Bạn sẽ chịu trách nhiệm khi sử dụng phòng.</li>
+        <li>Nếu có yêu cầu đăng ký khác hoàn tất trước khi bạn ấn vào link, yêu cầu của bạn sẽ bị hủy bỏ.</li>
+        <li>Link chỉ sử dụng một lần duy nhất, không thể hoàn tác.</li>
+        <li>Link có thời hạn 10 phút kể từ thời gian yêu cầu mượn phòng.</li>
+    </ul>
+    <p><b>Nếu bạn không hiểu chuyện gì đang xảy ra, vui lòng bỏ qua tin nhắn này!</b></p>
+    <p style="border-bottom: solid 1px #000; padding-bottom: .5em; margin-bottom: 0;">Xin cảm ơn!</p>
+    <p style="font-size: 0.85em;text-align: center; margin: 0.5em; font-style: italic;">
+        Đây là tin nhắn tự động được gửi từ PolyRoom.
+        <br />
+        Mọi phản hồi vui lòng gửi đến: vinhlmpc01238@fpt.edu.vn
+    </p>
+</body>
+
+</html>
