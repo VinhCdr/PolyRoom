@@ -40,18 +40,31 @@ public class DangNhapJDialogTest {
 		MainClass.dangNhapJDialog.txtTaiKhoan.requestFocus();
 
 		BigBug.writeString("vinhlm");
+		
 		BigBug.keyClick("tab");
+		
 		BigBug.keyPressMutil("shift", "tab");
+		
 		BigBug.keyPressMutil("capslock");
+		
 		BigBug.writeString("error");
+		
 		BigBug.keyPressMutil("capslock");
+		
 		BigBug.keyClick("tab");
+		
 		BigBug.writeString("vinhlm");
+		
 		BigBug.keyClick("tab");
+		
 		BigBug.keyClick("tab");
+		
 		BigBug.keyClick("enter");
+		
 		Thread.sleep(700);
+		
 		BigBug.keyClick("enter");
+		
 		Assert.assertFalse(MainClass.mainJFrame.isVisible());
 	}
 	

@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+<testng-results ignored="2" total="3" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2021-04-20T16:23:52 ICT" name="Default suite" finished-at="2021-04-20T16:23:52 ICT" duration-ms="84">
+  <suite started-at="2021-04-21T01:50:06 ICT" name="Default suite" finished-at="2021-04-21T01:50:06 ICT" duration-ms="78">
     <groups>
     </groups>
-    <test started-at="2021-04-20T16:23:52 ICT" name="Default test" finished-at="2021-04-20T16:23:52 ICT" duration-ms="84">
-      <class name="poro.MainClassTest">
-        <test-method signature="f()[pri:0, instance:poro.MainClassTest@2b4bac49]" started-at="2021-04-20T16:23:52 ICT" name="f" finished-at="2021-04-20T16:23:52 ICT" duration-ms="16" status="PASS">
+    <test started-at="2021-04-21T01:50:06 ICT" name="Default test" finished-at="2021-04-21T01:50:06 ICT" duration-ms="78">
+      <class name="poro.module.SessionTest">
+        <test-method signature="isLoginTest()[pri:0, instance:poro.module.SessionTest@55740540]" started-at="2021-04-21T01:50:06 ICT" name="isLoginTest" finished-at="2021-04-21T01:50:06 ICT" duration-ms="18" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- f -->
-      </class> <!-- poro.MainClassTest -->
+        </test-method> <!-- isLoginTest -->
+      </class> <!-- poro.module.SessionTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
