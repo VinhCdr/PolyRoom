@@ -11,7 +11,8 @@
 			<resource>
 				<directory>src</directory>
 				<excludes>
-					<exclude>**/*.java</exclude>
+					<exclude>test/scripts</exclude>
+					<exclude>main/scripts</exclude>
 				</excludes>
 			</resource>
 		</resources>
