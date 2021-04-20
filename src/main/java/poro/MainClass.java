@@ -13,8 +13,8 @@ import poro.module.web.WebStdManager;
  */
 public class MainClass {
 
-	static QLMainJFrame mainJFrame;
-	static DangNhapJDialog dangNhapJDialog;
+	public static QLMainJFrame mainJFrame;
+	public static DangNhapJDialog dangNhapJDialog;
 	
     public static void main(String[] args) {
         // <editor-fold defaultstate="collapsed" desc="Nạp giao diện windows">   

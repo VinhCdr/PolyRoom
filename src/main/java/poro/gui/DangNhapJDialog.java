@@ -6,9 +6,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-
-import com.google.common.annotations.VisibleForTesting;
-
 import poro.module.db.DatabaseManager;
 import poro.module.db.data.TaiKhoan;
 import poro.gui.exception.ToViewException;
@@ -150,14 +147,14 @@ public class DangNhapJDialog extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
 	//private 
-	public javax.swing.JButton btnDangNhap;
+	javax.swing.JButton btnDangNhap;
 	private javax.swing.JButton btnQuenMatKhau;
 	private javax.swing.JCheckBox chkNhoMatKhau;
 	private javax.swing.JLabel hinh;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    public javax.swing.JPasswordField txtPassword;
-    public javax.swing.JTextField txtTaiKhoan;
+    javax.swing.JPasswordField txtPassword;
+    javax.swing.JTextField txtTaiKhoan;
     // End of variables declaration//GEN-END:variables
 
     TaiKhoan tkSave;

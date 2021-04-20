@@ -105,10 +105,13 @@ public class BigBug {
 				return KeyEvent.VK_TAB;
 			case "shift":
 				return KeyEvent.VK_SHIFT;
+			case "ctrl":
+				return KeyEvent.VK_CONTROL;
+			case "backspace":
+				return KeyEvent.VK_BACK_SPACE;
 			default:
 				break;
 		}
-		
 		
 		return -1;
 	}
@@ -120,8 +123,9 @@ public class BigBug {
 	 */
 	public static void writeString(String str) throws InterruptedException {
 		for (String s : str.split("")) {
+			Thread.sleep(30);
 			robot.keyPress(coverStringToKey(s));
-			Thread.sleep(50);
+			Thread.sleep(20);
 			robot.keyRelease(coverStringToKey(s));
 		}
 	}
@@ -132,9 +136,9 @@ public class BigBug {
 	 * @throws InterruptedException Lỗi về xử lý luồng
 	 */
 	public static void keyClick(String keyName) throws InterruptedException {
-		Thread.sleep(500);
+		Thread.sleep(300);
 		robot.keyPress(coverStringToKey(keyName));
-		Thread.sleep(50);
+		Thread.sleep(20);
 		robot.keyRelease(coverStringToKey(keyName));
 	}
 	
@@ -148,7 +152,7 @@ public class BigBug {
 		for (String s : keyName) {
 			robot.keyPress(coverStringToKey(s));
 		}
-		Thread.sleep(50);
+		Thread.sleep(20);
 		for (String s : keyName) {
 			robot.keyRelease(coverStringToKey(s));
 		}
