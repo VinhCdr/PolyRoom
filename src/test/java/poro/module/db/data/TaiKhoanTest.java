@@ -1,10 +1,11 @@
 package poro.module.db.data;
 
+import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertFalse;
 import java.util.List;
-
-import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import poro.module.Encrypter;
 import poro.module.db.DatabaseManager;
 
 public class TaiKhoanTest {
@@ -19,7 +20,7 @@ public class TaiKhoanTest {
 	@Test
 	public void selectUsernameTest() {
 		TaiKhoan tk = new TaiKhoan();	
-		tk.setIdTaiKhoan("vinhlm");
+		tk.setIdTaiKhoan("loilh");
 		List<TaiKhoan> tkList = DatabaseManager.executeQuery(tk, TaiKhoan.EXECUTE_SELECT_BY_ID);
 		assertFalse(tkList.isEmpty());
 	}
@@ -27,7 +28,7 @@ public class TaiKhoanTest {
 	@Test
 	public void selectEmailTest() {
 		TaiKhoan tk = new TaiKhoan();	
-		tk.setIdTaiKhoan("vinhlm");
+		tk.setEmail("loilhpc01261@fpt.edu.vn");
 		List<TaiKhoan> tkList = DatabaseManager.executeQuery(tk, TaiKhoan.EXECUTE_SELECT_BY_MAIL);
 		assertFalse(tkList.isEmpty());
 	}
@@ -37,12 +38,12 @@ public class TaiKhoanTest {
 		TaiKhoan tk = new TaiKhoan();	
 		tk.setIdTaiKhoan("vinhlm");
 		tk.setEmail("vinhlmpc01238@fpt.edu.vn");
-		tk.setMatKhau("1");
+		tk.setMatKhau(Encrypter.toMD5("vinhlm"));
 		List<TaiKhoan> tkList = DatabaseManager.executeQuery(tk, TaiKhoan.EXECUTE_SELECT_BY_USER_OR_EMAIL_AND_PASS);
 		assertFalse(tkList.isEmpty());
 	}
 	
-	@Test
+	@Test(priority = -1)
 	  public void InsertTaiKhoan() {
 		  TaiKhoan tk = new TaiKhoan();
 		  tk.setIdTaiKhoan("loilh");
@@ -53,7 +54,6 @@ public class TaiKhoanTest {
 		  tk.setPhanQuyen(true);
 		  int i = DatabaseManager.executeUpdate(tk, TaiKhoan.EXECUTE_INSERT);
 		  assertEquals(i, 1);
-		  DatabaseManager.executeUpdate(tk, TaiKhoan.EXECUTE_DELETE_BY_ID);
 	  }
 	
 	 @Test
@@ -69,10 +69,10 @@ public class TaiKhoanTest {
 		  assertEquals(i, 1);
 	  }
 	 
-	 @Test
+	 @Test(priority = 90)
 	 public void DeleteTaiKhoan() {
 		 TaiKhoan tk = new TaiKhoan();
-		  tk.setIdTaiKhoan("vinhlm");
+		  tk.setIdTaiKhoan("loilh");
 		  int i = DatabaseManager.executeUpdate(tk, TaiKhoan.EXECUTE_DELETE_BY_ID);
 		  assertEquals(i, 1);
 	  }
