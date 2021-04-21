@@ -39,6 +39,7 @@ public class CalendarManager {
      * @param format Định dạng thời gian
      * @return Chuổi thời gian theo định dạng
      */
+   
     public static String getString(Date date, String format) {
         SimpleDateFormat sdf = new SimpleDateFormat(format);
         return sdf.format(date);
