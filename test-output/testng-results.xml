@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <testng-results ignored="0" total="6" passed="4" failed="2" skipped="0">
   <reporter-output>
   </reporter-output>
@@ -118,6 +119,21 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
           </reporter-output>
         </test-method> <!-- writeTest -->
       </class> <!-- poro.module.FileManagerTest -->
+=======
+<testng-results ignored="2" total="3" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2021-04-21T14:28:06 ICT" name="Default suite" finished-at="2021-04-21T14:28:07 ICT" duration-ms="1218">
+    <groups>
+    </groups>
+    <test started-at="2021-04-21T14:28:06 ICT" name="Default test" finished-at="2021-04-21T14:28:07 ICT" duration-ms="1218">
+      <class name="poro.module.db.data.MuonPhongTest">
+        <test-method signature="getListByPhongNoTest()[pri:0, instance:poro.module.db.data.MuonPhongTest@60015ef5]" started-at="2021-04-21T14:28:06 ICT" name="getListByPhongNoTest" finished-at="2021-04-21T14:28:07 ICT" duration-ms="1135" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getListByPhongNoTest -->
+      </class> <!-- poro.module.db.data.MuonPhongTest -->
+>>>>>>> 0828e9f9dd5ecb78730235eb544cd069251783f3
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
