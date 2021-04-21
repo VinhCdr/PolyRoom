@@ -47,10 +47,10 @@ public class MuonPhongTest {
 		DatabaseManager.executeUpdate(mp, MuonPhong.EXECUTE_INSERT);
 		
 		// Lấy ra kiểm tra
-		MuonPhong mp = new MuonPhong();
-		mp.setIdPhong(1);
-		mp.setSoTang(1);
-		List<MuonPhong> ls = DatabaseManager.executeQuery(mp, MuonPhong.EXECUTE_SELECT_BY_ID_PHONG);
+		MuonPhong mp2 = new MuonPhong();
+		mp2.setIdPhong(1);
+		mp2.setSoTang(1);
+		List<MuonPhong> ls = DatabaseManager.executeQuery(mp2, MuonPhong.EXECUTE_SELECT_BY_ID_PHONG);
 		Assert.assertFalse(ls.isEmpty());
 	}
 
