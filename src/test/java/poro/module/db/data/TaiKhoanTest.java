@@ -1,8 +1,6 @@
 package poro.module.db.data;
 
-import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertFalse;
-
 import java.util.List;
 
 import org.testng.Assert;
