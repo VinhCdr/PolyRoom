@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<suite name="main suite">
-	<test name="test demo">
+<suite name="demo suite">
+	<test name="demo test">
 		<classes>
 			<class name="poro.gui.DangNhapJDialogTest"/>
 		</classes>

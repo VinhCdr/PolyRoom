@@ -5,6 +5,12 @@ import org.testng.annotations.Test;
 import poro.module.db.data.TaiKhoan;
 
 public class SessionTest {
+	
+	@Test(priority = -1)
+	public void userIsNull() {
+		TaiKhoan userDef = Session.USER;
+		Assert.assertNull(userDef);
+	}
 
 	@Test
 	public void isLoginTest() {
