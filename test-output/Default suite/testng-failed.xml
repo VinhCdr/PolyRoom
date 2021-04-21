@@ -3,15 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="poro.MainClassTest">
+      <class name="poro.module.StringHelperTest">
         <methods>
-          <include name="loginOk"/>
-          <include name="closeProject"/>
-          <include name="loginFail1"/>
-          <include name="openProject"/>
-          <include name="hideMain"/>
+          <include name="randomTest2"/>
         </methods>
-      </class> <!-- poro.MainClassTest -->
+      </class> <!-- poro.module.StringHelperTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
