@@ -2,16 +2,16 @@
 <testng-results ignored="2" total="3" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2021-04-21T01:50:06 ICT" name="Default suite" finished-at="2021-04-21T01:50:06 ICT" duration-ms="78">
+  <suite started-at="2021-04-21T14:28:06 ICT" name="Default suite" finished-at="2021-04-21T14:28:07 ICT" duration-ms="1218">
     <groups>
     </groups>
-    <test started-at="2021-04-21T01:50:06 ICT" name="Default test" finished-at="2021-04-21T01:50:06 ICT" duration-ms="78">
-      <class name="poro.module.SessionTest">
-        <test-method signature="isLoginTest()[pri:0, instance:poro.module.SessionTest@55740540]" started-at="2021-04-21T01:50:06 ICT" name="isLoginTest" finished-at="2021-04-21T01:50:06 ICT" duration-ms="18" status="PASS">
+    <test started-at="2021-04-21T14:28:06 ICT" name="Default test" finished-at="2021-04-21T14:28:07 ICT" duration-ms="1218">
+      <class name="poro.module.db.data.MuonPhongTest">
+        <test-method signature="getListByPhongNoTest()[pri:0, instance:poro.module.db.data.MuonPhongTest@60015ef5]" started-at="2021-04-21T14:28:06 ICT" name="getListByPhongNoTest" finished-at="2021-04-21T14:28:07 ICT" duration-ms="1135" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- isLoginTest -->
-      </class> <!-- poro.module.SessionTest -->
+        </test-method> <!-- getListByPhongNoTest -->
+      </class> <!-- poro.module.db.data.MuonPhongTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
