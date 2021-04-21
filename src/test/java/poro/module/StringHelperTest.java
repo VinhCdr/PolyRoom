@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 
 public class StringHelperTest {
 
-  @Test
+  @Test	
   public void randomTest1() {
     String ran1 = StringHelper.random(5);
     String ran2 = StringHelper.random(5);

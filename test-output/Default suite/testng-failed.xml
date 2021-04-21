@@ -3,11 +3,19 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
+<<<<<<< HEAD
       <class name="poro.module.StringHelperTest">
         <methods>
           <include name="randomTest2"/>
         </methods>
       </class> <!-- poro.module.StringHelperTest -->
+=======
+      <class name="poro.module.db.data.MuonPhongTest">
+        <methods>
+          <include name="getListByPhongYesTest"/>
+        </methods>
+      </class> <!-- poro.module.db.data.MuonPhongTest -->
+>>>>>>> 817a05459ac687e7ab015db746f24ed5792114f2
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
