@@ -5,7 +5,11 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import poro.module.CalendarManager;
 import poro.module.db.DatabaseManager;
-
+/**
+ * Kiểm thử
+ * @author vinh
+ *
+ */
 public class MuonPhongTest {
 	
 	@Test
