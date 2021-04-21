@@ -36,7 +36,7 @@ public class CalendarManagerTest {
 	@Test
 	public void getDaysOfTest() {
 		int hientai = CalendarManager.getDaysOf(2000, 2);
-		Assert.assertEquals(hientai, 28);
+		Assert.assertEquals(hientai, 29);
 
 	}
 

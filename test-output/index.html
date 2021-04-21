@@ -26,7 +26,7 @@
       <span class="top-banner-title-font">Test results</span>
       <button id="button" class="button">Switch Retro Theme</button> <!-- button -->
       <br/>
-      <span class="top-banner-font-1">1 suite</span>
+      <span class="top-banner-font-1">1 suite, 3 failed tests</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -39,8 +39,8 @@
       <div class="suite">
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
-            <a href="#" panel-name="suite-Default_suite" class="navigator-link">
-              <span class="suite-name border-passed">Default suite</span>
+            <a href="#" panel-name="suite-main_suite" class="navigator-link">
+              <span class="suite-name border-failed">main suite</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -50,37 +50,37 @@
             <div class="suite-section-content">
               <ul>
                 <li>
-                  <a href="#" panel-name="test-xml-Default_suite" class="navigator-link ">
-                    <span>C:\Users\vinh\AppData\Local\Temp\testng-eclipse-1057407472\testng-customsuite.xml</span>
+                  <a href="#" panel-name="test-xml-main_suite" class="navigator-link ">
+                    <span>C:\Users\vinh\Documents\GitHub\PolyRoom-Desktop\src\test\java\test\main-suite.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" panel-name="testlist-Default_suite" class="navigator-link ">
+                  <a href="#" panel-name="testlist-main_suite" class="navigator-link ">
                     <span class="test-stats">1 test</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" panel-name="group-Default_suite" class="navigator-link ">
+                  <a href="#" panel-name="group-main_suite" class="navigator-link ">
                     <span>0 groups</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" panel-name="times-Default_suite" class="navigator-link ">
+                  <a href="#" panel-name="times-main_suite" class="navigator-link ">
                     <span>Times</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" panel-name="reporter-Default_suite" class="navigator-link ">
+                  <a href="#" panel-name="reporter-main_suite" class="navigator-link ">
                     <span>Reporter output</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" panel-name="ignored-methods-Default_suite" class="navigator-link ">
+                  <a href="#" panel-name="ignored-methods-main_suite" class="navigator-link ">
                     <span>Ignored methods</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" panel-name="chronological-Default_suite" class="navigator-link ">
+                  <a href="#" panel-name="chronological-main_suite" class="navigator-link ">
                     <span>Chronological view</span>
                   </a> <!-- navigator-link  -->
                 </li>
@@ -93,21 +93,205 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">1 method,   1 passed</span>
+                    <span class="method-stats">36 methods, 3 failed,   33 passed</span>
+                  </li>
+                  <li>
+                    <span class="method-list-title failed">Failed methods</span>
+                    <span class="show-or-hide-methods failed">
+                      <a href="#" panel-name="suite-main_suite" class="hide-methods failed suite-main_suite"> (hide)</a> <!-- hide-methods failed suite-main_suite -->
+                      <a href="#" panel-name="suite-main_suite" class="show-methods failed suite-main_suite"> (show)</a> <!-- show-methods failed suite-main_suite -->
+                    </span>
+                    <div class="method-list-content failed suite-main_suite">
+                      <span>
+                        <img src="failed.png" width="3%"/>
+                        <a href="#" panel-name="suite-main_suite" title="poro.module.db.data.MuonPhongTest" class="method navigator-link" hash-for-method="getListByPhongYesTest">getListByPhongYesTest</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="failed.png" width="3%"/>
+                        <a href="#" panel-name="suite-main_suite" title="poro.module.FileManagerTest" class="method navigator-link" hash-for-method="readObjectTest">readObjectTest</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="failed.png" width="3%"/>
+                        <a href="#" panel-name="suite-main_suite" title="poro.module.FileManagerTest" class="method navigator-link" hash-for-method="writeObjectTest">writeObjectTest</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content failed suite-main_suite -->
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
                     <span class="show-or-hide-methods passed">
-                      <a href="#" panel-name="suite-Default_suite" class="hide-methods passed suite-Default_suite"> (hide)</a> <!-- hide-methods passed suite-Default_suite -->
-                      <a href="#" panel-name="suite-Default_suite" class="show-methods passed suite-Default_suite"> (show)</a> <!-- show-methods passed suite-Default_suite -->
+                      <a href="#" panel-name="suite-main_suite" class="hide-methods passed suite-main_suite"> (hide)</a> <!-- hide-methods passed suite-main_suite -->
+                      <a href="#" panel-name="suite-main_suite" class="show-methods passed suite-main_suite"> (show)</a> <!-- show-methods passed suite-main_suite -->
                     </span>
-                    <div class="method-list-content passed suite-Default_suite">
+                    <div class="method-list-content passed suite-main_suite">
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Default_suite" title="poro.module.CalendarManagerTest" class="method navigator-link" hash-for-method="getDateByStringTest">getDateByStringTest</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-main_suite" title="poro.module.db.data.TaiKhoanTest" class="method navigator-link" hash-for-method="DeleteTaiKhoan">DeleteTaiKhoan</a> <!-- method navigator-link -->
                       </span>
                       <br/>
-                    </div> <!-- method-list-content passed suite-Default_suite -->
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-main_suite" title="poro.module.db.data.PhongTest" class="method navigator-link" hash-for-method="InsertPhong">InsertPhong</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-main_suite" title="poro.module.db.data.TaiKhoanTest" class="method navigator-link" hash-for-method="InsertTaiKhoan">InsertTaiKhoan</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-main_suite" title="poro.module.db.data.PhongTest" class="method navigator-link" hash-for-method="SelectAllphong">SelectAllphong</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-main_suite" title="poro.module.db.data.PhongTest" class="method navigator-link" hash-for-method="SelectByIdPhong">SelectByIdPhong</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-main_suite" title="poro.module.db.data.PhongTest" class="method navigator-link" hash-for-method="UpdatePhong">UpdatePhong</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-main_suite" title="poro.module.db.data.TaiKhoanTest" class="method navigator-link" hash-for-method="UpdateTaiKhoan">UpdateTaiKhoan</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-main_suite" title="poro.module.CalendarManagerTest" class="method navigator-link" hash-for-method="addTimesTest">addTimesTest</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-main_suite" title="poro.module.CalendarManagerTest" class="method navigator-link" hash-for-method="getDateByStringTest">getDateByStringTest</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-main_suite" title="poro.module.CalendarManagerTest" class="method navigator-link" hash-for-method="getDaysOfTest">getDaysOfTest</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-main_suite" title="poro.module.db.data.MuonPhongTest" class="method navigator-link" hash-for-method="getFullListTest">getFullListTest</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-main_suite" title="poro.module.db.data.MuonPhongTest" class="method navigator-link" hash-for-method="getListByPhongNoTest">getListByPhongNoTest</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-main_suite" title="poro.module.CalendarManagerTest" class="method navigator-link" hash-for-method="getNowTest">getNowTest</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-main_suite" title="poro.module.CalendarManagerTest" class="method navigator-link" hash-for-method="getStringTest">getStringTest</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-main_suite" title="poro.module.db.data.MuonPhongTest" class="method navigator-link" hash-for-method="insertMuonPhongTest">insertMuonPhongTest</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-main_suite" title="poro.module.CalendarManagerTest" class="method navigator-link" hash-for-method="isLeapYearTest">isLeapYearTest</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-main_suite" title="poro.module.SessionTest" class="method navigator-link" hash-for-method="isLoginTest">isLoginTest</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-main_suite" title="poro.module.SessionTest" class="method navigator-link" hash-for-method="logoffTest">logoffTest</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-main_suite" title="poro.module.FileManagerTest" class="method navigator-link" hash-for-method="readStringTest">readStringTest</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-main_suite" title="poro.module.FileManagerTest" class="method navigator-link" hash-for-method="readTest">readTest</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-main_suite" title="poro.module.db.data.TaiKhoanTest" class="method navigator-link" hash-for-method="selectAllTest">selectAllTest</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-main_suite" title="poro.module.db.data.TaiKhoanTest" class="method navigator-link" hash-for-method="selectEmailTest">selectEmailTest</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-main_suite" title="poro.module.db.data.TaiKhoanTest" class="method navigator-link" hash-for-method="selectUsernameEmailPassTest">selectUsernameEmailPassTest</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-main_suite" title="poro.module.db.data.TaiKhoanTest" class="method navigator-link" hash-for-method="selectUsernameTest">selectUsernameTest</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-main_suite" title="poro.module.db.data.MuonPhongTest" class="method navigator-link" hash-for-method="seleteLastMuonPhongTest">seleteLastMuonPhongTest</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-main_suite" title="poro.module.EncrypterTest" class="method navigator-link" hash-for-method="toMD5TestString1">toMD5TestString1</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-main_suite" title="poro.module.EncrypterTest" class="method navigator-link" hash-for-method="toMD5TestString2">toMD5TestString2</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-main_suite" title="poro.module.EncrypterTest" class="method navigator-link" hash-for-method="toMD5Testbyte1">toMD5Testbyte1</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-main_suite" title="poro.module.EncrypterTest" class="method navigator-link" hash-for-method="toMD5Testbyte2">toMD5Testbyte2</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-main_suite" title="poro.module.db.data.MuonPhongTest" class="method navigator-link" hash-for-method="updateMuonPhongTest">updateMuonPhongTest</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-main_suite" title="poro.module.SessionTest" class="method navigator-link" hash-for-method="userIsNull">userIsNull</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-main_suite" title="poro.module.FileManagerTest" class="method navigator-link" hash-for-method="writeStringTest">writeStringTest</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-main_suite" title="poro.module.FileManagerTest" class="method navigator-link" hash-for-method="writeTest">writeTest</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content passed suite-main_suite -->
                   </li>
                 </ul>
               </div> <!-- suite-section-content -->
@@ -118,8 +302,160 @@
     </div> <!-- navigator-root -->
     <div class="wrapper">
       <div class="main-panel-root">
-        <div panel-name="suite-Default_suite" class="panel Default_suite">
-          <div class="suite-Default_suite-class-passed">
+        <div panel-name="suite-main_suite" class="panel main_suite">
+          <div class="suite-main_suite-class-failed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="failed.png"/>
+              <span class="class-name">poro.module.db.data.MuonPhongTest</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="getListByPhongYesTest">
+                  </a> <!-- getListByPhongYesTest -->
+                  <span class="method-name">getListByPhongYesTest</span>
+                  <div class="stack-trace">java.lang.AssertionError: expected [false] but found [true]
+	at poro.module.db.data.MuonPhongTest.getListByPhongYesTest(MuonPhongTest.java:24)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 31 stack frames
+</div> <!-- stack-trace -->
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-main_suite-class-failed -->
+          <div class="suite-main_suite-class-failed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="failed.png"/>
+              <span class="class-name">poro.module.FileManagerTest</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="readObjectTest">
+                  </a> <!-- readObjectTest -->
+                  <span class="method-name">readObjectTest</span>
+                  <div class="stack-trace">java.lang.AssertionError: expected [poro.module.db.data.TaiKhoan@2101b44a] but found [poro.module.db.data.TaiKhoan@3c9bfddc]
+	at poro.module.FileManagerTest.readObjectTest(FileManagerTest.java:28)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 32 stack frames
+</div> <!-- stack-trace -->
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="writeObjectTest">
+                  </a> <!-- writeObjectTest -->
+                  <span class="method-name">writeObjectTest</span>
+                  <div class="stack-trace">java.lang.AssertionError: expected [poro.module.db.data.TaiKhoan@54e22bdd] but found [poro.module.db.data.TaiKhoan@3bd418e4]
+	at poro.module.FileManagerTest.writeObjectTest(FileManagerTest.java:55)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 32 stack frames
+</div> <!-- stack-trace -->
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-main_suite-class-failed -->
+          <div class="suite-main_suite-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">poro.module.db.data.TaiKhoanTest</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="DeleteTaiKhoan">
+                  </a> <!-- DeleteTaiKhoan -->
+                  <span class="method-name">DeleteTaiKhoan</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="InsertTaiKhoan">
+                  </a> <!-- InsertTaiKhoan -->
+                  <span class="method-name">InsertTaiKhoan</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="UpdateTaiKhoan">
+                  </a> <!-- UpdateTaiKhoan -->
+                  <span class="method-name">UpdateTaiKhoan</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="selectAllTest">
+                  </a> <!-- selectAllTest -->
+                  <span class="method-name">selectAllTest</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="selectEmailTest">
+                  </a> <!-- selectEmailTest -->
+                  <span class="method-name">selectEmailTest</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="selectUsernameEmailPassTest">
+                  </a> <!-- selectUsernameEmailPassTest -->
+                  <span class="method-name">selectUsernameEmailPassTest</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="selectUsernameTest">
+                  </a> <!-- selectUsernameTest -->
+                  <span class="method-name">selectUsernameTest</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-main_suite-class-passed -->
+          <div class="suite-main_suite-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">poro.module.db.data.MuonPhongTest</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="getFullListTest">
+                  </a> <!-- getFullListTest -->
+                  <span class="method-name">getFullListTest</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="getListByPhongNoTest">
+                  </a> <!-- getListByPhongNoTest -->
+                  <span class="method-name">getListByPhongNoTest</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="insertMuonPhongTest">
+                  </a> <!-- insertMuonPhongTest -->
+                  <span class="method-name">insertMuonPhongTest</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="seleteLastMuonPhongTest">
+                  </a> <!-- seleteLastMuonPhongTest -->
+                  <span class="method-name">seleteLastMuonPhongTest</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="updateMuonPhongTest">
+                  </a> <!-- updateMuonPhongTest -->
+                  <span class="method-name">updateMuonPhongTest</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-main_suite-class-passed -->
+          <div class="suite-main_suite-class-passed">
             <div class="main-panel-header rounded-window-top">
               <img src="passed.png"/>
               <span class="class-name">poro.module.CalendarManagerTest</span>
@@ -127,123 +463,593 @@
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
+                  <a name="addTimesTest">
+                  </a> <!-- addTimesTest -->
+                  <span class="method-name">addTimesTest</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
                   <a name="getDateByStringTest">
                   </a> <!-- getDateByStringTest -->
                   <span class="method-name">getDateByStringTest</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="getDaysOfTest">
+                  </a> <!-- getDaysOfTest -->
+                  <span class="method-name">getDaysOfTest</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="getNowTest">
+                  </a> <!-- getNowTest -->
+                  <span class="method-name">getNowTest</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="getStringTest">
+                  </a> <!-- getStringTest -->
+                  <span class="method-name">getStringTest</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="isLeapYearTest">
+                  </a> <!-- isLeapYearTest -->
+                  <span class="method-name">isLeapYearTest</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-Default_suite-class-passed -->
-        </div> <!-- panel Default_suite -->
-        <div panel-name="test-xml-Default_suite" class="panel">
+          </div> <!-- suite-main_suite-class-passed -->
+          <div class="suite-main_suite-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">poro.module.db.data.PhongTest</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="InsertPhong">
+                  </a> <!-- InsertPhong -->
+                  <span class="method-name">InsertPhong</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="SelectAllphong">
+                  </a> <!-- SelectAllphong -->
+                  <span class="method-name">SelectAllphong</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="SelectByIdPhong">
+                  </a> <!-- SelectByIdPhong -->
+                  <span class="method-name">SelectByIdPhong</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="UpdatePhong">
+                  </a> <!-- UpdatePhong -->
+                  <span class="method-name">UpdatePhong</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-main_suite-class-passed -->
+          <div class="suite-main_suite-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">poro.module.SessionTest</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="isLoginTest">
+                  </a> <!-- isLoginTest -->
+                  <span class="method-name">isLoginTest</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="logoffTest">
+                  </a> <!-- logoffTest -->
+                  <span class="method-name">logoffTest</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="userIsNull">
+                  </a> <!-- userIsNull -->
+                  <span class="method-name">userIsNull</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-main_suite-class-passed -->
+          <div class="suite-main_suite-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">poro.module.EncrypterTest</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="toMD5TestString1">
+                  </a> <!-- toMD5TestString1 -->
+                  <span class="method-name">toMD5TestString1</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="toMD5TestString2">
+                  </a> <!-- toMD5TestString2 -->
+                  <span class="method-name">toMD5TestString2</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="toMD5Testbyte1">
+                  </a> <!-- toMD5Testbyte1 -->
+                  <span class="method-name">toMD5Testbyte1</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="toMD5Testbyte2">
+                  </a> <!-- toMD5Testbyte2 -->
+                  <span class="method-name">toMD5Testbyte2</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-main_suite-class-passed -->
+          <div class="suite-main_suite-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">poro.module.FileManagerTest</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="readStringTest">
+                  </a> <!-- readStringTest -->
+                  <span class="method-name">readStringTest</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="readTest">
+                  </a> <!-- readTest -->
+                  <span class="method-name">readTest</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="writeStringTest">
+                  </a> <!-- writeStringTest -->
+                  <span class="method-name">writeStringTest</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="writeTest">
+                  </a> <!-- writeTest -->
+                  <span class="method-name">writeTest</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-main_suite-class-passed -->
+        </div> <!-- panel main_suite -->
+        <div panel-name="test-xml-main_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\Users\vinh\AppData\Local\Temp\testng-eclipse-1057407472\testng-customsuite.xml</span>
+            <span class="header-content">C:\Users\vinh\Documents\GitHub\PolyRoom-Desktop\src\test\java\test\main-suite.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;!DOCTYPE suite SYSTEM &quot;https://testng.org/testng-1.0.dtd&quot;&gt;
-&lt;suite name=&quot;Default suite&quot; guice-stage=&quot;DEVELOPMENT&quot;&gt;
-  &lt;test thread-count=&quot;5&quot; name=&quot;Default test&quot; verbose=&quot;2&quot;&gt;
+&lt;suite name=&quot;main suite&quot;&gt;
+  &lt;test thread-count=&quot;5&quot; name=&quot;main test&quot;&gt;
     &lt;classes&gt;
-      &lt;class name=&quot;poro.module.CalendarManagerTest&quot;&gt;
-        &lt;methods&gt;
-          &lt;include name=&quot;getDateByStringTest&quot;/&gt;
-        &lt;/methods&gt;
-      &lt;/class&gt; &lt;!-- poro.module.CalendarManagerTest --&gt;
+      &lt;class name=&quot;poro.module.SessionTest&quot;/&gt;
+      &lt;class name=&quot;poro.module.db.data.MuonPhongTest&quot;/&gt;
+      &lt;class name=&quot;poro.module.CalendarManagerTest&quot;/&gt;
+      &lt;class name=&quot;poro.module.FileManagerTest&quot;/&gt;
+      &lt;class name=&quot;poro.module.db.data.TaiKhoanTest&quot;/&gt;
+      &lt;class name=&quot;poro.module.db.data.PhongTest&quot;/&gt;
+      &lt;class name=&quot;poro.module.EncrypterTest&quot;/&gt;
     &lt;/classes&gt;
-  &lt;/test&gt; &lt;!-- Default test --&gt;
-&lt;/suite&gt; &lt;!-- Default suite --&gt;
+  &lt;/test&gt; &lt;!-- main test --&gt;
+&lt;/suite&gt; &lt;!-- main suite --&gt;
             </pre>
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
-        <div panel-name="testlist-Default_suite" class="panel">
+        <div panel-name="testlist-main_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">Tests for Default suite</span>
+            <span class="header-content">Tests for main suite</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <ul>
               <li>
-                <span class="test-name">Default test (1 class)</span>
+                <span class="test-name">main test (7 classes)</span>
               </li>
             </ul>
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
-        <div panel-name="group-Default_suite" class="panel">
+        <div panel-name="group-main_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">Groups for Default suite</span>
+            <span class="header-content">Groups for main suite</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
-        <div panel-name="times-Default_suite" class="panel">
+        <div panel-name="times-main_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">Times for Default suite</span>
+            <span class="header-content">Times for main suite</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="times-div">
               <script type="text/javascript">
-suiteTableInitFunctions.push('tableData_Default_suite');
-function tableData_Default_suite() {
+suiteTableInitFunctions.push('tableData_main_suite');
+function tableData_main_suite() {
 var data = new google.visualization.DataTable();
 data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(1);
+data.addRows(36);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'getDateByStringTest')
-data.setCell(0, 2, 'poro.module.CalendarManagerTest')
-data.setCell(0, 3, 99);
-window.suiteTableData['Default_suite']= { tableData: data, tableDiv: 'times-div-Default_suite'}
+data.setCell(0, 1, 'insertMuonPhongTest')
+data.setCell(0, 2, 'poro.module.db.data.MuonPhongTest')
+data.setCell(0, 3, 991);
+data.setCell(1, 0, 1)
+data.setCell(1, 1, 'getFullListTest')
+data.setCell(1, 2, 'poro.module.db.data.MuonPhongTest')
+data.setCell(1, 3, 68);
+data.setCell(2, 0, 2)
+data.setCell(2, 1, 'getDateByStringTest')
+data.setCell(2, 2, 'poro.module.CalendarManagerTest')
+data.setCell(2, 3, 38);
+data.setCell(3, 0, 3)
+data.setCell(3, 1, 'SelectAllphong')
+data.setCell(3, 2, 'poro.module.db.data.PhongTest')
+data.setCell(3, 3, 29);
+data.setCell(4, 0, 4)
+data.setCell(4, 1, 'readObjectTest')
+data.setCell(4, 2, 'poro.module.FileManagerTest')
+data.setCell(4, 3, 27);
+data.setCell(5, 0, 5)
+data.setCell(5, 1, 'userIsNull')
+data.setCell(5, 2, 'poro.module.SessionTest')
+data.setCell(5, 3, 19);
+data.setCell(6, 0, 6)
+data.setCell(6, 1, 'DeleteTaiKhoan')
+data.setCell(6, 2, 'poro.module.db.data.TaiKhoanTest')
+data.setCell(6, 3, 14);
+data.setCell(7, 0, 7)
+data.setCell(7, 1, 'InsertPhong')
+data.setCell(7, 2, 'poro.module.db.data.PhongTest')
+data.setCell(7, 3, 14);
+data.setCell(8, 0, 8)
+data.setCell(8, 1, 'readTest')
+data.setCell(8, 2, 'poro.module.FileManagerTest')
+data.setCell(8, 3, 14);
+data.setCell(9, 0, 9)
+data.setCell(9, 1, 'readStringTest')
+data.setCell(9, 2, 'poro.module.FileManagerTest')
+data.setCell(9, 3, 13);
+data.setCell(10, 0, 10)
+data.setCell(10, 1, 'seleteLastMuonPhongTest')
+data.setCell(10, 2, 'poro.module.db.data.MuonPhongTest')
+data.setCell(10, 3, 11);
+data.setCell(11, 0, 11)
+data.setCell(11, 1, 'UpdateTaiKhoan')
+data.setCell(11, 2, 'poro.module.db.data.TaiKhoanTest')
+data.setCell(11, 3, 11);
+data.setCell(12, 0, 12)
+data.setCell(12, 1, 'selectUsernameTest')
+data.setCell(12, 2, 'poro.module.db.data.TaiKhoanTest')
+data.setCell(12, 3, 10);
+data.setCell(13, 0, 13)
+data.setCell(13, 1, 'selectUsernameEmailPassTest')
+data.setCell(13, 2, 'poro.module.db.data.TaiKhoanTest')
+data.setCell(13, 3, 10);
+data.setCell(14, 0, 14)
+data.setCell(14, 1, 'SelectByIdPhong')
+data.setCell(14, 2, 'poro.module.db.data.PhongTest')
+data.setCell(14, 3, 10);
+data.setCell(15, 0, 15)
+data.setCell(15, 1, 'selectAllTest')
+data.setCell(15, 2, 'poro.module.db.data.TaiKhoanTest')
+data.setCell(15, 3, 10);
+data.setCell(16, 0, 16)
+data.setCell(16, 1, 'writeObjectTest')
+data.setCell(16, 2, 'poro.module.FileManagerTest')
+data.setCell(16, 3, 9);
+data.setCell(17, 0, 17)
+data.setCell(17, 1, 'selectEmailTest')
+data.setCell(17, 2, 'poro.module.db.data.TaiKhoanTest')
+data.setCell(17, 3, 7);
+data.setCell(18, 0, 18)
+data.setCell(18, 1, 'UpdatePhong')
+data.setCell(18, 2, 'poro.module.db.data.PhongTest')
+data.setCell(18, 3, 7);
+data.setCell(19, 0, 19)
+data.setCell(19, 1, 'getListByPhongNoTest')
+data.setCell(19, 2, 'poro.module.db.data.MuonPhongTest')
+data.setCell(19, 3, 6);
+data.setCell(20, 0, 20)
+data.setCell(20, 1, 'isLoginTest')
+data.setCell(20, 2, 'poro.module.SessionTest')
+data.setCell(20, 3, 5);
+data.setCell(21, 0, 21)
+data.setCell(21, 1, 'updateMuonPhongTest')
+data.setCell(21, 2, 'poro.module.db.data.MuonPhongTest')
+data.setCell(21, 3, 5);
+data.setCell(22, 0, 22)
+data.setCell(22, 1, 'getStringTest')
+data.setCell(22, 2, 'poro.module.CalendarManagerTest')
+data.setCell(22, 3, 5);
+data.setCell(23, 0, 23)
+data.setCell(23, 1, 'writeTest')
+data.setCell(23, 2, 'poro.module.FileManagerTest')
+data.setCell(23, 3, 5);
+data.setCell(24, 0, 24)
+data.setCell(24, 1, 'InsertTaiKhoan')
+data.setCell(24, 2, 'poro.module.db.data.TaiKhoanTest')
+data.setCell(24, 3, 5);
+data.setCell(25, 0, 25)
+data.setCell(25, 1, 'getListByPhongYesTest')
+data.setCell(25, 2, 'poro.module.db.data.MuonPhongTest')
+data.setCell(25, 3, 5);
+data.setCell(26, 0, 26)
+data.setCell(26, 1, 'writeStringTest')
+data.setCell(26, 2, 'poro.module.FileManagerTest')
+data.setCell(26, 3, 4);
+data.setCell(27, 0, 27)
+data.setCell(27, 1, 'addTimesTest')
+data.setCell(27, 2, 'poro.module.CalendarManagerTest')
+data.setCell(27, 3, 3);
+data.setCell(28, 0, 28)
+data.setCell(28, 1, 'logoffTest')
+data.setCell(28, 2, 'poro.module.SessionTest')
+data.setCell(28, 3, 3);
+data.setCell(29, 0, 29)
+data.setCell(29, 1, 'getDaysOfTest')
+data.setCell(29, 2, 'poro.module.CalendarManagerTest')
+data.setCell(29, 3, 2);
+data.setCell(30, 0, 30)
+data.setCell(30, 1, 'isLeapYearTest')
+data.setCell(30, 2, 'poro.module.CalendarManagerTest')
+data.setCell(30, 3, 2);
+data.setCell(31, 0, 31)
+data.setCell(31, 1, 'getNowTest')
+data.setCell(31, 2, 'poro.module.CalendarManagerTest')
+data.setCell(31, 3, 1);
+data.setCell(32, 0, 32)
+data.setCell(32, 1, 'toMD5Testbyte1')
+data.setCell(32, 2, 'poro.module.EncrypterTest')
+data.setCell(32, 3, 1);
+data.setCell(33, 0, 33)
+data.setCell(33, 1, 'toMD5TestString2')
+data.setCell(33, 2, 'poro.module.EncrypterTest')
+data.setCell(33, 3, 1);
+data.setCell(34, 0, 34)
+data.setCell(34, 1, 'toMD5Testbyte2')
+data.setCell(34, 2, 'poro.module.EncrypterTest')
+data.setCell(34, 3, 1);
+data.setCell(35, 0, 35)
+data.setCell(35, 1, 'toMD5TestString1')
+data.setCell(35, 2, 'poro.module.EncrypterTest')
+data.setCell(35, 3, 1);
+window.suiteTableData['main_suite']= { tableData: data, tableDiv: 'times-div-main_suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 99 ms</span>
-              <div id="times-div-Default_suite">
-              </div> <!-- times-div-Default_suite -->
+              <span class="suite-total-time">Total running time: 1 seconds</span>
+              <div id="times-div-main_suite">
+              </div> <!-- times-div-main_suite -->
             </div> <!-- times-div -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
-        <div panel-name="reporter-Default_suite" class="panel">
+        <div panel-name="reporter-main_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">Reporter output for Default suite</span>
+            <span class="header-content">Reporter output for main suite</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
-        <div panel-name="ignored-methods-Default_suite" class="panel">
+        <div panel-name="ignored-methods-main_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">5 ignored methods</span>
+            <span class="header-content">1 ignored method</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="ignored-class-div">
-              <span class="ignored-class-name">poro.module.CalendarManagerTest</span>
+              <span class="ignored-class-name">poro.module.SessionTest</span>
               <div class="ignored-methods-div">
-                <span class="ignored-method-name">getStringTest</span>
-                <br/>
-                <span class="ignored-method-name">addTimesTest</span>
-                <br/>
-                <span class="ignored-method-name">getDaysOfTest</span>
-                <br/>
-                <span class="ignored-method-name">isLeapYearTest</span>
-                <br/>
-                <span class="ignored-method-name">getNowTest</span>
+                <span class="ignored-method-name">exitTest</span>
                 <br/>
               </div> <!-- ignored-methods-div -->
             </div> <!-- ignored-class-div -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
-        <div panel-name="chronological-Default_suite" class="panel">
+        <div panel-name="chronological-main_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
             <span class="header-content">Methods in chronological order</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
+              <div class="chronological-class-name">poro.module.SessionTest</div> <!-- chronological-class-name -->
+              <div class="test-method">
+                <span class="method-name">userIsNull</span>
+                <span class="method-start">0 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">isLoginTest</span>
+                <span class="method-start">28 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">logoffTest</span>
+                <span class="method-start">37 ms</span>
+              </div> <!-- test-method -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">poro.module.db.data.MuonPhongTest</div> <!-- chronological-class-name -->
+              <div class="test-method">
+                <span class="method-name">insertMuonPhongTest</span>
+                <span class="method-start">46 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">updateMuonPhongTest</span>
+                <span class="method-start">1040 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">getFullListTest</span>
+                <span class="method-start">1048 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">getListByPhongNoTest</span>
+                <span class="method-start">1119 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <img src="failed.png">
+                </img>
+                <span class="method-name">getListByPhongYesTest</span>
+                <span class="method-start">1127 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">seleteLastMuonPhongTest</span>
+                <span class="method-start">1136 ms</span>
+              </div> <!-- test-method -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
               <div class="chronological-class-name">poro.module.CalendarManagerTest</div> <!-- chronological-class-name -->
               <div class="test-method">
+                <span class="method-name">addTimesTest</span>
+                <span class="method-start">1149 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
                 <span class="method-name">getDateByStringTest</span>
-                <span class="method-start">0 ms</span>
+                <span class="method-start">1154 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">getDaysOfTest</span>
+                <span class="method-start">1194 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">getNowTest</span>
+                <span class="method-start">1201 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">getStringTest</span>
+                <span class="method-start">1204 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">isLeapYearTest</span>
+                <span class="method-start">1213 ms</span>
+              </div> <!-- test-method -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">poro.module.FileManagerTest</div> <!-- chronological-class-name -->
+              <div class="test-method">
+                <img src="failed.png">
+                </img>
+                <span class="method-name">readObjectTest</span>
+                <span class="method-start">1224 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">readStringTest</span>
+                <span class="method-start">1255 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">readTest</span>
+                <span class="method-start">1270 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <img src="failed.png">
+                </img>
+                <span class="method-name">writeObjectTest</span>
+                <span class="method-start">1288 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">writeStringTest</span>
+                <span class="method-start">1300 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">writeTest</span>
+                <span class="method-start">1306 ms</span>
+              </div> <!-- test-method -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">poro.module.db.data.TaiKhoanTest</div> <!-- chronological-class-name -->
+              <div class="test-method">
+                <span class="method-name">InsertTaiKhoan</span>
+                <span class="method-start">1313 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">UpdateTaiKhoan</span>
+                <span class="method-start">1321 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">selectAllTest</span>
+                <span class="method-start">1334 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">selectEmailTest</span>
+                <span class="method-start">1346 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">selectUsernameEmailPassTest</span>
+                <span class="method-start">1355 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">selectUsernameTest</span>
+                <span class="method-start">1367 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">DeleteTaiKhoan</span>
+                <span class="method-start">1379 ms</span>
+              </div> <!-- test-method -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">poro.module.db.data.PhongTest</div> <!-- chronological-class-name -->
+              <div class="test-method">
+                <span class="method-name">InsertPhong</span>
+                <span class="method-start">1394 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">SelectAllphong</span>
+                <span class="method-start">1410 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">SelectByIdPhong</span>
+                <span class="method-start">1440 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">UpdatePhong</span>
+                <span class="method-start">1452 ms</span>
+              </div> <!-- test-method -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">poro.module.EncrypterTest</div> <!-- chronological-class-name -->
+              <div class="test-method">
+                <span class="method-name">toMD5TestString1</span>
+                <span class="method-start">1461 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">toMD5TestString2</span>
+                <span class="method-start">1464 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">toMD5Testbyte1</span>
+                <span class="method-start">1467 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">toMD5Testbyte2</span>
+                <span class="method-start">1470 ms</span>
               </div> <!-- test-method -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

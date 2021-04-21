@@ -8,7 +8,7 @@
 			<class name="poro.module.FileManagerTest"/>
 			<class name="poro.module.db.data.TaiKhoanTest"/>
 			<class name="poro.module.db.data.PhongTest"/>
-			<!--class name="poro.module.EncrypterTest"/-->
+			<class name="poro.module.EncrypterTest"/>
 		</classes>
 	</test>
 </suite>
