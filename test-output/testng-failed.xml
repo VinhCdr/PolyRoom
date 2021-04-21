@@ -12,7 +12,7 @@
 =======
       <class name="poro.module.db.data.MuonPhongTest">
         <methods>
-          <include name="getListByPhongYesTest"/>
+          <include name="getFullListTest"/>
         </methods>
       </class> <!-- poro.module.db.data.MuonPhongTest -->
 >>>>>>> 817a05459ac687e7ab015db746f24ed5792114f2
