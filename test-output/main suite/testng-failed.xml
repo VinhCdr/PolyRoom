@@ -8,11 +8,6 @@
           <include name="getListByPhongYesTest"/>
         </methods>
       </class> <!-- poro.module.db.data.MuonPhongTest -->
-      <class name="poro.module.db.data.PhongTest">
-        <methods>
-          <include name="InsertPhong"/>
-        </methods>
-      </class> <!-- poro.module.db.data.PhongTest -->
       <class name="poro.module.FileManagerTest">
         <methods>
           <include name="readObjectTest"/>

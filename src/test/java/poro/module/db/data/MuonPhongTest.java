@@ -65,7 +65,7 @@ public class MuonPhongTest {
 	}
 	
 	@Test
-	public void deleteMuonPhongTest() {
+	public void seleteLastMuonPhongTest() {
 		MuonPhong mp = new MuonPhong();
 		List<MuonPhong> mpList = DatabaseManager.executeQuery(mp, MuonPhong.EXECUTE_SELECT_LAST_INSERT);
 		Assert.assertFalse(mpList.isEmpty());
