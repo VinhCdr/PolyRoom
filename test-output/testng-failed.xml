@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [main suite]">
-  <test thread-count="5" name="main test(failed)">
+<suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="poro.module.db.data.MuonPhongTest">
+      <class name="test.YeuCau5">
         <methods>
-          <include name="getListByPhongYesTest"/>
+          <include name="fillSignIn"/>
+          <include name="close"/>
+          <include name="launchBrowser"/>
+          <include name="init"/>
+          <include name="signIn"/>
         </methods>
-      </class> <!-- poro.module.db.data.MuonPhongTest -->
-      <class name="poro.module.FileManagerTest">
-        <methods>
-          <include name="readObjectTest"/>
-          <include name="writeObjectTest"/>
-        </methods>
-      </class> <!-- poro.module.FileManagerTest -->
+      </class> <!-- test.YeuCau5 -->
     </classes>
-  </test> <!-- main test(failed) -->
-</suite> <!-- Failed suite [main suite] -->
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->
