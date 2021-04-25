@@ -3,15 +3,15 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="test.YeuCau5">
+      <class name="poro.gui.NMXemPhongJPanelTest">
         <methods>
-          <include name="fillSignIn"/>
-          <include name="close"/>
-          <include name="launchBrowser"/>
           <include name="init"/>
-          <include name="signIn"/>
+          <include name="delay"/>
+          <include name="showXemPhongTest"/>
+          <include name="resetForm"/>
+          <include name="close"/>
         </methods>
-      </class> <!-- test.YeuCau5 -->
+      </class> <!-- poro.gui.NMXemPhongJPanelTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

@@ -1,36 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2021-04-22T07:50:26 ICT" name="Default suite" finished-at="2021-04-22T07:50:50 ICT" duration-ms="23091">
+  <suite started-at="2021-04-25T13:08:11 ICT" name="Default suite" finished-at="2021-04-25T13:08:24 ICT" duration-ms="12322">
     <groups>
-      <group name="lauchBrowser">
-        <method signature="YeuCau5.launchBrowser()[pri:0, instance:test.YeuCau5@3943a2be]" name="launchBrowser" class="test.YeuCau5"/>
-      </group> <!-- lauchBrowser -->
     </groups>
-    <test started-at="2021-04-22T07:50:26 ICT" name="Default test" finished-at="2021-04-22T07:50:50 ICT" duration-ms="23091">
-      <class name="test.YeuCau5">
-        <test-method is-config="true" signature="init()[pri:0, instance:test.YeuCau5@3943a2be]" started-at="2021-04-22T07:50:26 ICT" name="init" finished-at="2021-04-22T07:50:30 ICT" duration-ms="3049" status="PASS">
+    <test started-at="2021-04-25T13:08:11 ICT" name="Default test" finished-at="2021-04-25T13:08:24 ICT" duration-ms="12322">
+      <class name="poro.gui.NMXemPhongJPanelTest">
+        <test-method is-config="true" signature="init()[pri:0, instance:poro.gui.NMXemPhongJPanelTest@236e3f4e]" started-at="2021-04-25T13:08:11 ICT" name="init" finished-at="2021-04-25T13:08:18 ICT" duration-ms="6851" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- init -->
-        <test-method signature="launchBrowser()[pri:0, instance:test.YeuCau5@3943a2be]" started-at="2021-04-22T07:50:30 ICT" name="launchBrowser" finished-at="2021-04-22T07:50:32 ICT" duration-ms="2001" status="PASS">
+        <test-method is-config="true" signature="resetForm()[pri:0, instance:poro.gui.NMXemPhongJPanelTest@236e3f4e]" started-at="2021-04-25T13:08:18 ICT" name="resetForm" finished-at="2021-04-25T13:08:19 ICT" duration-ms="319" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- launchBrowser -->
-        <test-method signature="signIn()[pri:0, instance:test.YeuCau5@3943a2be]" started-at="2021-04-22T07:50:32 ICT" name="signIn" depends-on-groups="lauchBrowser" finished-at="2021-04-22T07:50:39 ICT" duration-ms="7092" status="PASS">
+        </test-method> <!-- resetForm -->
+        <test-method signature="showXemPhongTest()[pri:0, instance:poro.gui.NMXemPhongJPanelTest@236e3f4e]" started-at="2021-04-25T13:08:19 ICT" name="showXemPhongTest" finished-at="2021-04-25T13:08:21 ICT" duration-ms="2562" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- signIn -->
-        <test-method signature="fillSignIn()[pri:0, instance:test.YeuCau5@3943a2be]" started-at="2021-04-22T07:50:39 ICT" name="fillSignIn" finished-at="2021-04-22T07:50:47 ICT" depends-on-methods="test.YeuCau5.signIn" duration-ms="8720" status="PASS">
+        </test-method> <!-- showXemPhongTest -->
+        <test-method is-config="true" signature="delay()[pri:0, instance:poro.gui.NMXemPhongJPanelTest@236e3f4e]" started-at="2021-04-25T13:08:21 ICT" name="delay" finished-at="2021-04-25T13:08:22 ICT" duration-ms="502" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- fillSignIn -->
-        <test-method is-config="true" signature="close()[pri:0, instance:test.YeuCau5@3943a2be]" started-at="2021-04-22T07:50:47 ICT" name="close" finished-at="2021-04-22T07:50:50 ICT" duration-ms="2161" status="PASS">
+        </test-method> <!-- delay -->
+        <test-method is-config="true" signature="close()[pri:0, instance:poro.gui.NMXemPhongJPanelTest@236e3f4e]" started-at="2021-04-25T13:08:22 ICT" name="close" finished-at="2021-04-25T13:08:24 ICT" duration-ms="2013" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- close -->
-      </class> <!-- test.YeuCau5 -->
+      </class> <!-- poro.gui.NMXemPhongJPanelTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

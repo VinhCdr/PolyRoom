@@ -1,87 +1,76 @@
 package poro.gui;
 
+import java.awt.Component;
+import java.awt.Frame;
+import java.util.Arrays;
+
+import javax.swing.JDesktopPane;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JRootPane;
+
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
 import poro.MainClass;
+import test.module.Babysitter;
 import test.module.BigBug;
 
 public class DangNhapJDialogTest {
 	@BeforeTest
 	public void openProject() throws InterruptedException {
-		new Thread(() -> {
-			MainClass.main(null);
-		}).start();
-		Thread.sleep(3500);
+		Babysitter.showMain();
 	}
 	
 	@AfterMethod
-	public void hideMain() throws InterruptedException {
+	public void delay() throws InterruptedException {
 		Thread.sleep(1000);
 	}
 	
 	@AfterTest
 	public void closeProject() throws InterruptedException {
-		Thread.sleep(2000);
-		new Thread(() -> {
-			MainClass.mainJFrame.dispose();
-		}).start();
-		Thread.sleep(1000);
-		BigBug.keyClick("enter");
+		Babysitter.closeMain();
 	}
 	
-	@Test(timeOut = 10000, priority = 0)
-	public void loginFail1() throws InterruptedException {
+	@Test(timeOut = 10000, priority = 0, dataProvider = "userFail")
+	public void loginFail(String username, String password) throws InterruptedException {
+		
+		DangNhapJDialog dnj = Babysitter.getWindow(DangNhapJDialog.class);
+		
+		BigBug.writeString(dnj.txtTaiKhoan, username);
+		BigBug.writeString(dnj.txtPassword, password);
+		
+		Thread.sleep(200);
+		new Thread(() -> {
+			dnj.btnDangNhap.doClick();
+		}).start();
+		Thread.sleep(500);
 
-		MainClass.dangNhapJDialog.txtTaiKhoan.setText("");
-		MainClass.dangNhapJDialog.txtPassword.setText("");
-		MainClass.dangNhapJDialog.txtTaiKhoan.requestFocus();
-
-		BigBug.writeString("vinhlm");
 		
-		BigBug.keyClick("tab");
+		JDialog jd = Babysitter.getWindow(dnj, JDialog.class);
 		
-		BigBug.keyPressMutil("shift", "tab");
+		Thread.sleep(200);
 		
-		BigBug.keyPressMutil("capslock");
+		Assert.assertEquals(jd.getTitle(), "Message");
 		
-		BigBug.writeString("error");
+		jd.setVisible(false);
+		Thread.sleep(200);
 		
-		BigBug.keyPressMutil("capslock");
-		
-		BigBug.keyClick("tab");
-		
-		BigBug.writeString("vinhlm");
-		
-		BigBug.keyClick("tab");
-		
-		BigBug.keyClick("tab");
-		
-		BigBug.keyClick("enter");
-		
-		Thread.sleep(700);
-		
-		BigBug.keyClick("enter");
 		
 		Assert.assertFalse(MainClass.mainJFrame.isVisible());
 	}
 	
-	@Test(timeOut = 10000, priority = 1)
-	public void loginOk() throws InterruptedException {
-		
-		MainClass.dangNhapJDialog.txtTaiKhoan.setText("");
-		MainClass.dangNhapJDialog.txtPassword.setText("");
-		MainClass.dangNhapJDialog.txtTaiKhoan.requestFocus();
-		
-		BigBug.writeString("vinhlm");
-		BigBug.keyClick("tab");
-		BigBug.writeString("vinhlm");
-		BigBug.keyClick("tab");
-		BigBug.keyClick("tab");
-		BigBug.keyClick("enter");
-		Thread.sleep(700);
-		Assert.assertTrue(MainClass.mainJFrame.isVisible());
+	@DataProvider(name = "userFail")
+	public Object[][] getUser() {
+		return new Object[][] {
+				{"vinhlm", "vipassx"},
+				{"", "vipass"},
+				{"vinhlm", ""}
+		};
 	}
 }

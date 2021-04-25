@@ -357,11 +357,11 @@ public class MuonPhongJDialog extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtTGBatDauMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTGBatDauMouseClicked
+    void txtTGBatDauMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTGBatDauMouseClicked
         setGioBatDau(txtTGBatDau);
     }//GEN-LAST:event_txtTGBatDauMouseClicked
 
-    private void txtTraDuKienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTraDuKienMouseClicked
+    void txtTraDuKienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTraDuKienMouseClicked
         setGioKetThuc(txtTGBatDau, txtTraDuKien);
     }//GEN-LAST:event_txtTraDuKienMouseClicked
 
@@ -372,15 +372,15 @@ public class MuonPhongJDialog extends javax.swing.JDialog {
         txtEmail.setText("");
     }//GEN-LAST:event_chkMuonHoItemStateChanged
 
-    private void txtTestTGBatDauMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTestTGBatDauMouseClicked
+    void txtTestTGBatDauMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTestTGBatDauMouseClicked
         setGioBatDau(txtTestTGBatDau);
     }//GEN-LAST:event_txtTestTGBatDauMouseClicked
 
-    private void txtTestTGKetThucMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTestTGKetThucMouseClicked
+    void txtTestTGKetThucMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTestTGKetThucMouseClicked
         setGioKetThuc(txtTestTGBatDau, txtTestTGKetThuc);
     }//GEN-LAST:event_txtTestTGKetThucMouseClicked
 
-    private void btnDangKyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangKyActionPerformed
+    void btnDangKyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangKyActionPerformed
         try {
             txtTestTGBatDau.setText(txtTGBatDau.getText());
             txtTestTGKetThuc.setText(txtTraDuKien.getText());
@@ -417,7 +417,7 @@ public class MuonPhongJDialog extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_btnDangKyActionPerformed
 
-    private void btnTestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTestActionPerformed
+    void btnTestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTestActionPerformed
         try {
             test();
             txtTGBatDau.setText(txtTestTGBatDau.getText());
@@ -431,9 +431,9 @@ public class MuonPhongJDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_btnTestActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnDangKy;
-    private javax.swing.JButton btnTest;
-    private javax.swing.JCheckBox chkMuonHo;
+    javax.swing.JButton btnDangKy;
+    javax.swing.JButton btnTest;
+    javax.swing.JCheckBox chkMuonHo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -449,19 +449,19 @@ public class MuonPhongJDialog extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JPanel pnlSinhVien;
-    private javax.swing.JTable tblContent;
-    private javax.swing.JTextField txtEmail;
-    private javax.swing.JTextField txtIdPhong;
-    private javax.swing.JTextField txtLau;
-    private javax.swing.JTextField txtLyDo;
-    private javax.swing.JTextField txtMaSV;
-    private javax.swing.JTextField txtTGBatDau;
-    private javax.swing.JTextField txtTenPhong;
-    private javax.swing.JTextField txtTenSV;
-    private javax.swing.JTextField txtTestTGBatDau;
-    private javax.swing.JTextField txtTestTGKetThuc;
-    private javax.swing.JTextField txtTraDuKien;
+    javax.swing.JPanel pnlSinhVien;
+    javax.swing.JTable tblContent;
+    javax.swing.JTextField txtEmail;
+    javax.swing.JTextField txtIdPhong;
+    javax.swing.JTextField txtLau;
+    javax.swing.JTextField txtLyDo;
+    javax.swing.JTextField txtMaSV;
+    javax.swing.JTextField txtTGBatDau;
+    javax.swing.JTextField txtTenPhong;
+    javax.swing.JTextField txtTenSV;
+    javax.swing.JTextField txtTestTGBatDau;
+    javax.swing.JTextField txtTestTGKetThuc;
+    javax.swing.JTextField txtTraDuKien;
     // End of variables declaration//GEN-END:variables
 
     ArrayList<ThongTinMuonPhong> ttmps = new ArrayList<>();

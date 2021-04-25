@@ -470,12 +470,12 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
         loadPhongDangMuon();
     }
     
-    private void btnMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoiActionPerformed
+    void btnMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoiActionPerformed
         lamMoi();
         setEnabled(false);
     }//GEN-LAST:event_btnMoiActionPerformed
 
-    private void btnThemPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemPhongActionPerformed
+    void btnThemPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemPhongActionPerformed
         try {
             them();
             setEditable(false);
@@ -487,7 +487,7 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnThemPhongActionPerformed
 
-    private void btnSuaPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaPhongActionPerformed
+    void btnSuaPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaPhongActionPerformed
         try {
             sua();
             loading();
@@ -499,7 +499,7 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnSuaPhongActionPerformed
 
-    private void btnXoaPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaPhongActionPerformed
+    void btnXoaPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaPhongActionPerformed
         try {
             String confirm = JOptionPane.showInputDialog(
                     this,
@@ -521,7 +521,7 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_btnXoaPhongActionPerformed
 
-    private void tblPhongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPhongMouseClicked
+    void tblPhongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPhongMouseClicked
         if (evt.getClickCount() != 2) {
             return;
         }
@@ -532,11 +532,11 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
         setQLM(rcboNguoiMuon.getSelectedIndex());
     }//GEN-LAST:event_rcboNguoiMuonItemStateChanged
 
-    private void btnXemChiTietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXemChiTietActionPerformed
+    void btnXemChiTietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXemChiTietActionPerformed
         showChiTietMuon();
     }//GEN-LAST:event_btnXemChiTietActionPerformed
 
-    private void btnHuyMuonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyMuonActionPerformed
+    void btnHuyMuonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyMuonActionPerformed
         if (rcboNguoiMuon.getItemCount() == 0) {
             return;
         }
@@ -554,7 +554,7 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnHuyMuonActionPerformed
 
-    private void btnMuonPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMuonPhongActionPerformed
+    void btnMuonPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMuonPhongActionPerformed
         MuonPhongJDialog m = new MuonPhongJDialog((JFrame) this.getRootPane().getParent(), true);
         int selected = tblPhong.getSelectedRow();
         
@@ -578,12 +578,12 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
         loading();
     }//GEN-LAST:event_btnMuonPhongActionPerformed
 
-    private void btnTraPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTraPhongActionPerformed
+    void btnTraPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTraPhongActionPerformed
         showDangMuon();
         loading();
     }//GEN-LAST:event_btnTraPhongActionPerformed
 
-    private void btnTimPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimPhongActionPerformed
+    void btnTimPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimPhongActionPerformed
         DatabaseRefresh.refresh();
         String sbatDau = txtTimStart.getText();
         String sketThuc = txtTimEnd.getText();
@@ -638,26 +638,26 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
         });
     }//GEN-LAST:event_btnTimPhongActionPerformed
 
-    private void txtTimStartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTimStartMouseClicked
+    void txtTimStartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTimStartMouseClicked
         setGioBatDau(txtTimStart);
     }//GEN-LAST:event_txtTimStartMouseClicked
 
-    private void txtTimEndMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTimEndMouseClicked
+    void txtTimEndMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTimEndMouseClicked
         setGioKetThuc(txtTimStart, txtTimEnd);
     }//GEN-LAST:event_txtTimEndMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnHuyMuon;
-    private javax.swing.JButton btnMoi;
-    private javax.swing.JButton btnMuonPhong;
-    private javax.swing.JButton btnSuaPhong;
-    private javax.swing.JButton btnThemPhong;
-    private javax.swing.JButton btnTimPhong;
-    private javax.swing.JButton btnTraPhong;
-    private javax.swing.JButton btnXemChiTiet;
-    private javax.swing.JButton btnXoaPhong;
-    private javax.swing.JComboBox<String> cboLau;
-    private javax.swing.JCheckBox chkChoPhep;
+    javax.swing.JButton btnHuyMuon;
+    javax.swing.JButton btnMoi;
+    javax.swing.JButton btnMuonPhong;
+    javax.swing.JButton btnSuaPhong;
+    javax.swing.JButton btnThemPhong;
+    javax.swing.JButton btnTimPhong;
+    javax.swing.JButton btnTraPhong;
+    javax.swing.JButton btnXemChiTiet;
+    javax.swing.JButton btnXoaPhong;
+    javax.swing.JComboBox<String> cboLau;
+    javax.swing.JCheckBox chkChoPhep;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -674,18 +674,18 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JComboBox<String> rcboNguoiMuon;
-    private javax.swing.JTextField rtxtBatDau;
-    private javax.swing.JTextField rtxtEmailSinhVien;
-    private javax.swing.JTextField rtxtKetThuc;
-    private javax.swing.JTextField rtxtLyDo;
-    private javax.swing.JTextField rtxtSinhVien;
-    private javax.swing.JTabbedPane tabs;
-    private javax.swing.JTable tblPhong;
-    private javax.swing.JTextField txtMaPhong;
-    private javax.swing.JTextField txtTenPhong;
-    private javax.swing.JTextField txtTimEnd;
-    private javax.swing.JTextField txtTimStart;
+    javax.swing.JComboBox<String> rcboNguoiMuon;
+    javax.swing.JTextField rtxtBatDau;
+    javax.swing.JTextField rtxtEmailSinhVien;
+    javax.swing.JTextField rtxtKetThuc;
+    javax.swing.JTextField rtxtLyDo;
+    javax.swing.JTextField rtxtSinhVien;
+    javax.swing.JTabbedPane tabs;
+    javax.swing.JTable tblPhong;
+    javax.swing.JTextField txtMaPhong;
+    javax.swing.JTextField txtTenPhong;
+    javax.swing.JTextField txtTimEnd;
+    javax.swing.JTextField txtTimStart;
     // End of variables declaration//GEN-END:variables
 
     ChonNgayGioJDialog chonTG = new ChonNgayGioJDialog((JFrame) this.getParent(), true);

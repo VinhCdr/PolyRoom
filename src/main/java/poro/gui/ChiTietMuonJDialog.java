@@ -115,7 +115,7 @@ public class ChiTietMuonJDialog extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }
 
-    private void tblListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblListMouseClicked
+    void tblListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblListMouseClicked
         if (evt.getClickCount() != 2) {
             return;
         }
@@ -124,14 +124,14 @@ public class ChiTietMuonJDialog extends javax.swing.JDialog {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> cboLau;
+    javax.swing.JComboBox<String> cboLau;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblList;
-    private javax.swing.JTextField txtMaPhong;
-    private javax.swing.JTextField txtTenPhong;
+    javax.swing.JTable tblList;
+    javax.swing.JTextField txtMaPhong;
+    javax.swing.JTextField txtTenPhong;
     // End of variables declaration//GEN-END:variables
 
     /**

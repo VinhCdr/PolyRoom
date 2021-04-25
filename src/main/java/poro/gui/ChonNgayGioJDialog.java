@@ -244,7 +244,7 @@ public class ChonNgayGioJDialog extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_cboThangItemStateChanged
 
-    private void btnXacNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXacNhanActionPerformed
+    void btnXacNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXacNhanActionPerformed
         try {
             loadResult();
             this.dispose();
@@ -253,7 +253,7 @@ public class ChonNgayGioJDialog extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_btnXacNhanActionPerformed
 
-    private void btnHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyActionPerformed
+    void btnHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyActionPerformed
         result = "";
         this.dispose();
     }//GEN-LAST:event_btnHuyActionPerformed
@@ -265,14 +265,14 @@ public class ChonNgayGioJDialog extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnHuy;
-    private javax.swing.JButton btnXacNhan;
-    private javax.swing.JComboBox<String> cboGiay;
-    private javax.swing.JComboBox<String> cboGio;
-    private javax.swing.JComboBox<String> cboNam;
-    private javax.swing.JComboBox<String> cboNgay;
-    private javax.swing.JComboBox<String> cboPhut;
-    private javax.swing.JComboBox<String> cboThang;
+    javax.swing.JButton btnHuy;
+    javax.swing.JButton btnXacNhan;
+    javax.swing.JComboBox<String> cboGiay;
+    javax.swing.JComboBox<String> cboGio;
+    javax.swing.JComboBox<String> cboNam;
+    javax.swing.JComboBox<String> cboNgay;
+    javax.swing.JComboBox<String> cboPhut;
+    javax.swing.JComboBox<String> cboThang;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -258,13 +258,13 @@ public class QuanLyTaiKhoanJPanel extends javax.swing.JPanel {
         loadTblTaiKhoan();
     }
 
-    private void btnMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoiActionPerformed
+    void btnMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoiActionPerformed
         // TODO add your handling code here:
         lamMoi();
         setEditable(false);
     }//GEN-LAST:event_btnMoiActionPerformed
 
-    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+    void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         try {
             them();
             loading();
@@ -274,7 +274,7 @@ public class QuanLyTaiKhoanJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnThemActionPerformed
 
-    private void btnCapNhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapNhatActionPerformed
+    void btnCapNhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapNhatActionPerformed
         try {
             capNhat();
             loading();
@@ -284,7 +284,7 @@ public class QuanLyTaiKhoanJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnCapNhatActionPerformed
 
-    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
+    void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
         try {
             String confirm = JOptionPane.showInputDialog(
@@ -305,7 +305,7 @@ public class QuanLyTaiKhoanJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnXoaActionPerformed
 
-    private void tblTaiKhoanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblTaiKhoanMouseClicked
+    void tblTaiKhoanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblTaiKhoanMouseClicked
         if (evt.getClickCount() != 2) {
             return;
         }
@@ -314,11 +314,11 @@ public class QuanLyTaiKhoanJPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCapNhat;
-    private javax.swing.JButton btnMoi;
-    private javax.swing.JButton btnThem;
-    private javax.swing.JButton btnXoa;
-    private javax.swing.JCheckBox chkQuanLy;
+    javax.swing.JButton btnCapNhat;
+    javax.swing.JButton btnMoi;
+    javax.swing.JButton btnThem;
+    javax.swing.JButton btnXoa;
+    javax.swing.JCheckBox chkQuanLy;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -328,14 +328,14 @@ public class QuanLyTaiKhoanJPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTabbedPane tabs;
-    private javax.swing.JTable tblTaiKhoan;
-    private javax.swing.JTextField txtEmail;
-    private javax.swing.JTextField txtHoVaTen;
-    private javax.swing.JPasswordField txtMatKhau;
-    private javax.swing.JTextField txtSoDienThoai;
-    private javax.swing.JTextField txtTenTaiKhoan;
-    private javax.swing.JPasswordField txtXacNhanMatKhau;
+    javax.swing.JTabbedPane tabs;
+    javax.swing.JTable tblTaiKhoan;
+    javax.swing.JTextField txtEmail;
+    javax.swing.JTextField txtHoVaTen;
+    javax.swing.JPasswordField txtMatKhau;
+    javax.swing.JTextField txtSoDienThoai;
+    javax.swing.JTextField txtTenTaiKhoan;
+    javax.swing.JPasswordField txtXacNhanMatKhau;
     // End of variables declaration//GEN-END:variables
 
     public void setTab(int i) {

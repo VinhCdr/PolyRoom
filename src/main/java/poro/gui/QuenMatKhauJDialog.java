@@ -26,7 +26,7 @@ public class QuenMatKhauJDialog extends javax.swing.JDialog {
 
     private DoiMatKhauJDialog doiMatKhauJDialog;
 
-    private static String otp = "";
+    static String otp = "";
     TaiKhoan tk = new TaiKhoan();
 
     /**
@@ -92,7 +92,7 @@ public class QuenMatKhauJDialog extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnGuiMaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuiMaActionPerformed
+    void btnGuiMaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuiMaActionPerformed
         try {
             // TODO add your handling code here:
             guiOTP();
@@ -102,19 +102,19 @@ public class QuenMatKhauJDialog extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_btnGuiMaActionPerformed
 
-    private void btnXacNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXacNhanActionPerformed
+    void btnXacNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXacNhanActionPerformed
         // TODO add your handling code here:
         xacNhan();
     }//GEN-LAST:event_btnXacNhanActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnGuiMa;
-    private javax.swing.JButton btnXacNhan;
+    javax.swing.JButton btnGuiMa;
+    javax.swing.JButton btnXacNhan;
     private javax.swing.JLabel hinh;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JTextField txtMaOTP;
-    private javax.swing.JTextField txtemail;
+    javax.swing.JTextField txtMaOTP;
+    javax.swing.JTextField txtemail;
     // End of variables declaration//GEN-END:variables
 
     private void guiOTP() throws ToViewException {
