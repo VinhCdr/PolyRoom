@@ -5,9 +5,9 @@
     <classes>
       <class name="poro.gui.NMXemPhongJPanelTest">
         <methods>
+          <include name="skipPhong102" invocation-numbers="2"/>
           <include name="init"/>
           <include name="delay"/>
-          <include name="showXemPhongTest"/>
           <include name="resetForm"/>
           <include name="close"/>
         </methods>

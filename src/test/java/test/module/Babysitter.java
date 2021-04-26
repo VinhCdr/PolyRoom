@@ -36,7 +36,7 @@ public class Babysitter {
 	
 	public static void closeMain() {
 		try {
-			Thread.sleep(2000);
+			Thread.sleep(1000);
 		} catch (InterruptedException e) {
 			System.out.println("Lỗi nhỏ về luồng, không cần quan tâm: ".concat(e.toString()));
 		}
@@ -50,9 +50,7 @@ public class Babysitter {
 	public static <T extends Window> T getWindow(Class<T> t) {
 		List<Window> ls = new ArrayList<Window>(Arrays.asList(MainClass.mainJFrame.getOwnedWindows()));
 		for (Window w : ls) {
-			if (w.getClass().toString().equals(t.toString()) &&
-					w.isVisible()
-					) {
+			if (w.getClass().toString().equals(t.toString()) && w.isVisible()) {
 				return (T) w;
 			}
 		}
@@ -63,17 +61,11 @@ public class Babysitter {
 	public static <T extends Window> T getWindow(Window window, Class<T> t) {
 		List<Window> ls = new ArrayList<Window>(Arrays.asList(window.getOwnedWindows()));
 		for (Window w : ls) {
-			if (w.getClass().toString().equals(t.toString()) &&
-					w.isVisible()
-					) {
+			if (w.getClass().toString().equals(t.toString()) && w.isVisible()) {
 				return (T) w;
 			}
 		}
 		return null;
-	}
-	
-	public static void setSelectedTable(JTable table, int ...index) {
-		
 	}
 
 }

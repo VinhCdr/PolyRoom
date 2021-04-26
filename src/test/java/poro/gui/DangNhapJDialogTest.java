@@ -1,14 +1,6 @@
 package poro.gui;
 
-import java.awt.Component;
-import java.awt.Frame;
-import java.util.Arrays;
-
-import javax.swing.JDesktopPane;
 import javax.swing.JDialog;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JRootPane;
 
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
