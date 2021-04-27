@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="9" passed="9" failed="0" skipped="0">
+<testng-results ignored="0" total="21" passed="21" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2021-04-26T22:26:56 ICT" name="Default suite" finished-at="2021-04-26T22:27:37 ICT" duration-ms="41505">
+  <suite started-at="2021-04-28T00:10:20 ICT" name="Vinh Suite" finished-at="2021-04-28T00:12:45 ICT" duration-ms="144360">
     <groups>
     </groups>
-    <test started-at="2021-04-26T22:26:56 ICT" name="Default test" finished-at="2021-04-26T22:27:37 ICT" duration-ms="41505">
+    <test started-at="2021-04-28T00:10:20 ICT" name="XemPhong Test" finished-at="2021-04-28T00:11:02 ICT" duration-ms="41558">
       <class name="poro.gui.NMXemPhongJPanelTest">
-        <test-method is-config="true" signature="init()[pri:0, instance:poro.gui.NMXemPhongJPanelTest@53aad5d5]" started-at="2021-04-26T22:26:56 ICT" name="init" finished-at="2021-04-26T22:27:02 ICT" duration-ms="6452" status="PASS">
+        <test-method is-config="true" signature="init()[pri:0, instance:poro.gui.NMXemPhongJPanelTest@53aad5d5]" started-at="2021-04-28T00:10:21 ICT" name="init" finished-at="2021-04-28T00:10:27 ICT" duration-ms="6518" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- init -->
-        <test-method is-config="true" signature="resetForm()[pri:0, instance:poro.gui.NMXemPhongJPanelTest@53aad5d5]" started-at="2021-04-26T22:27:03 ICT" name="resetForm" finished-at="2021-04-26T22:27:04 ICT" duration-ms="1292" status="PASS">
+        <test-method is-config="true" signature="resetForm()[pri:0, instance:poro.gui.NMXemPhongJPanelTest@53aad5d5]" started-at="2021-04-28T00:10:27 ICT" name="resetForm" finished-at="2021-04-28T00:10:28 ICT" duration-ms="1232" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- resetForm -->
-        <test-method signature="messageErrorTimPhongTest(java.util.Date, java.util.Date)[pri:0, instance:poro.gui.NMXemPhongJPanelTest@53aad5d5]" started-at="2021-04-26T22:27:04 ICT" name="messageErrorTimPhongTest" data-provider="messageErrorTimPhong" finished-at="2021-04-26T22:27:05 ICT" duration-ms="1538" status="PASS">
+        <test-method signature="messageErrorTimPhongTest(java.util.Date, java.util.Date)[pri:0, instance:poro.gui.NMXemPhongJPanelTest@53aad5d5]" started-at="2021-04-28T00:10:28 ICT" name="messageErrorTimPhongTest" data-provider="messageErrorTimPhong" finished-at="2021-04-28T00:10:30 ICT" duration-ms="1573" status="PASS">
           <params>
             <param index="0">
               <value is-null="true"/>
@@ -27,181 +27,484 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- messageErrorTimPhongTest -->
-        <test-method is-config="true" signature="delay()[pri:0, instance:poro.gui.NMXemPhongJPanelTest@53aad5d5]" started-at="2021-04-26T22:27:05 ICT" name="delay" finished-at="2021-04-26T22:27:06 ICT" duration-ms="503" status="PASS">
+        <test-method is-config="true" signature="delay()[pri:0, instance:poro.gui.NMXemPhongJPanelTest@53aad5d5]" started-at="2021-04-28T00:10:30 ICT" name="delay" finished-at="2021-04-28T00:10:30 ICT" duration-ms="515" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- delay -->
-        <test-method is-config="true" signature="resetForm()[pri:0, instance:poro.gui.NMXemPhongJPanelTest@53aad5d5]" started-at="2021-04-26T22:27:06 ICT" name="resetForm" finished-at="2021-04-26T22:27:07 ICT" duration-ms="967" status="PASS">
+        <test-method is-config="true" signature="resetForm()[pri:0, instance:poro.gui.NMXemPhongJPanelTest@53aad5d5]" started-at="2021-04-28T00:10:30 ICT" name="resetForm" finished-at="2021-04-28T00:10:31 ICT" duration-ms="1063" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- resetForm -->
-        <test-method signature="messageErrorTimPhongTest(java.util.Date, java.util.Date)[pri:0, instance:poro.gui.NMXemPhongJPanelTest@53aad5d5]" started-at="2021-04-26T22:27:07 ICT" name="messageErrorTimPhongTest" data-provider="messageErrorTimPhong" finished-at="2021-04-26T22:27:09 ICT" duration-ms="2063" status="PASS">
+        <test-method signature="messageErrorTimPhongTest(java.util.Date, java.util.Date)[pri:0, instance:poro.gui.NMXemPhongJPanelTest@53aad5d5]" started-at="2021-04-28T00:10:31 ICT" name="messageErrorTimPhongTest" data-provider="messageErrorTimPhong" finished-at="2021-04-28T00:10:34 ICT" duration-ms="2097" status="PASS">
           <params>
             <param index="0">
+              <value>
+                <![CDATA[Wed Apr 28 00:10:27 ICT 2021]]>
+              </value>
+            </param>
+            <param index="1">
               <value is-null="true"/>
             </param>
-            <param index="1">
-              <value>
-                <![CDATA[Mon Apr 26 22:27:02 ICT 2021]]>
-              </value>
-            </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- messageErrorTimPhongTest -->
-        <test-method is-config="true" signature="delay()[pri:0, instance:poro.gui.NMXemPhongJPanelTest@53aad5d5]" started-at="2021-04-26T22:27:09 ICT" name="delay" finished-at="2021-04-26T22:27:09 ICT" duration-ms="505" status="PASS">
+        <test-method is-config="true" signature="delay()[pri:0, instance:poro.gui.NMXemPhongJPanelTest@53aad5d5]" started-at="2021-04-28T00:10:34 ICT" name="delay" finished-at="2021-04-28T00:10:34 ICT" duration-ms="512" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- delay -->
-        <test-method is-config="true" signature="resetForm()[pri:0, instance:poro.gui.NMXemPhongJPanelTest@53aad5d5]" started-at="2021-04-26T22:27:09 ICT" name="resetForm" finished-at="2021-04-26T22:27:10 ICT" duration-ms="1027" status="PASS">
+        <test-method is-config="true" signature="resetForm()[pri:0, instance:poro.gui.NMXemPhongJPanelTest@53aad5d5]" started-at="2021-04-28T00:10:34 ICT" name="resetForm" finished-at="2021-04-28T00:10:35 ICT" duration-ms="957" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- resetForm -->
-        <test-method signature="messageErrorTimPhongTest(java.util.Date, java.util.Date)[pri:0, instance:poro.gui.NMXemPhongJPanelTest@53aad5d5]" started-at="2021-04-26T22:27:10 ICT" name="messageErrorTimPhongTest" data-provider="messageErrorTimPhong" finished-at="2021-04-26T22:27:13 ICT" duration-ms="2608" status="PASS">
+        <test-method signature="messageErrorTimPhongTest(java.util.Date, java.util.Date)[pri:0, instance:poro.gui.NMXemPhongJPanelTest@53aad5d5]" started-at="2021-04-28T00:10:35 ICT" name="messageErrorTimPhongTest" data-provider="messageErrorTimPhong" finished-at="2021-04-28T00:10:38 ICT" duration-ms="2607" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[Mon Apr 26 22:07:02 ICT 2021]]>
+                <![CDATA[Tue Apr 27 23:50:27 ICT 2021]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA[Mon Apr 26 22:27:02 ICT 2021]]>
+                <![CDATA[Wed Apr 28 00:10:27 ICT 2021]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- messageErrorTimPhongTest -->
-        <test-method is-config="true" signature="delay()[pri:0, instance:poro.gui.NMXemPhongJPanelTest@53aad5d5]" started-at="2021-04-26T22:27:13 ICT" name="delay" finished-at="2021-04-26T22:27:14 ICT" duration-ms="510" status="PASS">
+        <test-method is-config="true" signature="delay()[pri:0, instance:poro.gui.NMXemPhongJPanelTest@53aad5d5]" started-at="2021-04-28T00:10:38 ICT" name="delay" finished-at="2021-04-28T00:10:38 ICT" duration-ms="508" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- delay -->
-        <test-method is-config="true" signature="resetForm()[pri:0, instance:poro.gui.NMXemPhongJPanelTest@53aad5d5]" started-at="2021-04-26T22:27:14 ICT" name="resetForm" finished-at="2021-04-26T22:27:15 ICT" duration-ms="1022" status="PASS">
+        <test-method is-config="true" signature="resetForm()[pri:0, instance:poro.gui.NMXemPhongJPanelTest@53aad5d5]" started-at="2021-04-28T00:10:38 ICT" name="resetForm" finished-at="2021-04-28T00:10:39 ICT" duration-ms="926" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- resetForm -->
-        <test-method signature="messageErrorTimPhongTest(java.util.Date, java.util.Date)[pri:0, instance:poro.gui.NMXemPhongJPanelTest@53aad5d5]" started-at="2021-04-26T22:27:15 ICT" name="messageErrorTimPhongTest" data-provider="messageErrorTimPhong" finished-at="2021-04-26T22:27:17 ICT" duration-ms="2605" status="PASS">
+        <test-method signature="messageErrorTimPhongTest(java.util.Date, java.util.Date)[pri:0, instance:poro.gui.NMXemPhongJPanelTest@53aad5d5]" started-at="2021-04-28T00:10:39 ICT" name="messageErrorTimPhongTest" data-provider="messageErrorTimPhong" finished-at="2021-04-28T00:10:42 ICT" duration-ms="2604" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[Mon Apr 26 22:47:02 ICT 2021]]>
+                <![CDATA[Wed Apr 28 00:30:27 ICT 2021]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA[Mon Apr 26 22:27:02 ICT 2021]]>
+                <![CDATA[Wed Apr 28 00:10:27 ICT 2021]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- messageErrorTimPhongTest -->
-        <test-method is-config="true" signature="delay()[pri:0, instance:poro.gui.NMXemPhongJPanelTest@53aad5d5]" started-at="2021-04-26T22:27:17 ICT" name="delay" finished-at="2021-04-26T22:27:18 ICT" duration-ms="515" status="PASS">
+        <test-method is-config="true" signature="delay()[pri:0, instance:poro.gui.NMXemPhongJPanelTest@53aad5d5]" started-at="2021-04-28T00:10:42 ICT" name="delay" finished-at="2021-04-28T00:10:42 ICT" duration-ms="507" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- delay -->
-        <test-method is-config="true" signature="resetForm()[pri:0, instance:poro.gui.NMXemPhongJPanelTest@53aad5d5]" started-at="2021-04-26T22:27:18 ICT" name="resetForm" finished-at="2021-04-26T22:27:19 ICT" duration-ms="869" status="PASS">
+        <test-method is-config="true" signature="resetForm()[pri:0, instance:poro.gui.NMXemPhongJPanelTest@53aad5d5]" started-at="2021-04-28T00:10:42 ICT" name="resetForm" finished-at="2021-04-28T00:10:43 ICT" duration-ms="912" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- resetForm -->
-        <test-method signature="showTimPhongDefTest()[pri:0, instance:poro.gui.NMXemPhongJPanelTest@53aad5d5]" started-at="2021-04-26T22:27:19 ICT" name="showTimPhongDefTest" finished-at="2021-04-26T22:27:20 ICT" duration-ms="1614" status="PASS">
+        <test-method signature="showTimPhongDefTest()[pri:0, instance:poro.gui.NMXemPhongJPanelTest@53aad5d5]" started-at="2021-04-28T00:10:43 ICT" name="showTimPhongDefTest" finished-at="2021-04-28T00:10:45 ICT" duration-ms="1667" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- showTimPhongDefTest -->
-        <test-method is-config="true" signature="delay()[pri:0, instance:poro.gui.NMXemPhongJPanelTest@53aad5d5]" started-at="2021-04-26T22:27:20 ICT" name="delay" finished-at="2021-04-26T22:27:21 ICT" duration-ms="515" status="PASS">
+        <test-method is-config="true" signature="delay()[pri:0, instance:poro.gui.NMXemPhongJPanelTest@53aad5d5]" started-at="2021-04-28T00:10:45 ICT" name="delay" finished-at="2021-04-28T00:10:45 ICT" duration-ms="509" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- delay -->
-        <test-method is-config="true" signature="resetForm()[pri:0, instance:poro.gui.NMXemPhongJPanelTest@53aad5d5]" started-at="2021-04-26T22:27:21 ICT" name="resetForm" finished-at="2021-04-26T22:27:22 ICT" duration-ms="884" status="PASS">
+        <test-method is-config="true" signature="resetForm()[pri:0, instance:poro.gui.NMXemPhongJPanelTest@53aad5d5]" started-at="2021-04-28T00:10:45 ICT" name="resetForm" finished-at="2021-04-28T00:10:46 ICT" duration-ms="893" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- resetForm -->
-        <test-method signature="skipPhong102(java.util.Date, java.util.Date)[pri:0, instance:poro.gui.NMXemPhongJPanelTest@53aad5d5]" started-at="2021-04-26T22:27:22 ICT" name="skipPhong102" data-provider="dataSkipPhong102" finished-at="2021-04-26T22:27:24 ICT" duration-ms="2818" status="PASS">
+        <test-method signature="skipPhong102(java.util.Date, java.util.Date)[pri:0, instance:poro.gui.NMXemPhongJPanelTest@53aad5d5]" started-at="2021-04-28T00:10:46 ICT" name="skipPhong102" data-provider="dataSkipPhong102" finished-at="2021-04-28T00:10:49 ICT" duration-ms="2846" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[Mon Apr 26 22:57:21 ICT 2021]]>
+                <![CDATA[Wed Apr 28 00:40:45 ICT 2021]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA[Tue Apr 27 00:57:21 ICT 2021]]>
+                <![CDATA[Wed Apr 28 02:40:45 ICT 2021]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- skipPhong102 -->
-        <test-method is-config="true" signature="delay()[pri:0, instance:poro.gui.NMXemPhongJPanelTest@53aad5d5]" started-at="2021-04-26T22:27:24 ICT" name="delay" finished-at="2021-04-26T22:27:25 ICT" duration-ms="508" status="PASS">
+        <test-method is-config="true" signature="delay()[pri:0, instance:poro.gui.NMXemPhongJPanelTest@53aad5d5]" started-at="2021-04-28T00:10:49 ICT" name="delay" finished-at="2021-04-28T00:10:50 ICT" duration-ms="502" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- delay -->
-        <test-method is-config="true" signature="resetForm()[pri:0, instance:poro.gui.NMXemPhongJPanelTest@53aad5d5]" started-at="2021-04-26T22:27:25 ICT" name="resetForm" finished-at="2021-04-26T22:27:26 ICT" duration-ms="895" status="PASS">
+        <test-method is-config="true" signature="resetForm()[pri:0, instance:poro.gui.NMXemPhongJPanelTest@53aad5d5]" started-at="2021-04-28T00:10:50 ICT" name="resetForm" finished-at="2021-04-28T00:10:50 ICT" duration-ms="912" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- resetForm -->
-        <test-method signature="skipPhong102(java.util.Date, java.util.Date)[pri:0, instance:poro.gui.NMXemPhongJPanelTest@53aad5d5]" started-at="2021-04-26T22:27:26 ICT" name="skipPhong102" data-provider="dataSkipPhong102" finished-at="2021-04-26T22:27:29 ICT" duration-ms="2817" status="PASS">
+        <test-method signature="skipPhong102(java.util.Date, java.util.Date)[pri:0, instance:poro.gui.NMXemPhongJPanelTest@53aad5d5]" started-at="2021-04-28T00:10:50 ICT" name="skipPhong102" data-provider="dataSkipPhong102" finished-at="2021-04-28T00:10:53 ICT" duration-ms="2821" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[Mon Apr 26 22:27:21 ICT 2021]]>
+                <![CDATA[Wed Apr 28 00:10:45 ICT 2021]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA[Tue Apr 27 00:27:21 ICT 2021]]>
+                <![CDATA[Wed Apr 28 02:10:45 ICT 2021]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- skipPhong102 -->
-        <test-method is-config="true" signature="delay()[pri:0, instance:poro.gui.NMXemPhongJPanelTest@53aad5d5]" started-at="2021-04-26T22:27:29 ICT" name="delay" finished-at="2021-04-26T22:27:29 ICT" duration-ms="513" status="PASS">
+        <test-method is-config="true" signature="delay()[pri:0, instance:poro.gui.NMXemPhongJPanelTest@53aad5d5]" started-at="2021-04-28T00:10:53 ICT" name="delay" finished-at="2021-04-28T00:10:54 ICT" duration-ms="513" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- delay -->
-        <test-method is-config="true" signature="resetForm()[pri:0, instance:poro.gui.NMXemPhongJPanelTest@53aad5d5]" started-at="2021-04-26T22:27:29 ICT" name="resetForm" finished-at="2021-04-26T22:27:30 ICT" duration-ms="885" status="PASS">
+        <test-method is-config="true" signature="resetForm()[pri:0, instance:poro.gui.NMXemPhongJPanelTest@53aad5d5]" started-at="2021-04-28T00:10:54 ICT" name="resetForm" finished-at="2021-04-28T00:10:55 ICT" duration-ms="877" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- resetForm -->
-        <test-method signature="skipPhong102(java.util.Date, java.util.Date)[pri:0, instance:poro.gui.NMXemPhongJPanelTest@53aad5d5]" started-at="2021-04-26T22:27:30 ICT" name="skipPhong102" data-provider="dataSkipPhong102" finished-at="2021-04-26T22:27:33 ICT" duration-ms="2824" status="PASS">
+        <test-method signature="skipPhong102(java.util.Date, java.util.Date)[pri:0, instance:poro.gui.NMXemPhongJPanelTest@53aad5d5]" started-at="2021-04-28T00:10:55 ICT" name="skipPhong102" data-provider="dataSkipPhong102" finished-at="2021-04-28T00:10:58 ICT" duration-ms="2820" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[Tue Apr 27 00:57:21 ICT 2021]]>
+                <![CDATA[Wed Apr 28 02:40:45 ICT 2021]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA[Tue Apr 27 01:57:21 ICT 2021]]>
+                <![CDATA[Wed Apr 28 03:40:45 ICT 2021]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- skipPhong102 -->
-        <test-method is-config="true" signature="delay()[pri:0, instance:poro.gui.NMXemPhongJPanelTest@53aad5d5]" started-at="2021-04-26T22:27:33 ICT" name="delay" finished-at="2021-04-26T22:27:33 ICT" duration-ms="512" status="PASS">
+        <test-method is-config="true" signature="delay()[pri:0, instance:poro.gui.NMXemPhongJPanelTest@53aad5d5]" started-at="2021-04-28T00:10:58 ICT" name="delay" finished-at="2021-04-28T00:10:58 ICT" duration-ms="514" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- delay -->
-        <test-method is-config="true" signature="resetForm()[pri:0, instance:poro.gui.NMXemPhongJPanelTest@53aad5d5]" started-at="2021-04-26T22:27:33 ICT" name="resetForm" finished-at="2021-04-26T22:27:34 ICT" duration-ms="891" status="PASS">
+        <test-method is-config="true" signature="resetForm()[pri:0, instance:poro.gui.NMXemPhongJPanelTest@53aad5d5]" started-at="2021-04-28T00:10:58 ICT" name="resetForm" finished-at="2021-04-28T00:10:59 ICT" duration-ms="880" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- resetForm -->
-        <test-method signature="valueTimPhongDefTest()[pri:0, instance:poro.gui.NMXemPhongJPanelTest@53aad5d5]" started-at="2021-04-26T22:27:34 ICT" name="valueTimPhongDefTest" finished-at="2021-04-26T22:27:36 ICT" duration-ms="1597" status="PASS">
+        <test-method signature="valueTimPhongDefTest()[pri:0, instance:poro.gui.NMXemPhongJPanelTest@53aad5d5]" started-at="2021-04-28T00:10:59 ICT" name="valueTimPhongDefTest" finished-at="2021-04-28T00:11:01 ICT" duration-ms="1585" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- valueTimPhongDefTest -->
-        <test-method is-config="true" signature="delay()[pri:0, instance:poro.gui.NMXemPhongJPanelTest@53aad5d5]" started-at="2021-04-26T22:27:36 ICT" name="delay" finished-at="2021-04-26T22:27:36 ICT" duration-ms="513" status="PASS">
+        <test-method is-config="true" signature="delay()[pri:0, instance:poro.gui.NMXemPhongJPanelTest@53aad5d5]" started-at="2021-04-28T00:11:01 ICT" name="delay" finished-at="2021-04-28T00:11:01 ICT" duration-ms="508" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- delay -->
-        <test-method is-config="true" signature="close()[pri:0, instance:poro.gui.NMXemPhongJPanelTest@53aad5d5]" started-at="2021-04-26T22:27:36 ICT" name="close" finished-at="2021-04-26T22:27:37 ICT" duration-ms="1044" status="PASS">
+        <test-method is-config="true" signature="close()[pri:0, instance:poro.gui.NMXemPhongJPanelTest@53aad5d5]" started-at="2021-04-28T00:11:01 ICT" name="close" finished-at="2021-04-28T00:11:02 ICT" duration-ms="1024" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- close -->
       </class> <!-- poro.gui.NMXemPhongJPanelTest -->
-    </test> <!-- Default test -->
-  </suite> <!-- Default suite -->
+    </test> <!-- XemPhong Test -->
+    <test started-at="2021-04-28T00:11:02 ICT" name="MuonPhong Test" finished-at="2021-04-28T00:12:45 ICT" duration-ms="102756">
+      <class name="poro.gui.MuonPhongJDialogTest">
+        <test-method is-config="true" signature="init()[pri:0, instance:poro.gui.MuonPhongJDialogTest@65f095f8]" started-at="2021-04-28T00:11:02 ICT" name="init" finished-at="2021-04-28T00:11:08 ICT" duration-ms="6123" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- init -->
+        <test-method is-config="true" signature="createXemPhong()[pri:0, instance:poro.gui.MuonPhongJDialogTest@65f095f8]" started-at="2021-04-28T00:11:08 ICT" name="createXemPhong" finished-at="2021-04-28T00:11:09 ICT" duration-ms="976" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createXemPhong -->
+        <test-method signature="errorFromTest(java.util.Date, java.util.Date, java.lang.String)[pri:0, instance:poro.gui.MuonPhongJDialogTest@65f095f8]" started-at="2021-04-28T00:11:09 ICT" name="errorFromTest" data-provider="errorFromTest" finished-at="2021-04-28T00:11:13 ICT" duration-ms="4141" status="PASS">
+          <params>
+            <param index="0">
+              <value is-null="true"/>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Wed Apr 28 00:11:08 ICT 2021]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Kiểm thử hệ thống]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- errorFromTest -->
+        <test-method is-config="true" signature="delay()[pri:0, instance:poro.gui.MuonPhongJDialogTest@65f095f8]" started-at="2021-04-28T00:11:13 ICT" name="delay" finished-at="2021-04-28T00:11:14 ICT" duration-ms="1008" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- delay -->
+        <test-method is-config="true" signature="createXemPhong()[pri:0, instance:poro.gui.MuonPhongJDialogTest@65f095f8]" started-at="2021-04-28T00:11:14 ICT" name="createXemPhong" finished-at="2021-04-28T00:11:15 ICT" duration-ms="859" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createXemPhong -->
+        <test-method signature="errorFromTest(java.util.Date, java.util.Date, java.lang.String)[pri:0, instance:poro.gui.MuonPhongJDialogTest@65f095f8]" started-at="2021-04-28T00:11:15 ICT" name="errorFromTest" data-provider="errorFromTest" finished-at="2021-04-28T00:11:19 ICT" duration-ms="4140" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Wed Apr 28 00:11:08 ICT 2021]]>
+              </value>
+            </param>
+            <param index="1">
+              <value is-null="true"/>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Kiểm thử hệ thống]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- errorFromTest -->
+        <test-method is-config="true" signature="delay()[pri:0, instance:poro.gui.MuonPhongJDialogTest@65f095f8]" started-at="2021-04-28T00:11:19 ICT" name="delay" finished-at="2021-04-28T00:11:20 ICT" duration-ms="1004" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- delay -->
+        <test-method is-config="true" signature="createXemPhong()[pri:0, instance:poro.gui.MuonPhongJDialogTest@65f095f8]" started-at="2021-04-28T00:11:20 ICT" name="createXemPhong" finished-at="2021-04-28T00:11:21 ICT" duration-ms="844" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createXemPhong -->
+        <test-method signature="errorFromTest(java.util.Date, java.util.Date, java.lang.String)[pri:0, instance:poro.gui.MuonPhongJDialogTest@65f095f8]" started-at="2021-04-28T00:11:21 ICT" name="errorFromTest" data-provider="errorFromTest" finished-at="2021-04-28T00:11:25 ICT" duration-ms="3363" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Wed Apr 28 00:11:08 ICT 2021]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Wed Apr 28 02:11:08 ICT 2021]]>
+              </value>
+            </param>
+            <param index="2">
+              <value is-null="true"/>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- errorFromTest -->
+        <test-method is-config="true" signature="delay()[pri:0, instance:poro.gui.MuonPhongJDialogTest@65f095f8]" started-at="2021-04-28T00:11:25 ICT" name="delay" finished-at="2021-04-28T00:11:26 ICT" duration-ms="1016" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- delay -->
+        <test-method is-config="true" signature="createXemPhong()[pri:0, instance:poro.gui.MuonPhongJDialogTest@65f095f8]" started-at="2021-04-28T00:11:26 ICT" name="createXemPhong" finished-at="2021-04-28T00:11:26 ICT" duration-ms="844" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createXemPhong -->
+        <test-method signature="errorFromTest(java.util.Date, java.util.Date, java.lang.String)[pri:0, instance:poro.gui.MuonPhongJDialogTest@65f095f8]" started-at="2021-04-28T00:11:26 ICT" name="errorFromTest" data-provider="errorFromTest" finished-at="2021-04-28T00:11:31 ICT" duration-ms="4643" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Wed Apr 28 01:11:08 ICT 2021]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Wed Apr 28 00:11:08 ICT 2021]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Kiểm thử hệ thống]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- errorFromTest -->
+        <test-method is-config="true" signature="delay()[pri:0, instance:poro.gui.MuonPhongJDialogTest@65f095f8]" started-at="2021-04-28T00:11:31 ICT" name="delay" finished-at="2021-04-28T00:11:32 ICT" duration-ms="1012" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- delay -->
+        <test-method is-config="true" signature="createXemPhong()[pri:0, instance:poro.gui.MuonPhongJDialogTest@65f095f8]" started-at="2021-04-28T00:11:32 ICT" name="createXemPhong" finished-at="2021-04-28T00:11:33 ICT" duration-ms="833" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createXemPhong -->
+        <test-method signature="errorFromTest(java.util.Date, java.util.Date, java.lang.String)[pri:0, instance:poro.gui.MuonPhongJDialogTest@65f095f8]" started-at="2021-04-28T00:11:33 ICT" name="errorFromTest" data-provider="errorFromTest" finished-at="2021-04-28T00:11:38 ICT" duration-ms="4699" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Tue Apr 27 23:11:08 ICT 2021]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Wed Apr 28 00:11:08 ICT 2021]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Kiểm thử hệ thống]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- errorFromTest -->
+        <test-method is-config="true" signature="delay()[pri:0, instance:poro.gui.MuonPhongJDialogTest@65f095f8]" started-at="2021-04-28T00:11:38 ICT" name="delay" finished-at="2021-04-28T00:11:39 ICT" duration-ms="1006" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- delay -->
+        <test-method is-config="true" signature="createXemPhong()[pri:0, instance:poro.gui.MuonPhongJDialogTest@65f095f8]" started-at="2021-04-28T00:11:39 ICT" name="createXemPhong" finished-at="2021-04-28T00:11:39 ICT" duration-ms="852" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createXemPhong -->
+        <test-method signature="muon201Test()[pri:0, instance:poro.gui.MuonPhongJDialogTest@65f095f8]" started-at="2021-04-28T00:11:40 ICT" name="muon201Test" finished-at="2021-04-28T00:11:44 ICT" duration-ms="4620" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- muon201Test -->
+        <test-method is-config="true" signature="delay()[pri:0, instance:poro.gui.MuonPhongJDialogTest@65f095f8]" started-at="2021-04-28T00:11:44 ICT" name="delay" finished-at="2021-04-28T00:11:45 ICT" duration-ms="1010" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- delay -->
+        <test-method is-config="true" signature="createXemPhong()[pri:0, instance:poro.gui.MuonPhongJDialogTest@65f095f8]" started-at="2021-04-28T00:11:45 ICT" name="createXemPhong" finished-at="2021-04-28T00:11:46 ICT" duration-ms="845" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createXemPhong -->
+        <test-method signature="errorFromSvTest(java.lang.String, java.lang.String, java.lang.String)[pri:19, instance:poro.gui.MuonPhongJDialogTest@65f095f8]" started-at="2021-04-28T00:11:46 ICT" name="errorFromSvTest" data-provider="errorFromSvTest" finished-at="2021-04-28T00:11:53 ICT" duration-ms="6889" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Lê Minh Vinh]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[vinhlmpc01238@fpt.edu.vn]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- errorFromSvTest -->
+        <test-method is-config="true" signature="delay()[pri:0, instance:poro.gui.MuonPhongJDialogTest@65f095f8]" started-at="2021-04-28T00:11:53 ICT" name="delay" finished-at="2021-04-28T00:11:54 ICT" duration-ms="1006" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- delay -->
+        <test-method is-config="true" signature="createXemPhong()[pri:0, instance:poro.gui.MuonPhongJDialogTest@65f095f8]" started-at="2021-04-28T00:11:54 ICT" name="createXemPhong" finished-at="2021-04-28T00:11:55 ICT" duration-ms="845" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createXemPhong -->
+        <test-method signature="errorFromSvTest(java.lang.String, java.lang.String, java.lang.String)[pri:19, instance:poro.gui.MuonPhongJDialogTest@65f095f8]" started-at="2021-04-28T00:11:55 ICT" name="errorFromSvTest" data-provider="errorFromSvTest" finished-at="2021-04-28T00:12:01 ICT" duration-ms="6556" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[PC01238]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[vinhlmpc01238@fpt.edu.vn]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- errorFromSvTest -->
+        <test-method is-config="true" signature="delay()[pri:0, instance:poro.gui.MuonPhongJDialogTest@65f095f8]" started-at="2021-04-28T00:12:01 ICT" name="delay" finished-at="2021-04-28T00:12:02 ICT" duration-ms="1016" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- delay -->
+        <test-method is-config="true" signature="createXemPhong()[pri:0, instance:poro.gui.MuonPhongJDialogTest@65f095f8]" started-at="2021-04-28T00:12:02 ICT" name="createXemPhong" finished-at="2021-04-28T00:12:03 ICT" duration-ms="833" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createXemPhong -->
+        <test-method signature="errorFromSvTest(java.lang.String, java.lang.String, java.lang.String)[pri:19, instance:poro.gui.MuonPhongJDialogTest@65f095f8]" started-at="2021-04-28T00:12:03 ICT" name="errorFromSvTest" data-provider="errorFromSvTest" finished-at="2021-04-28T00:12:09 ICT" duration-ms="5790" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[PC01238]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Lê Minh Vinh]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- errorFromSvTest -->
+        <test-method is-config="true" signature="delay()[pri:0, instance:poro.gui.MuonPhongJDialogTest@65f095f8]" started-at="2021-04-28T00:12:09 ICT" name="delay" finished-at="2021-04-28T00:12:10 ICT" duration-ms="1003" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- delay -->
+        <test-method is-config="true" signature="createXemPhong()[pri:0, instance:poro.gui.MuonPhongJDialogTest@65f095f8]" started-at="2021-04-28T00:12:10 ICT" name="createXemPhong" finished-at="2021-04-28T00:12:11 ICT" duration-ms="832" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createXemPhong -->
+        <test-method signature="errorFromSvTest(java.lang.String, java.lang.String, java.lang.String)[pri:19, instance:poro.gui.MuonPhongJDialogTest@65f095f8]" started-at="2021-04-28T00:12:11 ICT" name="errorFromSvTest" data-provider="errorFromSvTest" finished-at="2021-04-28T00:12:18 ICT" duration-ms="7297" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[PC01238]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Lê Minh Vinh]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[ÔiKhôngEmailĐãSaiValidate]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- errorFromSvTest -->
+        <test-method is-config="true" signature="delay()[pri:0, instance:poro.gui.MuonPhongJDialogTest@65f095f8]" started-at="2021-04-28T00:12:18 ICT" name="delay" finished-at="2021-04-28T00:12:19 ICT" duration-ms="1015" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- delay -->
+        <test-method is-config="true" signature="createXemPhong()[pri:0, instance:poro.gui.MuonPhongJDialogTest@65f095f8]" started-at="2021-04-28T00:12:19 ICT" name="createXemPhong" finished-at="2021-04-28T00:12:20 ICT" duration-ms="827" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createXemPhong -->
+        <test-method signature="muonOkSvTest()[pri:20, instance:poro.gui.MuonPhongJDialogTest@65f095f8]" started-at="2021-04-28T00:12:20 ICT" name="muonOkSvTest" finished-at="2021-04-28T00:12:30 ICT" duration-ms="10091" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- muonOkSvTest -->
+        <test-method is-config="true" signature="delay()[pri:0, instance:poro.gui.MuonPhongJDialogTest@65f095f8]" started-at="2021-04-28T00:12:30 ICT" name="delay" finished-at="2021-04-28T00:12:31 ICT" duration-ms="1011" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- delay -->
+        <test-method is-config="true" signature="createXemPhong()[pri:0, instance:poro.gui.MuonPhongJDialogTest@65f095f8]" started-at="2021-04-28T00:12:31 ICT" name="createXemPhong" finished-at="2021-04-28T00:12:32 ICT" duration-ms="833" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createXemPhong -->
+        <test-method signature="xacNhanMuonTest()[pri:0, instance:poro.gui.MuonPhongJDialogTest@65f095f8]" started-at="2021-04-28T00:12:32 ICT" name="xacNhanMuonTest" finished-at="2021-04-28T00:12:43 ICT" depends-on-methods="poro.gui.MuonPhongJDialogTest.muonOkSvTest" duration-ms="10982" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- xacNhanMuonTest -->
+        <test-method is-config="true" signature="delay()[pri:0, instance:poro.gui.MuonPhongJDialogTest@65f095f8]" started-at="2021-04-28T00:12:43 ICT" name="delay" finished-at="2021-04-28T00:12:44 ICT" duration-ms="1001" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- delay -->
+        <test-method is-config="true" signature="close()[pri:0, instance:poro.gui.MuonPhongJDialogTest@65f095f8]" started-at="2021-04-28T00:12:44 ICT" name="close" finished-at="2021-04-28T00:12:45 ICT" duration-ms="1022" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- close -->
+      </class> <!-- poro.gui.MuonPhongJDialogTest -->
+    </test> <!-- MuonPhong Test -->
+  </suite> <!-- Vinh Suite -->
 </testng-results>

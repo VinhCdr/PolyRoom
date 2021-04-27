@@ -28,7 +28,7 @@ public class NMXemPhongJPanelTest {
 		BigBug.writeString(MainClass.dangNhapJDialog.txtTaiKhoan, "vinhlm");
 		BigBug.writeString(MainClass.dangNhapJDialog.txtPassword, "vipass");
 		Thread.sleep(500);
-		MainClass.dangNhapJDialog.btnDangNhap.doClick();
+		MainClass.dangNhapJDialog.btnDangNhapActionPerformed(null);
 	}
 
 	@AfterClass
@@ -225,7 +225,7 @@ public class NMXemPhongJPanelTest {
 	private Date[][] getMessageErrorTimPhong(){
 		return new Date[][] {
 			{null, null},
-			{null , new Date()},
+			{new Date() , null},
 			{CalendarManager.addTimes(new Date(), -1_200_000L), new Date()},
 			{CalendarManager.addTimes(new Date(), 1_200_000L), new Date()}
 		};
