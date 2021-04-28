@@ -208,8 +208,8 @@ public class QuanLyPhongJPanelTest {
 	@DataProvider(name = "InsertAccount3")
 	public Object[][] getAccount3() {
 		return new Object[][] {
-				{ 8,"zxcasd",true},
-				{ 8,"101",true},
+				{ 7,"zxcasd",true},
+				{ 7,"101",true},
 		};
 	}
 }
