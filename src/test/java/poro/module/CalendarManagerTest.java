@@ -20,16 +20,16 @@ public class CalendarManagerTest {
 
 	@Test
 	public void getDateByStringTest() {
-		try {
-			String b = "MM-dd-yyyy";
-			SimpleDateFormat a = new SimpleDateFormat();
-			Date hientai;
-			hientai = a.parse(b);
-			String mongmuon = "4-21-2021";
-			Assert.assertEquals(hientai, mongmuon);
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
+
+		Date mongmuon = new Date();
+		
+		String b = "MM-dd-yyyy HH:mm:ss SSS";
+		
+		SimpleDateFormat a = new SimpleDateFormat(b);
+		String sMongMuon = a.format(mongmuon);
+		
+		Date hienTai = CalendarManager.getDateByString(sMongMuon, b);
+		Assert.assertEquals(hienTai.getTime(), mongmuon.getTime());
 
 	}
 

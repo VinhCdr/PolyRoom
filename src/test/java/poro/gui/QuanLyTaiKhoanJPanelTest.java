@@ -52,8 +52,6 @@ public class QuanLyTaiKhoanJPanelTest {
 	public void dangKyTaiKhoan(String username, String email, String fname, String phone, String password,
 			String confirmPass) throws InterruptedException {
 		
-		qltk = Babysitter.getTabPanelSelected();
-
 		BigBug.writeString(qltk.txtTenTaiKhoan, username);
 		BigBug.writeString(qltk.txtEmail, email);
 		BigBug.writeString(qltk.txtHoVaTen, fname);

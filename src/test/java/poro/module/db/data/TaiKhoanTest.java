@@ -20,7 +20,7 @@ public class TaiKhoanTest {
 	@Test
 	public void selectUsernameTest() {
 		TaiKhoan tk = new TaiKhoan();	
-		tk.setIdTaiKhoan("loilhz");
+		tk.setIdTaiKhoan("minhvhn");
 		List<TaiKhoan> tkList = DatabaseManager.executeQuery(tk, TaiKhoan.EXECUTE_SELECT_BY_ID);
 		assertFalse(tkList.isEmpty());
 	}
@@ -28,7 +28,7 @@ public class TaiKhoanTest {
 	@Test
 	public void selectEmailTest() {
 		TaiKhoan tk = new TaiKhoan();	
-		tk.setEmail("loilhpc01261@fpt.edu.vn");
+		tk.setEmail("minhvhnpc01239@fpt.edu.vn");
 		List<TaiKhoan> tkList = DatabaseManager.executeQuery(tk, TaiKhoan.EXECUTE_SELECT_BY_MAIL);
 		assertFalse(tkList.isEmpty());
 	}
@@ -36,9 +36,9 @@ public class TaiKhoanTest {
 	@Test
 	public void selectUsernameEmailPassTest() {
 		TaiKhoan tk = new TaiKhoan();	
-		tk.setIdTaiKhoan("loilh");
-		tk.setEmail("loilhpc01261@fpt.edu.vn");
-		tk.setMatKhau(Encrypter.toMD5("loipass"));
+		tk.setIdTaiKhoan("minhvhn");
+		tk.setEmail("minhvhnpc01239@fpt.edu.vn");
+		tk.setMatKhau(Encrypter.toMD5("minhpass"));
 		List<TaiKhoan> tkList = DatabaseManager.executeQuery(tk, TaiKhoan.EXECUTE_SELECT_BY_USER_OR_EMAIL_AND_PASS);
 		assertFalse(tkList.isEmpty());
 	}

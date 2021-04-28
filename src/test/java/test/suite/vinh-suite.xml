@@ -7,17 +7,17 @@
 			<class name="poro.module.db.data.MuonPhongTest"/>
 		</classes>
 	</test>
-	<test thread-count="5" name="vXemPhong Test">
+	<test name="vXemPhong Test">
 		<classes>
 			<class name="poro.gui.NMXemPhongJPanelTest" />
 		</classes>
 	</test> <!-- Test -->
-	<test thread-count="5" name="vMuonPhong Test">
+	<test name="vMuonPhong Test">
 		<classes>
 			<class name="poro.gui.MuonPhongJDialogTest" />
 		</classes>
 	</test> <!-- Test -->
-	<test thread-count="5" name="vTraPhong Test">
+	<test name="vTraPhong Test">
 		<classes>
 			<class name="poro.gui.TraPhongJDialogTest" />
 		</classes>
