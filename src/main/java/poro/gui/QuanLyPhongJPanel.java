@@ -501,15 +501,15 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
 
     void btnXoaPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaPhongActionPerformed
         try {
-            String confirm = JOptionPane.showInputDialog(
-                    this,
-                    "Tất cả dữ liệu liên quan phòng \'"
-                    + txtTenPhong.getText().trim()
-                    + "\' sẽ bị xóa\nNhập CONFIRM và ấn xác nhận để tiếp tục xóa!"
-            );
-            if (null == confirm || !confirm.equals("CONFIRM")) {
-                return;
-            }
+//            String confirm = JOptionPane.showInputDialog(
+//                    this,
+//                    "Tất cả dữ liệu liên quan phòng \'"
+//                    + txtTenPhong.getText().trim()
+//                    + "\' sẽ bị xóa\nNhập CONFIRM và ấn xác nhận để tiếp tục xóa!"
+//            );
+//            if (null == confirm || !confirm.equals("CONFIRM")) {
+//                return;
+//            }
             xoa();
             loading();
             JOptionPane.showMessageDialog(this, "Xóa thành công");
@@ -763,7 +763,7 @@ public class QuanLyPhongJPanel extends javax.swing.JPanel {
         return model;
     }
 
-    private void selectTable() {
+    void selectTable() {
         int rowSelected = tblPhong.getSelectedRow();
         if (rowSelected < 0) {
             return;

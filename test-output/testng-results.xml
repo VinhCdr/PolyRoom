@@ -1,219 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<<<<<<< HEAD
-<testng-results ignored="0" total="4" passed="0" failed="4" skipped="0">
+<testng-results ignored="3" total="5" passed="2" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2021-04-28T17:51:01 ICT" name="Default suite" finished-at="2021-04-28T17:52:04 ICT" duration-ms="63367">
+  <suite started-at="2021-04-28T20:53:38 ICT" name="Default suite" finished-at="2021-04-28T20:54:01 ICT" duration-ms="23377">
     <groups>
     </groups>
-    <test started-at="2021-04-28T17:51:01 ICT" name="Default test" finished-at="2021-04-28T17:52:04 ICT" duration-ms="63367">
-      <class name="poro.module.db.data.PhongTest">
-        <test-method signature="InsertPhong()[pri:0, instance:poro.module.db.data.PhongTest@33afa13b]" started-at="2021-04-28T17:51:01 ICT" name="InsertPhong" finished-at="2021-04-28T17:51:17 ICT" duration-ms="15940" status="FAIL">
-          <exception class="java.lang.NullPointerException">
-            <message>
-              <![CDATA[Cannot invoke "java.sql.Connection.prepareStatement(String)" because the return value of "poro.module.db.DatabaseManager.openConnect()" is null]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.NullPointerException: Cannot invoke "java.sql.Connection.prepareStatement(String)" because the return value of "poro.module.db.DatabaseManager.openConnect()" is null
-at poro.module.db.DatabaseManager.getPreStm(DatabaseManager.java:59)
-at poro.module.db.DatabaseManager.executeUpdate(DatabaseManager.java:100)
-at poro.module.db.data.PhongTest.InsertPhong(PhongTest.java:38)
-=======
-<testng-results ignored="5" total="6" passed="0" failed="1" skipped="0">
-  <reporter-output>
-  </reporter-output>
-  <suite started-at="2021-04-28T03:05:58 ICT" name="Default suite" finished-at="2021-04-28T03:05:59 ICT" duration-ms="998">
-    <groups>
-    </groups>
-    <test started-at="2021-04-28T03:05:58 ICT" name="Default test" finished-at="2021-04-28T03:05:59 ICT" duration-ms="998">
-      <class name="poro.module.db.data.MuonPhongTest">
-        <test-method signature="getListByPhongYesTest()[pri:0, instance:poro.module.db.data.MuonPhongTest@65b3f4a4]" started-at="2021-04-28T03:05:58 ICT" name="getListByPhongYesTest" finished-at="2021-04-28T03:05:59 ICT" duration-ms="932" status="FAIL">
-          <exception class="java.lang.AssertionError">
-            <message>
-              <![CDATA[Khi lấy list thông tin mượn phòng 101, kết quả trả về là list rổng expected [false] but found [true]]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: Khi lấy list thông tin mượn phòng 101, kết quả trả về là list rổng expected [false] but found [true]
-at org.testng.Assert.fail(Assert.java:99)
-at org.testng.Assert.failNotEquals(Assert.java:1037)
-at org.testng.Assert.assertFalse(Assert.java:67)
-at poro.module.db.data.MuonPhongTest.getListByPhongYesTest(MuonPhongTest.java:24)
->>>>>>> 6ce5c585cc76950cf7fb3468ffc2154e3f39c068
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
-at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-at java.base/java.lang.reflect.Method.invoke(Method.java:564)
-at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:132)
-at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:599)
-at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:174)
-at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
-at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:822)
-at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:147)
-at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
-at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-at org.testng.TestRunner.privateRun(TestRunner.java:764)
-at org.testng.TestRunner.run(TestRunner.java:585)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:384)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:378)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:337)
-at org.testng.SuiteRunner.run(SuiteRunner.java:286)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1218)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1140)
-at org.testng.TestNG.runSuites(TestNG.java:1069)
-at org.testng.TestNG.run(TestNG.java:1037)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-]]>
-            </full-stacktrace>
-<<<<<<< HEAD
-          </exception> <!-- java.lang.NullPointerException -->
+    <test started-at="2021-04-28T20:53:38 ICT" name="Default test" finished-at="2021-04-28T20:54:01 ICT" duration-ms="23377">
+      <class name="poro.gui.QuanLyPhongJPanelTest">
+        <test-method is-config="true" signature="init()[pri:0, instance:poro.gui.QuanLyPhongJPanelTest@1e802ef9]" started-at="2021-04-28T20:53:38 ICT" name="init" finished-at="2021-04-28T20:53:44 ICT" duration-ms="6452" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- InsertPhong -->
-        <test-method signature="SelectAllphong()[pri:0, instance:poro.module.db.data.PhongTest@33afa13b]" started-at="2021-04-28T17:51:17 ICT" name="SelectAllphong" finished-at="2021-04-28T17:51:33 ICT" duration-ms="15786" status="FAIL">
-          <exception class="java.lang.NullPointerException">
-            <message>
-              <![CDATA[Cannot invoke "java.sql.Connection.prepareCall(String)" because the return value of "poro.module.db.DatabaseManager.openConnect()" is null]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.NullPointerException: Cannot invoke "java.sql.Connection.prepareCall(String)" because the return value of "poro.module.db.DatabaseManager.openConnect()" is null
-at poro.module.db.DatabaseManager.getPreStm(DatabaseManager.java:57)
-at poro.module.db.DatabaseManager.executeQuery(DatabaseManager.java:78)
-at poro.module.db.data.PhongTest.SelectAllphong(PhongTest.java:19)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
-at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-at java.base/java.lang.reflect.Method.invoke(Method.java:564)
-at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:132)
-at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:599)
-at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:174)
-at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
-at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:822)
-at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:147)
-at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
-at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-at org.testng.TestRunner.privateRun(TestRunner.java:764)
-at org.testng.TestRunner.run(TestRunner.java:585)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:384)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:378)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:337)
-at org.testng.SuiteRunner.run(SuiteRunner.java:286)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1218)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1140)
-at org.testng.TestNG.runSuites(TestNG.java:1069)
-at org.testng.TestNG.run(TestNG.java:1037)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.NullPointerException -->
+        </test-method> <!-- init -->
+        <test-method is-config="true" signature="resetForm()[pri:0, instance:poro.gui.QuanLyPhongJPanelTest@1e802ef9]" started-at="2021-04-28T20:53:44 ICT" name="resetForm" finished-at="2021-04-28T20:53:45 ICT" duration-ms="1134" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- SelectAllphong -->
-        <test-method signature="SelectByIdPhong()[pri:0, instance:poro.module.db.data.PhongTest@33afa13b]" started-at="2021-04-28T17:51:33 ICT" name="SelectByIdPhong" finished-at="2021-04-28T17:51:48 ICT" duration-ms="15794" status="FAIL">
-          <exception class="java.lang.NullPointerException">
-            <message>
-              <![CDATA[Cannot invoke "java.sql.Connection.prepareCall(String)" because the return value of "poro.module.db.DatabaseManager.openConnect()" is null]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.NullPointerException: Cannot invoke "java.sql.Connection.prepareCall(String)" because the return value of "poro.module.db.DatabaseManager.openConnect()" is null
-at poro.module.db.DatabaseManager.getPreStm(DatabaseManager.java:57)
-at poro.module.db.DatabaseManager.executeQuery(DatabaseManager.java:78)
-at poro.module.db.data.PhongTest.SelectByIdPhong(PhongTest.java:27)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
-at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-at java.base/java.lang.reflect.Method.invoke(Method.java:564)
-at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:132)
-at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:599)
-at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:174)
-at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
-at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:822)
-at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:147)
-at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
-at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-at org.testng.TestRunner.privateRun(TestRunner.java:764)
-at org.testng.TestRunner.run(TestRunner.java:585)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:384)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:378)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:337)
-at org.testng.SuiteRunner.run(SuiteRunner.java:286)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1218)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1140)
-at org.testng.TestNG.runSuites(TestNG.java:1069)
-at org.testng.TestNG.run(TestNG.java:1037)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.NullPointerException -->
+        </test-method> <!-- resetForm -->
+        <test-method signature="XoaPhongNhap(int, java.lang.String, boolean)[pri:0, instance:poro.gui.QuanLyPhongJPanelTest@1e802ef9]" started-at="2021-04-28T20:53:45 ICT" name="XoaPhongNhap" data-provider="InsertAccount3" finished-at="2021-04-28T20:53:52 ICT" duration-ms="6526" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[8]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[zxcasd]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[true]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- SelectByIdPhong -->
-        <test-method signature="UpdatePhong()[pri:0, instance:poro.module.db.data.PhongTest@33afa13b]" started-at="2021-04-28T17:51:48 ICT" name="UpdatePhong" finished-at="2021-04-28T17:52:04 ICT" duration-ms="15797" status="FAIL">
-          <exception class="java.lang.NullPointerException">
-            <message>
-              <![CDATA[Cannot invoke "java.sql.Connection.prepareStatement(String)" because the return value of "poro.module.db.DatabaseManager.openConnect()" is null]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.NullPointerException: Cannot invoke "java.sql.Connection.prepareStatement(String)" because the return value of "poro.module.db.DatabaseManager.openConnect()" is null
-at poro.module.db.DatabaseManager.getPreStm(DatabaseManager.java:59)
-at poro.module.db.DatabaseManager.executeUpdate(DatabaseManager.java:100)
-at poro.module.db.data.PhongTest.UpdatePhong(PhongTest.java:50)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
-at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-at java.base/java.lang.reflect.Method.invoke(Method.java:564)
-at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:132)
-at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:599)
-at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:174)
-at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
-at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:822)
-at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:147)
-at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
-at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-at org.testng.TestRunner.privateRun(TestRunner.java:764)
-at org.testng.TestRunner.run(TestRunner.java:585)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:384)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:378)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:337)
-at org.testng.SuiteRunner.run(SuiteRunner.java:286)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1218)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1140)
-at org.testng.TestNG.runSuites(TestNG.java:1069)
-at org.testng.TestNG.run(TestNG.java:1037)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.NullPointerException -->
+        </test-method> <!-- XoaPhongNhap -->
+        <test-method is-config="true" signature="delay()[pri:0, instance:poro.gui.QuanLyPhongJPanelTest@1e802ef9]" started-at="2021-04-28T20:53:52 ICT" name="delay" finished-at="2021-04-28T20:53:52 ICT" duration-ms="504" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- UpdatePhong -->
-      </class> <!-- poro.module.db.data.PhongTest -->
-=======
-          </exception> <!-- java.lang.AssertionError -->
+        </test-method> <!-- delay -->
+        <test-method is-config="true" signature="resetForm()[pri:0, instance:poro.gui.QuanLyPhongJPanelTest@1e802ef9]" started-at="2021-04-28T20:53:52 ICT" name="resetForm" finished-at="2021-04-28T20:53:53 ICT" duration-ms="838" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- getListByPhongYesTest -->
-      </class> <!-- poro.module.db.data.MuonPhongTest -->
->>>>>>> 6ce5c585cc76950cf7fb3468ffc2154e3f39c068
+        </test-method> <!-- resetForm -->
+        <test-method signature="XoaPhongNhap(int, java.lang.String, boolean)[pri:0, instance:poro.gui.QuanLyPhongJPanelTest@1e802ef9]" started-at="2021-04-28T20:53:53 ICT" name="XoaPhongNhap" data-provider="InsertAccount3" finished-at="2021-04-28T20:54:00 ICT" duration-ms="6347" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[8]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[101]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[true]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- XoaPhongNhap -->
+        <test-method is-config="true" signature="delay()[pri:0, instance:poro.gui.QuanLyPhongJPanelTest@1e802ef9]" started-at="2021-04-28T20:54:00 ICT" name="delay" finished-at="2021-04-28T20:54:00 ICT" duration-ms="512" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- delay -->
+        <test-method is-config="true" signature="close()[pri:0, instance:poro.gui.QuanLyPhongJPanelTest@1e802ef9]" started-at="2021-04-28T20:54:00 ICT" name="close" finished-at="2021-04-28T20:54:01 ICT" duration-ms="1020" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- close -->
+      </class> <!-- poro.gui.QuanLyPhongJPanelTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
