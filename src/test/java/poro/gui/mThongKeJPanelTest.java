@@ -14,7 +14,7 @@ import poro.module.Session;
 import test.module.Babysitter;
 import test.module.BigBug;
 
-public class ThongKeJPanelTest {
+public class mThongKeJPanelTest {
 ThongKeJPanel tk;
 	
 	@BeforeClass

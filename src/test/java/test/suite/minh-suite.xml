@@ -14,4 +14,11 @@
 			</class>
 		</classes>
 	</test>
+	
+	<test name="mThongKe Test">
+		<classes>
+			<class name="poro.gui.mThongKeJPanelTest" />
+		</classes>
+	</test>
+	
 </suite> <!-- Suite -->
