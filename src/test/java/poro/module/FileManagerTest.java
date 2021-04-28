@@ -11,7 +11,7 @@ public class FileManagerTest {
 
   @Test
   public void readTest() {
-	  FileManager fm = new FileManager("testfile.txt");
+	  FileManager fm = new FileManager("asset/ftest/testfile.txt");
 	  byte[] x = new byte[]{1,2,3,4,5,6};
 	  fm.write(x);
 	  byte[] read = fm.read();
@@ -21,16 +21,18 @@ public class FileManagerTest {
   @Test
   public void readObjectTest() {
 	  TaiKhoan tk = new TaiKhoan();
-	  FileManager fm = new FileManager("test.dat");
+	  tk.setIdTaiKhoan("loilh");
+	  
+	  FileManager fm = new FileManager("asset/ftest/test.dat");
 	  fm.writeObject(tk);
 	  
 	  TaiKhoan readtk = fm.readObject();
-	  Assert.assertEquals(readtk, tk);
+	  Assert.assertEquals(readtk.getIdTaiKhoan(), tk.getIdTaiKhoan());
   }
 
   @Test
   public void readStringTest() {
-	  FileManager fm = new FileManager("testfile2.txt");
+	  FileManager fm = new FileManager("asset/ftest/testfile2.txt");
 	  fm.writeString("123abcxyz");
 	  String read = fm.readString();
 	  assertEquals(read, "123abcxyz");
@@ -38,7 +40,7 @@ public class FileManagerTest {
 
   @Test
   public void writeTest() {
-	  FileManager fm = new FileManager("testfile.txt");
+	  FileManager fm = new FileManager("asset/ftest/testfile.txt");
 	  byte[] x = new byte[]{1,2,3,4,5,6};
 	  fm.write(x);
 	  byte[] read = fm.read();
@@ -48,16 +50,18 @@ public class FileManagerTest {
   @Test
   public void writeObjectTest() {
 	  TaiKhoan tk = new TaiKhoan();
-	  FileManager fm = new FileManager("test2.dat");
+	  tk.setIdTaiKhoan("loilh");
+	  
+	  FileManager fm = new FileManager("asset/ftest/test2.dat");
 	  fm.writeObject(tk);
 	  
 	  TaiKhoan readtk = fm.readObject();
-	  Assert.assertEquals(readtk, tk);
+	  Assert.assertEquals(readtk.getIdTaiKhoan(), tk.getIdTaiKhoan());
   }
 
   @Test
   public void writeStringTest() {
-	  FileManager fm = new FileManager("testfile.txt");
+	  FileManager fm = new FileManager("asset/ftest/testfile.txt");
 	  fm.writeString("123abcxyz");
 	  String read = fm.readString();
 	  assertEquals(read, "123abcxyz");

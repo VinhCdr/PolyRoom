@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Loi Suite">
+	<test name="lModule Test">
+		<classes>
+			<class name="poro.module.FileManagerTest"/>
+			<class name="poro.module.db.data.TaiKhoanTest">
+				<methods>
+					<include name="InsertTaiKhoan"></include>
+					<include name="UpdateTaiKhoan"></include>
+					<include name="DeleteTaiKhoan"></include>
+				</methods>
+			</class>
+		</classes>
+	</test>
+	
+	<test name="lQuanLyTaiKhoan Test">
+		<classes>
+			<class name="poro.gui.QuanLyTaiKhoanJPanelTest" />
+		</classes>
+	</test>
+	
+</suite> <!-- Suite -->

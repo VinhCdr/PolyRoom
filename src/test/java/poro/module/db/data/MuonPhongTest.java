@@ -18,8 +18,8 @@ public class MuonPhongTest {
 	@Test
 	public void getListByPhongYesTest() {
 		MuonPhong mp = new MuonPhong();
-		mp.setIdPhong(1);
 		mp.setSoTang(1);
+		mp.setIdPhong(1);
 		List<MuonPhong> ls = DatabaseManager.executeQuery(mp, MuonPhong.EXECUTE_SELECT_BY_ID_PHONG);
 		Assert.assertFalse(ls.isEmpty(), "Khi lấy list thông tin mượn phòng 101, kết quả trả về là list rổng");
 	}

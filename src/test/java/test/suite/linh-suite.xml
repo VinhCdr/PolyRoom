@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Linh Suite">
+	<test name="liModule Test">
+		<classes>
+			<class name="poro.module.EncrypterTest"/>
+		</classes>
+	</test>
+</suite> <!-- Suite -->
