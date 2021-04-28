@@ -24,7 +24,7 @@ public class QuenMatKhauJDialog extends javax.swing.JDialog {
         doiMatKhauJDialog = new DoiMatKhauJDialog(parent, true);
     }
 
-    private DoiMatKhauJDialog doiMatKhauJDialog;
+    DoiMatKhauJDialog doiMatKhauJDialog;
 
     static String otp = "";
     TaiKhoan tk = new TaiKhoan();

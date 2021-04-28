@@ -3,6 +3,7 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
+<<<<<<< Updated upstream
       <class name="poro.gui.QuanLyPhongJPanelTest">
         <methods>
           <include name="delay"/>
@@ -14,6 +15,13 @@
           <include name="close"/>
         </methods>
       </class> <!-- poro.gui.QuanLyPhongJPanelTest -->
+=======
+      <class name="poro.gui.DoiMatKhauJDialogTest">
+        <methods>
+          <include name="doimatkhau" invocation-numbers="0"/>
+        </methods>
+      </class> <!-- poro.gui.DoiMatKhauJDialogTest -->
+>>>>>>> Stashed changes
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

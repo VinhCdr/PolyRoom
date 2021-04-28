@@ -1,5 +1,10 @@
 Manifest-Version: 1.0
+<<<<<<< Updated upstream
 Built-By: Tai
 Build-Jdk: 15.0.2
+=======
+Built-By: 84338
+Build-Jdk: 15.0.1
+>>>>>>> Stashed changes
 Created-By: Maven Integration for Eclipse
 
