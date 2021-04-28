@@ -24,6 +24,7 @@ public class ThongKeJPanel extends javax.swing.JPanel {
      * Creates new form ThongKeJPanel
      */
     public ThongKeJPanel() {
+    	
         initComponents();
 
         loadingCbo(cboNguoiMuon);
