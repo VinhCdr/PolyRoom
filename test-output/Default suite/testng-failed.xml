@@ -3,32 +3,14 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-<<<<<<< HEAD
-<<<<<<< HEAD
-      <class name="poro.module.StringHelperTest">
+      <class name="poro.module.db.data.PhongTest">
         <methods>
-          <include name="randomTest2"/>
+          <include name="SelectAllphong"/>
+          <include name="InsertPhong"/>
+          <include name="SelectByIdPhong"/>
+          <include name="UpdatePhong"/>
         </methods>
-      </class> <!-- poro.module.StringHelperTest -->
-=======
-      <class name="poro.module.FileManagerTest">
-        <methods>
-          <include name="readObjectTest"/>
-          <include name="writeObjectTest"/>
-        </methods>
-      </class> <!-- poro.module.FileManagerTest -->
->>>>>>> 024afea38e51dbe84da424271b3158290e06de70
-=======
-      <class name="poro.module.db.data.MuonPhongTest">
-        <methods>
-          <include name="getFullListTest"/>
-        </methods>
-      </class> <!-- poro.module.db.data.MuonPhongTest -->
-<<<<<<< HEAD
->>>>>>> 817a05459ac687e7ab015db746f24ed5792114f2
-=======
->>>>>>> 0828e9f9dd5ecb78730235eb544cd069251783f3
->>>>>>> 024afea38e51dbe84da424271b3158290e06de70
+      </class> <!-- poro.module.db.data.PhongTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
