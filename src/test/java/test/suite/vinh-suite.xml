@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Vinh Suite">
+	<test name="vModule Test">
+		<classes>
+			<class name="poro.module.SessionTest"/>
+			<class name="poro.module.db.data.MuonPhongTest"/>
+		</classes>
+	</test>
+	<test thread-count="5" name="vXemPhong Test">
+		<classes>
+			<class name="poro.gui.NMXemPhongJPanelTest" />
+		</classes>
+	</test> <!-- Test -->
+	<test thread-count="5" name="vMuonPhong Test">
+		<classes>
+			<class name="poro.gui.MuonPhongJDialogTest" />
+		</classes>
+	</test> <!-- Test -->
+	<test thread-count="5" name="vTraPhong Test">
+		<classes>
+			<class name="poro.gui.TraPhongJDialogTest" />
+		</classes>
+	</test> <!-- Test -->
+</suite> <!-- Suite -->

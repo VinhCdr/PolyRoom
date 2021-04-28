@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<suite name="main suite" >
-	<test name="main test">
+<suite name="module suite" >
+	<test name="module test">
 		<classes>
 			<class name="poro.module.SessionTest"/>
 			<class name="poro.module.db.data.MuonPhongTest"/>
