@@ -2,9 +2,6 @@ package poro.gui;
 
 import static org.testng.Assert.assertEquals;
 
-import java.awt.Robot;
-import java.awt.event.MouseEvent;
-
 import javax.swing.JDialog;
 
 import org.testng.Assert;

@@ -8,6 +8,7 @@
           <include name="delay"/>
           <include name="init"/>
           <include name="ThemPhong" invocation-numbers="4"/>
+          <include name="XoaPhongNhap" invocation-numbers="1"/>
           <include name="SuaPhong" invocation-numbers="2"/>
           <include name="resetForm"/>
           <include name="close"/>
