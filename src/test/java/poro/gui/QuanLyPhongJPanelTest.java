@@ -53,7 +53,7 @@ public class QuanLyPhongJPanelTest {
 		Thread.sleep(500);
 	}
 	
-	@Test(timeOut = 10000 , dataProvider = "InsertAccount")
+	@Test(timeOut = 10000 , dataProvider = "InsertAccount", priority = 1)
 	public void ThemPhong(int sotang, String maphong , String tenphong , boolean muon) throws InterruptedException {
 		qlp = Babysitter.getTabPanelSelected();
 		
@@ -93,7 +93,7 @@ public class QuanLyPhongJPanelTest {
 		};
 	}
 	
-	@Test(timeOut = 10000 , dataProvider = "InsertAccount2")
+	@Test(timeOut = 10000 , dataProvider = "InsertAccount2", priority = 2)
 	public void SuaPhong(String tenphong, boolean muon) throws InterruptedException {
 
 		Thread.sleep(500);
@@ -140,7 +140,7 @@ public class QuanLyPhongJPanelTest {
 		};
 	}
 	
-	@Test
+	@Test(timeOut = 10000 ,priority = 3)
 	public void XoaPhong() throws InterruptedException{
 		Thread.sleep(500);
 		qlp.tabs.setSelectedIndex(1);
@@ -171,7 +171,7 @@ public class QuanLyPhongJPanelTest {
 		Thread.sleep(2000);
 	}
 	
-	@Test(timeOut = 10000 , dataProvider = "InsertAccount3")
+	@Test(timeOut = 10000 , dataProvider = "InsertAccount3", priority = 4)
 	public void XoaPhongNhap(int chon, String tenphong , boolean muon) throws InterruptedException{
 		Thread.sleep(500);
 		qlp.tabs.setSelectedIndex(1);

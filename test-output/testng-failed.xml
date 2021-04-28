@@ -3,30 +3,16 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-<<<<<<< Updated upstream
-<<<<<<< HEAD
-      <class name="poro.module.db.data.PhongTest">
+      <class name="poro.gui.QuanLyPhongJPanelTest">
         <methods>
-          <include name="SelectAllphong"/>
-          <include name="InsertPhong"/>
-          <include name="SelectByIdPhong"/>
-          <include name="UpdatePhong"/>
+          <include name="delay"/>
+          <include name="init"/>
+          <include name="ThemPhong" invocation-numbers="4"/>
+          <include name="SuaPhong" invocation-numbers="2"/>
+          <include name="resetForm"/>
+          <include name="close"/>
         </methods>
-      </class> <!-- poro.module.db.data.PhongTest -->
-=======
-      <class name="poro.module.db.data.MuonPhongTest">
-=======
-      <class name="poro.module.CalendarManagerTest">
->>>>>>> Stashed changes
-        <methods>
-          <include name="getDateByStringTest"/>
-        </methods>
-<<<<<<< Updated upstream
-      </class> <!-- poro.module.db.data.MuonPhongTest -->
->>>>>>> 6ce5c585cc76950cf7fb3468ffc2154e3f39c068
-=======
-      </class> <!-- poro.module.CalendarManagerTest -->
->>>>>>> Stashed changes
+      </class> <!-- poro.gui.QuanLyPhongJPanelTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
