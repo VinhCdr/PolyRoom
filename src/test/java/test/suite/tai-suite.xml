@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Tai Suite">
+
+	<test name="tQuanLyPhong Test">
+		<classes>
+			<class name="poro.gui.QuanLyPhongJPanelTest"/>
+		</classes>
+	</test>
+	
 	<test name="tModule Test">
 		<classes>
 			<class name="poro.module.db.data.PhongTest"/>

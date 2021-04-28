@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>pDangNhap Test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>3/0/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>5/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Wed Apr 28 20:09:46 ICT 2021</td>
+<td>Started on:</td><td>Wed Apr 28 22:02:10 ICT 2021</td>
 </tr>
-<tr><td>Total time:</td><td>14 seconds (14191 ms)</td>
+<tr><td>Total time:</td><td>21 seconds (21475 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -67,6 +67,40 @@ function toggleAllBoxes() {
 </tr>
 </table><p/>
 <small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='poro.gui.DangNhapJDialogTest.dangxuat()'><b>dangxuat</b><br>Test class: poro.gui.DangNhapJDialogTest<br>Parameters: phongtc, phongpass</td>
+<td><div><pre>java.lang.NullPointerException: Cannot read field &quot;txtTaiKhoan&quot; because &quot;dn&quot; is null
+	at poro.gui.DangNhapJDialogTest.dangxuat(DangNhapJDialogTest.java:85)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+... Removed 8 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace2083999882", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace2083999882'><pre>java.lang.NullPointerException: Cannot read field &quot;txtTaiKhoan&quot; because &quot;dn&quot; is null
+	at poro.gui.DangNhapJDialogTest.dangxuat(DangNhapJDialogTest.java:85)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:132)
+	at org.testng.internal.InvokeMethodRunnable.runOne(InvokeMethodRunnable.java:45)
+	at org.testng.internal.InvokeMethodRunnable.call(InvokeMethodRunnable.java:73)
+	at org.testng.internal.InvokeMethodRunnable.call(InvokeMethodRunnable.java:11)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+</pre></div></td>
+<td>0</td>
+<td>poro.gui.DangNhapJDialogTest@3246fb96</td></tr>
+</table><p>
 <table width='100%' border='1' class='invocation-passed'>
 <tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
 <tr><td><b>Test method</b></td>
@@ -75,20 +109,30 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='poro.gui.DangNhapJDialogTest.loginFail()'><b>loginFail</b><br>Test class: poro.gui.DangNhapJDialogTest<br>Parameters: vinhlm, vipassx</td>
+<td title='poro.gui.DangNhapJDialogTest.dangnhapthanhcong()'><b>dangnhapthanhcong</b><br>Test class: poro.gui.DangNhapJDialogTest<br>Parameters: phongtc, phongpass</td>
 <td></td>
 <td>1</td>
-<td>poro.gui.DangNhapJDialogTest@1cbb87f3</td></tr>
+<td>poro.gui.DangNhapJDialogTest@3246fb96</td></tr>
+<tr>
+<td title='poro.gui.DangNhapJDialogTest.loginFail()'><b>loginFail</b><br>Test class: poro.gui.DangNhapJDialogTest<br>Parameters: phongtc, 1</td>
+<td></td>
+<td>1</td>
+<td>poro.gui.DangNhapJDialogTest@3246fb96</td></tr>
 <tr>
 <td title='poro.gui.DangNhapJDialogTest.loginFail()'><b>loginFail</b><br>Test class: poro.gui.DangNhapJDialogTest<br>Parameters: , vipass</td>
 <td></td>
 <td>1</td>
-<td>poro.gui.DangNhapJDialogTest@1cbb87f3</td></tr>
+<td>poro.gui.DangNhapJDialogTest@3246fb96</td></tr>
 <tr>
 <td title='poro.gui.DangNhapJDialogTest.loginFail()'><b>loginFail</b><br>Test class: poro.gui.DangNhapJDialogTest<br>Parameters: vinhlm, </td>
 <td></td>
 <td>1</td>
-<td>poro.gui.DangNhapJDialogTest@1cbb87f3</td></tr>
+<td>poro.gui.DangNhapJDialogTest@3246fb96</td></tr>
+<tr>
+<td title='poro.gui.DangNhapJDialogTest.loginFail()'><b>loginFail</b><br>Test class: poro.gui.DangNhapJDialogTest<br>Parameters: phongtc, PHONGPASS</td>
+<td></td>
+<td>2</td>
+<td>poro.gui.DangNhapJDialogTest@3246fb96</td></tr>
 </table><p>
 </body>
 </html>
