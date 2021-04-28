@@ -3,16 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="poro.gui.MuonPhongJDialogTest">
+      <class name="poro.module.db.data.MuonPhongTest">
         <methods>
-          <include name="close"/>
-          <include name="xacNhanMuonTest"/>
-          <include name="delay"/>
-          <include name="createXemPhong"/>
-          <include name="muonOkSvTest"/>
-          <include name="init"/>
+          <include name="getListByPhongYesTest"/>
         </methods>
-      </class> <!-- poro.gui.MuonPhongJDialogTest -->
+      </class> <!-- poro.module.db.data.MuonPhongTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
