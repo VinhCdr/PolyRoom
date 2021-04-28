@@ -31,7 +31,7 @@ public class PhongTest {
   @Test
   public void InsertPhong() {
 	  Phong p = new Phong();
-	  p.setIdPhong(3);
+	  p.setIdPhong(30);
 	  p.setIdSoTang(1);
 	  p.setTenPhong("phongit");
 	  p.setChoMuon(true);

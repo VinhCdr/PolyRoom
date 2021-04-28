@@ -5,11 +5,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import poro.module.CalendarManager;
 import poro.module.db.DatabaseManager;
-/**
- * Kiểm thử
- * @author vinh
- *
- */
+
 public class MuonPhongTest {
 	
 	@Test
@@ -25,7 +21,7 @@ public class MuonPhongTest {
 		mp.setIdPhong(1);
 		mp.setSoTang(1);
 		List<MuonPhong> ls = DatabaseManager.executeQuery(mp, MuonPhong.EXECUTE_SELECT_BY_ID_PHONG);
-		Assert.assertFalse(ls.isEmpty());
+		Assert.assertFalse(ls.isEmpty(), "Khi lấy list thông tin mượn phòng 101, kết quả trả về là list rổng");
 	}
 	
 	@Test
@@ -48,14 +44,31 @@ public class MuonPhongTest {
 		mp.setTgMuon(CalendarManager.getNow());
 		mp.setTgTra(CalendarManager.addTimes(CalendarManager.getNow(), ((long) 1000 * 60 * 60 * 2)));
 		
-		DatabaseManager.executeUpdate(mp, MuonPhong.EXECUTE_INSERT);
+		int i = DatabaseManager.executeUpdate(mp, MuonPhong.EXECUTE_INSERT);
 		
-		// Lấy ra kiểm tra
-		MuonPhong mp2 = new MuonPhong();
-		mp2.setIdPhong(1);
-		mp2.setSoTang(1);
-		List<MuonPhong> ls = DatabaseManager.executeQuery(mp2, MuonPhong.EXECUTE_SELECT_BY_ID_PHONG);
-		Assert.assertFalse(ls.isEmpty());
+		Assert.assertEquals(i, 1);
+	}
+	
+	@Test (priority = -1)
+	public void updateMuonPhongTest() {
+		MuonPhong mp = new MuonPhong();
+		mp.setIdPhong(1);
+		mp.setSoTang(1);
+		mp.setIdTaiKhoan("vinhlm");
+		mp.setLyDo("Kiểm thử");
+		mp.setTgMuon(CalendarManager.getNow());
+		mp.setTgTra(CalendarManager.addTimes(CalendarManager.getNow(), ((long) 1000 * 60 * 60 * 2)));
+		
+		int i = DatabaseManager.executeUpdate(mp, MuonPhong.EXECUTE_INSERT);
+		
+		Assert.assertEquals(i, 1);
+	}
+	
+	@Test
+	public void seleteLastMuonPhongTest() {
+		MuonPhong mp = new MuonPhong();
+		List<MuonPhong> mpList = DatabaseManager.executeQuery(mp, MuonPhong.EXECUTE_SELECT_LAST_INSERT);
+		Assert.assertFalse(mpList.isEmpty());
 	}
 
 }

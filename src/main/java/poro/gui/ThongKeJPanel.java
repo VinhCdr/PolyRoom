@@ -181,14 +181,14 @@ public class ThongKeJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cboNguoiMuonItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboNguoiMuonItemStateChanged
+    void cboNguoiMuonItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboNguoiMuonItemStateChanged
         if (!ok) {
             return;
         }
         loadingThongKeNguoiMuon();
     }//GEN-LAST:event_cboNguoiMuonItemStateChanged
 
-    private void cboPhongItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboPhongItemStateChanged
+    void cboPhongItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboPhongItemStateChanged
         if (!ok) {
             return;
         }
@@ -197,15 +197,15 @@ public class ThongKeJPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> cboNguoiMuon;
-    private javax.swing.JComboBox<String> cboPhong;
+    javax.swing.JComboBox<String> cboNguoiMuon;
+    javax.swing.JComboBox<String> cboPhong;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTabbedPane tabs;
-    private javax.swing.JTable tblNguoiMuon;
-    private javax.swing.JTable tblPhong;
+    javax.swing.JTabbedPane tabs;
+    javax.swing.JTable tblNguoiMuon;
+    javax.swing.JTable tblPhong;
     // End of variables declaration//GEN-END:variables
 
     boolean ok = false;
@@ -221,7 +221,7 @@ public class ThongKeJPanel extends javax.swing.JPanel {
 
     final String FORM = "Tháng:-%2d/%2d";
 
-    private void loadingCbo(JComboBox cbo) {
+    private void loadingCbo(JComboBox<String> cbo) {
         cbo.removeAllItems();
         Calendar calendar = Calendar.getInstance();
         int year = calendar.get(Calendar.YEAR);

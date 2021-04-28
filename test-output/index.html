@@ -26,7 +26,11 @@
       <span class="top-banner-title-font">Test results</span>
       <button id="button" class="button">Switch Retro Theme</button> <!-- button -->
       <br/>
+<<<<<<< HEAD
       <span class="top-banner-font-1">1 suite, 4 failed tests</span>
+=======
+      <span class="top-banner-font-1">1 suite, 1 failed test</span>
+>>>>>>> 6ce5c585cc76950cf7fb3468ffc2154e3f39c068
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -51,7 +55,11 @@
               <ul>
                 <li>
                   <a href="#" panel-name="test-xml-Default_suite" class="navigator-link ">
+<<<<<<< HEAD
                     <span>C:\Users\Tai\AppData\Local\Temp\testng-eclipse--133414277\testng-customsuite.xml</span>
+=======
+                    <span>C:\Users\vinh\AppData\Local\Temp\testng-eclipse-777859337\testng-customsuite.xml</span>
+>>>>>>> 6ce5c585cc76950cf7fb3468ffc2154e3f39c068
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -93,7 +101,11 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
+<<<<<<< HEAD
                     <span class="method-stats">4 methods, 4 failed,   </span>
+=======
+                    <span class="method-stats">1 method, 1 failed,   </span>
+>>>>>>> 6ce5c585cc76950cf7fb3468ffc2154e3f39c068
                   </li>
                   <li>
                     <span class="method-list-title failed">Failed methods</span>
@@ -104,6 +116,7 @@
                     <div class="method-list-content failed suite-Default_suite">
                       <span>
                         <img src="failed.png" width="3%"/>
+<<<<<<< HEAD
                         <a href="#" panel-name="suite-Default_suite" title="poro.module.db.data.PhongTest" class="method navigator-link" hash-for-method="InsertPhong">InsertPhong</a> <!-- method navigator-link -->
                       </span>
                       <br/>
@@ -122,6 +135,11 @@
                         <a href="#" panel-name="suite-Default_suite" title="poro.module.db.data.PhongTest" class="method navigator-link" hash-for-method="UpdatePhong">UpdatePhong</a> <!-- method navigator-link -->
                       </span>
                       <br/>
+=======
+                        <a href="#" panel-name="suite-Default_suite" title="poro.module.db.data.MuonPhongTest" class="method navigator-link" hash-for-method="getListByPhongYesTest">getListByPhongYesTest</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+>>>>>>> 6ce5c585cc76950cf7fb3468ffc2154e3f39c068
                     </div> <!-- method-list-content failed suite-Default_suite -->
                   </li>
                 </ul>
@@ -137,11 +155,16 @@
           <div class="suite-Default_suite-class-failed">
             <div class="main-panel-header rounded-window-top">
               <img src="failed.png"/>
+<<<<<<< HEAD
               <span class="class-name">poro.module.db.data.PhongTest</span>
+=======
+              <span class="class-name">poro.module.db.data.MuonPhongTest</span>
+>>>>>>> 6ce5c585cc76950cf7fb3468ffc2154e3f39c068
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
+<<<<<<< HEAD
                   <a name="InsertPhong">
                   </a> <!-- InsertPhong -->
                   <span class="method-name">InsertPhong</span>
@@ -272,6 +295,16 @@
 	at poro.module.db.DatabaseManager.getPreStm(DatabaseManager.java:59)
 	at poro.module.db.DatabaseManager.executeUpdate(DatabaseManager.java:100)
 	at poro.module.db.data.PhongTest.UpdatePhong(PhongTest.java:50)
+=======
+                  <a name="getListByPhongYesTest">
+                  </a> <!-- getListByPhongYesTest -->
+                  <span class="method-name">getListByPhongYesTest</span>
+                  <div class="stack-trace">java.lang.AssertionError: Khi lấy list thông tin mượn phòng 101, kết quả trả về là list rổng expected [false] but found [true]
+	at org.testng.Assert.fail(Assert.java:99)
+	at org.testng.Assert.failNotEquals(Assert.java:1037)
+	at org.testng.Assert.assertFalse(Assert.java:67)
+	at poro.module.db.data.MuonPhongTest.getListByPhongYesTest(MuonPhongTest.java:24)
+>>>>>>> 6ce5c585cc76950cf7fb3468ffc2154e3f39c068
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -309,7 +342,11 @@
         </div> <!-- panel Default_suite -->
         <div panel-name="test-xml-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
+<<<<<<< HEAD
             <span class="header-content">C:\Users\Tai\AppData\Local\Temp\testng-eclipse--133414277\testng-customsuite.xml</span>
+=======
+            <span class="header-content">C:\Users\vinh\AppData\Local\Temp\testng-eclipse-777859337\testng-customsuite.xml</span>
+>>>>>>> 6ce5c585cc76950cf7fb3468ffc2154e3f39c068
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -318,7 +355,15 @@
 &lt;suite name=&quot;Default suite&quot; guice-stage=&quot;DEVELOPMENT&quot;&gt;
   &lt;test thread-count=&quot;5&quot; name=&quot;Default test&quot; verbose=&quot;2&quot;&gt;
     &lt;classes&gt;
+<<<<<<< HEAD
       &lt;class name=&quot;poro.module.db.data.PhongTest&quot;/&gt;
+=======
+      &lt;class name=&quot;poro.module.db.data.MuonPhongTest&quot;&gt;
+        &lt;methods&gt;
+          &lt;include name=&quot;getListByPhongYesTest&quot;/&gt;
+        &lt;/methods&gt;
+      &lt;/class&gt; &lt;!-- poro.module.db.data.MuonPhongTest --&gt;
+>>>>>>> 6ce5c585cc76950cf7fb3468ffc2154e3f39c068
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Default test --&gt;
 &lt;/suite&gt; &lt;!-- Default suite --&gt;
@@ -360,6 +405,7 @@ data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
 data.addRows(4);
 data.setCell(0, 0, 0)
+<<<<<<< HEAD
 data.setCell(0, 1, 'InsertPhong')
 data.setCell(0, 2, 'poro.module.db.data.PhongTest')
 data.setCell(0, 3, 15940);
@@ -375,11 +421,20 @@ data.setCell(3, 0, 3)
 data.setCell(3, 1, 'SelectAllphong')
 data.setCell(3, 2, 'poro.module.db.data.PhongTest')
 data.setCell(3, 3, 15786);
+=======
+data.setCell(0, 1, 'getListByPhongYesTest')
+data.setCell(0, 2, 'poro.module.db.data.MuonPhongTest')
+data.setCell(0, 3, 932);
+>>>>>>> 6ce5c585cc76950cf7fb3468ffc2154e3f39c068
 window.suiteTableData['Default_suite']= { tableData: data, tableDiv: 'times-div-Default_suite'}
 return data;
 }
               </script>
+<<<<<<< HEAD
               <span class="suite-total-time">Total running time: 1 minutes</span>
+=======
+              <span class="suite-total-time">Total running time: 932 ms</span>
+>>>>>>> 6ce5c585cc76950cf7fb3468ffc2154e3f39c068
               <div id="times-div-Default_suite">
               </div> <!-- times-div-Default_suite -->
             </div> <!-- times-div -->
@@ -394,9 +449,30 @@ return data;
         </div> <!-- panel -->
         <div panel-name="ignored-methods-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
+<<<<<<< HEAD
             <span class="header-content">0 ignored methods</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
+=======
+            <span class="header-content">5 ignored methods</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <div class="ignored-class-div">
+              <span class="ignored-class-name">poro.module.db.data.MuonPhongTest</span>
+              <div class="ignored-methods-div">
+                <span class="ignored-method-name">getFullListTest</span>
+                <br/>
+                <span class="ignored-method-name">updateMuonPhongTest</span>
+                <br/>
+                <span class="ignored-method-name">insertMuonPhongTest</span>
+                <br/>
+                <span class="ignored-method-name">getListByPhongNoTest</span>
+                <br/>
+                <span class="ignored-method-name">seleteLastMuonPhongTest</span>
+                <br/>
+              </div> <!-- ignored-methods-div -->
+            </div> <!-- ignored-class-div -->
+>>>>>>> 6ce5c585cc76950cf7fb3468ffc2154e3f39c068
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
         <div panel-name="chronological-Default_suite" class="panel">
@@ -405,11 +481,19 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
+<<<<<<< HEAD
               <div class="chronological-class-name">poro.module.db.data.PhongTest</div> <!-- chronological-class-name -->
               <div class="test-method">
                 <img src="failed.png">
                 </img>
                 <span class="method-name">InsertPhong</span>
+=======
+              <div class="chronological-class-name">poro.module.db.data.MuonPhongTest</div> <!-- chronological-class-name -->
+              <div class="test-method">
+                <img src="failed.png">
+                </img>
+                <span class="method-name">getListByPhongYesTest</span>
+>>>>>>> 6ce5c585cc76950cf7fb3468ffc2154e3f39c068
                 <span class="method-start">0 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">

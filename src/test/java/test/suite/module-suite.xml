@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="module suite" >
+	<test name="module test">
+		<classes>
+			<class name="poro.module.SessionTest"/>
+			<class name="poro.module.db.data.MuonPhongTest"/>
+			<class name="poro.module.CalendarManagerTest"/>
+			<class name="poro.module.FileManagerTest"/>
+			<class name="poro.module.db.data.TaiKhoanTest"/>
+			<class name="poro.module.db.data.PhongTest"/>
+			<class name="poro.module.EncrypterTest"/>
+		</classes>
+	</test>
+</suite>

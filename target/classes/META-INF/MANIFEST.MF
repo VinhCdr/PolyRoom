@@ -1,5 +1,10 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: Tai
 Build-Jdk: 15.0.2
+=======
+Built-By: vinh
+Build-Jdk: 15.0.1
+>>>>>>> 6ce5c585cc76950cf7fb3468ffc2154e3f39c068
 Created-By: Maven Integration for Eclipse
 

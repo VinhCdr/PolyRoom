@@ -121,7 +121,7 @@ public class DangNhapJDialog extends javax.swing.JDialog {
         chkNhoMatKhau.setForeground(Color.white);
     }//GEN-LAST:event_chkNhoMatKhauMouseExited
 
-    private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
+    void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
         try {
             nhoMatKhau();
             dangNhap();
@@ -130,7 +130,7 @@ public class DangNhapJDialog extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_btnDangNhapActionPerformed
 
-    private void btnQuenMatKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuenMatKhauActionPerformed
+    void btnQuenMatKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuenMatKhauActionPerformed
         quenMatKhauJDialog.setVisible(true);
     }//GEN-LAST:event_btnQuenMatKhauActionPerformed
 

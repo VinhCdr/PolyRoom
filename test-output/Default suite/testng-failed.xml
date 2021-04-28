@@ -3,6 +3,7 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
+<<<<<<< HEAD
       <class name="poro.module.db.data.PhongTest">
         <methods>
           <include name="SelectAllphong"/>
@@ -11,6 +12,13 @@
           <include name="UpdatePhong"/>
         </methods>
       </class> <!-- poro.module.db.data.PhongTest -->
+=======
+      <class name="poro.module.db.data.MuonPhongTest">
+        <methods>
+          <include name="getListByPhongYesTest"/>
+        </methods>
+      </class> <!-- poro.module.db.data.MuonPhongTest -->
+>>>>>>> 6ce5c585cc76950cf7fb3468ffc2154e3f39c068
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

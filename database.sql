@@ -92,14 +92,27 @@ VALUES
     (3, 2, N'302', 1);
 GO
 
--- mat_khau equals id_tai_khoan
+/*
+vinhlm => vipass
+loilh => loipass
+phongtc => phongpass
+minhvhn => minhpass
+taivt => taipass
+linhntt => linhpass
+...
+tk1 => tk1
+tk2 => tk2
+...
+*/
 INSERT INTO [tai_khoan]
     ([id_tai_khoan], [email], [mat_khau], [is_phan_quyen], [ten], [sdt])
 VALUES
-    ('vinhlm', 'vinhlmpc01238@fpt.edu.vn', '78f7002p638e8vkpkodcn3krml', 1, N'Lê Minh Vinh', '0856538112'),
-    ('ngocnty', 'ngocntypc01187@fpt.edu.vn', '51qftrbvk5g6lrqmll0os82qqo', 1, N'Nguyễn Thị Yến Ngọc', '0123456789'),
-    ('vinhlmz', 'mvinhle22@gmail.com', '33j0c9sjev9nakidee0n81rtul', 0, N'Lê Minh Vinh', '0856538112'),
-    ('ngocntyz', 'mvinhle@outlook.com', '44l55n0phsojvd4rvq03vivphj', 0, N'Nguyễn Thị Yến Ngọc', '0123456789'),
+    ('vinhlm', 'vinhlmpc01238@fpt.edu.vn', 'n64b81cqjs7e4g9uqjvfkufqs', 1, N'Lê Minh Vinh', '0856538112'),
+    ('loilh', 'loilhpc01261@fpt.edu.vn', 'sb2ishbus3f8hgpu95ktp8389', 1, N'Lương Hửu Lợi', '0126101261'),
+    ('phongtc', 'phongtcpc01275@fpt.edu.vn', 'u9v4imgr6qt0v6alcifnva6oe', 1, N'Trần Chí Phong', '0127501275'),
+    ('taivt', 'taivtpc01260@fpt.edu.vn', '3vcdvv80btm9q90dpm84o26fvo', 1, N'Võ Tấn Tài', '0126001260'),
+    ('minhvhn', 'minhvhnpc01239@fpt.edu.vn', '734rmd9eqag5824ln9ue02nlgf', 1, N'Võ Hồng Nhật Minh', '0123901239'),
+    ('linhntt', 'linhnttpc01259@fpt.edu.vn', '5i8bh0raevh6057esh1ck9ctrs', 1, N'Nguyễn Thị Tài Linh', '0125901259'),
     ('tk1', 'tk1@fpt.edu.vn', 'mnpqof4132jpnk78upif57gfj', 0, N'Tài khoản 1', '0123456791'),
     ('tk2', 'tk2@fpt.edu.vn', '5njieomv79jnpjpsvqbesmq32h', 0, N'Tài khoản 2', '0123456792'),
     ('tk3', 'tk3@fpt.edu.vn', '7jqncfk6tacmiasf81pks3t56q', 0, N'Tài khoản 3', '0123456793'),
@@ -111,10 +124,11 @@ GO
 INSERT INTO [muon_phong]
     (/*id_muon_phong,*/[id_tai_khoan], [so_tang], [id_phong], [tg_muon], [tg_tra], [tg_tra_thuc_te], [ly_do])
 VALUES
-    ('vinhlm', 1, 1, '2020-12-22 09:30:00', '2020-12-22 11:30:00', '2020-12-22 11:45:00', N'Dạy học'),
-    ('ngocnty', 1, 2, '2020-12-22 09:30:00', '2020-12-22 11:30:00', '2020-12-22 11:45:00', N'Dạy học'),
-    ('vinhlmz', 1, 2, '2020-12-22 15:00:00', '2020-12-22 17:00:00', '2020-12-22 16:30:00', N'Dạy học'),
-    ('ngocntyz', 1, 2, '2020-12-22 15:15:00', '2020-12-22 17:15:00', '2020-12-22 16:30:00', N'Dạy học'),
+    ('vinhlm', 1, 1, GETDATE(), DATEADD(HOUR, 2, GETDATE()), null, N'Dạy học'),
+    ('loilh', 1, 2, DATEADD(HOUR, 1, GETDATE()), DATEADD(HOUR, 3, GETDATE()), null, N'Dạy học'),
+    ('loilh', 1, 2, '2020-12-22 09:30:00', '2020-12-22 11:30:00', '2020-12-22 11:45:00', N'Dạy học'),
+    ('phongtc', 1, 2, '2020-12-22 15:00:00', '2020-12-22 17:00:00', '2020-12-22 16:30:00', N'Dạy học'),
+    ('taivt', 1, 2, '2020-12-22 15:15:00', '2020-12-22 17:15:00', '2020-12-22 16:30:00', N'Dạy học'),
     ('tk1', 2, 1, '2020-12-22 09:30:00', '2020-12-22 11:30:00', null, N'Dạy học'),
     ('tk2', 2, 2, '2020-12-22 09:30:00', '2020-12-22 11:30:00', null, N'Dạy học'),
     ('tk3', 2, 3, '2020-12-22 09:30:00', '2020-12-22 11:30:00', null, N'Dạy học'),
@@ -126,11 +140,11 @@ GO
 INSERT INTO [thong_tin_sinh_vien]
     ([id_sinh_vien],[email_sv], [ten_sinh_vien], [id_muon_phong])
 VALUES
-    ('pc01238', 'vinhlmpc01238@fpt.edu.vn', N'Vinh', 1),
+    ('pc01238', 'vinhlmpc01238@fpt.edu.vn', N'Vinh', 6),
     ('pc01187', 'ngocntypc01187@fpt.edu.vn', N'Ngọc', 2),
     ('pc01238', 'vinhlmpc01238@fpt.edu.vn', N'Vinh', 3),
-    ('pc01187', 'ngocntypc01187@fpt.edu.vn', N'Ngọc', 3),
-    ('pc01187', 'ngocntypc01187@fpt.edu.vn', N'Ngọc', 4);
+    ('pc01187', 'ngocntypc01187@fpt.edu.vn', N'Ngọc', 4),
+    ('pc01187', 'ngocntypc01187@fpt.edu.vn', N'Ngọc', 5);
 GO
 
 INSERT INTO [temp_muon_phong_sv]

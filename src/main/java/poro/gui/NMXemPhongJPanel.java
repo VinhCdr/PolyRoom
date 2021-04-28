@@ -151,7 +151,7 @@ public class NMXemPhongJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnMuonPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMuonPhongActionPerformed
+    void btnMuonPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMuonPhongActionPerformed
         try {
         	muonPhong();
         	loading();
@@ -160,12 +160,12 @@ public class NMXemPhongJPanel extends javax.swing.JPanel {
 		}
     }//GEN-LAST:event_btnMuonPhongActionPerformed
 
-    private void btnTraPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTraPhongActionPerformed
+    void btnTraPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTraPhongActionPerformed
         showDangMuon();
         loading();
     }//GEN-LAST:event_btnTraPhongActionPerformed
 
-    private void btnTimPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimPhongActionPerformed
+    void btnTimPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimPhongActionPerformed
         DatabaseRefresh.refresh();
         String sbatDau = txtTimStart.getText();
         String sketThuc = txtTimEnd.getText();
@@ -219,22 +219,22 @@ public class NMXemPhongJPanel extends javax.swing.JPanel {
         });
     }//GEN-LAST:event_btnTimPhongActionPerformed
 
-    private void txtTimStartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTimStartMouseClicked
+    void txtTimStartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTimStartMouseClicked
         setGioBatDau(txtTimStart);
     }//GEN-LAST:event_txtTimStartMouseClicked
 
-    private void txtTimEndMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTimEndMouseClicked
+    void txtTimEndMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTimEndMouseClicked
         setGioKetThuc(txtTimStart, txtTimEnd);
     }//GEN-LAST:event_txtTimEndMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnMuonPhong;
-    private javax.swing.JButton btnTimPhong;
-    private javax.swing.JButton btnTraPhong;
+    javax.swing.JButton btnMuonPhong;
+    javax.swing.JButton btnTimPhong;
+    javax.swing.JButton btnTraPhong;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblPhong;
-    private javax.swing.JTextField txtTimEnd;
-    private javax.swing.JTextField txtTimStart;
+    javax.swing.JTable tblPhong;
+    javax.swing.JTextField txtTimEnd;
+    javax.swing.JTextField txtTimStart;
     // End of variables declaration//GEN-END:variables
 
     private ArrayList<ThongTinMuonPhong> ttPhongDangMuons = new ArrayList<>();

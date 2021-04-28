@@ -2,8 +2,10 @@ package test.module;
 
 import java.awt.AWTException;
 import java.awt.Robot;
+import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
-import java.util.List;
+
+import javax.swing.JTextField;
 
 /**
  * Con bọ bự
@@ -119,42 +121,108 @@ public class BigBug {
 	/**
 	 * Bọ sẽ nhập vào chuổi ký tự
 	 * @param str Chuổi ký tự
-	 * @throws InterruptedException Lỗi về luồng
+	 * @see #writeString(JTextField, String)
+	 * @see #writeString(JTextField, String, boolean)
 	 */
-	public static void writeString(String str) throws InterruptedException {
-		for (String s : str.split("")) {
-			Thread.sleep(30);
-			robot.keyPress(coverStringToKey(s));
-			Thread.sleep(20);
-			robot.keyRelease(coverStringToKey(s));
+	public static void writeString(String str) {
+		try {
+			for (String s : str.split("")) {
+				Thread.sleep(30);
+				robot.keyPress(coverStringToKey(s));
+				Thread.sleep(20);
+				robot.keyRelease(coverStringToKey(s));
+			}
+		} catch (InterruptedException e) {
+			throw new RuntimeException(e);
 		}
+	}
+	
+	/**
+	 * Bọ sẽ nhập vào chuổi ký tự vào JTextField (sẽ xóa trống ô trước khi nhập)
+	 * @param txt Ô text
+	 * @param str Chuổi ký tự
+	 * @see #writeString(String)
+	 * @see #writeString(JTextField, String, boolean)
+	 */
+	public static void writeString(JTextField txt, String str) {
+		try {
+			txt.setText("");
+			Thread.sleep(50);
+			writeString(txt, str, true);
+		} catch (InterruptedException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
+	/**
+	 * Bọ sẽ nhập vào chuổi ký tự vào JTextField
+	 * @param txt Ô text
+	 * @param str Chuổi ký tự
+	 * @param append True nếu viết tiếp vào JTextField, False nếu xóa trống JTextField
+	 * @see #writeString(String)
+	 * @see #writeString(JTextField, String)
+	 */
+	public static void writeString(JTextField txt, String str, boolean append) {
+		try {
+			if (append) {
+				for (String s : str.split("")) {
+					Thread.sleep(50);
+					txt.setText(txt.getText().concat(s));
+				}
+				return;
+			}
+		} catch (InterruptedException e) {
+			throw new RuntimeException(e);
+		}
+		writeString(txt, str);
 	}
 	
 	/**
 	 * Bấm 1 key bất kỳ
 	 * @param keyName Tên phím
-	 * @throws InterruptedException Lỗi về xử lý luồng
 	 */
-	public static void keyClick(String keyName) throws InterruptedException {
-		Thread.sleep(300);
-		robot.keyPress(coverStringToKey(keyName));
-		Thread.sleep(20);
-		robot.keyRelease(coverStringToKey(keyName));
+	public static void keyPress(String keyName) {
+		try {
+			Thread.sleep(300);
+			robot.keyPress(coverStringToKey(keyName));
+			Thread.sleep(20);
+			robot.keyRelease(coverStringToKey(keyName));
+		} catch (InterruptedException e) {
+			throw new RuntimeException(e);
+		}
 	}
 	
 	/**
 	 * Bấm nhiều key cùng lúc
 	 * @param keyName Tên phím
-	 * @throws InterruptedException Lỗi về xử lý luồng
 	 */
-	public static void keyPressMutil(String...keyName) throws InterruptedException {
-		Thread.sleep(500);
-		for (String s : keyName) {
-			robot.keyPress(coverStringToKey(s));
+	public static void keyPressMutil(String...keyName) {
+		try {
+			Thread.sleep(500);
+			for (String s : keyName) {
+				robot.keyPress(coverStringToKey(s));
+			}
+			Thread.sleep(20);
+			for (String s : keyName) {
+				robot.keyRelease(coverStringToKey(s));
+			}
+		} catch (InterruptedException e) {
+			throw new RuntimeException(e);
 		}
-		Thread.sleep(20);
-		for (String s : keyName) {
-			robot.keyRelease(coverStringToKey(s));
+	}
+
+	public static void mouseMove(int x, int y) {
+		robot.mouseMove(x, y);
+	}
+	
+	public static void mouseClick() {
+		try {
+			Thread.sleep(30);
+			robot.mousePress(KeyEvent.getMaskForButton(1));
+			Thread.sleep(20);
+			robot.mouseRelease(KeyEvent.getMaskForButton(1));
+		} catch (InterruptedException e) {
+			throw new RuntimeException(e);
 		}
 	}
 }

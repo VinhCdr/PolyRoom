@@ -86,7 +86,7 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnMatKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMatKhauActionPerformed
+    void btnMatKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMatKhauActionPerformed
         try {
             doiMatKhau();
             JOptionPane.showMessageDialog(this, "Đổi mật khẩu thành công !");
@@ -97,16 +97,16 @@ public class DoiMatKhauJDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_btnMatKhauActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnMatKhau;
+    javax.swing.JButton btnMatKhau;
     private javax.swing.JLabel hinh;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JPasswordField txtPassCu;
-    private javax.swing.JPasswordField txtPassMoi1;
-    private javax.swing.JPasswordField txtPassMoi2;
-    private javax.swing.JTextField txtTaiKhoan;
+    javax.swing.JPasswordField txtPassCu;
+    javax.swing.JPasswordField txtPassMoi1;
+    javax.swing.JPasswordField txtPassMoi2;
+    javax.swing.JTextField txtTaiKhoan;
     // End of variables declaration//GEN-END:variables
 
     private TaiKhoan taiKhoanQuen;

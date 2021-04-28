@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [main suite]">
+  <test thread-count="5" name="main test(failed)">
+    <classes>
+      <class name="poro.module.FileManagerTest">
+        <methods>
+          <include name="readObjectTest"/>
+          <include name="writeObjectTest"/>
+        </methods>
+      </class> <!-- poro.module.FileManagerTest -->
+      <class name="poro.module.db.data.MuonPhongTest">
+        <methods>
+          <include name="getListByPhongYesTest"/>
+        </methods>
+      </class> <!-- poro.module.db.data.MuonPhongTest -->
+    </classes>
+  </test> <!-- main test(failed) -->
+</suite> <!-- Failed suite [main suite] -->

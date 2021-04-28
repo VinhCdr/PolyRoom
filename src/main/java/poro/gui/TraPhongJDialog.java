@@ -118,11 +118,11 @@ public class TraPhongJDialog extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnTraPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTraPhongActionPerformed
+    void btnTraPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTraPhongActionPerformed
         traPhong();
     }//GEN-LAST:event_btnTraPhongActionPerformed
 
-    private void tblListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblListMouseClicked
+    void tblListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblListMouseClicked
         if (evt.getClickCount() != 2) {
             return;
         }
@@ -130,9 +130,9 @@ public class TraPhongJDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_tblListMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnTraPhong;
+    javax.swing.JButton btnTraPhong;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblList;
+    javax.swing.JTable tblList;
     // End of variables declaration//GEN-END:variables
 
     private void loadingTable() {

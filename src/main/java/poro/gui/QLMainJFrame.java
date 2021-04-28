@@ -402,7 +402,7 @@ public class QLMainJFrame extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void mniQLTaiKhoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniQLTaiKhoanActionPerformed
+    void mniQLTaiKhoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniQLTaiKhoanActionPerformed
         try {
             showQLTaiKhoan(0);
         } catch (ToViewException ex) {
@@ -410,7 +410,7 @@ public class QLMainJFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_mniQLTaiKhoanActionPerformed
 
-    private void mniXemTaiKhoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniXemTaiKhoanActionPerformed
+    void mniXemTaiKhoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniXemTaiKhoanActionPerformed
         try {
             showQLTaiKhoan(1);
         } catch (ToViewException ex) {
@@ -418,11 +418,11 @@ public class QLMainJFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_mniXemTaiKhoanActionPerformed
 
-    private void mniDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniDangNhapActionPerformed
+    void mniDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniDangNhapActionPerformed
         showDangNhap();
     }//GEN-LAST:event_mniDangNhapActionPerformed
 
-    private void mniDoiMatKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniDoiMatKhauActionPerformed
+    void mniDoiMatKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniDoiMatKhauActionPerformed
         try {
             showDoiMatKhau();
         } catch (ToViewException ex) {
@@ -430,15 +430,15 @@ public class QLMainJFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_mniDoiMatKhauActionPerformed
 
-    private void mniDangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniDangXuatActionPerformed
+    void mniDangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniDangXuatActionPerformed
         showDangXuat();
     }//GEN-LAST:event_mniDangXuatActionPerformed
 
-    private void mniThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniThoatActionPerformed
+    void mniThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniThoatActionPerformed
         this.dispose();
     }//GEN-LAST:event_mniThoatActionPerformed
 
-    private void mniQLPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniQLPhongActionPerformed
+    void mniQLPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniQLPhongActionPerformed
         try {
             showQLPhong(0);
         } catch (ToViewException ex) {
@@ -446,7 +446,7 @@ public class QLMainJFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_mniQLPhongActionPerformed
 
-    private void mniXemPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniXemPhongActionPerformed
+    void mniXemPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniXemPhongActionPerformed
         try {
             showQLPhong(1);
         } catch (ToViewException ex) {
@@ -454,7 +454,7 @@ public class QLMainJFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_mniXemPhongActionPerformed
 
-    private void mniMuonPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniMuonPhongActionPerformed
+    void mniMuonPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniMuonPhongActionPerformed
         try {
             showMuonPhong();
         } catch (ToViewException ex) {
@@ -462,7 +462,7 @@ public class QLMainJFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_mniMuonPhongActionPerformed
 
-    private void mniThongKePhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniThongKePhongActionPerformed
+    void mniThongKePhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniThongKePhongActionPerformed
         try {
             showThongKe(0);
         } catch (ToViewException ex) {
@@ -470,7 +470,7 @@ public class QLMainJFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_mniThongKePhongActionPerformed
 
-    private void mniThongKeGvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniThongKeGvActionPerformed
+    void mniThongKeGvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniThongKeGvActionPerformed
         try {
             showThongKe(1);
         } catch (ToViewException ex) {
@@ -478,19 +478,19 @@ public class QLMainJFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_mniThongKeGvActionPerformed
 
-    private void mniChungToiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniChungToiActionPerformed
+    void mniChungToiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniChungToiActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_mniChungToiActionPerformed
 
-    private void mniHuongDanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniHuongDanActionPerformed
+    void mniHuongDanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniHuongDanActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_mniHuongDanActionPerformed
 
-    private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
+    void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
         showDangNhap();
     }//GEN-LAST:event_btnDangNhapActionPerformed
 
-    private void btnDoiMatKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoiMatKhauActionPerformed
+    void btnDoiMatKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoiMatKhauActionPerformed
         try {
             showDoiMatKhau();
         } catch (ToViewException ex) {
@@ -498,11 +498,11 @@ public class QLMainJFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnDoiMatKhauActionPerformed
 
-    private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
+    void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnThoatActionPerformed
 
-    private void btnQuanLyTaiKhoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuanLyTaiKhoanActionPerformed
+    void btnQuanLyTaiKhoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuanLyTaiKhoanActionPerformed
         try {
             showQLTaiKhoan(0);
         } catch (ToViewException ex) {
@@ -510,7 +510,7 @@ public class QLMainJFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnQuanLyTaiKhoanActionPerformed
 
-    private void btnQuanLyPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuanLyPhongActionPerformed
+    void btnQuanLyPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuanLyPhongActionPerformed
         try {
             showQLPhong(0);
         } catch (ToViewException ex) {
@@ -518,7 +518,7 @@ public class QLMainJFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnQuanLyPhongActionPerformed
 
-    private void btnMuonPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMuonPhongActionPerformed
+    void btnMuonPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMuonPhongActionPerformed
         try {
             showMuonPhong();
         } catch (ToViewException ex) {
@@ -526,7 +526,7 @@ public class QLMainJFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnMuonPhongActionPerformed
 
-    private void btnThongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongKeActionPerformed
+    void btnThongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongKeActionPerformed
         try {
             showThongKe(0);
         } catch (ToViewException ex) {
@@ -534,19 +534,19 @@ public class QLMainJFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnThongKeActionPerformed
 
-    private void btnDongTabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDongTabActionPerformed
+    void btnDongTabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDongTabActionPerformed
         closeTab();
     }//GEN-LAST:event_btnDongTabActionPerformed
 
-    private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
+    void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
         toHome();
     }//GEN-LAST:event_btnHomeActionPerformed
 
-    private void btnResetTabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetTabActionPerformed
+    void btnResetTabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetTabActionPerformed
         resetTabs();
     }//GEN-LAST:event_btnResetTabActionPerformed
 
-    private void tabContentStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_tabContentStateChanged
+    void tabContentStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_tabContentStateChanged
         if (!this.isVisible()){
             return;
         }
@@ -562,42 +562,42 @@ public class QLMainJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnDangNhap;
-    private javax.swing.JButton btnDoiMatKhau;
-    private javax.swing.JButton btnDongTab;
-    private javax.swing.JButton btnHome;
-    private javax.swing.JButton btnMuonPhong;
-    private javax.swing.JButton btnQuanLyPhong;
-    private javax.swing.JButton btnQuanLyTaiKhoan;
-    private javax.swing.JButton btnResetTab;
-    private javax.swing.JButton btnThoat;
-    private javax.swing.JButton btnThongKe;
-    private javax.swing.JLabel lblNow;
-    private javax.swing.JMenuItem mniChungToi;
-    private javax.swing.JMenuItem mniDangNhap;
-    private javax.swing.JMenuItem mniDangXuat;
-    private javax.swing.JMenuItem mniDoiMatKhau;
-    private javax.swing.JMenuItem mniHuongDan;
-    private javax.swing.JMenuItem mniMuonPhong;
-    private javax.swing.JMenuItem mniQLPhong;
-    private javax.swing.JMenuItem mniQLTaiKhoan;
-    private javax.swing.JMenuItem mniThoat;
-    private javax.swing.JMenuItem mniThongKeGv;
-    private javax.swing.JMenuItem mniThongKePhong;
-    private javax.swing.JMenuItem mniXemPhong;
-    private javax.swing.JMenuItem mniXemTaiKhoan;
-    private javax.swing.JMenu mnuGioiThieu;
-    private javax.swing.JMenu mnuPhong;
-    private javax.swing.JMenu mnuTaiKhoan;
-    private javax.swing.JMenu mnuThongKe;
-    private javax.swing.JMenuBar mnubar;
-    private javax.swing.JPanel pnlChanTrang;
+    javax.swing.JButton btnDangNhap;
+    javax.swing.JButton btnDoiMatKhau;
+    javax.swing.JButton btnDongTab;
+    javax.swing.JButton btnHome;
+    javax.swing.JButton btnMuonPhong;
+    javax.swing.JButton btnQuanLyPhong;
+    javax.swing.JButton btnQuanLyTaiKhoan;
+    javax.swing.JButton btnResetTab;
+    javax.swing.JButton btnThoat;
+    javax.swing.JButton btnThongKe;
+    javax.swing.JLabel lblNow;
+    javax.swing.JMenuItem mniChungToi;
+    javax.swing.JMenuItem mniDangNhap;
+    javax.swing.JMenuItem mniDangXuat;
+    javax.swing.JMenuItem mniDoiMatKhau;
+    javax.swing.JMenuItem mniHuongDan;
+    javax.swing.JMenuItem mniMuonPhong;
+    javax.swing.JMenuItem mniQLPhong;
+    javax.swing.JMenuItem mniQLTaiKhoan;
+    javax.swing.JMenuItem mniThoat;
+    javax.swing.JMenuItem mniThongKeGv;
+    javax.swing.JMenuItem mniThongKePhong;
+    javax.swing.JMenuItem mniXemPhong;
+    javax.swing.JMenuItem mniXemTaiKhoan;
+    javax.swing.JMenu mnuGioiThieu;
+    javax.swing.JMenu mnuPhong;
+    javax.swing.JMenu mnuTaiKhoan;
+    javax.swing.JMenu mnuThongKe;
+    javax.swing.JMenuBar mnubar;
+    javax.swing.JPanel pnlChanTrang;
     private javax.swing.JPopupMenu.Separator sptMnuSauQLTaiKhoan;
     private javax.swing.JPopupMenu.Separator sptMnuSauTaiKhoan;
     private javax.swing.JToolBar.Separator sptSauPhong;
     private javax.swing.JToolBar.Separator sptSauTaiKhoan;
-    private javax.swing.JTabbedPane tabContent;
-    private javax.swing.JToolBar toolbar;
+    public javax.swing.JTabbedPane tabContent;
+    javax.swing.JToolBar toolbar;
     // End of variables declaration//GEN-END:variables
 
     private NMXemPhongJPanel tab_NMXemPhongJPanel;
@@ -631,7 +631,6 @@ public class QLMainJFrame extends javax.swing.JFrame {
      */
     public void setGiaoDien(boolean chucVu) {
         init();
-        
         mniQLTaiKhoan.setVisible(chucVu);
         mniXemTaiKhoan.setVisible(chucVu);
         mniXemPhong.setVisible(chucVu);
