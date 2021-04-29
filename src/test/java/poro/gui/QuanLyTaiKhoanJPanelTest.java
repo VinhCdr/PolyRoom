@@ -1,5 +1,7 @@
 package poro.gui;
 
+import static org.testng.Assert.assertEquals;
+
 import javax.swing.JDialog;
 
 import org.testng.Assert;
@@ -47,10 +49,11 @@ public class QuanLyTaiKhoanJPanelTest {
 	public void delay() throws InterruptedException {
 		Thread.sleep(500);
 	}
-
+	
+	//Test Thêm tài khoản
 	@Test(timeOut = 10000, priority = 0, dataProvider = "InsertAccount")
-	public void dangKyTaiKhoan(String username, String email, String fname, String phone, String password,
-			String confirmPass) throws InterruptedException {
+	public void themTaiKhoan(String username, String email, String fname, String phone, String password,
+			String confirmPass, boolean quanLy) throws InterruptedException {
 		
 		BigBug.writeString(qltk.txtTenTaiKhoan, username);
 		BigBug.writeString(qltk.txtEmail, email);
@@ -58,8 +61,8 @@ public class QuanLyTaiKhoanJPanelTest {
 		BigBug.writeString(qltk.txtSoDienThoai, phone);
 		BigBug.writeString(qltk.txtMatKhau, password);
 		BigBug.writeString(qltk.txtXacNhanMatKhau, confirmPass);
-		// Còn phần kiểm tra checkbox???
-
+		qltk.chkQuanLy.setSelected(quanLy);
+		
 		Thread.sleep(200);
 		new Thread(() -> {
 			qltk.btnThem.doClick();
@@ -79,10 +82,116 @@ public class QuanLyTaiKhoanJPanelTest {
 	@DataProvider(name = "InsertAccount")
 	public Object[][] getAccount() {
 		return new Object[][] {
-				{ "loilhpc01261", "loilh@gmail.com", "Lương Hữu Lợi", "0909123456", "123abc", "123abc" },
-				{ "loilh123", "loilh@gmail.com", "", "", "", "" },
-				{ "loilh123", "emailsai", "Lương Hữu Lợi", "0909123456", "123abc", "123abc" },
-				{ "loilhpc01261", "loilh@gmail.com", "Lương Hữu Lợi", "9999", "123abc", "123abc" },
-				{ "loilhpc01261", "loilh@gmail.com", "Lương Hữu Lợi", "0909123456", "123abc", "123" }, };
+				{ "loilhpc01261", "loilh@gmail.com", "Lương Hữu Lợi", "0909123456", "123abc", "123abc", true },
+				{ "huuloi", "loilh@gmail.com", "Lương Hữu Lợi", "0909123456", "123abc", "123abc", false },
+				{ "loilh123", "loilh@gmail.com", "", "", "", "", true },
+				{ "loilh123", "emailsai", "Lương Hữu Lợi", "0909123456", "123abc", "123abc", true },
+				{ "loilhpc01261", "loilh@gmail.com", "Lương Hữu Lợi", "9999", "123abc", "123abc", true },
+				{ "loilhpc01261", "loilh@gmail.com", "Lương Hữu Lợi", "0909123456", "123abc", "123", true }
+				};
+	}
+	
+	//Test Cập nhật Tài Khoản
+	@Test(timeOut = 10000 , priority = 1, dataProvider = "UpdateAccount")
+	public void capNhatTaiKhoan(String email, String fname, String phone) throws InterruptedException {		
+		
+		qltk.tblTaiKhoan.setRowSelectionInterval(2, 2);
+		Thread.sleep(500);
+		
+		BigBug.writeString(qltk.txtEmail, email);
+		BigBug.writeString(qltk.txtHoVaTen, fname);
+		BigBug.writeString(qltk.txtSoDienThoai, phone);
+		
+		
+		Thread.sleep(500);
+		new Thread(() -> {
+			qltk.btnCapNhat.doClick();
+		}).start();
+		Thread.sleep(500);
+
+		JDialog jp = Babysitter.getWindow(JDialog.class);
+		
+		Thread.sleep(500);
+
+		Assert.assertEquals(jp.getTitle(), "Message");
+
+		jp.setVisible(false);
+		
+		Thread.sleep(500);
+		
+		assertEquals(qltk.tblTaiKhoan.getValueAt(2, 2), fname);
+		
+	}
+	
+	@DataProvider(name = "UpdateAccount")
+	public Object[][] updateAccount() {
+		return new Object[][] {
+				{"huuloi@gmail.com", "Hữu Lợi", "0333456789"},
+				{"", "Hữu Lợi", "0333456789"},
+				{"huuloi@gmail.com", "", "0333456789"},
+				{"huuloi@gmail.com", "Hữu Lợi", ""},
+				{"emailsai", "Hữu Lợi", "0333456789"},
+				{"huuloi@gmail.com", "Hữu Lợi", "123"},
+		};
+	}
+	
+	//Test Xóa Tài Khoản
+	@Test(timeOut = 10000 ,priority = 2)
+	public void XoaTaiKhoan() throws InterruptedException{
+		
+		qltk.tblTaiKhoan.setRowSelectionInterval(3, 3);
+		Thread.sleep(500);
+	
+		new Thread(() -> {
+			qltk.btnXoa.doClick();
+		}).start();
+		Thread.sleep(500);
+
+		JDialog jp = Babysitter.getWindow(JDialog.class);
+		
+		Thread.sleep(500);
+
+		Assert.assertEquals(jp.getTitle(), "Message");
+		
+		jp.setVisible(false);
+		
+		Thread.sleep(500);
+		
+	}
+	
+	//Test Làm Mới
+	@Test(timeOut = 10000, priority = 3, dataProvider = "NewAccount")
+	public void lamMoi(String username, String email, String fname, String phone, String password,
+			String confirmPass, boolean quanLy) throws InterruptedException {
+		
+		BigBug.writeString(qltk.txtTenTaiKhoan, username);
+		BigBug.writeString(qltk.txtEmail, email);
+		BigBug.writeString(qltk.txtHoVaTen, fname);
+		BigBug.writeString(qltk.txtSoDienThoai, phone);
+		BigBug.writeString(qltk.txtMatKhau, password);
+		BigBug.writeString(qltk.txtXacNhanMatKhau, confirmPass);
+		qltk.chkQuanLy.setSelected(quanLy);
+		
+		Thread.sleep(200);
+		new Thread(() -> {
+			qltk.btnMoi.doClick();
+		}).start();
+		Thread.sleep(500);
+
+		JDialog jp = Babysitter.getWindow(JDialog.class);
+
+		Thread.sleep(200);
+
+		Assert.assertEquals(jp.getTitle(), "Message");
+
+		jp.setVisible(false);
+		Thread.sleep(200);
+	}
+
+	@DataProvider(name = "NewAccount")
+	public Object[][] newAccount() {
+		return new Object[][] {
+				{ "loi12345", "loilh@gmail.com", "Lương Hữu Lợi", "0909123456", "123abc", "123abc", true }
+				};
 	}
 }
