@@ -95,6 +95,10 @@ public class QuanLyTaiKhoanJPanelTest {
 	@Test(timeOut = 10000 , priority = 1, dataProvider = "UpdateAccount")
 	public void capNhatTaiKhoan(String email, String fname, String phone) throws InterruptedException {		
 		
+		Thread.sleep(500);
+		qltk.tabs.setSelectedIndex(1);
+		Thread.sleep(500);
+		
 		qltk.tblTaiKhoan.setRowSelectionInterval(2, 2);
 		Thread.sleep(500);
 		
@@ -119,7 +123,9 @@ public class QuanLyTaiKhoanJPanelTest {
 		
 		Thread.sleep(500);
 		
-		assertEquals(qltk.tblTaiKhoan.getValueAt(2, 2), fname);
+		assertEquals(qltk.tblTaiKhoan.getValueAt(2, 2), email);
+		assertEquals(qltk.tblTaiKhoan.getValueAt(2, 1), fname);
+		assertEquals(qltk.tblTaiKhoan.getValueAt(2, 3), phone);
 		
 	}
 	
@@ -139,6 +145,10 @@ public class QuanLyTaiKhoanJPanelTest {
 	@Test(timeOut = 10000 ,priority = 2)
 	public void XoaTaiKhoan() throws InterruptedException{
 		
+		Thread.sleep(500);
+		qltk.tabs.setSelectedIndex(1);
+		
+		Thread.sleep(500);
 		qltk.tblTaiKhoan.setRowSelectionInterval(3, 3);
 		Thread.sleep(500);
 	

@@ -3,15 +3,17 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="poro.gui.ThongKeJPanelTest">
+      <class name="poro.gui.QuanLyTaiKhoanJPanelTest">
         <methods>
+          <include name="XoaTaiKhoan"/>
+          <include name="capNhatTaiKhoan" invocation-numbers="0 1 2 3 4 5"/>
           <include name="delay"/>
           <include name="init"/>
-          <include name="ThemPhong"/>
           <include name="resetForm"/>
+          <include name="lamMoi" invocation-numbers="0"/>
           <include name="close"/>
         </methods>
-      </class> <!-- poro.gui.ThongKeJPanelTest -->
+      </class> <!-- poro.gui.QuanLyTaiKhoanJPanelTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
