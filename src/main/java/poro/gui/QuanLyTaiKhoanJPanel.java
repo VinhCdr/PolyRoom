@@ -466,7 +466,7 @@ public class QuanLyTaiKhoanJPanel extends javax.swing.JPanel {
         txtTenTaiKhoan.requestFocus();
     }
 
-    private void selectTable() {
+     void selectTable() {
         int rowSelected = tblTaiKhoan.getSelectedRow();
         if (rowSelected < 0) {
             return;
