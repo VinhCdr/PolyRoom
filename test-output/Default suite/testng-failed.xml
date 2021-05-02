@@ -6,11 +6,9 @@
       <class name="poro.gui.QuanLyTaiKhoanJPanelTest">
         <methods>
           <include name="XoaTaiKhoan"/>
-          <include name="capNhatTaiKhoan" invocation-numbers="1 2 3 4 5"/>
           <include name="delay"/>
           <include name="init"/>
           <include name="resetForm"/>
-          <include name="lamMoi" invocation-numbers="0"/>
           <include name="close"/>
         </methods>
       </class> <!-- poro.gui.QuanLyTaiKhoanJPanelTest -->
