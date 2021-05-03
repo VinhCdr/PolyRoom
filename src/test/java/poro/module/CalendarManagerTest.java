@@ -13,9 +13,9 @@ public class CalendarManagerTest {
 		Date time = new Date();
 		long a = 10;
 		Date hientai = CalendarManager.addTimes(time, a);
+		
 		long mongmuon = time.getTime() + a;
 		Assert.assertEquals(hientai.getTime(), mongmuon);
-
 	}
 
 	@Test
