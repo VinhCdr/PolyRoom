@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="14" passed="13" failed="1" skipped="0">
+<testng-results ignored="0" total="14" passed="14" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2021-05-02T23:58:42 ICT" name="Default suite" finished-at="2021-05-03T00:00:20 ICT" duration-ms="97920">
+  <suite started-at="2021-05-03T08:38:27 ICT" name="Default suite" finished-at="2021-05-03T08:40:05 ICT" duration-ms="98369">
     <groups>
     </groups>
-    <test started-at="2021-05-02T23:58:42 ICT" name="Default test" finished-at="2021-05-03T00:00:20 ICT" duration-ms="97920">
+    <test started-at="2021-05-03T08:38:27 ICT" name="Default test" finished-at="2021-05-03T08:40:05 ICT" duration-ms="98369">
       <class name="poro.gui.QuanLyTaiKhoanJPanelTest">
-        <test-method is-config="true" signature="init()[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-02T23:58:42 ICT" name="init" finished-at="2021-05-02T23:58:49 ICT" duration-ms="6536" status="PASS">
+        <test-method is-config="true" signature="init()[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-03T08:38:27 ICT" name="init" finished-at="2021-05-03T08:38:33 ICT" duration-ms="6385" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- init -->
-        <test-method is-config="true" signature="resetForm()[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-02T23:58:49 ICT" name="resetForm" finished-at="2021-05-02T23:58:50 ICT" duration-ms="1036" status="PASS">
+        <test-method is-config="true" signature="resetForm()[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-03T08:38:33 ICT" name="resetForm" finished-at="2021-05-03T08:38:35 ICT" duration-ms="1136" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- resetForm -->
-        <test-method signature="themTaiKhoan(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, boolean)[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-02T23:58:50 ICT" name="themTaiKhoan" data-provider="InsertAccount" finished-at="2021-05-02T23:58:55 ICT" duration-ms="5329" status="PASS">
+        <test-method signature="themTaiKhoan(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, boolean)[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-03T08:38:35 ICT" name="themTaiKhoan" data-provider="InsertAccount" finished-at="2021-05-03T08:38:40 ICT" duration-ms="5386" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -56,15 +56,15 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- themTaiKhoan -->
-        <test-method is-config="true" signature="delay()[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-02T23:58:55 ICT" name="delay" finished-at="2021-05-02T23:58:56 ICT" duration-ms="508" status="PASS">
+        <test-method is-config="true" signature="delay()[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-03T08:38:40 ICT" name="delay" finished-at="2021-05-03T08:38:40 ICT" duration-ms="505" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- delay -->
-        <test-method is-config="true" signature="resetForm()[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-02T23:58:56 ICT" name="resetForm" finished-at="2021-05-02T23:58:57 ICT" duration-ms="800" status="PASS">
+        <test-method is-config="true" signature="resetForm()[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-03T08:38:40 ICT" name="resetForm" finished-at="2021-05-03T08:38:41 ICT" duration-ms="875" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- resetForm -->
-        <test-method signature="themTaiKhoan(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, boolean)[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-02T23:58:57 ICT" name="themTaiKhoan" data-provider="InsertAccount" finished-at="2021-05-02T23:59:02 ICT" duration-ms="5039" status="PASS">
+        <test-method signature="themTaiKhoan(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, boolean)[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-03T08:38:41 ICT" name="themTaiKhoan" data-provider="InsertAccount" finished-at="2021-05-03T08:38:46 ICT" duration-ms="5043" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -105,15 +105,15 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- themTaiKhoan -->
-        <test-method is-config="true" signature="delay()[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-02T23:59:02 ICT" name="delay" finished-at="2021-05-02T23:59:02 ICT" duration-ms="512" status="PASS">
+        <test-method is-config="true" signature="delay()[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-03T08:38:46 ICT" name="delay" finished-at="2021-05-03T08:38:47 ICT" duration-ms="508" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- delay -->
-        <test-method is-config="true" signature="resetForm()[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-02T23:59:02 ICT" name="resetForm" finished-at="2021-05-02T23:59:03 ICT" duration-ms="810" status="PASS">
+        <test-method is-config="true" signature="resetForm()[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-03T08:38:47 ICT" name="resetForm" finished-at="2021-05-03T08:38:48 ICT" duration-ms="823" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- resetForm -->
-        <test-method signature="themTaiKhoan(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, boolean)[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-02T23:59:03 ICT" name="themTaiKhoan" data-provider="InsertAccount" finished-at="2021-05-02T23:59:06 ICT" duration-ms="3244" status="PASS">
+        <test-method signature="themTaiKhoan(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, boolean)[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-03T08:38:48 ICT" name="themTaiKhoan" data-provider="InsertAccount" finished-at="2021-05-03T08:38:51 ICT" duration-ms="3236" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -154,15 +154,15 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- themTaiKhoan -->
-        <test-method is-config="true" signature="delay()[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-02T23:59:06 ICT" name="delay" finished-at="2021-05-02T23:59:07 ICT" duration-ms="509" status="PASS">
+        <test-method is-config="true" signature="delay()[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-03T08:38:51 ICT" name="delay" finished-at="2021-05-03T08:38:51 ICT" duration-ms="513" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- delay -->
-        <test-method is-config="true" signature="resetForm()[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-02T23:59:07 ICT" name="resetForm" finished-at="2021-05-02T23:59:07 ICT" duration-ms="796" status="PASS">
+        <test-method is-config="true" signature="resetForm()[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-03T08:38:51 ICT" name="resetForm" finished-at="2021-05-03T08:38:52 ICT" duration-ms="831" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- resetForm -->
-        <test-method signature="themTaiKhoan(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, boolean)[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-02T23:59:07 ICT" name="themTaiKhoan" data-provider="InsertAccount" finished-at="2021-05-02T23:59:12 ICT" duration-ms="4734" status="PASS">
+        <test-method signature="themTaiKhoan(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, boolean)[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-03T08:38:52 ICT" name="themTaiKhoan" data-provider="InsertAccount" finished-at="2021-05-03T08:38:57 ICT" duration-ms="4717" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -203,15 +203,15 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- themTaiKhoan -->
-        <test-method is-config="true" signature="delay()[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-02T23:59:12 ICT" name="delay" finished-at="2021-05-02T23:59:13 ICT" duration-ms="502" status="PASS">
+        <test-method is-config="true" signature="delay()[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-03T08:38:57 ICT" name="delay" finished-at="2021-05-03T08:38:57 ICT" duration-ms="515" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- delay -->
-        <test-method is-config="true" signature="resetForm()[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-02T23:59:13 ICT" name="resetForm" finished-at="2021-05-02T23:59:14 ICT" duration-ms="792" status="PASS">
+        <test-method is-config="true" signature="resetForm()[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-03T08:38:57 ICT" name="resetForm" finished-at="2021-05-03T08:38:58 ICT" duration-ms="825" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- resetForm -->
-        <test-method signature="themTaiKhoan(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, boolean)[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-02T23:59:14 ICT" name="themTaiKhoan" data-provider="InsertAccount" finished-at="2021-05-02T23:59:18 ICT" duration-ms="4656" status="PASS">
+        <test-method signature="themTaiKhoan(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, boolean)[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-03T08:38:58 ICT" name="themTaiKhoan" data-provider="InsertAccount" finished-at="2021-05-03T08:39:03 ICT" duration-ms="4674" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -252,15 +252,15 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- themTaiKhoan -->
-        <test-method is-config="true" signature="delay()[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-02T23:59:18 ICT" name="delay" finished-at="2021-05-02T23:59:19 ICT" duration-ms="510" status="PASS">
+        <test-method is-config="true" signature="delay()[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-03T08:39:03 ICT" name="delay" finished-at="2021-05-03T08:39:03 ICT" duration-ms="501" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- delay -->
-        <test-method is-config="true" signature="resetForm()[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-02T23:59:19 ICT" name="resetForm" finished-at="2021-05-02T23:59:19 ICT" duration-ms="790" status="PASS">
+        <test-method is-config="true" signature="resetForm()[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-03T08:39:04 ICT" name="resetForm" finished-at="2021-05-03T08:39:04 ICT" duration-ms="812" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- resetForm -->
-        <test-method signature="themTaiKhoan(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, boolean)[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-02T23:59:19 ICT" name="themTaiKhoan" data-provider="InsertAccount" finished-at="2021-05-02T23:59:24 ICT" duration-ms="4716" status="PASS">
+        <test-method signature="themTaiKhoan(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, boolean)[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-03T08:39:04 ICT" name="themTaiKhoan" data-provider="InsertAccount" finished-at="2021-05-03T08:39:09 ICT" duration-ms="4719" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -301,15 +301,15 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- themTaiKhoan -->
-        <test-method is-config="true" signature="delay()[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-02T23:59:24 ICT" name="delay" finished-at="2021-05-02T23:59:25 ICT" duration-ms="510" status="PASS">
+        <test-method is-config="true" signature="delay()[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-03T08:39:09 ICT" name="delay" finished-at="2021-05-03T08:39:10 ICT" duration-ms="501" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- delay -->
-        <test-method is-config="true" signature="resetForm()[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-02T23:59:25 ICT" name="resetForm" finished-at="2021-05-02T23:59:25 ICT" duration-ms="776" status="PASS">
+        <test-method is-config="true" signature="resetForm()[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-03T08:39:10 ICT" name="resetForm" finished-at="2021-05-03T08:39:10 ICT" duration-ms="810" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- resetForm -->
-        <test-method signature="capNhatTaiKhoan(java.lang.String, java.lang.String, java.lang.String)[pri:1, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-02T23:59:25 ICT" name="capNhatTaiKhoan" data-provider="UpdateAccount" finished-at="2021-05-02T23:59:32 ICT" duration-ms="6320" status="PASS">
+        <test-method signature="capNhatTaiKhoan(java.lang.String, java.lang.String, java.lang.String)[pri:1, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-03T08:39:10 ICT" name="capNhatTaiKhoan" data-provider="UpdateAccount" finished-at="2021-05-03T08:39:17 ICT" duration-ms="6355" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -330,15 +330,15 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- capNhatTaiKhoan -->
-        <test-method is-config="true" signature="delay()[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-02T23:59:32 ICT" name="delay" finished-at="2021-05-02T23:59:32 ICT" duration-ms="507" status="PASS">
+        <test-method is-config="true" signature="delay()[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-03T08:39:17 ICT" name="delay" finished-at="2021-05-03T08:39:17 ICT" duration-ms="501" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- delay -->
-        <test-method is-config="true" signature="resetForm()[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-02T23:59:32 ICT" name="resetForm" finished-at="2021-05-02T23:59:33 ICT" duration-ms="791" status="PASS">
+        <test-method is-config="true" signature="resetForm()[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-03T08:39:17 ICT" name="resetForm" finished-at="2021-05-03T08:39:18 ICT" duration-ms="809" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- resetForm -->
-        <test-method signature="capNhatTaiKhoan(java.lang.String, java.lang.String, java.lang.String)[pri:1, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-02T23:59:33 ICT" name="capNhatTaiKhoan" data-provider="UpdateAccount" finished-at="2021-05-02T23:59:38 ICT" duration-ms="5375" status="PASS">
+        <test-method signature="capNhatTaiKhoan(java.lang.String, java.lang.String, java.lang.String)[pri:1, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-03T08:39:18 ICT" name="capNhatTaiKhoan" data-provider="UpdateAccount" finished-at="2021-05-03T08:39:23 ICT" duration-ms="5429" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -359,15 +359,15 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- capNhatTaiKhoan -->
-        <test-method is-config="true" signature="delay()[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-02T23:59:38 ICT" name="delay" finished-at="2021-05-02T23:59:39 ICT" duration-ms="509" status="PASS">
+        <test-method is-config="true" signature="delay()[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-03T08:39:23 ICT" name="delay" finished-at="2021-05-03T08:39:24 ICT" duration-ms="516" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- delay -->
-        <test-method is-config="true" signature="resetForm()[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-02T23:59:39 ICT" name="resetForm" finished-at="2021-05-02T23:59:40 ICT" duration-ms="800" status="PASS">
+        <test-method is-config="true" signature="resetForm()[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-03T08:39:24 ICT" name="resetForm" finished-at="2021-05-03T08:39:25 ICT" duration-ms="811" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- resetForm -->
-        <test-method signature="capNhatTaiKhoan(java.lang.String, java.lang.String, java.lang.String)[pri:1, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-02T23:59:40 ICT" name="capNhatTaiKhoan" data-provider="UpdateAccount" finished-at="2021-05-02T23:59:46 ICT" duration-ms="5942" status="PASS">
+        <test-method signature="capNhatTaiKhoan(java.lang.String, java.lang.String, java.lang.String)[pri:1, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-03T08:39:25 ICT" name="capNhatTaiKhoan" data-provider="UpdateAccount" finished-at="2021-05-03T08:39:31 ICT" duration-ms="5976" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -388,15 +388,15 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- capNhatTaiKhoan -->
-        <test-method is-config="true" signature="delay()[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-02T23:59:46 ICT" name="delay" finished-at="2021-05-02T23:59:46 ICT" duration-ms="513" status="PASS">
+        <test-method is-config="true" signature="delay()[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-03T08:39:31 ICT" name="delay" finished-at="2021-05-03T08:39:31 ICT" duration-ms="509" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- delay -->
-        <test-method is-config="true" signature="resetForm()[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-02T23:59:46 ICT" name="resetForm" finished-at="2021-05-02T23:59:47 ICT" duration-ms="784" status="PASS">
+        <test-method is-config="true" signature="resetForm()[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-03T08:39:31 ICT" name="resetForm" finished-at="2021-05-03T08:39:32 ICT" duration-ms="828" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- resetForm -->
-        <test-method signature="capNhatTaiKhoan(java.lang.String, java.lang.String, java.lang.String)[pri:1, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-02T23:59:47 ICT" name="capNhatTaiKhoan" data-provider="UpdateAccount" finished-at="2021-05-02T23:59:53 ICT" duration-ms="5747" status="PASS">
+        <test-method signature="capNhatTaiKhoan(java.lang.String, java.lang.String, java.lang.String)[pri:1, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-03T08:39:32 ICT" name="capNhatTaiKhoan" data-provider="UpdateAccount" finished-at="2021-05-03T08:39:38 ICT" duration-ms="5740" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -417,15 +417,15 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- capNhatTaiKhoan -->
-        <test-method is-config="true" signature="delay()[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-02T23:59:53 ICT" name="delay" finished-at="2021-05-02T23:59:53 ICT" duration-ms="501" status="PASS">
+        <test-method is-config="true" signature="delay()[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-03T08:39:38 ICT" name="delay" finished-at="2021-05-03T08:39:38 ICT" duration-ms="506" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- delay -->
-        <test-method is-config="true" signature="resetForm()[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-02T23:59:53 ICT" name="resetForm" finished-at="2021-05-02T23:59:54 ICT" duration-ms="775" status="PASS">
+        <test-method is-config="true" signature="resetForm()[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-03T08:39:38 ICT" name="resetForm" finished-at="2021-05-03T08:39:39 ICT" duration-ms="806" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- resetForm -->
-        <test-method signature="capNhatTaiKhoan(java.lang.String, java.lang.String, java.lang.String)[pri:1, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-02T23:59:54 ICT" name="capNhatTaiKhoan" data-provider="UpdateAccount" finished-at="2021-05-03T00:00:00 ICT" duration-ms="5807" status="PASS">
+        <test-method signature="capNhatTaiKhoan(java.lang.String, java.lang.String, java.lang.String)[pri:1, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-03T08:39:39 ICT" name="capNhatTaiKhoan" data-provider="UpdateAccount" finished-at="2021-05-03T08:39:45 ICT" duration-ms="5839" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -446,15 +446,15 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- capNhatTaiKhoan -->
-        <test-method is-config="true" signature="delay()[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-03T00:00:00 ICT" name="delay" finished-at="2021-05-03T00:00:00 ICT" duration-ms="516" status="PASS">
+        <test-method is-config="true" signature="delay()[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-03T08:39:45 ICT" name="delay" finished-at="2021-05-03T08:39:45 ICT" duration-ms="505" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- delay -->
-        <test-method is-config="true" signature="resetForm()[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-03T00:00:00 ICT" name="resetForm" finished-at="2021-05-03T00:00:01 ICT" duration-ms="778" status="PASS">
+        <test-method is-config="true" signature="resetForm()[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-03T08:39:45 ICT" name="resetForm" finished-at="2021-05-03T08:39:46 ICT" duration-ms="783" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- resetForm -->
-        <test-method signature="capNhatTaiKhoan(java.lang.String, java.lang.String, java.lang.String)[pri:1, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-03T00:00:01 ICT" name="capNhatTaiKhoan" data-provider="UpdateAccount" finished-at="2021-05-03T00:00:07 ICT" duration-ms="5890" status="PASS">
+        <test-method signature="capNhatTaiKhoan(java.lang.String, java.lang.String, java.lang.String)[pri:1, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-03T08:39:46 ICT" name="capNhatTaiKhoan" data-provider="UpdateAccount" finished-at="2021-05-03T08:39:52 ICT" duration-ms="5890" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -475,55 +475,27 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- capNhatTaiKhoan -->
-        <test-method is-config="true" signature="delay()[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-03T00:00:07 ICT" name="delay" finished-at="2021-05-03T00:00:08 ICT" duration-ms="509" status="PASS">
+        <test-method is-config="true" signature="delay()[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-03T08:39:52 ICT" name="delay" finished-at="2021-05-03T08:39:53 ICT" duration-ms="513" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- delay -->
-        <test-method is-config="true" signature="resetForm()[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-03T00:00:08 ICT" name="resetForm" finished-at="2021-05-03T00:00:08 ICT" duration-ms="764" status="PASS">
+        <test-method is-config="true" signature="resetForm()[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-03T08:39:53 ICT" name="resetForm" finished-at="2021-05-03T08:39:53 ICT" duration-ms="795" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- resetForm -->
-        <test-method signature="XoaTaiKhoan()[pri:2, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-03T00:00:08 ICT" name="XoaTaiKhoan" finished-at="2021-05-03T00:00:12 ICT" duration-ms="4022" status="FAIL">
-          <exception class="java.lang.AssertionError">
-            <message>
-              <![CDATA[expected [Message] but found [Input]]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: expected [Message] but found [Input]
-at org.testng.Assert.fail(Assert.java:99)
-at org.testng.Assert.failNotEquals(Assert.java:1037)
-at org.testng.Assert.assertEqualsImpl(Assert.java:140)
-at org.testng.Assert.assertEquals(Assert.java:122)
-at org.testng.Assert.assertEquals(Assert.java:629)
-at org.testng.Assert.assertEquals(Assert.java:639)
-at poro.gui.QuanLyTaiKhoanJPanelTest.XoaTaiKhoan(QuanLyTaiKhoanJPanelTest.java:167)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
-at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-at java.base/java.lang.reflect.Method.invoke(Method.java:564)
-at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:132)
-at org.testng.internal.InvokeMethodRunnable.runOne(InvokeMethodRunnable.java:45)
-at org.testng.internal.InvokeMethodRunnable.call(InvokeMethodRunnable.java:73)
-at org.testng.internal.InvokeMethodRunnable.call(InvokeMethodRunnable.java:11)
-at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
-at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
-at java.base/java.lang.Thread.run(Thread.java:832)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.AssertionError -->
+        <test-method signature="XoaTaiKhoan()[pri:2, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-03T08:39:53 ICT" name="XoaTaiKhoan" finished-at="2021-05-03T08:39:58 ICT" duration-ms="4111" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- XoaTaiKhoan -->
-        <test-method is-config="true" signature="delay()[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-03T00:00:12 ICT" name="delay" finished-at="2021-05-03T00:00:13 ICT" duration-ms="504" status="PASS">
+        <test-method is-config="true" signature="delay()[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-03T08:39:58 ICT" name="delay" finished-at="2021-05-03T08:39:58 ICT" duration-ms="512" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- delay -->
-        <test-method is-config="true" signature="resetForm()[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-03T00:00:13 ICT" name="resetForm" finished-at="2021-05-03T00:00:14 ICT" duration-ms="774" status="PASS">
+        <test-method is-config="true" signature="resetForm()[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-03T08:39:58 ICT" name="resetForm" finished-at="2021-05-03T08:39:59 ICT" duration-ms="797" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- resetForm -->
-        <test-method signature="lamMoi(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, boolean)[pri:3, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-03T00:00:14 ICT" name="lamMoi" data-provider="NewAccount" finished-at="2021-05-03T00:00:19 ICT" duration-ms="5073" status="PASS">
+        <test-method signature="lamMoi(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, boolean)[pri:3, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-03T08:39:59 ICT" name="lamMoi" data-provider="NewAccount" finished-at="2021-05-03T08:40:04 ICT" duration-ms="4893" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -564,11 +536,11 @@ at java.base/java.lang.Thread.run(Thread.java:832)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- lamMoi -->
-        <test-method is-config="true" signature="delay()[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-03T00:00:19 ICT" name="delay" finished-at="2021-05-03T00:00:19 ICT" duration-ms="510" status="PASS">
+        <test-method is-config="true" signature="delay()[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-03T08:40:04 ICT" name="delay" finished-at="2021-05-03T08:40:04 ICT" duration-ms="512" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- delay -->
-        <test-method is-config="true" signature="close()[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-03T00:00:19 ICT" name="close" finished-at="2021-05-03T00:00:20 ICT" duration-ms="1021" status="PASS">
+        <test-method is-config="true" signature="close()[pri:0, instance:poro.gui.QuanLyTaiKhoanJPanelTest@4f67eb2a]" started-at="2021-05-03T08:40:04 ICT" name="close" finished-at="2021-05-03T08:40:05 ICT" duration-ms="1018" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- close -->

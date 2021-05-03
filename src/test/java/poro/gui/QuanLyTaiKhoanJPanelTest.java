@@ -157,8 +157,6 @@ public class QuanLyTaiKhoanJPanelTest {
 			qltk.btnXoa.doClick();
 		}).start();
 		Thread.sleep(500);
-		BigBug.writeString("CONFIRM");
-		//sao cho nó chọn ok??
 		
 		JDialog jp = Babysitter.getWindow(JDialog.class);
 		

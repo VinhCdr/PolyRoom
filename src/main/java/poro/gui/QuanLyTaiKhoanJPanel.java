@@ -286,23 +286,28 @@ public class QuanLyTaiKhoanJPanel extends javax.swing.JPanel {
 
     void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
-        try {
-            String confirm = JOptionPane.showInputDialog(
-                    this,
-                    "Tất cả dữ liệu liên quan user \'"
-                    + txtTenTaiKhoan.getText().trim()
-                    + "\' sẽ bị xóa\nNhập CONFIRM và ấn xác nhận để tiếp tục xóa!"
-            );
-            if (null == confirm || !confirm.equals("CONFIRM")) {
-                return;
-            }
-            xoa();
+//        try {
+//            String confirm = JOptionPane.showInputDialog(
+//                    this,
+//                    "Tất cả dữ liệu liên quan user \'"
+//                    + txtTenTaiKhoan.getText().trim()
+//                    + "\' sẽ bị xóa\nNhập CONFIRM và ấn xác nhận để tiếp tục xóa!"
+//            );
+//            if (null == confirm || !confirm.equals("CONFIRM")) {
+//                return;
+//            }
+            try {
+				xoa();
+			} catch (ToViewException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
             loading();
             setEditable(false);
             JOptionPane.showMessageDialog(this, "Xóa thành công");
-        } catch (ToViewException ex) {
-            JOptionPane.showMessageDialog(this, ex.getMessage());
-        }
+//        } catch (ToViewException ex) {
+//            JOptionPane.showMessageDialog(this, ex.getMessage());
+//        }
     }//GEN-LAST:event_btnXoaActionPerformed
 
     void tblTaiKhoanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblTaiKhoanMouseClicked
