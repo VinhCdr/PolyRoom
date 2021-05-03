@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
-  <test thread-count="5" name="Default test(failed)">
+<suite name="Failed suite [Vinh Suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="vModule Test(failed)">
     <classes>
-      <class name="poro.gui.QuanLyTaiKhoanJPanelTest">
+      <class name="poro.module.db.data.MuonPhongTest">
         <methods>
-          <include name="XoaTaiKhoan"/>
-          <include name="delay"/>
-          <include name="init"/>
-          <include name="resetForm"/>
-          <include name="close"/>
+          <include name="getListByPhongYesTest"/>
         </methods>
-      </class> <!-- poro.gui.QuanLyTaiKhoanJPanelTest -->
+      </class> <!-- poro.module.db.data.MuonPhongTest -->
     </classes>
-  </test> <!-- Default test(failed) -->
-</suite> <!-- Failed suite [Default suite] -->
+  </test> <!-- vModule Test(failed) -->
+</suite> <!-- Failed suite [Vinh Suite] -->

@@ -6,4 +6,9 @@
 			<class name="poro.module.EncrypterTest"/>
 		</classes>
 	</test>
+	<test name="liThongKe Test">
+		<classes>
+			<class name="poro.gui.ThongKeJPanelTest"/>
+		</classes>
+	</test>
 </suite> <!-- Suite -->

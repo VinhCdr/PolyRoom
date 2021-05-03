@@ -51,7 +51,6 @@ public class DoiMatKhauJDialogTest {
 			 BigBug.writeString(jd.txtPassMoi2,"phongpass");
 			 new Thread(()->{
 				 jd.btnMatKhau.doClick();
-				
 			 }).start();
 			 Thread.sleep(500);
 			
@@ -72,7 +71,6 @@ public class DoiMatKhauJDialogTest {
 		
 			 new Thread(()->{
 				 MainClass.mainJFrame.btnDoiMatKhau.doClick();
-				
 			 }).start();
 			 Thread.sleep(500);
 			 DoiMatKhauJDialog jd = Babysitter.getWindow(DoiMatKhauJDialog.class);
@@ -81,7 +79,6 @@ public class DoiMatKhauJDialogTest {
 			 BigBug.writeString(jd.txtPassMoi2,"phongpass");
 			 new Thread(()->{
 				 jd.btnMatKhau.doClick();
-				
 			 }).start();
 			 Thread.sleep(500);
 			
@@ -139,10 +136,7 @@ public class DoiMatKhauJDialogTest {
 	@DataProvider(name = "dnthanhcong")
 	public Object[][] getUser1() {
 		return new Object[][] {
-				{"phongtc", "phongpass"},
-			
-			
-				
+				{"phongtc", "phongpass"},	
 		};
 	}
 }

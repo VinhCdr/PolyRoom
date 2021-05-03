@@ -75,8 +75,7 @@ public class DangNhapJDialogTest {
 		 }).start();
 		 Thread.sleep(500);
 		 
-		 
-		
+		 Assert.assertTrue(MainClass.mainJFrame.isVisible());
 	}
 	
 	@Test(timeOut = 10000,priority = 6,  dataProvider = "dnthanhcong")
