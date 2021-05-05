@@ -45,8 +45,32 @@ ThongKeJPanel tk;
 	public void delay() throws InterruptedException {
 		Thread.sleep(500);
 	}
+	
 	@Test
-	public void thongke() {
-		tk= Babysitter.getTabPanelSelected();
+	public void thongke() throws InterruptedException {
+		tk = Babysitter.getTabPanelSelected();
+		tk.tblPhong.setRowSelectionInterval(0, 0);
+		Thread.sleep(500);
+		Assert.assertEquals(tk.tblPhong.getValueAt(0, 0).toString(), "101");
+		Assert.assertEquals(tk.tblPhong.getValueAt(0, 1).toString(), "1");
+		Assert.assertEquals(tk.tblPhong.getValueAt(0, 2).toString(), "1");
+		Assert.assertEquals(tk.tblPhong.getValueAt(0, 3).toString(), "1");
+		Assert.assertEquals(tk.tblPhong.getValueAt(0, 4).toString(), "0");
+		Assert.assertEquals(tk.tblPhong.getValueAt(0, 5).toString(), "0");
+		Assert.assertEquals(tk.tblPhong.getValueAt(0, 6).toString(), "0.00 giờ");
+	}
+	
+	@Test
+	public void thongke1() throws InterruptedException {
+		tk = Babysitter.getTabPanelSelected();
+		tk.tblPhong.setRowSelectionInterval(1, 1);
+		Thread.sleep(500);
+		Assert.assertEquals(tk.tblPhong.getValueAt(1, 0).toString(), "102");
+		Assert.assertEquals(tk.tblPhong.getValueAt(1, 1).toString(), "1");
+		Assert.assertEquals(tk.tblPhong.getValueAt(1, 2).toString(), "2");
+		Assert.assertEquals(tk.tblPhong.getValueAt(1, 3).toString(), "1");
+		Assert.assertEquals(tk.tblPhong.getValueAt(1, 4).toString(), "0");
+		Assert.assertEquals(tk.tblPhong.getValueAt(1, 5).toString(), "0");
+		Assert.assertEquals(tk.tblPhong.getValueAt(1, 6).toString(), "0.00 giờ");
 	}
 }

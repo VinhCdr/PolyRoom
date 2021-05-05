@@ -3,15 +3,14 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="poro.gui.MuonPhongJDialogTest">
+      <class name="poro.gui.DoiMatKhauJDialogTest">
         <methods>
-          <include name="close"/>
+          <include name="doimatkhau" invocation-numbers="0"/>
+          <include name="closeProject"/>
+          <include name="openProject"/>
           <include name="delay"/>
-          <include name="createXemPhong"/>
-          <include name="muon201Test"/>
-          <include name="init"/>
         </methods>
-      </class> <!-- poro.gui.MuonPhongJDialogTest -->
+      </class> <!-- poro.gui.DoiMatKhauJDialogTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
